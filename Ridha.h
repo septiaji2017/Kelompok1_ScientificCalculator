@@ -3,13 +3,15 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
+#define false 0
+#define true 1
 
-int f_pangkat(int x, int y){
+float f_pangkat(float x, float y){
 	x=pow(x,y);
 	return x;
 }
 
-int f_akar(int x){
+float f_akar(float x){
 	x=sqrt(x);
 	return x;
 }
