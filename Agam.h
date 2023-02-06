@@ -59,53 +59,6 @@ int DetikKeMenit(int JamInput){
 }
 
 
-int main(){
-	int pilihan, JamInput, penampung; 
-	
-	pilihOpsi(&pilihan);
-	switch(pilihan){
-		case 1:
-			printf("\t\t\t\t\t\t\t--> Masukkan Jam yang ingin anda konversikan ke Detik >> ");
-			scanf("%d", &JamInput);
-			penampung = JamKeDetik(JamInput);
-			printf("\t\t\t\t\t\t\t\t  --> Hasil dari Jam ke detik adalah: %d detik", penampung);
-			break;
-		case 2:
-			printf("\t\t\t\t\t\t\t--> Masukkan Jam yang ingin anda konversikan ke Menit >> ");
-			scanf("%d", &JamInput);
-			penampung = JamKeMenit(JamInput);
-			printf("\t\t\t\t\t\t\t\t  --> Hasil dari Jam ke detik adalah: %d menit", penampung);
-			break;
-		case 3:
-			printf("\t\t\t\t\t\t\t--> Masukkan Menit yang ingin anda konversikan ke Jam >> ");
-			scanf("%d", &JamInput);
-			penampung = MenitKeJam(JamInput);
-			printf("\t\t\t\t\t\t\t\t  --> Hasil dari Jam ke detik adalah: %d jam", penampung);
-			break;
-		case 4:
-			printf("\t\t\t\t\t\t\t-->Masukkan Menit yang ingin anda konversikan ke Detik >> ");
-			scanf("%d", &JamInput);
-			penampung = MenitKeDetik(JamInput);
-			printf("\t\t\t\t\t\t\t\t  --> Hasil dari Jam ke detik adalah: %d detik", penampung);
-			break;
-		case 5:
-			printf("\t\t\t\t\t\t\t--> Masukkan Detik yang ingin anda konversikan ke Jam >> ");
-			scanf("%d", &JamInput);
-			penampung = DetikKeJam(JamInput);
-			printf("\t\t\t\t\t\t\t\t  --> Hasil dari Jam ke detik adalah: %d jam", penampung);
-			break;
-		case 6:
-			printf("\t\t\t\t\t\t\t--> Masukkan Detik yang ingin anda konversikan ke Menit >> ");
-			scanf("%d", &JamInput);
-			penampung = DetikKeMenit(JamInput);
-			printf("\t\t\t\t\t\t\t\t  --> Hasil dari Jam ke detik adalah: %d menit", penampung);
-			break;
-		case 7:
-			printf("\t\t\t\t\t\t\t\t  --> Wrong Input!");
-			break; 
-	}
-}
-
 #endif
 
 
