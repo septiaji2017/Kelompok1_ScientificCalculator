@@ -1,5 +1,5 @@
-#ifndef rico_h
-#define rico_h
+#ifndef Rico_h
+#define Rico_h
 #include <stdio.h>
 #include <math.h>
 #define pi 3.14159265
@@ -40,9 +40,9 @@ float inversTan(float x){
 	double value;
 	printf("Masukkan nilai: ");
 	scanf("%f", &x);
-	ret = acos(x);
+	ret = atan(x);
 	value = round(ret*180/pi);
-	printf("Invers sinus dari %.2f adalah %.2lf, atau juga %.2lf derajat",x,ret,value);
+	printf("Invers sinus dari %.2f adalah %.5lf, atau juga %.5lf derajat",x,ret,value);
 	
 	return value;
 }
