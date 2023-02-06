@@ -2,6 +2,7 @@
 #define rico_h
 #include <stdio.h>
 #include <math.h>
+#define pi 3.14159265
 
 float inversSin(float x){
 	double ret;
@@ -15,7 +16,6 @@ float inversSin(float x){
 	}else{
 		printf("Input tidak valid");
 	}
-	return ret;
 	return value;
 }
 
@@ -31,7 +31,6 @@ float inversCos(float x){
 	}else{
 		printf("Input tidak valid");
 	}
-	return ret;
 	return value;
 	
 }
@@ -45,7 +44,6 @@ float inversTan(float x){
 	value = round(ret*180/pi);
 	printf("Invers sinus dari %.2f adalah %.2lf, atau juga %.2lf derajat",x,ret,value);
 	
-	return ret;
 	return value;
 }
 
