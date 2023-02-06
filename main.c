@@ -132,9 +132,11 @@ void mainRidha()
 {
 	float x_main, y_main;
 	int pilihan;
+	int z_main, z1_main;
 	
 	printf("1. pangkat\n");
 	printf("2. akar\n");
+	printf("3. logika\n");
 	printf("masukkan opsi: ");
 	scanf("%d",&pilihan);
 	switch(pilihan){
@@ -144,15 +146,23 @@ void mainRidha()
 			printf("masukkan pangkat: ");
 			scanf("%f",&y_main);
 			x_main = f_pangkat(x_main,y_main);
+			printf("%f",x_main);			
 			break;
 		case 2:
 			printf("masukkan angka: ");
 			scanf("%f",&x_main);				
-			x_main = f_akar(x_main);		
+			x_main = f_akar(x_main);
+			printf("%f",x_main);					
+			break;
+		case 3:
+			printf("masukkan logika pertama (1 or 0) ");
+			scanf("%d",&z_main);
+			printf("masukkan logika kedua (1 or 0) ");
+			scanf("%d",&z1_main);			
+			z_main = f_operasiBoolAnd(z_main,z1_main);
+			printf("%d",z_main);
 			break;
 	}
-	
-	printf("%f",x_main);	
 }
 
 int main()
