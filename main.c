@@ -1,8 +1,8 @@
-#include "D:\tugas kampus\proyek 2\Kelompok1_ScientificCalculator\Kelompok1_ScientificCalculator\Ridha.h"
-#include "D:\tugas kampus\proyek 2\Kelompok1_ScientificCalculator\Kelompok1_ScientificCalculator\Agam.h"
-#include "D:\tugas kampus\proyek 2\Kelompok1_ScientificCalculator\Kelompok1_ScientificCalculator\Mutia.h"
-#include "D:\tugas kampus\proyek 2\Kelompok1_ScientificCalculator\Kelompok1_ScientificCalculator\Rico.h"
-#include "D:\tugas kampus\proyek 2\Kelompok1_ScientificCalculator\Kelompok1_ScientificCalculator\Naufal.h"
+#include "Ridha.h"
+#include "Agam.h"
+#include "Mutia.h"
+#include "Rico.h"
+#include "Naufal.h"
 //digabungkan oleh ridha septiaji
 
 void mainAgam()
