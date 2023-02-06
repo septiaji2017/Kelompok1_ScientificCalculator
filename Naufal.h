@@ -9,7 +9,7 @@ float CtoK(float Kelvin)
 {
 	Celsius = (Kelvin - 273.15);	
 	//rumus
-	return Celcius;
+	return Celsius;
 }
 
 float FtoK(float Kelvin)
