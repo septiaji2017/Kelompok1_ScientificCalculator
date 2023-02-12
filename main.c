@@ -130,57 +130,147 @@ void mainRico()
 
 void mainRidha()
 {
+	int i;
 	float x_main, y_main;
-	int pilihan;
+	int pilihanCabang, pilihanCabang2, pilihanCabang3;
 	int z_main, z1_main;
 	div_t output;
 	
-	printf("1. pangkat\n");
-	printf("2. akar\n");
-	printf("3. div\n");
-	printf("4. modulus\n");			
-	printf("5. logika\n");
+	printf("1. Operasi Dasar\n");			
+	printf("2. Operasi Bitwise\n");
 	printf("masukkan opsi: ");
-	scanf("%d",&pilihan);
-	switch(pilihan){
+	scanf("%d",&pilihanCabang);
+	system("cls");
+	switch(pilihanCabang){
 		case 1:
-			printf("masukkan angka: ");
-			scanf("%f",&x_main);	
-			printf("masukkan pangkat: ");
-			scanf("%f",&y_main);
-			x_main = f_pangkat(x_main,y_main);
-			printf("Hasil: %f",x_main);			
+			printf("1. pangkat\n");
+			printf("2. akar\n");
+			printf("3. div\n");
+			printf("4. modulus\n");
+			printf("5. persentase\n");			
+			printf("masukkan opsi: ");
+			scanf("%d",&pilihanCabang2);	
+			switch(pilihanCabang2){
+				case 1:
+					printf("masukkan angka: ");
+					scanf("%f",&x_main);	
+					printf("masukkan pangkat: ");
+					scanf("%f",&y_main);
+					x_main = f_pangkat(x_main,y_main);
+					printf("Hasil: %f",x_main);						
+					break;
+				case 2:
+					printf("masukkan angka: ");
+					scanf("%f",&x_main);				
+					x_main = f_akar(x_main);
+					printf("Hasil: %f",x_main);						
+					break;
+				case 3:
+					printf("masukkan pembilang: ");
+					scanf("%d",&z_main);
+					printf("masukkan penyebut: ");
+					scanf("%d",&z1_main);
+					output = f_div(z_main,z1_main);
+					printf("Hasil (Hasil Bagi): %d\n",output.quot);
+					printf("Hasil (Sisa Bagi): %d",output.rem);					
+					break;					
+				case 4:
+					printf("masukkan pembilang: ");
+					scanf("%d",&z_main);
+					printf("masukkan penyebut: ");
+					scanf("%d",&z1_main);
+					z_main = f_mod(z_main,z1_main);
+					printf("Hasil: %d\n",z_main);						
+					break;
+				case 5:
+					system("cls");
+					printf("1. Menghitung Persen ke Pngka\n");
+					printf("2. Menghitung Angka ke Persen\n");					
+					printf("3. Menghitung Diskon\n");
+					printf("4. Menghitung Bunga\n");
+					printf("masukkan opsi: ");
+					scanf("%d",&pilihanCabang3);
+					switch(pilihanCabang3){
+						case 1:
+							printf("Masukkan Angka (Dalam Persen (%%)): ");
+							scanf("%f",&x_main);
+							x_main = f_PersenKeAngka(x_main);
+							printf("Hasil: %f\n",x_main);	
+							break;
+						case 2:
+							printf("Masukkan Angka: ");
+							scanf("%f",&x_main);
+							x_main = f_AngkaKePersen(x_main);
+							printf("Hasil: %6.2f%%\n",x_main);								
+							break;
+						case 3:
+							printf("Masukkan Harga Awal (Dalam Rupiah): ");
+							scanf("%f",&x_main);
+							printf("Masukkan diskon (Dalam Persen (%%)): ");
+							scanf("%f",&y_main);
+							y_main = f_PersenKeAngka(y_main);
+							x_main = f_HitungDiskon(x_main,y_main);
+							printf("Hasil: Rp.%6.2f\n",x_main);
+							break;
+						case 4:
+						
+							printf("Masukkan Tabungan Awal (Dalam Rupiah): ");
+							scanf("%f",&x_main);
+							printf("Masukkan Bunga (Dalam Persen (%%)): ");
+							scanf("%f",&y_main);
+							printf("Masukkan Tahun: ");
+							scanf("%d",&z_main);
+							y_main = f_PersenKeAngka(y_main);
+							for(i=1;i<=z_main;i++){
+								x_main = f_HitungBunga(x_main,y_main);							
+							}
+
+							printf("Hasil: Rp.%6.2f\n",x_main);
+							break;							
+					}	
+					break;			
+			}
 			break;
+			
 		case 2:
-			printf("masukkan angka: ");
-			scanf("%f",&x_main);				
-			x_main = f_akar(x_main);
-			printf("Hasil: %f",x_main);					
-			break;
-		case 3:
-			printf("masukkan pembilang: ");
-			scanf("%d",&z_main);
-			printf("masukkan penyebut: ");
-			scanf("%d",&z1_main);
-			output = f_div(z_main,z1_main);
-			printf("Hasil (Hasil Bagi): %d\n",output.quot);
-			printf("Hasil (Sisa Bagi): %d",output.rem);			
-			break;
-		case 4:
-			printf("masukkan pembilang: ");
-			scanf("%d",&z_main);
-			printf("masukkan penyebut: ");
-			scanf("%d",&z1_main);
-			z_main = f_mod(z_main,z1_main);
-			printf("Hasil: %d\n",z_main);			
-			break;
-		case 5:
-			printf("masukkan logika pertama (1 or 0) ");
-			scanf("%d",&z_main);
-			printf("masukkan logika kedua (1 or 0) ");
-			scanf("%d",&z1_main);			
-			z_main = f_operasiBitwiseAnd(z_main,z1_main);
-			printf("%d",z_main);
+			printf("1. bitwise (And)\n");
+			printf("2. bitwise (Or)\n");
+			printf("3. bitwise (XOR)\n");
+			printf("4. bitwise (Not)\n");	
+			printf("masukkan opsi: ");
+			scanf("%d",&pilihanCabang2);
+			switch(pilihanCabang2){
+				case 1:
+					printf("masukkan logika pertama (1 or 0) ");
+					scanf("%d",&z_main);
+					printf("masukkan logika kedua (1 or 0) ");
+					scanf("%d",&z1_main);			
+					z_main = f_operasiBitwiseAnd(z_main,z1_main);
+					printf("%d",z_main);					
+					break;
+				case 2:
+					printf("masukkan logika pertama (1 or 0) ");
+					scanf("%d",&z_main);
+					printf("masukkan logika kedua (1 or 0) ");
+					scanf("%d",&z1_main);			
+					z_main = f_operasiBitwiseOr(z_main,z1_main);
+					printf("%d",z_main);					
+					break;
+				case 3:
+					printf("masukkan logika pertama (1 or 0) ");
+					scanf("%d",&z_main);
+					printf("masukkan logika kedua (1 or 0) ");
+					scanf("%d",&z1_main);			
+					z_main = f_operasiBitwiseXor(z_main,z1_main);
+					printf("%d",z_main);							
+					break;
+				case 4:
+					printf("masukkan angka: ");
+					scanf("%d",&z_main);			
+					z_main = f_operasiBitwiseNot(z_main);
+					printf("%d",z_main);					
+					break;
+			}			
 			break;
 	}
 }
