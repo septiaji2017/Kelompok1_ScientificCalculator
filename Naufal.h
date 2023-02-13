@@ -42,4 +42,25 @@ float CtoF(float Fahrenheit)
 	return Celsius;
 }
 
+
+int pertambahan(int x, int y){
+	x=x+y;
+	return x;
+}
+
+int pengurangan(int x, int y){
+	x=x-y;
+	return x;
+}
+
+int perkalian(int x, int y){
+	x=x*y;
+	return x;
+}
+
+float pembagian(float x, float y){
+	x=x/y;
+	return x;
+}
+
 #endif
