@@ -22,22 +22,15 @@ float inversTan(float x){
 	return value;
 }
 
-void menuInvers(){
-	printf("1. Invers sinus\n");
-	printf("2. Invers cosinus\n");
-	printf("3. Invers tangent\n");
-	printf("4. Integral\n\n");
-}
-
 float logaritmaNatural(float ln){
 	float hasil;
 	hasil = log(ln);
 	return hasil;
 }
 
-float logaritma(float ln){
+float logaritma(float log){
 	float hasil;
-	hasil = log10(ln);
+	hasil = log10(log);
 	return hasil;
 }
 
@@ -52,6 +45,14 @@ float trapezoid(float bawah, float atas, int n, float (*fungsi)(float)) {
     sum += fungsi(bawah + i * ax);
   }
   return (ax * sum);
+}
+
+float polinomial(float coef[11], int derajat, float x){
+	float y = 0.0;
+	for(int i = 0; i <= derajat; i++){
+		y += coef[i] * pow(x, i); 
+	}
+	return y;
 }
 
 
