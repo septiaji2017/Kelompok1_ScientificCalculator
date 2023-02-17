@@ -1,56 +1,58 @@
-#ifndef Rico_h
-#define Rico_h
+#ifndef rico_h
+#define rico_h
 #include <stdio.h>
 #include <math.h>
 #define pi 3.14159265
 
 float inversSin(float x){
-	double ret;
 	double value;
-	printf("Masukkan nilai: ");
-	scanf("%f", &x);
-	if(x>= -1 && x<= 1){
-		ret = asin(x);
-		value = round(ret*180/pi);
-		printf("Invers sinus dari %.2f adalah %.2lf, atau juga %.2lf derajat",x,ret,value);
-	}else{
-		printf("Input tidak valid");
-	}
+	value = round(asin(x)*180/pi);		
 	return value;
 }
 
 float inversCos(float x){
-	double ret;
 	double value;
-	printf("Masukkan nilai: ");
-	scanf("%f", &x);
-	if(x>= -1 && x<= 1){
-		ret = acos(x);
-		value = round(ret*180/pi);
-		printf("Invers sinus dari %.2f adalah %.2lf, atau juga %.2lf derajat",x,ret,value);
-	}else{
-		printf("Input tidak valid");
-	}
-	return value;
-	
+	value = round(acos(x)*180/pi);
+	return value;	
 }
 
 float inversTan(float x){
-	double ret;
 	double value;
-	printf("Masukkan nilai: ");
-	scanf("%f", &x);
-	ret = atan(x);
-	value = round(ret*180/pi);
-	printf("Invers sinus dari %.2f adalah %.5lf, atau juga %.5lf derajat",x,ret,value);
-	
+	value = round(atan(x)*180/pi);	
 	return value;
 }
 
 void menuInvers(){
 	printf("1. Invers sinus\n");
 	printf("2. Invers cosinus\n");
-	printf("3. Invers tangent\n\n");
+	printf("3. Invers tangent\n");
+	printf("4. Integral\n\n");
 }
+
+float logaritmaNatural(float ln){
+	float hasil;
+	hasil = log(ln);
+	return hasil;
+}
+
+float logaritma(float ln){
+	float hasil;
+	hasil = log10(ln);
+	return hasil;
+}
+
+float fungsi(float x) {
+  return x*x + 3*x - 5;
+}
+
+float trapezoid(float bawah, float atas, int n, float (*fungsi)(float)) {
+  float ax = (atas - bawah) / n;
+  float sum = 0.5 * (fungsi(bawah) + fungsi(atas));
+  for (int i = 1; i < n; i++) {
+    sum += fungsi(bawah + i * ax);
+  }
+  return (ax * sum);
+}
+
 
 #endif
