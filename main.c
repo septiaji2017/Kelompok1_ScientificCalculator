@@ -1,7 +1,7 @@
 #include "Ridha.h"
 #include "Agam.h"
-#include "Mutia.h"
-#include "Rico.h"
+//#include "Mutia.h"
+//#include "Rico.h"
 #include "Naufal.h"
 //digabungkan oleh ridha septiaji
 
@@ -53,13 +53,13 @@ void mainAgam()
 	}	
 }
 
-void mainMutia()
-{
-	int x_main;	
-	printf("masukkan angka: ");
-	scanf("%d",&x_main);	
-	x_main = faktorial(x_main);	
-}
+//void mainMutia()
+//{
+//	int x_main;	
+//	printf("masukkan angka: ");
+//	scanf("%d",&x_main);	
+//	x_main = faktorial(x_main);	
+//}
 
 void mainNaufal()
 {
@@ -103,37 +103,39 @@ void mainNaufal()
     printf("\n\n");
 }
 
-void mainRico()
-{
-	float x;
-	int pilihan;
-	menuInvers();
-	printf("Masukkan pilihan: ");
-	scanf("%d", &pilihan);
-	switch(pilihan){
-		case 1:
-			inversSin(x);
-			break;
-		
-		case 2:
-			inversCos(x);
-			break;
-		
-		case 3:
-			inversTan(x);
-			break;
-			
-		default:
-			printf("Pilihan yang anda masukkan tidak valid");
-	}	
-}
+//void mainRico()
+//{
+//	float x;
+//	int pilihan;
+//	menuInvers();
+//	printf("Masukkan pilihan: ");
+//	scanf("%d", &pilihan);
+//	switch(pilihan){
+//		case 1:
+//			inversSin(x);
+//			break;
+//		
+//		case 2:
+//			inversCos(x);
+//			break;
+//		
+//		case 3:
+//			inversTan(x);
+//			break;
+//			
+//		default:
+//			printf("Pilihan yang anda masukkan tidak valid");
+//	}	
+//}
 
 void mainRidha()
 {
 	int i;
 	float x_main, y_main;
+	float float_hsl;
 	int pilihanCabang, pilihanCabang2, pilihanCabang3;
 	int z_main, z1_main;
+	int int_hsl;
 	div_t output;
 	
 	printf("1. Operasi Dasar\n");			
@@ -153,17 +155,17 @@ void mainRidha()
 			switch(pilihanCabang2){
 				case 1:
 					printf("masukkan angka: ");
-					scanf("%f",&x_main);	
+					scanf("%d",&z_main);	
 					printf("masukkan pangkat: ");
-					scanf("%f",&y_main);
-					x_main = f_pangkat(x_main,y_main);
-					printf("Hasil: %f",x_main);						
+					scanf("%d",&z1_main);
+					int_hsl = f_pangkat(z_main,z1_main);
+					printf("Hasil: %d",int_hsl);						
 					break;
 				case 2:
 					printf("masukkan angka: ");
 					scanf("%f",&x_main);				
-					x_main = f_akar(x_main);
-					printf("Hasil: %f",x_main);						
+					float_hsl = f_akar(x_main);
+					printf("Hasil: %f",float_hsl);						
 					break;
 				case 3:
 					printf("masukkan pembilang: ");
@@ -179,8 +181,8 @@ void mainRidha()
 					scanf("%d",&z_main);
 					printf("masukkan penyebut: ");
 					scanf("%d",&z1_main);
-					z_main = f_mod(z_main,z1_main);
-					printf("Hasil: %d\n",z_main);						
+					int_hsl = f_mod(z_main,z1_main);
+					printf("Hasil: %d\n",int_hsl);						
 					break;
 				case 5:
 					system("cls");
@@ -245,30 +247,30 @@ void mainRidha()
 					scanf("%d",&z_main);
 					printf("masukkan logika kedua (1 or 0) ");
 					scanf("%d",&z1_main);			
-					z_main = f_operasiBitwiseAnd(z_main,z1_main);
-					printf("%d",z_main);					
+					int_hsl = f_operasiBitwiseAnd(z_main,z1_main);
+					printf("%d",int_hsl);					
 					break;
 				case 2:
 					printf("masukkan logika pertama (1 or 0) ");
 					scanf("%d",&z_main);
 					printf("masukkan logika kedua (1 or 0) ");
 					scanf("%d",&z1_main);			
-					z_main = f_operasiBitwiseOr(z_main,z1_main);
-					printf("%d",z_main);					
+					int_hsl = f_operasiBitwiseOr(z_main,z1_main);
+					printf("%d",int_hsl);					
 					break;
 				case 3:
 					printf("masukkan logika pertama (1 or 0) ");
 					scanf("%d",&z_main);
 					printf("masukkan logika kedua (1 or 0) ");
 					scanf("%d",&z1_main);			
-					z_main = f_operasiBitwiseXor(z_main,z1_main);
-					printf("%d",z_main);							
+					int_hsl = f_operasiBitwiseXor(z_main,z1_main);
+					printf("%d",int_hsl);							
 					break;
 				case 4:
 					printf("masukkan angka: ");
 					scanf("%d",&z_main);			
-					z_main = f_operasiBitwiseNot(z_main);
-					printf("%d",z_main);					
+					int_hsl = f_operasiBitwiseNot(z_main);
+					printf("%d",int_hsl);					
 					break;
 			}			
 			break;
@@ -295,7 +297,7 @@ int main()
 		case 2:
 			//mutia
 			system("cls");
-			mainMutia();			
+//			mainMutia();			
 			break;
 		case 3:
 			//naufal
@@ -305,7 +307,7 @@ int main()
 		case 4:
 			//rico
 			system("cls");
-			mainRico();			
+//			mainRico();			
 			break;
 		case 5:
 			//ridha
