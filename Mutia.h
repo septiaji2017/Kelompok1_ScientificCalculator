@@ -2,6 +2,8 @@
 #define Mutia_h
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#define pi 3.14159
  
 //Perhitungan Faktorial
 int Faktorial(int input){
@@ -29,10 +31,7 @@ int faktorial(int f){ //Faktorial untuk permutasi dan kombinasi
 
 int permutasi(int n, int r){
 	int HslPermutasi;
-	printf("Masukkan nilai n: ");
-	scanf("%d, %d", &n);
-	printf("Masukkan nilai r: ");
-	scanf("%d", &r);
+	
 	if (n<r){
 		printf("invalid input n < r");
 		exit(0);
@@ -49,10 +48,7 @@ int permutasi(int n, int r){
 
 int kombinasi(int n, int r){
 	int HslKombinasi;
-	printf("Masukkan nilai n: ");
-	scanf("%d, %d", &n);
-	printf("Masukkan nilai r: ");
-	scanf("%d", &r);
+	
 	if (n<r){
 		printf("invalid input n < r");
 		exit(0);
@@ -70,11 +66,10 @@ int kombinasi(int n, int r){
 
 int Trigonometri() {
    double x, sinval, cosval, tanval;
-   printf("Masukkan x dalam derajat: ");
-   scanf("%lf", &x);
-   sinval = sin(x * M_PI / 180.0); // hitung sin
-   cosval = cos(x * M_PI / 180.0); // hitung cos
-   tanval = tan(x * M_PI / 180.0); // hitung tan
+
+   sinval = sin(x * pi / 180.0); // hitung sin
+   cosval = cos(x * pi / 180.0); // hitung cos
+   tanval = tan(x * pi / 180.0); // hitung tan
    printf("sin(%lf) = %lf\n", x, sinval);
    printf("cos(%lf) = %lf\n", x, cosval);
    printf("tan(%lf) = %lf\n", x, tanval);
@@ -86,9 +81,6 @@ int Trigonometri() {
 
 int Prima() {
    int n, i, flag = 0;
-
-   printf("Masukkan bilangan bulat positif: ");
-   scanf("%d", &n);
 
    for (i = 2; i <= n/2; ++i) {
       if (n%i == 0) {
