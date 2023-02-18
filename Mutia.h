@@ -6,8 +6,12 @@
 #include "pi.h"
  
 //Perhitungan Faktorial
-int Faktorial1(int input){
+
+int Faktorial1(){
+	
+	int input;
 	int i, hasil = 1;
+	
 	for(i=input; i>=1; i--){
 		printf(" %d ", i);
 		if((i <= input) && (i!=1)){		
@@ -19,7 +23,9 @@ int Faktorial1(int input){
 }
 
 
-int faktorial2(int f){ //Faktorial untuk permutasi dan kombinasi
+//Faktorial untuk permutasi dan kombinasi
+
+int faktorial2(int f){
 	if(f==0)
 	return 1;
 	return f*faktorial2(f-1);
@@ -28,6 +34,7 @@ int faktorial2(int f){ //Faktorial untuk permutasi dan kombinasi
 //Perhitungan Permutasi
 
 int permutasi(int n, int r){
+	
 	int HslPermutasi;
 	
 	if (n<r){
@@ -41,10 +48,10 @@ int permutasi(int n, int r){
 	return (HslPermutasi);
 }
 
-
 //Perhitungan Kombinasi
 
 int kombinasi(int n, int r){
+	
 	int HslKombinasi;
 	
 	if (n<r){
@@ -62,49 +69,68 @@ int kombinasi(int n, int r){
 
 //mencari nilai dari derajat trigonometri
 
+
 //Sinus
+
 int Sinus() {
+	
    double x, sinval;
+   
    sinval = sin(x * pi / 180.0); // hitung sin
    printf("sin(%lf) = %lf\n", x, sinval);
    return (sinval);
 }
 
 //Cosinus
+
 int Cosinus() {
+	
    double x, cosval;
+   
    cosval = cos(x * pi / 180.0); // hitung cos
    printf("cos(%lf) = %lf\n", x, cosval);
    return (cosval);
 }
 
 //Tangent
+
 int Tangent() {
+	
    double x, tanval;
+   
    tanval = tan(x * pi / 180.0); // hitung tan
    printf("tan(%lf) = %lf\n", x, tanval);
    return (tanval);
 }
 
 //Cosecant
+
 int Cosecant() {
+	
    double x, cosecval;
+   
    cosecval = 1 / (sin(x * pi / 180.0)); // hitung cosec
    printf("cosec(%lf) = %lf\n", x, cosecval);
    return (cosecval);
 }
 
 //Secant
+
 int Secant() {
+	
    double x, secanval;
+   
    secanval = 1 / (cos(x * pi / 180.0)); // hitung sec
    printf("sec(%lf) = %lf\n", x, secanval);
    return (secanval);
 }
 
 //Cotangent
+
 int Cotangent() {
+	
    double x, cotanval;
+   
    cotanval = 1 / (tan(x * pi / 180.0)); // hitung cot
    printf("cot(%lf) = %lf\n", x, cotanval);
    return (cotanval);
@@ -114,13 +140,24 @@ int Cotangent() {
 //menentukan bilangan prima
 
 int Prima() {
+	
    int n, i, flag = 0;
+   
    for (i = 2; i <= n/2; ++i) {
       if (n%i == 0) {
          flag = 1;      
       }
    }
    return (flag);
+   if (n == 1) {
+      printf("1 bukanlah bilangan prima.\n");
+   } 
+   else {
+      if (flag == 0)
+         printf("%d adalah bilangan prima.\n", n);
+      else
+         printf("%d bukanlah bilangan prima.\n", n);
+   }
 }
 
 //Perhitungan Metrik
@@ -129,8 +166,10 @@ int Prima() {
 
 //Kilo ke Centi
 int KilotoCenti(){
+	
 	float inputangka, firstRes;
 	char firstResUnit;
+	
 	firstRes = inputangka * 100000; 
 	firstResUnit = 'C';
 	return (firstRes);
@@ -138,8 +177,10 @@ int KilotoCenti(){
 
 //Kilo ke Metrik
 int KilotoMetrik(){
+	
 	float inputangka, secondRes;
 	char secondResUnit;
+	
 	secondRes = inputangka * 1000; 
 	secondResUnit = 'X';
 	return (secondRes);
@@ -147,8 +188,10 @@ int KilotoMetrik(){
 
 //Kilo ke Mili
 int KilotoMili(){
+	
 	float inputangka,thirdRes;
 	char thirdResUnit;
+	
 	thirdRes = inputangka * 1000000; 
 	thirdResUnit = 'm';
 	return (thirdRes);
@@ -156,8 +199,10 @@ int KilotoMili(){
 
 //Kilo ke Deka
 int KilotoDeka(){
+	
 	float inputangka, fourRes;
 	char fourResUnit;
+	
 	fourRes = inputangka * 100; 
 	fourResUnit = 'D';
 	return (fourRes);
@@ -165,8 +210,10 @@ int KilotoDeka(){
 
 //Kilo ke Hekto
 int KilotoHekto(){
+	
 	float inputangka, fivRes;
 	char fivResUnit;
+	
 	fivRes = inputangka * 10; 
 	fivResUnit = 'H';
 	return (fivRes);
@@ -174,8 +221,10 @@ int KilotoHekto(){
 
 //Kilo ke Desi
 int KilotoDesi(){
+	
 	float inputangka, sixRes;
 	char sixResUnit;
+	
 	sixRes = inputangka * 10000; 
 	sixResUnit = 'd';
 	return (sixRes);
@@ -185,8 +234,10 @@ int KilotoDesi(){
 
 //Hekto ke Centi
 int HektotoCenti(){
+	
 	float inputangka, firstRes;
 	char firstResUnit;
+	
 	firstRes = inputangka * 10000; 
 	firstResUnit = 'C';
 	return (firstRes);
@@ -194,8 +245,10 @@ int HektotoCenti(){
 
 //Hekto ke Metrik
 int HektotoMetrik(){
+	
 	float inputangka, secondRes;
 	char secondResUnit;
+	
 	secondRes = inputangka * 100; 
 	secondResUnit = 'X';
 	return (secondRes);
@@ -203,8 +256,10 @@ int HektotoMetrik(){
 
 //Hekto ke Kilo
 int HektotoKilo(){
+	
 	float inputangka, thirdRes;
 	char thirdResUnit;
+	
 	thirdRes = inputangka / 10; 
 	thirdResUnit = 'K';
 	return (thirdRes);
@@ -212,8 +267,10 @@ int HektotoKilo(){
 
 //Hekto ke Deka
 int HektotoDeka(){
+	
 	float inputangka, fourRes;
 	char fourResUnit;
+	
 	fourRes = inputangka * 10; 
 	fourResUnit = 'D';
 	return (fourRes);
@@ -221,8 +278,10 @@ int HektotoDeka(){
 
 //Hekto ke Mili
 int HektotoMili(){
+	
 	float inputangka, fivRes;
 	char fivResUnit;
+	
 	fivRes = inputangka * 100000; 
 	fivResUnit = 'm';
 	return (fivRes);
@@ -230,8 +289,10 @@ int HektotoMili(){
 
 //Hekto ke Desi
 int HektotoDesi(){
+	
 	float inputangka, sixRes;
 	char sixResUnit;
+	
 	sixRes = inputangka * 1000; 
 	sixResUnit = 'd';
 	return (sixRes);
@@ -241,8 +302,10 @@ int HektotoDesi(){
 
 //Deka ke Centi
 int DekatoCenti(){
+	
 	float inputangka, firstRes;
 	char firstResUnit;
+	
 	firstRes = inputangka * 1000; 
 	firstResUnit = 'C';
 	return (firstRes);
@@ -250,8 +313,10 @@ int DekatoCenti(){
 
 //Deka ke Metrik
 int DekatoMetrik(){
+	
 	float inputangka, secondRes;
 	char secondResUnit;
+	
 	secondRes = inputangka * 10; 
 	secondResUnit = 'X';
 	return (secondRes);
@@ -259,8 +324,10 @@ int DekatoMetrik(){
 
 //Deka ke Kilo
 int DekatoKilo(){
+	
 	float inputangka, thirdRes;
 	char thirdResUnit;
+	
 	thirdRes = inputangka / 100; 
 	thirdResUnit = 'K';
 	return (thirdRes);
@@ -268,8 +335,10 @@ int DekatoKilo(){
 
 //Deka ke Mili
 int DekatoMili(){
+	
 	float inputangka, fourRes;
 	char fourResUnit;
+	
 	fourRes = inputangka * 10000; 
 	fourResUnit = 'm';
 	return (fourRes);
@@ -277,8 +346,10 @@ int DekatoMili(){
 
 //Deka ke Hekto
 int DekatoHekto(){
+	
 	float inputangka, fivRes;
 	char fivResUnit;
+	
 	fivRes = inputangka / 10; 
 	fivResUnit = 'H';
 	return (fivRes);
@@ -286,8 +357,10 @@ int DekatoHekto(){
 
 //Deka ke Desi
 int DekatoDesi(){
+	
 	float inputangka, sixRes;
 	char sixResUnit;
+	
 	sixRes = inputangka * 100; 
 	sixResUnit = 'd';
 	return (sixRes);
@@ -297,8 +370,10 @@ int DekatoDesi(){
 
 //Metrik ke Centi
 int MetriktoCenti(){
+	
 	float inputangka, firstRes;
 	char firstResUnit;
+	
 	firstRes = inputangka * 100; 
 	firstResUnit = 'C';
 	return (firstRes);
@@ -306,8 +381,10 @@ int MetriktoCenti(){
 
 //Metrik ke Kilo
 int MetriktoKilo(){
+	
 	float inputangka, secondRes;
 	char secondResUnit;
+	
 	secondRes = inputangka / 1000; 
 	secondResUnit = 'K';
 	return (secondRes);
@@ -315,8 +392,10 @@ int MetriktoKilo(){
 
 //Metrik ke Mili
 int MetriktoMili(){
+	
 	float inputangka, thirdRes;
 	char thirdResUnit;
+	
 	thirdRes = inputangka * 1000; 
 	thirdResUnit = 'm';
 	return (thirdRes);
@@ -324,8 +403,10 @@ int MetriktoMili(){
 
 //Metrik ke Deka
 int MetriktoDeka(){
+	
 	float inputangka, fourRes;
 	char fourResUnit;
+	
 	fourRes = inputangka / 10; 
 	fourResUnit = 'D';
 	return (fourRes);
@@ -333,8 +414,10 @@ int MetriktoDeka(){
 
 //Metrik ke Hekto
 int MetriktoHekto(){
+	
 	float inputangka, fivRes;
 	char fivResUnit;
+	
 	fivRes = inputangka / 100; 
 	fivResUnit = 'H';
 	return (fivRes);
@@ -342,8 +425,10 @@ int MetriktoHekto(){
 
 //Metrik ke Desi
 int MetriktoDesi(){
+	
 	float inputangka, sixRes;
 	char sixResUnit;
+	
 	sixRes = inputangka * 10; 
 	sixResUnit = 'd';
 	return (sixRes);
@@ -353,8 +438,10 @@ int MetriktoDesi(){
 
 //Desi ke Centi
 int DesitoCenti(){
+	
 	float inputangka, firstRes;
 	char firstResUnit;
+	
 	firstRes = inputangka * 10; 
 	firstResUnit = 'C';
 	return (firstRes);
@@ -362,8 +449,10 @@ int DesitoCenti(){
 
 //Desi ke Metrik
 int DesitoMetrik(){
+	
 	float inputangka, secondRes;
 	char secondResUnit;
+	
 	secondRes = inputangka / 10; 
 	secondResUnit = 'X';
 	return (secondRes);
@@ -371,8 +460,10 @@ int DesitoMetrik(){
 
 //Desi ke Kilo
 int DesitoKilo(){
+	
 	float inputangka, thirdRes;
 	char thirdResUnit;
+	
 	thirdRes = inputangka / 10000; 
 	thirdResUnit = 'K';
 	return (thirdRes);
@@ -380,8 +471,10 @@ int DesitoKilo(){
 
 //Desi ke Mili
 int DesitoMili(){
+	
 	float inputangka, fourRes;
 	char fourResUnit;
+	
 	fourRes = inputangka * 100; 
 	fourResUnit = 'm';
 	return (fourRes);
@@ -389,8 +482,10 @@ int DesitoMili(){
 
 //Desi ke Hekto
 int DesitoHekto(){
+	
 	float inputangka, fivRes;
 	char fivResUnit;
+	
 	fivRes = inputangka / 1000; 
 	fivResUnit = 'H';
 	return (fivRes);
@@ -398,8 +493,10 @@ int DesitoHekto(){
 
 //Desi ke Deka
 int DesitoDeka(){
+	
 	float inputangka, sixRes;
 	char sixResUnit;
+	
 	sixRes = inputangka / 100; 
 	sixResUnit = 'D';
 	return (sixRes);
@@ -409,8 +506,10 @@ int DesitoDeka(){
 
 //Centi ke Metrik
 int CentitoMetrik(){
+	
 	float inputangka, firstRes;
 	char firstResUnit;
+	
 	firstRes = inputangka / 100; 
 	firstResUnit = 'X';
 	return (firstRes);
@@ -418,8 +517,10 @@ int CentitoMetrik(){
 
 //Centi ke Kilo
 int CentitoKilo(){
+	
 	float inputangka, secondRes;
 	char secondResUnit;
+	
 	secondRes = inputangka / 100000; 
 	secondResUnit = 'K';
 	return (secondRes);
@@ -427,8 +528,10 @@ int CentitoKilo(){
 
 //Centi ke Mili
 int CentitoMili(){
+	
 	float inputangka, thirdRes;
 	char thirdResUnit;
+	
 	thirdRes = inputangka * 10; 
 	thirdResUnit = 'm';
 	return (thirdRes);
@@ -436,8 +539,10 @@ int CentitoMili(){
 
 //Centi ke Deka
 int CentitoDeka(){
+	
 	float inputangka, fourRes;
 	char fourResUnit;
+	
 	fourRes = inputangka / 1000; 
 	fourResUnit = 'D';
 	return (fourRes);
@@ -445,8 +550,10 @@ int CentitoDeka(){
 
 //Centi ke Hekto
 int CentitoHekto(){
+	
 	float inputangka, fivRes;
 	char fivResUnit;
+	
 	fivRes = inputangka / 10000; 
 	fivResUnit = 'H';
 	return (fivRes);
@@ -454,8 +561,10 @@ int CentitoHekto(){
 
 //Centi ke Desi
 int CentitoDesi(){
+	
 	float inputangka, sixRes;
 	char sixResUnit;
+	
 	sixRes = inputangka / 10; 
 	sixResUnit = 'd';
 	return (sixRes);
@@ -465,8 +574,10 @@ int CentitoDesi(){
 
 //Mili ke Centi
 int MilitoCenti(){
+	
 	float inputangka, firstRes;
 	char firstResUnit;
+	
 	firstRes = inputangka / 10; 
 	firstResUnit = 'C';
 	return (firstRes);
@@ -474,8 +585,10 @@ int MilitoCenti(){
 
 //Mili ke Metrik
 int MilitoMetrik(){
+	
 	float inputangka, secondRes;
 	char secondResUnit;
+	
 	secondRes = inputangka / 1000; 
 	secondResUnit = 'X';
 	return (secondRes);
@@ -483,8 +596,10 @@ int MilitoMetrik(){
 
 //Mili ke Kilo
 int MilitoKilo(){
+	
 	float inputangka, thirdRes;
 	char thirdResUnit;
+	
 	thirdRes = inputangka / 1000000; 
 	thirdResUnit = 'K';
 	return (thirdRes);
@@ -492,8 +607,10 @@ int MilitoKilo(){
 
 //Mili ke Deka
 int MilitoDeka(){
+	
 	float inputangka, fourRes;
 	char fourResUnit;
+	
 	fourRes = inputangka / 10000; 
 	fourResUnit = 'D';
 	return (fourRes);
@@ -501,8 +618,10 @@ int MilitoDeka(){
 
 //Mili ke Hekto
 int MilitoHekto(){
+	
 	float inputangka, fivRes;
 	char fivResUnit;
+	
 	fivRes = inputangka / 100000; 
 	fivResUnit = 'H';
 	return (fivRes);
@@ -510,8 +629,10 @@ int MilitoHekto(){
 
 //Mili ke Desi
 int MilitoDesi(){
+	
 	float inputangka, sixRes;
 	char sixResUnit;
+	
 	sixRes = inputangka / 100; 
 	sixResUnit = 'd';
 	return (sixRes);
