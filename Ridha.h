@@ -1,6 +1,7 @@
 #ifndef Ridha_h
 #define Ridha_h
 #include<stdio.h>
+#define MAX 30
 #include<stdlib.h>
 #include <stdbool.h>
 #include<math.h>
