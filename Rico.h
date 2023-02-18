@@ -2,7 +2,7 @@
 #define rico_h
 #include <stdio.h>
 #include <math.h>
-#define pi 3.14159265
+#include "pi.h"
 
 float inversSin(float x){
 	double value;
@@ -52,7 +52,6 @@ float logaritma(float log){
 	return hasil;
 }
 
-
 float polinomial(float coef[11], int derajat, float x){
 	int i;
 	float y = 0.0;
@@ -83,6 +82,28 @@ double limit(float coef[11], int derajat, double inf){
 			l = coef[i] * pow(inf, i);
 	}
 	return l;
+}
+
+
+float operasiIntegral (int n, float bawah, float coef[11], int derajat, float p, float q[101], float r[101], float trapesium[100]){
+	int i, j;
+	float jumlah = 0.0;
+		for(i = 0; i<= n; i++){
+				q[i] = bawah + i * p;
+				r[i] = 0.0;
+		for(j = 0; j <=	 derajat; j++){
+				r[i] += coef[j] * pow(q[i], j);
+			}
+		}
+		
+		for(i = 0; i < n; i++){
+			trapesium[i] = 0.5*p*(r[i]+r[i+1]);
+		}
+		
+		for(i = 0; i < n; i++){
+			jumlah += trapesium[i];
+		}
+	return jumlah;
 }
 
 
