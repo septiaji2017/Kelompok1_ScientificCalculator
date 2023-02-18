@@ -52,19 +52,6 @@ float logaritma(float log){
 	return hasil;
 }
 
-float fungsi(float x) {
-  return 3*x*x + 2*x + 1;
-}
-
-float trapezoid(float bawah, float atas, int n, float (*fungsi)(float)) {
-  int i;
-  float ax = (atas - bawah) / n;
-  float sum = 0.5 * (fungsi(bawah) + fungsi(atas));
-  for (i = 1; i < n; i++) {
-    sum += fungsi(bawah + i * ax);
-  }
-  return (ax * sum);
-}
 
 float polinomial(float coef[11], int derajat, float x){
 	int i;
