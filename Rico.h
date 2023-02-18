@@ -2,7 +2,7 @@
 #define rico_h
 #include <stdio.h>
 #include <math.h>
-#define pi 3.14159265
+#include "pi.h"
 
 float inversSin(float x){
 	double value;
@@ -22,6 +22,24 @@ float inversTan(float x){
 	return value;
 }
 
+float inversSec(float x){
+	double value;
+	value = round(acos(1/x)*180/pi);
+	return value;	
+}
+
+float inversCotan(float x){
+	double value;
+	value = round(atan(1/x)*180/pi);	
+	return value;
+}
+
+float inversCosec(float x){
+	double value;
+	value = round(asin(1/x)*180/pi);		
+	return value;
+}
+
 float logaritmaNatural(float ln){
 	float hasil;
 	hasil = log(ln);
@@ -34,25 +52,58 @@ float logaritma(float log){
 	return hasil;
 }
 
-float fungsi(float x) {
-  return x*x + 3*x - 5;
-}
-
-float trapezoid(float bawah, float atas, int n, float (*fungsi)(float)) {
-  float ax = (atas - bawah) / n;
-  float sum = 0.5 * (fungsi(bawah) + fungsi(atas));
-  for (int i = 1; i < n; i++) {
-    sum += fungsi(bawah + i * ax);
-  }
-  return (ax * sum);
-}
-
 float polinomial(float coef[11], int derajat, float x){
+	int i;
 	float y = 0.0;
-	for(int i = 0; i <= derajat; i++){
+	for(i = 0; i <= derajat; i++){
 		y += coef[i] * pow(x, i); 
 	}
 	return y;
+}
+
+float operasiFaktorPositif(float coef[11], float akarPositif, float denom, float nilaiPositif){
+	akarPositif = (-coef[1] + sqrt(coef[1]*coef[1]- 4*coef[2]*coef[0]));
+	denom = 2*coef[2];
+	nilaiPositif = akarPositif/denom;
+	return nilaiPositif;
+}
+
+float operasiFaktorNegatif(float coef[11], float akarNegatif, float denom, float nilaiNegatif){
+	akarNegatif = (-coef[1] - sqrt(coef[1]*coef[1] - 4*coef[2]*coef[0]));
+	denom = 2*coef[2]; 
+	nilaiNegatif = akarNegatif/denom;
+	return nilaiNegatif;
+}
+
+double limit(float coef[11], int derajat, double inf){
+	int i;
+	double l = 0.0;
+	for(i = 1; i <= derajat; i++){
+			l = coef[i] * pow(inf, i);
+	}
+	return l;
+}
+
+
+float operasiIntegral (int n, float bawah, float coef[11], int derajat, float p, float q[101], float r[101], float trapesium[100]){
+	int i, j;
+	float jumlah = 0.0;
+		for(i = 0; i<= n; i++){
+				q[i] = bawah + i * p;
+				r[i] = 0.0;
+		for(j = 0; j <=	 derajat; j++){
+				r[i] += coef[j] * pow(q[i], j);
+			}
+		}
+		
+		for(i = 0; i < n; i++){
+			trapesium[i] = 0.5*p*(r[i]+r[i+1]);
+		}
+		
+		for(i = 0; i < n; i++){
+			jumlah += trapesium[i];
+		}
+	return jumlah;
 }
 
 
