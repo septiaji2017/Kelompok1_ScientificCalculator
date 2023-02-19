@@ -25,198 +25,6 @@ char header(){
 	printf	("\t\t\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 }
 
-void mainNaufal()
-{
-	int choice;
-	float Celcius, Fahrenheit, Kelvin;
-    printf("Pilih Suhu Yang ingin diubah: \n");
-    printf("1.Kelvin\n");
-    printf("2.Celsius\n");
-    printf("3.Fahrenheit \n");
-    scanf("%d", &choice);
-    switch (choice)
-    {
-    case 1:
-        printf("masukkan temperature di Kelvin: ");
-        scanf("%f",&Kelvin);
-		Celcius= CtoK(Kelvin);
-		Fahrenheit= FtoK(Kelvin);
-        printf("Di Celsius nilainya adalah :\t %f \n",Celsius);
-        printf("Di Fahrenheit nilainya adalah :\t %f",Fahrenheit);
-        break;
-    case 2:
-        printf("masukkan temperature di Celsius: ");
-        scanf("%f",&Celsius);
-		Kelvin = KtoC(Celcius);
-		Fahrenheit = FtoC(Celcius);
-        printf("Di kelvin nilainya adalah : %f \n",Kelvin);
-        printf("Di Fahrenheit nilainya adalah : %f",Fahrenheit);
-        break;
-    case 3:
-        printf("masukkan temperature di Fahrenheit: ");
-        scanf("%f",&Fahrenheit);
-		Celsius = KtoF(Fahrenheit);
-		Kelvin = CtoF(Fahrenheit);
-        printf("Di Celsius nilainya adalah :\t %f \n",Celsius);
-        printf("Di Kelvin nilainya adalah :\t %f \n",Kelvin);
-        break;
-    default:
-        printf("Salah! masukkan nilai yang valid tolong \n");
-        break;
-    }
-    printf("\n\n");
-}
-
-void mainRidha()
-{
-	int i;
-	float x_main, y_main;
-	float float_hsl;
-	int pilihanCabang, pilihanCabang2, pilihanCabang3;
-	int z_main, z1_main;
-	int int_hsl;
-	div_t output;
-	
-	printf("1. Operasi Dasar\n");			
-	printf("2. Operasi Bitwise\n");
-	printf("masukkan opsi: ");
-	scanf("%d",&pilihanCabang);
-	system("cls");
-	switch(pilihanCabang){
-		case 1:
-			printf("1. pangkat\n");
-			printf("2. akar\n");
-			printf("3. div\n");
-			printf("4. modulus\n");
-			printf("5. persentase\n");			
-			printf("masukkan opsi: ");
-			scanf("%d",&pilihanCabang2);	
-			switch(pilihanCabang2){
-				case 1:
-					printf("masukkan angka: ");
-					scanf("%d",&z_main);	
-					printf("masukkan pangkat: ");
-					scanf("%d",&z1_main);
-					int_hsl = f_pangkat(z_main,z1_main);
-					printf("Hasil: %d",int_hsl);						
-					break;
-				case 2:
-					printf("masukkan angka: ");
-					scanf("%f",&x_main);				
-					float_hsl = f_akar(x_main);
-					printf("Hasil: %f",float_hsl);						
-					break;
-				case 3:
-					printf("masukkan pembilang: ");
-					scanf("%d",&z_main);
-					printf("masukkan penyebut: ");
-					scanf("%d",&z1_main);
-					output = f_div(z_main,z1_main);
-					printf("Hasil (Hasil Bagi): %d\n",output.quot);
-					printf("Hasil (Sisa Bagi): %d",output.rem);					
-					break;					
-				case 4:
-					printf("masukkan pembilang: ");
-					scanf("%d",&z_main);
-					printf("masukkan penyebut: ");
-					scanf("%d",&z1_main);
-					int_hsl = f_mod(z_main,z1_main);
-					printf("Hasil: %d\n",int_hsl);						
-					break;
-				case 5:
-					system("cls");
-					printf("1. Menghitung Persen ke Pngka\n");
-					printf("2. Menghitung Angka ke Persen\n");					
-					printf("3. Menghitung Diskon\n");
-					printf("4. Menghitung Bunga\n");
-					printf("masukkan opsi: ");
-					scanf("%d",&pilihanCabang3);
-					switch(pilihanCabang3){
-						case 1:
-							printf("Masukkan Angka (Dalam Persen (%%)): ");
-							scanf("%f",&x_main);
-							x_main = f_PersenKeAngka(x_main);
-							printf("Hasil: %f\n",x_main);	
-							break;
-						case 2:
-							printf("Masukkan Angka: ");
-							scanf("%f",&x_main);
-							x_main = f_AngkaKePersen(x_main);
-							printf("Hasil: %6.2f%%\n",x_main);								
-							break;
-						case 3:
-							printf("Masukkan Harga Awal (Dalam Rupiah): ");
-							scanf("%f",&x_main);
-							printf("Masukkan diskon (Dalam Persen (%%)): ");
-							scanf("%f",&y_main);
-							y_main = f_PersenKeAngka(y_main);
-							x_main = f_HitungDiskon(x_main,y_main);
-							printf("Hasil: Rp.%6.2f\n",x_main);
-							break;
-						case 4:
-						
-							printf("Masukkan Tabungan Awal (Dalam Rupiah): ");
-							scanf("%f",&x_main);
-							printf("Masukkan Bunga (Dalam Persen (%%)): ");
-							scanf("%f",&y_main);
-							printf("Masukkan Tahun: ");
-							scanf("%d",&z_main);
-							y_main = f_PersenKeAngka(y_main);
-							for(i=1;i<=z_main;i++){
-								x_main = f_HitungBunga(x_main,y_main);							
-							}
-
-							printf("Hasil: Rp.%6.2f\n",x_main);
-							break;							
-					}	
-					break;			
-			}
-			break;
-			
-		case 2:
-			printf("1. bitwise (And)\n");
-			printf("2. bitwise (Or)\n");
-			printf("3. bitwise (XOR)\n");
-			printf("4. bitwise (Not)\n");	
-			printf("masukkan opsi: ");
-			scanf("%d",&pilihanCabang2);
-			switch(pilihanCabang2){
-				case 1:
-					printf("masukkan logika pertama (1 or 0) ");
-					scanf("%d",&z_main);
-					printf("masukkan logika kedua (1 or 0) ");
-					scanf("%d",&z1_main);			
-					int_hsl = f_operasiBitwiseAnd(z_main,z1_main);
-					printf("%d",int_hsl);					
-					break;
-				case 2:
-					printf("masukkan logika pertama (1 or 0) ");
-					scanf("%d",&z_main);
-					printf("masukkan logika kedua (1 or 0) ");
-					scanf("%d",&z1_main);			
-					int_hsl = f_operasiBitwiseOr(z_main,z1_main);
-					printf("%d",int_hsl);					
-					break;
-				case 3:
-					printf("masukkan logika pertama (1 or 0) ");
-					scanf("%d",&z_main);
-					printf("masukkan logika kedua (1 or 0) ");
-					scanf("%d",&z1_main);			
-					int_hsl = f_operasiBitwiseXor(z_main,z1_main);
-					printf("%d",int_hsl);							
-					break;
-				case 4:
-					printf("masukkan angka: ");
-					scanf("%d",&z_main);			
-					int_hsl = f_operasiBitwiseNot(z_main);
-					printf("%d",int_hsl);					
-					break;
-			}			
-			break;
-	}
-}
-
-
 int main(){
 	int choice, pilihan;
 	/* Himpunan */
@@ -238,6 +46,8 @@ int main(){
 	puts	("\t\t\t\t\t\t    |                         6. ALJABAR LINEAR                       |");
     puts	("\t\t\t\t\t\t    |-----------------------------------------------------------------|");
 	puts	("\t\t\t\t\t\t    |                          7. TRIGONOMETRI                        |");
+	puts	("\t\t\t\t\t\t    |-----------------------------------------------------------------|");
+	puts	("\t\t\t\t\t\t    |                            8. LAIN LAIN                         |");	
     puts	("\t\t\t\t\t\t    +=================================================================+");
     printf	("\t\t\t\t\t\t\t\t   ---> Pilih menu yang Anda inginkan >> "); scanf("%d", &choice);
 	
@@ -635,7 +445,7 @@ int main(){
 		    puts	("\t\t\t\t\t\t   |----------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t   |                   3. INTEGRAL                                  |");
 		    puts	("\t\t\t\t\t\t   |----------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t   |                   4. LIMIT                	                    |");
+			puts	("\t\t\t\t\t\t   |                   4. LIMIT TAK HINGGA                          |");
 		    puts	("\t\t\t\t\t\t   |----------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t   |                   5. TURUNAN            	                    |");
 		    puts	("\t\t\t\t\t\t   +================================================================+");
@@ -643,7 +453,6 @@ int main(){
 			switch(pilihan){
 				case 1:
 				{
-//					printf("Nanti diisi sama modul");
 					float x, y, z,retln, retlog;
 					float bawah, atas;
 				    int n, derajat ,i, j;
@@ -660,7 +469,6 @@ int main(){
 				}
 				case 2:
 				{
-//					printf("Nanti diisi sama modul");
 					float x, y, z,retln, retlog;
 					float bawah, atas;
 				    int n, derajat ,i, j;
@@ -668,6 +476,7 @@ int main(){
 					float akarPositif, akarNegatif, denom, nilaiPositif, nilaiNegatif, faktorPositif, faktorNegatif;
 					float coef[11], p;
 					double inf = INFINITY;
+					system("cls");					
 					printf("Masukkan nilai log(10): ");
 					scanf("%f", &log);
 					retlog = logaritma(log);
@@ -675,8 +484,54 @@ int main(){
 					break;					
 				}
 				case 3:
-					printf("Nanti diisi sama modul");
-					break;
+				{
+					float x, y, z,retln, retlog;
+					float bawah, atas;
+				    int derajat ,i, j;
+					float ln, log,result, invSin, invCos, invTan, invCsc, invSec, invCot, func;
+					float akarPositif, akarNegatif, denom, nilaiPositif, nilaiNegatif, faktorPositif, faktorNegatif;
+					float coef[11];
+					float integral;					
+					double inf = INFINITY;					
+					system("cls");
+					printf("Derajat dari polinomial : ");
+					scanf("%d", &derajat);
+					
+					printf("Masukkan koefisien dari polinomial : \n");
+					for(i = 0; i<= derajat; i++){
+						printf("Koefisien %d : ", i);
+						scanf("%f", &coef[i]);
+					}
+					
+					printf("Masukkan batas bawah : ");
+					scanf("%f", &bawah);
+					printf("Masukkan batas atas  : ");
+					scanf("%f", &atas);
+					
+					printf("f(x) = ");
+					for(i = 0; i <= derajat; i++){
+						if(i == 0){
+							printf("%.f +", coef[i]);
+						}else if(i == derajat){
+							printf("%.f*x^%d \n", coef[i], i);
+						}else{
+							printf("%.f*x^%d + ", coef[i], i);
+						}
+					}
+					
+					int n = 100;
+					float p = (atas - bawah) / n;
+					
+					float q[101];
+					float r[101];
+					float jumlah = 0.0;
+					float trapesium[100];
+					
+					integral = operasiIntegral(n, bawah, coef, derajat, p, q, r, trapesium);
+					
+					printf("Integralnya adalah : %f", integral);
+					break;					
+				}
 				case 4:
 				{
 					float x, y, z,retln, retlog;
@@ -710,11 +565,49 @@ int main(){
 					break;
 									
 				}
-//					printf("Nanti diisi sama modul");
-//					break;
 				case 5:
-					printf("Nanti diisi sama modul");
-					break;
+				{
+					float x, z,retln, retlog;
+					float bawah, atas;
+				    int derajat ,i, j;
+					float ln, log,result, invSin, invCos, invTan, invCsc, invSec, invCot, func;
+					float akarPositif, akarNegatif, denom, nilaiPositif, nilaiNegatif, faktorPositif, faktorNegatif;
+					float coef[11];
+					float integral;					
+					double inf = INFINITY;						
+					system("cls");
+					printf("Derajat dari polinomial : ");
+					scanf("%d", &derajat);
+					
+					printf("Masukkan koefisien dari polinomial : \n");
+					for(i = 0; i<= derajat; i++){
+						printf("Coeffient %d : ", i);
+						scanf("%f", &coef[i]);
+					}
+					
+					for(i=0; i <= derajat; i++){
+						if(i == 0){
+							printf("%.f + ", coef[i]);
+						}else if (i == derajat){
+						printf("%.f*X^%d \n", coef[i], i);
+						}else
+						printf("%.f*X^%d + ", coef[i], i);
+					}
+					
+					printf("Input nilai x untuk turunan : ");
+					scanf("%f", &x);
+					
+					float y = polinomial (coef, derajat, x);
+					printf("y = %.4f\n", y);
+					float h = 0.0001;
+					float x1 = x + h;
+					float y1 = polinomial(coef, derajat, x1);
+					printf("y = %.4f\n", y1);
+					float turunan = (y1 - y) / h;
+					
+					printf("Turunan : %.4f", turunan);
+					break;					
+				}
 				default:
 					system("cls"); 
 					header(); 
@@ -742,7 +635,6 @@ int main(){
 					int n, r, f;
 					permutasi(n, r);
 					faktorial2(f);						
-//					printf("Nanti diisi sama modul");
 					break;
 				}
 				case 2:
@@ -752,15 +644,12 @@ int main(){
 					faktorial2(f);	
 					break;					
 				}
-//					printf("Nanti diisi sama modul");
 				case 3:
 				{
 					int input;
 					Faktorial1(input);	
 					break;											
 				}
-//					printf("Nanti diisi sama modul");
-//					break;
 				default:
 					system("cls"); 
 					header(); 
@@ -783,7 +672,6 @@ int main(){
 		    switch(pilihan){
 				case 1:
 				{
-//					printf("Nanti diisi sama modul");
 					int pilih; 
 					float Input1, Input2, Input3, luas, keliling;
 					puts	("\n\n\t\t\t\t\t\t   +===  PILIH BANGUN DATAR UNTUK MENGHITUNG LUAS DAN KELILINGNYA ===+");
@@ -873,7 +761,6 @@ int main(){
 
 				case 2:
 				{
-//					printf("Nanti diisi sama modul");
 					int pilih; 
 					float Input1, Input2, Input3, luas, volume; 					
 					puts	("\n\n\t\t\t\t\t\t   +===  PILIH BANGUN DATAR UNTUK MENGHITUNG LUAS DAN KELILINGNYA  ==+");
@@ -969,8 +856,248 @@ int main(){
 		    
 		    switch(pilihan){
 				case 1:
-					printf("Nanti diisi sama modul");
-					break;
+				{
+				    int i, j, k;   
+				    int matrixA[10][10], matrixB[10][10], matrixHasil[10][10]; 
+					int sumM[10][10], scaM[10][10], mulM[10][10]; 
+				    int rowA, rowB, colA, colB;  
+				    int operation; 
+				    char again = 'Y';  
+				    int scalar = 0;  
+				    int add = 1;  
+				    int sub = -1;  
+				  
+				    while (again == 'Y'){  
+						puts	("\n\n\t\t\t\t\t\t   +===================  PILIH OPERASI MATRIKS  =====================+");
+					    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
+						puts	("\t\t\t\t\t\t   |                    1. PERTAMBAHAN MATRIKS                       |");
+					    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
+						puts	("\t\t\t\t\t\t   |                    2. PENGURANGAN MATRIKS           	     |");
+					    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
+						puts	("\t\t\t\t\t\t   |                  	3. PERKALIAN MATRIKS           		     |");  
+				    	puts	("\t\t\t\t\t\t   +=================================================================+");
+						printf	("\t\t\t\t\t\t\t\t     --> Pilih menu yang Anda inginkan >> "); scanf("%d", &operation);    
+				
+				        switch (operation){  
+					        case 1:  
+					            printf("\n\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks A : ");  
+						        scanf("%d%d", &rowA, &colA);    
+					            
+					            printf("\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks B : ");  
+					            scanf("%d%d", &rowB, &colB);    
+					  
+					            while ((rowA != rowB) && (colA != colB)){  
+					                printf("\n\t\t\t\t\t\t\tMaaf, jumlah dari baris dan kolom matriks A dan B harus sama. Inputkan kembali: \n");  
+						            printf("\n\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks A : ");  
+						            scanf("%d%d", &rowA, &colA);    
+						            
+						            printf("\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks B : ");  
+						            scanf("%d%d", &rowB, &colB);
+					            }  
+					  
+					  
+					            printf("\t\t\t\t\t\t\t--> Masukkan isi dari Matriks A (%d x %d)\n", rowA, colA); 
+					            
+							    for (i = 0; i < rowA; i++){  
+							        printf("\t\t\t\t\t\t\t--> Masukkan %d isi untuk baris ke-%d: ", colA, i + 1);  
+							        for (j = 0; j < colA; j++){  
+							            scanf("%d", &matrixA[i][j]);  
+							        }  
+							    }    
+					            printf("\n\t\t\t\t\t\t\t --> Matriks A <--\n\n");  
+								
+							    for (i = 0; i < rowA; i++) {
+									printf("\t\t\t\t\t\t\t  ");  
+							        for (j = 0; j < colA; j++){  
+							            printf("  %d", matrixA[i][j]);  
+							        }  
+							        printf("\n");  
+							    }  printf("\n");
+					            printf("\t\t\t\t\t\t\t--> Masukkan isi dari Matriks B (%d x %d)\n", rowB, colB); 
+								for (i = 0; i < rowB; i++){  
+							        printf("\t\t\t\t\t\t\t--> Masukkan %d isi untuk baris ke-%d: ", colB, i + 1);  
+							        for (j = 0; j < colB; j++){  
+							            scanf("%d", &matrixB[i][j]);  
+							        }  
+							    }   
+					            printf("\n\t\t\t\t\t\t\t --> Matriks B <--\n\n");  
+								for (i = 0; i < rowB; i++) {
+									printf("\t\t\t\t\t\t\t  ");  
+							        for (j = 0; j < colB; j++){  
+							            printf("  %d", matrixB[i][j]);  
+							        }  
+							        printf("\n");  
+							    }  printf("\n");
+					  
+					            printf("\n\t\t\t\t\t\t\t--> Hasil dari penjumlahan Matriks A dengan Matriks B sebagai berikut : \n\n");    
+							    for (i = 0; i < rowA; i++){  
+							        for (j = 0; j < colA; j++){  
+							            scaM[i][j] = add * matrixB[i][j];  
+							            }  
+							        }  
+							  
+							    for (i = 0; i < rowA; i++){ 
+									printf("\t\t\t\t\t\t\t  "); 
+							        for (j = 0; j < colA; j++){  
+							            sumM[i][j] = matrixA[i][j] + scaM[i][j];  
+							            printf("  %d", sumM[i][j]);  
+							        }  
+							        printf("\n");  
+							    }  printf("\n");
+					            break;
+					        
+					        case 2:  
+					        
+					            printf("\n\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks A : ");  
+					            scanf("%d%d", &rowA, &colA);    
+					            
+					            printf("\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks B : ");  
+					            scanf("%d%d", &rowB, &colB); 
+				  
+					            while ((rowA != rowB) && (colA != colB)){  
+					                printf("\n\t\t\t\t\t\t\tMaaf, jumlah dari baris dan kolom matriks A dan B harus sama. Inputkan kembali: \n");  
+						            printf("\n\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks A : ");  
+						            scanf("%d%d", &rowA, &colA);    
+						            
+						            printf("\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks B : ");  
+						            scanf("%d%d", &rowB, &colB);
+					            }   
+				  
+					            printf("\t\t\t\t\t\t\t--> Masukkan isi dari Matriks A (%d x %d)\n", rowA, colA); 
+							    for (i = 0; i < rowA; i++){  
+							        printf("\t\t\t\t\t\t\t--> Masukkan %d isi untuk baris ke-%d: ", colA, i + 1);  
+							        for (j = 0; j < colA; j++){  
+							            scanf("%d", &matrixA[i][j]);  
+							        }  
+							    }    
+					            printf("\n\t\t\t\t\t\t\t --> Matriks A <--\n\n");  
+								
+							    for (i = 0; i < rowA; i++) {
+									printf("\t\t\t\t\t\t\t  ");  
+							        for (j = 0; j < colA; j++){  
+							            printf("  %d", matrixA[i][j]);  
+							        }  
+							        printf("\n");  
+							    }  printf("\n");
+					            printf("\t\t\t\t\t\t\t--> Masukkan isi dari Matriks B (%d x %d)\n", rowB, colB);  
+								for (i = 0; i < rowB; i++){  
+							        printf("\t\t\t\t\t\t\t--> Masukkan %d isi untuk baris ke-%d: ", colB, i + 1);  
+							        for (j = 0; j < colB; j++){  
+							            scanf("%d", &matrixB[i][j]);  
+							        }  
+							    }   
+					            printf("\n\t\t\t\t\t\t\t --> Matriks B <--\n\n");  
+								for (i = 0; i < rowB; i++) {
+									printf("\t\t\t\t\t\t\t  ");  
+							        for (j = 0; j < colB; j++){  
+							            printf("  %d", matrixB[i][j]);  
+							        }  
+							        printf("\n");  
+							    }  printf("\n");
+							    
+					            printf("\n\t\t\t\t\t\t\t--> Hasil dari pengurangan Matriks A dengan Matriks B sebagai berikut : \n\n");  
+							    for (i = 0; i < rowA; i++){  
+							        for (j = 0; j < colA; j++){  
+							            scaM[i][j] = sub * matrixB[i][j];  
+							            }  
+							        }  
+							  
+							    for (i = 0; i < rowA; i++){ 
+									printf("\t\t\t\t\t\t\t  "); 
+							        for (j = 0; j < colA; j++){  
+							            sumM[i][j] = matrixA[i][j] + scaM[i][j];  
+							            printf("  %d", sumM[i][j]);  
+							        }  
+							        printf("\n");  
+							    }  printf("\n");
+					            break; 
+				
+					        case 3:
+					            
+					            printf("\n\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks A : ");  
+					            scanf("%d%d", &rowA, &colA);    
+					            
+					            printf("\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks B : ");  
+					            scanf("%d%d", &rowB, &colB);    
+					  
+					            while (colA != rowB){  
+					                printf("\n\t\t\t\t\t\t\tMaaf, jumlah dari baris dan kolom matriks A dan B harus sama. Inputkan kembali: \n");  
+						            printf("\n\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks A : ");  
+						            scanf("%d%d", &rowA, &colA);    
+						            
+						            printf("\t\t\t\t\t\t\t--> Masukkan jumlah baris dan kolom untuk Matriks B : ");  
+						            scanf("%d%d", &rowB, &colB);
+					            }  
+					  
+					  
+					            printf("\t\t\t\t\t\t\t--> Masukkan isi dari Matriks A (%d x %d)\n", rowA, colA);
+							    for (i = 0; i < rowA; i++){  
+							        printf("\t\t\t\t\t\t\t--> Masukkan %d isi untuk baris ke-%d: ", colA, i + 1);  
+							        for (j = 0; j < colA; j++){  
+							            scanf("%d", &matrixA[i][j]);  
+							        }  
+							    }    
+					            printf("\n\t\t\t\t\t\t\t --> Matriks A <--\n\n"); 
+								
+							    for (i = 0; i < rowA; i++) {
+									printf("\t\t\t\t\t\t\t  ");  
+							        for (j = 0; j < colA; j++){  
+							            printf("  %d", matrixA[i][j]);  
+							        }  
+							        printf("\n");  
+							    }  printf("\n");
+					            printf("\t\t\t\t\t\t\t--> Masukkan isi dari Matriks B (%d x %d)\n", rowB, colB); 
+								for (i = 0; i < rowB; i++){  
+							        printf("\t\t\t\t\t\t\t--> Masukkan %d isi untuk baris ke-%d: ", colB, i + 1);  
+							        for (j = 0; j < colB; j++){  
+							            scanf("%d", &matrixB[i][j]);  
+							        }  
+							    }   
+					            printf("\n\t\t\t\t\t\t\t --> Matriks B <--\n\n");  
+								for (i = 0; i < rowB; i++) {
+									printf("\t\t\t\t\t\t\t  ");  
+							        for (j = 0; j < colB; j++){  
+							            printf("  %d", matrixB[i][j]);  
+							        }  
+							        printf("\n");  
+							    }  printf("\n");
+								printf("\n\t\t\t\t\t\t\t--> Hasil dari penjumlahan Matriks A dengan Matriks B sebagai berikut : \n\n");
+				
+							    for (i = 0; i<rowA; ++i)
+							        for (j = 0; j<colB; ++j)
+							        {
+							            mulM[i][j] = 0;
+							        }
+				
+							    for (i = 0; i<rowA; ++i)
+							        for (j = 0; j<colB; ++j)
+							            for (k = 0; k<colA; ++k)
+							            {
+							                mulM[i][j] += matrixA[i][k] * matrixB[k][j];
+							            }
+				
+								for (i = 0; i<rowA; ++i)
+							        for (j = 0; j<colB; ++j)
+							        {
+							        	printf("\t\t\t\t\t\t\t  ");	
+							            printf("%d", mulM[i][j]);	
+							            if (j == colB - 1)
+							                printf("\n\n");
+							        } 
+					            break;
+							default:  
+					            printf("\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-3");  
+					            break;  
+					        }  
+				  
+				        printf("\n\t\t\t\t\t\t\t--> Apakah Anda ingin menghitung kembali? (Y/N) : "); 
+				        scanf(" %c", &again);  
+				        again = toupper(again); 
+						system("cls"); 
+				    }  
+				    printf("\n\n\t\t\t\t\t\t\t--> Terima kasih!\n\n"); 
+					break; 					
+				}
 				case 2:
 					{
 						int set1[MAX],set2[MAX],set3[MAX];	
@@ -1026,8 +1153,7 @@ int main(){
 					    }
 					  printf("\npress a key............");
 					  getch();
-					  	}while(pilihan!=4);					
-					printf("Nanti diisi sama modul");
+					  	}while(pilihan!=4);				
 					break;
 				default:
 					system("cls"); 
@@ -1035,7 +1161,6 @@ int main(){
 	            	printf("\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-2");  
 	            	break;
 			}
-			break;
 		}
 		case 7:
 			system("cls");
@@ -1043,29 +1168,31 @@ int main(){
 			printf	("\n\t\t\t\t\t\t       <<<<<<<<<<<<<<<<<<<   Anda memilih opsi 7  >>>>>>>>>>>>>>>>>>>"); 
 			puts	("\n\n\t\t\t\t\t\t      +==================== PILIH ALJABAR LINIER =====================+");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      1. SINUS                                 |");
+			puts	("\t\t\t\t\t\t      |                   1. SINUS                                    |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      2. COSINUS                               |");
+			puts	("\t\t\t\t\t\t      |                   2. COSINUS                                  |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      3. TANGENT                               |");
+			puts	("\t\t\t\t\t\t      |                   3. TANGENT                                  |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      4. COSECANT                              |");
+			puts	("\t\t\t\t\t\t      |                   4. COSECANT                                 |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      5. SECANT                                |");
+			puts	("\t\t\t\t\t\t      |                   5. SECANT                                   |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      6. COTANGENT                             |");				
+			puts	("\t\t\t\t\t\t      |                   6. COTANGENT                                |");				
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      7. INVERS SINUS                          |");
+			puts	("\t\t\t\t\t\t      |                   7. INVERS SINUS                             |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      8. INVERS COSINUS                        |");
+			puts	("\t\t\t\t\t\t      |                   8. INVERS COSINUS                           |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      9. INVERS TANGENT                        |");
+			puts	("\t\t\t\t\t\t      |                   9. INVERS TANGENT                           |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      10. INVERS COSECANT                      |");
+			puts	("\t\t\t\t\t\t      |                   10. INVERS COSECANT                         |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      11. INVERS SECANT                        |");
+			puts	("\t\t\t\t\t\t      |                   11. INVERS SECANT                           |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                      12. INVERS COTANGENT                     |");															
+			puts	("\t\t\t\t\t\t      |                   12. INVERS COTANGENT                        |");
+		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t      |                   13. AKAR PERSAMAAN KUADRAT                  |");																		
 		    puts	("\t\t\t\t\t\t      +===============================================================+");
 		    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);
 		    
@@ -1148,8 +1275,6 @@ int main(){
 					}else{
 						printf("Input tidak valid");
 					}
-					break;					
-//					printf("Nanti diisi sama modul");
 					break;
 				}
 				case 8:
@@ -1245,6 +1370,38 @@ int main(){
 					printf("Invers cotan dari %.2f adalah %.5lf, atau juga %.5lf derajat",x,atan(1/x),invCot);
 					break;					
 				}
+				case 13:
+				{
+					float x, y, z,retln, retlog;
+					float bawah, atas;
+				    int n, derajat ,i, j;
+					float ln, log,result, invSin, invCos, invTan, invCsc, invSec, invCot, func;
+					float akarPositif, akarNegatif, denom, nilaiPositif, nilaiNegatif, faktorPositif, faktorNegatif;
+					float coef[11], p;
+					double inf = INFINITY;						
+					system("cls");
+					printf("Masukkan konstanta dari polinomial : \n");
+					for(i = 0; i<= 2; i++){
+						printf("%c: ", 'c'-i);
+						scanf("%f", &coef[i]);
+					}
+					
+					for(i=0; i <= 2; i++){
+						if(i == 0){
+							printf("%.f + ", coef[i]);
+						}else if (i == 2){
+						printf("%.f*X^%d \n", coef[i], i);
+						}else
+						printf("%.f*X^%d + ", coef[i], i);
+					}
+					
+					faktorPositif = operasiFaktorPositif(coef, akarPositif, denom, nilaiPositif);
+					faktorNegatif = operasiFaktorNegatif(coef,akarNegatif, denom, nilaiNegatif);
+					
+					printf("Akar positifnya adalah%.4f \t", round(faktorPositif));
+					printf("Akar negatifnya adalah%.4f", round(faktorNegatif));
+					break;					
+				}
 				default:
 					system("cls"); 
 					header(); 
@@ -1252,12 +1409,121 @@ int main(){
 	            	break;
 			}
 			break;
-			
-			default:
+		    
+	    case 8:
+			system("cls");
+			header();
+			printf	("\n\t\t\t\t\t\t        <<<<<<<<<<<<<<<<<<<   Anda memilih opsi 8  >>>>>>>>>>>>>>>>>>>"); 
+			puts	("\n\n\t\t\t\t\t\t      +====================== PILIH LAIN LAIN ====================+");
+		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t      |                       1. MENGHITUNG DISKON                    |");
+		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t      |                       2. MENGHITUNG BUNGA                     |");
+		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t      |                       3. MENGHITUNG BITWISE                   |");			
+		    puts	("\t\t\t\t\t\t      +===============================================================+");
+		    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);	    	
+			switch(pilihan){
+				case 1:
+				{
+					system("cls");
+					int i;
+					float x_main, y_main;
+					float float_hsl;
+					int pilihanCabang, pilihanCabang2, pilihanCabang3;
+					int z_main, z1_main;
+					int int_hsl;
+					div_t output;
+					printf("Masukkan Harga Awal (Dalam Rupiah): ");
+					scanf("%f",&x_main);
+					printf("Masukkan diskon (Dalam Persen (%%)): ");
+					scanf("%f",&y_main);
+					y_main = f_PersenKeAngka(y_main);
+					x_main = f_HitungDiskon(x_main,y_main);
+					printf("Hasil: Rp.%6.2f\n",x_main);
+					break;										
+				}
+				case 2:
+				{
+					system("cls");
+					int i;
+					float x_main, y_main;
+					float float_hsl;
+					int pilihanCabang, pilihanCabang2, pilihanCabang3;
+					int z_main, z1_main;
+					int int_hsl;
+					div_t output;					
+					printf("Masukkan Tabungan Awal (Dalam Rupiah): ");
+					scanf("%f",&x_main);
+					printf("Masukkan Bunga (Dalam Persen (%%)): ");
+					scanf("%f",&y_main);
+					printf("Masukkan Tahun: ");
+					scanf("%d",&z_main);
+					y_main = f_PersenKeAngka(y_main);
+					for(i=1;i<=z_main;i++){
+						x_main = f_HitungBunga(x_main,y_main);							
+					}
+					printf("Hasil: Rp.%6.2f\n",x_main);					
+					break;
+				}
+				case 3:
+				{
+					system("cls");
+					int i;
+					float x_main, y_main;
+					float float_hsl;
+					int pilihanCabang, pilihanCabang2, pilihanCabang3;
+					int z_main, z1_main;
+					int int_hsl;
+					div_t output;						
+					printf("1. bitwise (And)\n");
+					printf("2. bitwise (Or)\n");
+					printf("3. bitwise (XOR)\n");
+					printf("4. bitwise (Not)\n");	
+					printf("masukkan opsi: ");
+					scanf("%d",&pilihanCabang2);
+					switch(pilihanCabang2){
+						case 1:
+							printf("masukkan logika pertama (1 or 0) ");
+							scanf("%d",&z_main);
+							printf("masukkan logika kedua (1 or 0) ");
+							scanf("%d",&z1_main);			
+							int_hsl = f_operasiBitwiseAnd(z_main,z1_main);
+							printf("%d",int_hsl);					
+							break;
+						case 2:
+							printf("masukkan logika pertama (1 or 0) ");
+							scanf("%d",&z_main);
+							printf("masukkan logika kedua (1 or 0) ");
+							scanf("%d",&z1_main);			
+							int_hsl = f_operasiBitwiseOr(z_main,z1_main);
+							printf("%d",int_hsl);					
+							break;
+						case 3:
+							printf("masukkan logika pertama (1 or 0) ");
+							scanf("%d",&z_main);
+							printf("masukkan logika kedua (1 or 0) ");
+							scanf("%d",&z1_main);			
+							int_hsl = f_operasiBitwiseXor(z_main,z1_main);
+							printf("%d",int_hsl);							
+							break;
+						case 4:
+							printf("masukkan angka: ");
+							scanf("%d",&z_main);			
+							int_hsl = f_operasiBitwiseNot(z_main);
+							printf("%d",int_hsl);					
+							break;
+					}								
+					break;
+				}
+
+			}
+		break;
+		default:
 			system("cls"); 
 			header(); 
 	        printf("\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-7");  
-	        break;
+	        break;	
 					
 	}	
 	
