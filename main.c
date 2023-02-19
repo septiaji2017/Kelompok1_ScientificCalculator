@@ -986,7 +986,7 @@ for (;;)
 				    int add = 1;  
 				    int sub = -1;  
 				  
-				    while (again == 'Y'){  
+//				    while (again == 'Y'){  
 						puts	("\n\n\t\t\t\t\t\t   +===================  PILIH OPERASI MATRIKS  =====================+");
 					    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
 						puts	("\t\t\t\t\t\t   |                    1. PERTAMBAHAN MATRIKS                       |");
@@ -1209,11 +1209,11 @@ for (;;)
 					            break;  
 					        }  
 				  
-				        printf("\n\t\t\t\t\t\t\t--> Apakah Anda ingin menghitung kembali? (Y/N) : "); 
-				        scanf(" %c", &again);  
-				        again = toupper(again); 
-						system("cls"); 
-				    }  
+//				        printf("\n\t\t\t\t\t\t\t--> Apakah Anda ingin menghitung kembali? (Y/N) : "); 
+//				        scanf(" %c", &again);  
+//				        again = toupper(again); 
+//						system("cls"); 
+//				    }  
 				    printf("\n\n\t\t\t\t\t\t\t--> Terima kasih!\n\n"); 
 					break; 					
 				}
@@ -1650,7 +1650,7 @@ for (;;)
 						printf("1 bukanlah bilangan prima.\n");
 					} 
 					else {
-						if (flag == 0){
+						if (prm == 0){
 						    printf("%d adalah bilangan prima.\n", n);
 						}
 						else{
@@ -1695,5 +1695,7 @@ for (;;)
 	printf  ("\t\t    | |___|___|___| |___| | \n");
 	printf  ("\t\t    |_____________________| \n\n");
 	printf	("\t\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+
+	return 0;
 }
 
