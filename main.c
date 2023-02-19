@@ -964,6 +964,8 @@ int main(){
 			puts	("\t\t\t\t\t\t      |                          1. MATRIKS                           |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t      |                          2. HIMPUNAN                          |");
+		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t      |                   3. AKAR PERSAMAAN KUADRAT                   |");			
 		    puts	("\t\t\t\t\t\t      +===============================================================+");
 		    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);
 		    
@@ -1212,7 +1214,7 @@ int main(){
 					break; 					
 				}
 				case 2:
-					{
+				{
 						int set1[MAX],set2[MAX],set3[MAX];	
 					  	int x, pilihanHimpunan, n, i;
 					  	system("cls");
@@ -1268,18 +1270,54 @@ int main(){
 					  getch();
 					  	}while(pilihan!=4);				
 					break;
+
+				}
+				case 3:
+				{
+					float x, y, z,retln, retlog;
+					float bawah, atas;
+				    int n, derajat ,i, j;
+					float ln, log,result, invSin, invCos, invTan, invCsc, invSec, invCot, func;
+					float akarPositif, akarNegatif, denom, nilaiPositif, nilaiNegatif, faktorPositif, faktorNegatif;
+					float coef[11], p;
+					double inf = INFINITY;						
+					system("cls");
+					printf("Masukkan konstanta dari polinomial : \n");
+					for(i = 0; i<= 2; i++){
+						printf("%c: ", 'c'-i);
+						scanf("%f", &coef[i]);
+					}
+					
+					for(i=0; i <= 2; i++){
+						if(i == 0){
+							printf("%.f + ", coef[i]);
+						}else if (i == 2){
+						printf("%.f*X^%d \n", coef[i], i);
+						}else
+						printf("%.f*X^%d + ", coef[i], i);
+					}
+					
+					faktorPositif = operasiFaktorPositif(coef, akarPositif, denom, nilaiPositif);
+					faktorNegatif = operasiFaktorNegatif(coef,akarNegatif, denom, nilaiNegatif);
+					
+					printf("Akar positifnya adalah%.4f \t", round(faktorPositif));
+					printf("Akar negatifnya adalah%.4f", round(faktorNegatif));
+					system("pause");
+					break;					
+				}
 				default:
 					system("cls"); 
 					header(); 
 	            	printf("\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-2");  
 	            	break;
-			}
+			
+			
 		}
 		case 7:
 			system("cls");
 			header();
 			printf	("\n\t\t\t\t\t\t       <<<<<<<<<<<<<<<<<<<   Anda memilih opsi 7  >>>>>>>>>>>>>>>>>>>"); 
-			puts	("\n\n\t\t\t\t\t\t      +==================== PILIH ALJABAR LINIER =====================+");
+			puts	("\n\n\t\t\t\t\t\t      +==================== PILIH TRIGONOMETRI =====================+");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t      |                   1. SINUS                                    |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
@@ -1303,9 +1341,7 @@ int main(){
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t      |                   11. INVERS SECANT                           |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                   12. INVERS COTANGENT                        |");
-		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                   13. AKAR PERSAMAAN KUADRAT                  |");																		
+			puts	("\t\t\t\t\t\t      |                   12. INVERS COTANGENT                        |");																		
 		    puts	("\t\t\t\t\t\t      +===============================================================+");
 		    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);
 
@@ -1481,38 +1517,6 @@ int main(){
 					scanf("%f", &x);
 					invCot = inversCotan(x);
 					printf("Invers cotan dari %.2f adalah %.5lf, atau juga %.5lf derajat",x,atan(1/x),invCot);
-					break;					
-				}
-				case 13:
-				{
-					float x, y, z,retln, retlog;
-					float bawah, atas;
-				    int n, derajat ,i, j;
-					float ln, log,result, invSin, invCos, invTan, invCsc, invSec, invCot, func;
-					float akarPositif, akarNegatif, denom, nilaiPositif, nilaiNegatif, faktorPositif, faktorNegatif;
-					float coef[11], p;
-					double inf = INFINITY;						
-					system("cls");
-					printf("Masukkan konstanta dari polinomial : \n");
-					for(i = 0; i<= 2; i++){
-						printf("%c: ", 'c'-i);
-						scanf("%f", &coef[i]);
-					}
-					
-					for(i=0; i <= 2; i++){
-						if(i == 0){
-							printf("%.f + ", coef[i]);
-						}else if (i == 2){
-						printf("%.f*X^%d \n", coef[i], i);
-						}else
-						printf("%.f*X^%d + ", coef[i], i);
-					}
-					
-					faktorPositif = operasiFaktorPositif(coef, akarPositif, denom, nilaiPositif);
-					faktorNegatif = operasiFaktorNegatif(coef,akarNegatif, denom, nilaiNegatif);
-					
-					printf("Akar positifnya adalah%.4f \t", round(faktorPositif));
-					printf("Akar negatifnya adalah%.4f", round(faktorNegatif));
 					break;					
 				}
 				default:
