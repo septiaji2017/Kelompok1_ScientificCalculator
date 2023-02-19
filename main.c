@@ -3,6 +3,7 @@
 #include "Mutia.h"
 #include "Rico.h"
 #include "Naufal.h"
+#include "Marshya.h"
 //digabungkan oleh ridha septiaji
 
 char header(){
@@ -130,11 +131,207 @@ for (;;)
 					break;
 				}
 				case 2:
+				{
 					system("cls"); 
 					header();
 		    		printf	("\n\t\t\t\t\t\t    <<<<<<<<<<<<<  Anda memilih opsi konversi tanggal  >>>>>>>>>>>>>>"); 
-					
-					break;
+					 date D1, D2, D3, D4;
+					 char lagi = 'y';
+					 bool valid, kabisat;
+					 int NewTgl, pilihan, TglSblm, BlnSblm, ThnSblm;
+				
+				
+						system("cls");
+						puts	("\n\n\t\t\t\t\t\t   +==================  PILIH KONFIGURASI TANGGAL  ==================+");
+					    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
+						puts	("\t\t\t\t\t\t   |                  1. TANGGAL SEBELUM DAN SESUDAH                 |");
+					    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
+						puts	("\t\t\t\t\t\t   |                       2. SELISIH TANGGAL                        |");
+					    puts	("\t\t\t\t\t\t   +=================================================================+");
+						printf	("\t\t\t\t\t\t\t\t--> Pilih operasi yang ingin Anda konversikan >> "); scanf("%d", &pilihan); 
+						
+						switch(pilihan){
+							case 1:
+								printf("\n\t\t\t\t\t--> Masukkan tanggal, bulan dan tahun untuk mengetahui tanggal sebelum dan sesudahnya <--");
+								printf("\n\n\t\t\t\t\t\t\t\t\t  --> Tanggal : "); scanf("%d", &D3.Tgl);
+								printf("\t\t\t\t\t\t\t\t\t  --> Bulan : "); scanf("%d", &D3.Bln);
+								printf("\t\t\t\t\t\t\t\t\t  --> Tahun : "); scanf("%d", &D3.Thn);
+								
+								valid = isValid(D3);
+								if(valid){
+								printf("\n\t\t\t\t\t\t\t    --> Tanggal yang Anda inputkan adalah : ");
+								printf ("%d/%d/%d\n", GetTgl(D3), GetBln(D3), GetThn(D3));
+								kabisat = isKabisat(D3);
+								if(kabisat){
+									printf("\n\t\t\t\t\t\t\t   --> Keterangan: Tahun %d termasuk tahun kabisat <--\n", GetThn(D3));
+								}else{
+									printf("\n\t\t\t\t\t\t\t   --> Keterangan: Tahun %d tidak termasuk tahun kabisat <--\n", GetThn(D3));
+								}
+								
+								if (GetTgl(D3) == 1 && GetBln(D3) == 1){
+									ThnSblm = GetThn(D3)-1;
+									TglSblm = TglAkhir(D3);
+									BlnSblm = 12;
+								}else{
+									TglSblm = GetTgl(D3)-1;
+									BlnSblm = GetBln(D3);
+									ThnSblm = GetThn(D3);
+								}
+								
+								if(GetBln(D3) > 1 && GetTgl(D3) == 1){
+									if (GetBln(D3) == 3){
+										BlnSblm = GetBln(D3)-1;
+										ThnSblm = GetThn(D3);
+										TglSblm = 28;
+									}
+									else if((GetBln(D3) <= 8 && GetBln(D3) % 2 == 1) || (GetBln(D3) >= 9 && GetBln(D3) % 2 == 0)){
+										BlnSblm = GetBln(D3)-1;
+										ThnSblm = GetThn(D3);
+										TglSblm = 30;
+									}else{
+										BlnSblm = GetBln(D3)-1;
+										ThnSblm = GetThn(D3);
+										TglSblm = 31;
+									}
+								}
+								printf("\n\t\t\t\t\t\t\t --> Sebelum Tanggal %d/%d/%d adalah: Tanggal %d/%d/%d <--\n", GetTgl(D3), GetBln(D3), GetThn(D3), TglSblm, BlnSblm, ThnSblm);			
+						
+								int TglSesudah, BlnSesudah, ThnSesudah;
+								
+								if(GetBln(D3) == 12 && GetTgl(D3) == 31){
+									ThnSesudah = GetThn(D3)+1;
+									BlnSesudah = 1;
+									TglSesudah = 1;
+								}else if(GetTgl(D3) == TglAkhir(D3)){
+									TglSesudah = 1;
+									BlnSesudah = GetBln(D3)+1;
+									ThnSesudah = GetThn(D3);
+								}else{
+									TglSesudah = GetTgl(D3)+1;
+									BlnSesudah = GetBln(D3);
+									ThnSesudah = GetThn(D3);
+								}	
+								printf("\t\t\t\t\t\t\t --> Sesudah Tanggal %d/%d/%d adalah: Tanggal %d/%d/%d <--\n", GetTgl(D3), GetBln(D3), GetThn(D3), TglSesudah, BlnSesudah, ThnSesudah);	
+								}else{
+									printf("\nInput tidak Valid\n");
+								}
+								break;
+							case 2:
+								printf("\n\t\t\t\t\t\t--> Masukkan tanggal, bulan dan tahun pertama untuk mengetahui selisihnya <--");
+								printf("\n\n\t\t\t\t\t\t\t\t\t  --> Tanggal : "); scanf("%d", &D3.Tgl);
+								printf("\t\t\t\t\t\t\t\t\t  --> Bulan : "); scanf("%d", &D3.Bln);
+								printf("\t\t\t\t\t\t\t\t\t  --> Tahun : "); scanf("%d", &D3.Thn);
+								valid = isValid(D3);
+								printf("\n\t\t\t\t\t\t\t  --> Tanggal pertama yang Anda inputkan adalah : ");
+								printf ("%d/%d/%d\n", GetTgl(D3), GetBln(D3), GetThn(D3));
+								kabisat = isKabisat(D3);
+								if(kabisat){
+									printf("\n\t\t\t\t\t\t\t   --> Keterangan: Tahun %d termasuk tahun kabisat <--\n", GetThn(D3));
+								}else{
+									printf("\n\t\t\t\t\t\t\t   --> Keterangan: Tahun %d tidak termasuk tahun kabisat <--\n", GetThn(D3));
+								}
+								
+								printf("\n\t\t\t\t\t\t--> Masukkan tanggal, bulan dan tahun kedua untuk mengetahui selisihnya <--");
+								printf("\n\n\t\t\t\t\t\t\t\t\t  --> Tanggal : "); scanf("%d", &D4.Tgl);
+								printf("\t\t\t\t\t\t\t\t\t  --> Bulan : "); scanf("%d", &D4.Bln);
+								printf("\t\t\t\t\t\t\t\t\t  --> Tahun : "); scanf("%d", &D4.Thn);
+								valid = isValid(D4);
+								if(valid){
+								printf("\n\t\t\t\t\t\t\t  --> Tanggal kedua yang Anda inputkan adalah : ");
+								printf ("%d/%d/%d\n", GetTgl(D4), GetBln(D4), GetThn(D4));
+								kabisat = isKabisat(D3);
+								if(kabisat){
+									printf("\n\t\t\t\t\t\t\t   --> Keterangan: Tahun %d termasuk tahun kabisat <--\n", GetThn(D3));
+								}else{
+									printf("\n\t\t\t\t\t\t\t   --> Keterangan: Tahun %d tidak termasuk tahun kabisat <--\n", GetThn(D3));
+								}
+				
+								date penampung;
+								int selisih = 0;
+									
+								if (GetThn(D3) < GetThn(D4)){
+									penampung = D3;
+									D3 = D4;
+									D4 = penampung;
+								} else if (GetThn(D3) > GetThn(D4)){
+									
+								}
+								
+								else {
+									if (GetBln(D3) < GetBln(D4)) {
+										penampung = D3;
+										D3 = D4;
+										D4 = penampung;
+									}else if (GetBln(D3) > GetBln(D4)){
+										
+									}
+									
+									else {
+										if (GetTgl(D3) < GetTgl (D4)) {
+											penampung = D3;
+											D3 = D4;
+											D4 = penampung;
+										}else if (GetTgl(D3) > GetTgl (D4)){
+											
+										}
+										else{
+											
+										}	
+									}
+								}
+								
+								while (GetThn(D3) != GetThn(D4) || GetBln(D3) != GetBln(D4) || GetTgl(D3) != GetTgl(D4)) {
+									D3.Tgl = GetTgl(D3)-1;
+									if (GetTgl(D3) < 1) {
+										D3.Bln = GetBln(D3)-1;
+										D3.Tgl = TglAkhir(D3);
+									}
+									if (GetBln(D3) < 1) {
+										D3.Thn = GetThn(D3)-1;
+										D3.Bln = 12;
+										D3.Tgl = TglAkhir(D3);
+									}
+									selisih++;
+								}
+								printf("\n\t\t\t\t\t\t\t\t  -->  Selisihnya adalah : %d hari <--", selisih);			
+								
+								
+								int tTahun, tBulan, tMinggu, tHari;
+								
+								tTahun = selisih/365;
+								tBulan = (selisih%365)/30;
+								tMinggu = ((selisih%365)%30)/7;
+								tHari = (((selisih%365)%30)%7);
+							
+								printf("\n\n\t\t\t\t\t\t\t     -->  Apabila dikonversikan maka didapatkan <-- \n");
+								
+								printf("\n\t\t\t\t\t\t\t\t-->  ");
+								if(tTahun!=0){
+									printf("%d (Tahun)",tTahun);
+								}
+								
+								if(tBulan!=0){
+									printf(" %d (Bulan)",tBulan);
+								}
+								
+								if(tMinggu!=0){
+									printf(" %d (Minggu)",tMinggu);
+								}
+								
+								if(tHari!=0){
+									printf(" %d (Hari)",tHari);
+								}	
+								printf(" <--");
+								printf("\n");
+																			
+							}else{
+								printf("\n\t\t\t\t\t\t\t\t-->  Input tidak Valid\n");
+							}
+							break;
+					}					
+					break;					
+				}
+
 					
 				case 3:
 				{
@@ -1543,7 +1740,15 @@ for (;;)
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t      |                       3. MENGHITUNG BITWISE                   |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                       4. MENENTUKAN PRIMA                     |");						
+			puts	("\t\t\t\t\t\t      |                       4. MENENTUKAN PRIMA                     |");
+		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t      |                       5. MENENTUKAN FLOOR                     |");	
+		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t      |                       6. MENENTUKAN CEIL                      |");	
+		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t      |                       7. MENENTUKAN ROUND                     |");	
+		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t      |                       8. MENENTUKAN MUTLAK                    |");																			
 		    puts	("\t\t\t\t\t\t      +===============================================================+");
 		    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);	    	
 			switch(pilihan){
@@ -1660,6 +1865,50 @@ for (;;)
 					}
 					break;					
 				}
+				
+				case 5:
+				{
+					int mutlak, y;
+					float x, bulatBawah, bulatAtas, bulat;					
+					printf("Masukkan angka: ");
+					scanf("%f", &x);
+					bulatBawah = flr(x);
+					printf("Floor dari %f adalah %f", x, bulatBawah);					
+					break;
+				}
+				
+				case 6:
+				{
+					int mutlak, y;
+					float x, bulatBawah, bulatAtas, bulat;						
+					printf("Masukan angka: ");
+					scanf("%f", &x);
+					bulatAtas = cl(x);
+					printf("Ceil dari %f adalah %f", x, bulatAtas);					
+					break;
+				}
+				
+				case 7:
+				{
+					int mutlak, y;
+					float x, bulatBawah, bulatAtas, bulat;						
+					printf("Masukan angka: ");
+					scanf("%f", &x);
+					bulat = rnd(x);
+					printf("Round dari %f adalah %f", x, bulat);					
+					break;
+				}
+				
+				case 8:
+				{
+					int mutlak, y;
+					float x, bulatBawah, bulatAtas, bulat;						
+					printf("Masukan angka: ");
+					scanf("%d", &y);
+					mutlak = absolute(y);
+					printf("Absolute dari %d adalah %d", y, mutlak);					
+					break;
+				}
 
 			}
 		break;
@@ -1672,7 +1921,7 @@ for (;;)
 					
 	}
 	
-		printf("Coba Lagi (y/t)?");
+		printf("\n\n\t\t\t\t\t\t Coba Lagi (y/t)?");
 		lagi = getch();
 		if(lagi!='y'){
 			break;
