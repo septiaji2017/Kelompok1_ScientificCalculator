@@ -81,6 +81,16 @@ int main(){
 					puts	("\t\t\t\t\t\t\t  |                  K = Kelvin                       |");	
 					puts	("\t\t\t\t\t\t\t  | ===> Contoh Inputan : 70 C                        |");
 					puts	("\t\t\t\t\t\t\t  +===================================================+");
+					
+					puts	("\n\n\t\t\t\t\t\t    +==========================   PILIH MENU  ========================+");
+				    puts	("\t\t\t\t\t\t    |-----------------------------------------------------------------|");
+					puts	("\t\t\t\t\t\t    |                             1. KELVIN                           |");
+				    puts	("\t\t\t\t\t\t    |-----------------------------------------------------------------|");
+					puts	("\t\t\t\t\t\t    |                             2. CELSIUS                          |");
+					puts	("\t\t\t\t\t\t    |-----------------------------------------------------------------|");
+					puts	("\t\t\t\t\t\t    |                            3. FAHRENHEIT                        |");	
+				    puts	("\t\t\t\t\t\t    +=================================================================+");					
+					
 					puts	("\t\t\t\t\t\t\t  Masukkan Pilihan Anda: ");					
 				    scanf("%d", &choice);
 				    switch (choice)
@@ -104,8 +114,8 @@ int main(){
 				    case 3:
 				        printf("masukkan temperature di Fahrenheit: ");
 				        scanf("%f",&Fahrenheit);
-						Celsius = KtoF(Fahrenheit);
-						Kelvin = CtoF(Fahrenheit);
+						Celsius = CtoF(Fahrenheit);
+						Kelvin = KtoF(Fahrenheit);
 				        printf("Di Celsius nilainya adalah :\t %f \n",Celsius);
 				        printf("Di Kelvin nilainya adalah :\t %f \n",Kelvin);
 				        break;
