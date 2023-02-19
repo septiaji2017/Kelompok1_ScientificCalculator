@@ -100,12 +100,12 @@ int main(){
 				        scanf("%f",&Kelvin);
 						Celcius= CtoK(Kelvin);
 						Fahrenheit= FtoK(Kelvin);
-				        printf("Di Celsius nilainya adalah :\t %f \n",Celsius);
+				        printf("Di Celsius nilainya adalah :\t %f \n",Celcius);
 				        printf("Di Fahrenheit nilainya adalah :\t %f",Fahrenheit);
 				        break;
 				    case 2:
 				        printf("masukkan temperature di Celsius: ");
-				        scanf("%f",&Celsius);
+				        scanf("%f",&Celcius);
 						Kelvin = KtoC(Celcius);
 						Fahrenheit = FtoC(Celcius);
 				        printf("Di kelvin nilainya adalah : %f \n",Kelvin);
@@ -114,9 +114,9 @@ int main(){
 				    case 3:
 				        printf("masukkan temperature di Fahrenheit: ");
 				        scanf("%f",&Fahrenheit);
-						Celsius = CtoF(Fahrenheit);
+						Celcius = CtoF(Fahrenheit);
 						Kelvin = KtoF(Fahrenheit);
-				        printf("Di Celsius nilainya adalah :\t %f \n",Celsius);
+				        printf("Di Celsius nilainya adalah :\t %f \n",Celcius);
 				        printf("Di Kelvin nilainya adalah :\t %f \n",Kelvin);
 				        break;
 				    default:
@@ -635,22 +635,22 @@ int main(){
 						float numer = limitBagiNum(coefa, derajata);
 						float denom = limitBagiDen(coefb, derajatb);
 						float hasil = numer/denom;
-						printf("Numer : %f", numer);
-						printf("Denom : %f", denom);
+						printf("Numer : %f\n", numer);
+						printf("Denom : %f\n", denom);
 						printf("Limit : %f", hasil);
 					}else if(derajata > derajatb){
 						float numer = limitBagiNum(coefa, derajata);
 						float denom = 0;		
 						float hasil = numer/denom;
-						printf("Numer : %f", numer);
-						printf("Denom : %f", denom);
+						printf("Numer : %f\n", numer);
+						printf("Denom : %f\n", denom);
 						printf("Limit : %f", hasil);
 					}else{
 						float numer = 0;
 						float denom = limitBagiDen(coefb, derajatb);
 						float hasil = numer/denom;
-						printf("Numer : %f", numer);
-						printf("Denom : %f", denom);
+						printf("Numer : %f\n", numer);
+						printf("Denom : %f\n", denom);
 						printf("Limit : %f", hasil);
 					}
 					break;						
@@ -1302,17 +1302,17 @@ int main(){
 					
 					printf("Akar positifnya adalah%.4f \t", round(faktorPositif));
 					printf("Akar negatifnya adalah%.4f", round(faktorNegatif));
-					system("pause");
 					break;					
 				}
+				
 				default:
 					system("cls"); 
 					header(); 
 	            	printf("\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-2");  
 	            	break;
-			
-			
 		}
+		break;
+		
 		case 7:
 			system("cls");
 			header();
