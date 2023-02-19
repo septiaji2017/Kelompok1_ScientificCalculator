@@ -6,7 +6,77 @@
 #define MAX 30
 #include <conio.h>
 #include <math.h>
+#define true 1
+#define false 0
+#define boolean unsigned char
 
+//Konvert Tanggal
+typedef struct { int Tgl; int Bln; int Thn;} date;
+
+
+/*************************************/
+/* S P E S I F I K A S I   M O D U L */
+/*************************************/
+
+int GetTgl (date D);
+
+int GetBln (date D);
+
+int GetThn (date D);
+
+boolean isValid(date D);
+
+boolean isKabisat (date D);
+
+int TglAkhir (date D);
+
+
+int GetTgl (date D)
+{
+	return(D.Tgl);
+}
+
+int GetBln (date D)
+{
+	return(D.Bln);
+}
+
+
+int GetThn (date D)
+{
+	return(D.Thn);
+}
+
+boolean isValid(date D)
+{
+	if ((GetThn(D) < 1900)||(GetThn(D) > 30000)||(GetBln(D) < 1) ||(GetBln(D) > 12)||(GetTgl(D) < 1)||(GetTgl(D) > TglAkhir(D)))
+		return (false);
+	else
+		return (true);
+}
+
+boolean isKabisat (date D)
+{
+ 	if((GetThn(D) % 4 == 0 && GetThn(D) % 100 != 0) || (GetThn(D) % 400 == 0)){
+ 		return true;
+	}else{
+ 		return false;	
+	}	
+
+}
+
+int TglAkhir (date D)
+{
+	if (GetBln(D) == 2){
+		if(isKabisat(D)){
+			return 29;
+		}else{
+			return 28;
+		}
+	}
+	else 
+		return ( ( (GetBln(D) <= 7 && GetBln(D) % 2 == 1) || (GetBln(D) >= 8 && GetBln(D) % 2 == 0) ) ? 31: 30);
+}
 
 //Konvert Jam
 int JamKeDetik(int JamInput){
