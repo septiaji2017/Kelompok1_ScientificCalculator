@@ -53,16 +53,16 @@ int kombinasi(int n, int r){
 
 //Sinus
 
-int Sinus(double x) {
+double Sinus(double x) {
 	
    double sinval; 
-   sinval = sin(x * pi / 180.0); // hitung sin
+   sinval = sin(x) * (pi / 180.0); // hitung sin
    return (sinval);
 }
 
 //Cosinus
 
-int Cosinus(double x) {
+double Cosinus(double x) {
 	
    double cosval;
    
@@ -72,7 +72,7 @@ int Cosinus(double x) {
 
 //Tangent
 
-int Tangent(double x) {
+double Tangent(double x) {
 	
    double tanval;
    
@@ -82,7 +82,7 @@ int Tangent(double x) {
 
 //Cosecant
 
-int Cosecant(double x) {
+double Cosecant(double x) {
 	
    double cosecval;
    
@@ -92,7 +92,7 @@ int Cosecant(double x) {
 
 //Secant
 
-int Secant(double x) {
+double Secant(double x) {
 	
    double secanval;
    
@@ -102,7 +102,7 @@ int Secant(double x) {
 
 //Cotangent
 
-int Cotangent(double x) {
+double Cotangent(double x) {
 	
    double cotanval;
    
