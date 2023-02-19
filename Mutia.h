@@ -129,42 +129,42 @@ int Prima(int n) {
 //Kilo
 
 //Kilo ke Centi
-int KilotoCenti(float inputangka){
+float KilotoCenti(float inputangka){
 	float firstRes;
 	firstRes = inputangka * 100000; 
 	return (firstRes);
 }
 
 //Kilo ke Metrik
-int KilotoMetrik(float inputangka){
+float KilotoMetrik(float inputangka){
 	float secondRes;
 	secondRes = inputangka * 1000; 
 	return (secondRes);
 }
 
 //Kilo ke Mili
-int KilotoMili(float inputangka){
+float KilotoMili(float inputangka){
 	float thirdRes;
 	thirdRes = inputangka * 1000000; 
 	return (thirdRes);
 }
 
 //Kilo ke Deka
-int KilotoDeka(float inputangka){
+float KilotoDeka(float inputangka){
 	float fourRes;
 	fourRes = inputangka * 100; 
 	return (fourRes);
 }
 
 //Kilo ke Hekto
-int KilotoHekto(float inputangka){
+float KilotoHekto(float inputangka){
 	float fivRes;
 	fivRes = inputangka * 10; 
 	return (fivRes);
 }
 
 //Kilo ke Desi
-int KilotoDesi(float inputangka){
+float KilotoDesi(float inputangka){
 	float sixRes;
 	sixRes = inputangka * 10000; 
 	return (sixRes);
@@ -173,42 +173,42 @@ int KilotoDesi(float inputangka){
 //Hekto
 
 //Hekto ke Centi
-int HektotoCenti(float inputangka){
+float HektotoCenti(float inputangka){
 	float firstRes;
 	firstRes = inputangka * 10000; 
 	return (firstRes);
 }
 
 //Hekto ke Metrik
-int HektotoMetrik(float inputangka){
+float HektotoMetrik(float inputangka){
 	float secondRes;
 	secondRes = inputangka * 100; 
 	return (secondRes);
 }
 
 //Hekto ke Kilo
-int HektotoKilo(float inputangka){
+float HektotoKilo(float inputangka){
 	float thirdRes;
 	thirdRes = inputangka / 10; 
 	return (thirdRes);
 }
 
 //Hekto ke Deka
-int HektotoDeka(float inputangka){
+float HektotoDeka(float inputangka){
 	float fourRes;
 	fourRes = inputangka * 10; 
 	return (fourRes);
 }
 
 //Hekto ke Mili
-int HektotoMili(float inputangka){
+float HektotoMili(float inputangka){
 	float fivRes;
 	fivRes = inputangka * 100000; 
 	return (fivRes);
 }
 
 //Hekto ke Desi
-int HektotoDesi(float inputangka){
+float HektotoDesi(float inputangka){
 	float sixRes;
 	sixRes = inputangka * 1000; 
 	return (sixRes);
@@ -217,42 +217,42 @@ int HektotoDesi(float inputangka){
 //Deka
 
 //Deka ke Centi
-int DekatoCenti(float inputangka){
+float DekatoCenti(float inputangka){
 	float firstRes;
 	firstRes = inputangka * 1000; 
 	return (firstRes);
 }
 
 //Deka ke Metrik
-int DekatoMetrik(float inputangka){	
+float DekatoMetrik(float inputangka){	
 	float secondRes;
 	secondRes = inputangka * 10; 
 	return (secondRes);
 }
 
 //Deka ke Kilo
-int DekatoKilo(float inputangka){
+float DekatoKilo(float inputangka){
 	float thirdRes;
 	thirdRes = inputangka / 100; 
 	return (thirdRes);
 }
 
 //Deka ke Mili
-int DekatoMili(float inputangka){
+float DekatoMili(float inputangka){
 	float fourRes;
 	fourRes = inputangka * 10000; 
 	return (fourRes);
 }
 
 //Deka ke Hekto
-int DekatoHekto(float inputangka){
+float DekatoHekto(float inputangka){
 	float fivRes;
 	fivRes = inputangka / 10; 
 	return (fivRes);
 }
 
 //Deka ke Desi
-int DekatoDesi(float inputangka){
+float DekatoDesi(float inputangka){
 	float sixRes;
 	sixRes = inputangka * 100; 
 	return (sixRes);
@@ -261,42 +261,42 @@ int DekatoDesi(float inputangka){
 //Metrik
 
 //Metrik ke Centi
-int MetriktoCenti(float inputangka){
+float MetriktoCenti(float inputangka){
 	float firstRes;
 	firstRes = inputangka * 100; 
 	return (firstRes);
 }
 
 //Metrik ke Kilo
-int MetriktoKilo(float inputangka){
+float MetriktoKilo(float inputangka){
 	float secondRes;
 	secondRes = inputangka / 1000; 
 	return (secondRes);
 }
 
 //Metrik ke Mili
-int MetriktoMili(float inputangka){
+float MetriktoMili(float inputangka){
 	float thirdRes;
 	thirdRes = inputangka * 1000; 
 	return (thirdRes);
 }
 
 //Metrik ke Deka
-int MetriktoDeka(float inputangka){
+float MetriktoDeka(float inputangka){
 	float fourRes;
 	fourRes = inputangka / 10;
 	return (fourRes);
 }
 
 //Metrik ke Hekto
-int MetriktoHekto(float inputangka){
+float MetriktoHekto(float inputangka){
 	float fivRes;
 	fivRes = inputangka / 100; 
 	return (fivRes);
 }
 
 //Metrik ke Desi
-int MetriktoDesi(float inputangka){
+float MetriktoDesi(float inputangka){
 	float sixRes;
 	sixRes = inputangka * 10; 
 	return (sixRes);
@@ -305,42 +305,42 @@ int MetriktoDesi(float inputangka){
 //Desi
 
 //Desi ke Centi
-int DesitoCenti(float inputangka){
+float DesitoCenti(float inputangka){
 	float firstRes;
 	firstRes = inputangka * 10; 
 	return (firstRes);
 }
 
 //Desi ke Metrik
-int DesitoMetrik(float inputangka){
+float DesitoMetrik(float inputangka){
 	float secondRes;
 	secondRes = inputangka / 10;
 	return (secondRes);
 }
 
 //Desi ke Kilo
-int DesitoKilo(float inputangka){
+float DesitoKilo(float inputangka){
 	float thirdRes;
 	thirdRes = inputangka / 10000; 
 	return (thirdRes);
 }
 
 //Desi ke Mili
-int DesitoMili(float inputangka){
+float DesitoMili(float inputangka){
 	float fourRes;
 	fourRes = inputangka * 100; 
 	return (fourRes);
 }
 
 //Desi ke Hekto
-int DesitoHekto(float inputangka){
+float DesitoHekto(float inputangka){
 	float fivRes;
 	fivRes = inputangka / 1000; 
 	return (fivRes);
 }
 
 //Desi ke Deka
-int DesitoDeka(float inputangka){
+float DesitoDeka(float inputangka){
 	float sixRes;
 	sixRes = inputangka / 100; 
 	return (sixRes);
@@ -349,42 +349,42 @@ int DesitoDeka(float inputangka){
 //Centi
 
 //Centi ke Metrik
-int CentitoMetrik(float inputangka){	
+float CentitoMetrik(float inputangka){	
 	float firstRes;
 	firstRes = inputangka / 100; 
 	return (firstRes);
 }
 
 //Centi ke Kilo
-int CentitoKilo(float inputangka){
+float CentitoKilo(float inputangka){
 	float secondRes;
 	secondRes = inputangka / 100000; 
 	return (secondRes);
 }
 
 //Centi ke Mili
-int CentitoMili(float inputangka){
+float CentitoMili(float inputangka){
 	float thirdRes;
 	thirdRes = inputangka * 10; 
 	return (thirdRes);
 }
 
 //Centi ke Deka
-int CentitoDeka(float inputangka){
+float CentitoDeka(float inputangka){
 	float fourRes;
 	fourRes = inputangka / 1000; 
 	return (fourRes);
 }
 
 //Centi ke Hekto
-int CentitoHekto(float inputangka){
+float CentitoHekto(float inputangka){
 	float fivRes;
 	fivRes = inputangka / 10000; 
 	return (fivRes);
 }
 
 //Centi ke Desi
-int CentitoDesi(float inputangka){
+float CentitoDesi(float inputangka){
 	float sixRes;
 	sixRes = inputangka / 10; 
 	return (sixRes);
@@ -393,42 +393,42 @@ int CentitoDesi(float inputangka){
 //Mili
 
 //Mili ke Centi
-int MilitoCenti(float inputangka){
+float MilitoCenti(float inputangka){
 	float firstRes;
 	firstRes = inputangka / 10;
 	return (firstRes);
 }
 
 //Mili ke Metrik
-int MilitoMetrik(float inputangka){
+float MilitoMetrik(float inputangka){
 	float secondRes;
 	secondRes = inputangka / 1000; 
 	return (secondRes);
 }
 
 //Mili ke Kilo
-int MilitoKilo(float inputangka){
+float MilitoKilo(float inputangka){
 	float thirdRes;
 	thirdRes = inputangka / 1000000; 
 	return (thirdRes);
 }
 
 //Mili ke Deka
-int MilitoDeka(float inputangka){
+float MilitoDeka(float inputangka){
 	float fourRes;
 	fourRes = inputangka / 10000; 
 	return (fourRes);
 }
 
 //Mili ke Hekto
-int MilitoHekto(float inputangka){
+float MilitoHekto(float inputangka){
 	float fivRes;	
 	fivRes = inputangka / 100000; 
 	return (fivRes);
 }
 
 //Mili ke Desi
-int MilitoDesi(float inputangka){	
+float MilitoDesi(float inputangka){	
 	float sixRes;
 	sixRes = inputangka / 100; 
 	return (sixRes);
