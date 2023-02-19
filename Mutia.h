@@ -7,9 +7,7 @@
  
 //Perhitungan Faktorial
 
-int Faktorial1(){
-	
-	int input;
+int Faktorial1(int input){
 	int i, hasil = 1;
 	
 	for(i=input; i>=1; i--){
