@@ -27,9 +27,13 @@ char header(){
 
 int main(){
 	int choice, pilihan;
+	char lagi;
 	/* Himpunan */
 
-	
+for (;;)
+ {
+
+	system("cls");		
 	header();
 	puts	("\n\n\t\t\t\t\t\t    +==========================   PILIH MENU  ========================+");
     puts	("\t\t\t\t\t\t    |-----------------------------------------------------------------|");
@@ -1664,9 +1668,17 @@ int main(){
 			header(); 
 	        printf("\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-7");  
 	        break;	
-					
-	}	
 	
+					
+	}
+	
+		printf("Coba Lagi (y/t)?");
+		lagi = getch();
+		if(lagi!='y'){
+			break;
+		}	
+		
+ }
 	printf	("\n\n\n\n\n\n\n\n\n\n\n\n\t\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 	printf  ("\t\t     _____________________  \n");
 	printf  ("\t\t    |  _________________  | \n");
