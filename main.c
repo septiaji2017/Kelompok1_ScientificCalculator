@@ -633,15 +633,36 @@ int main(){
 				case 1:
 				{
 					int n, r, f;
-					permutasi(n, r);
-					faktorial2(f);						
+					int HslPermutasi;					
+					printf("Masukkan nilai n: ");
+					scanf("%d, %d", &n);
+					printf("Masukkan nilai r: ");
+					scanf("%d", &r);
+					if (n<r){
+						printf("invalid input n < r");
+						exit(0);
+					}
+					else if (n>r){
+						HslPermutasi = faktorial2(n)/faktorial2(n-r);
+						printf("\nPermutasi (%d, %d):%d ", n, r, HslPermutasi);
+					}															
 					break;
 				}
 				case 2:
 				{
 					int n, r, f;
-					kombinasi(n, r);
-					faktorial2(f);	
+					int HslKombinasi;
+					printf("Masukkan nilai n: ");
+					scanf("%d, %d", &n);
+					printf("Masukkan nilai r: ");
+					scanf("%d", &r);
+					if (n<r){
+						printf("invalid input n < r");
+						exit(0);
+					} else if (n>r){
+						HslKombinasi = faktorial2(n)/(faktorial2 (r) * faktorial2(n-r));
+						printf("\nKombinasi (%d, %d):%d", n, r, HslKombinasi);
+					}				
 					break;					
 				}
 				case 3:
@@ -1420,7 +1441,9 @@ int main(){
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t      |                       2. MENGHITUNG BUNGA                     |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                       3. MENGHITUNG BITWISE                   |");			
+			puts	("\t\t\t\t\t\t      |                       3. MENGHITUNG BITWISE                   |");
+		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t      |                       4. MENGHITUNG FLOOR                     |");						
 		    puts	("\t\t\t\t\t\t      +===============================================================+");
 		    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);	    	
 			switch(pilihan){
