@@ -125,9 +125,8 @@ int main(){
 				case 3:
 				{
 					float inputangka, firstRes, secondRes, thirdRes, fourRes, fivRes, sixRes; 
-					char LongUnit, firstResUnit, secondResUnit, thirdResUnit, fourResUnit, fivResUnit, sixResUnit;					
-					system("cls");
-					header();
+					char LongUnit, firstResUnit, secondResUnit, thirdResUnit, fourResUnit, fivResUnit, sixResUnit;
+					
 					printf	("\n\t\t\t\t\t\t  <<<<<<<<<<<<<<<  Anda memilih opsi konversi metrik  >>>>>>>>>>>>>>>"); 
 					puts	("\n\n\t\t\t\t\t\t\t  +================= KONVERSI METRIK =================+");
 					puts	("\t\t\t\t\t\t\t  | ===> Keterangan: K = Kilo  (k-)                   |");
@@ -138,126 +137,127 @@ int main(){
 					puts	("\t\t\t\t\t\t\t  |                  C = Centi (c-)                   |");
 					puts	("\t\t\t\t\t\t\t  |                  m = Mili  (m-)                   |");				
 					puts	("\t\t\t\t\t\t\t  | ===> Contoh Inputan : 85 K                        |");
-					puts	("\t\t\t\t\t\t\t  +===================================================+");
+					puts	("\t\t\t\t\t\t\t  +===================================================+");  
 				    printf	("\t\t\t\t\t           --> Masukkan panjang beserta satuannya (K, H, D, X, d, C, m) >> "); 
-					scanf("%f %c", &inputangka, &LongUnit);	
+					scanf("%f %c", &inputangka, &LongUnit);
+					
 					switch(LongUnit){
 						case 'c': case 'C':
-							firstRes = inputangka / 100; 
+							firstRes = CentitoMetrik(inputangka); 
 							firstResUnit = 'X';
-							secondRes = inputangka / 100000; 
+							secondRes = CentitoKilo(inputangka); 
 							secondResUnit = 'K';
-							thirdRes = inputangka * 10; 
+							thirdRes = CentitoMili(inputangka); 
 							thirdResUnit = 'm';
-							fourRes = inputangka / 1000; 
+							fourRes = CentitoDeka(inputangka); 
 							fourResUnit = 'D';
-							fivRes = inputangka / 10000; 
+							fivRes = CentitoHekto(inputangka); 
 							fivResUnit = 'H';
-							sixRes = inputangka / 10; 
+							sixRes = CentitoDesi(inputangka); 
 							sixResUnit = 'd';
 							printf("\n\t\t\t\t\t\t\t\t\t --> Hasilnya adalah: ");	
 							printf("\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c", firstRes, firstResUnit, secondRes, secondResUnit, thirdRes, thirdResUnit, fourRes, fourResUnit, fivRes, fivResUnit, sixRes, sixResUnit);
 							break;
 						case 'x': case 'X': 
-							firstRes = inputangka * 100; 
+							firstRes = MetriktoCenti(inputangka); 
 							firstResUnit = 'C';
-							secondRes = inputangka / 1000; 
+							secondRes = MetriktoKilo(inputangka); 
 							secondResUnit = 'K';
-							thirdRes = inputangka * 1000; 
+							thirdRes = MetriktoMili(inputangka); 
 							thirdResUnit = 'm';
-							fourRes = inputangka / 10; 
+							fourRes = MetriktoDeka(inputangka); 
 							fourResUnit = 'D';			
-							fivRes = inputangka / 100; 
+							fivRes = MetriktoHekto(inputangka); 
 							fivResUnit = 'H';
-							sixRes = inputangka * 10; 
+							sixRes = MetriktoDesi(inputangka); 
 							sixResUnit = 'd';
 							printf("\n\t\t\t\t\t\t\t\t\t --> Hasilnya adalah: ");	
 							printf("\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c", firstRes, firstResUnit, secondRes, secondResUnit, thirdRes, thirdResUnit, fourRes, fourResUnit, fivRes, fivResUnit, sixRes, sixResUnit);
 							break;
 						case 'k': case 'K':
-							firstRes = inputangka * 100000; 
+							firstRes = 	KilotoCenti(inputangka); 
 							firstResUnit = 'C';
-							secondRes = inputangka * 1000; 
+							secondRes = KilotoMetrik(inputangka); 
 							secondResUnit = 'X';
-							thirdRes = inputangka * 1000000; 
+							thirdRes = KilotoMili(inputangka); 
 							thirdResUnit = 'm';
-							fourRes = inputangka * 100; 
+							fourRes = KilotoDeka(inputangka); 
 							fourResUnit = 'D';			
-							fivRes = inputangka * 10; 
+							fivRes = KilotoHekto(inputangka); 
 							fivResUnit = 'H';
-							sixRes = inputangka * 10000; 
+							sixRes = KilotoDesi(inputangka); 
 							sixResUnit = 'd';
 							printf("\n\t\t\t\t\t\t\t\t\t --> Hasilnya adalah: ");	
 							printf("\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c", firstRes, firstResUnit, secondRes, secondResUnit, thirdRes, thirdResUnit, fourRes, fourResUnit, fivRes, fivResUnit, sixRes, sixResUnit);
 							break; 
 						case 'm': case 'M':
-							firstRes = inputangka / 10; 
+							firstRes = MilitoCenti(inputangka); 
 							firstResUnit = 'C';
-							secondRes = inputangka / 1000; 
+							secondRes = MilitoMetrik(inputangka); 
 							secondResUnit = 'X';
-							thirdRes = inputangka / 1000000; 
+							thirdRes = MilitoKilo(inputangka); 
 							thirdResUnit = 'K';
-							fourRes = inputangka / 10000; 
+							fourRes = MilitoDeka(inputangka); 
 							fourResUnit = 'D';			
-							fivRes = inputangka / 100000; 
+							fivRes = MilitoHekto(inputangka); 
 							fivResUnit = 'H';
-							sixRes = inputangka / 100; 
+							sixRes = MilitoDesi(inputangka); 
 							sixResUnit = 'd';
 							printf("\n\t\t\t\t\t\t\t\t\t --> Hasilnya adalah: ");	
 							printf("\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c", firstRes, firstResUnit, secondRes, secondResUnit, thirdRes, thirdResUnit, fourRes, fourResUnit, fivRes, fivResUnit, sixRes, sixResUnit);
 							break; 
 						case 'D':
-							firstRes = inputangka * 1000; 
+							firstRes = DekatoCenti(inputangka); 
 							firstResUnit = 'C';
-							secondRes = inputangka * 10; 
+							secondRes = DekatoMetrik(inputangka); 
 							secondResUnit = 'X';
-							thirdRes = inputangka / 100; 
+							thirdRes = DekatoKilo(inputangka); 
 							thirdResUnit = 'K';
-							fourRes = inputangka * 10000; 
+							fourRes = DekatoMili(inputangka); 
 							fourResUnit = 'm';			
-							fivRes = inputangka / 10; 
+							fivRes = DekatoHekto(inputangka); 
 							fivResUnit = 'H';
-							sixRes = inputangka * 100; 
+							sixRes = DekatoDesi(inputangka); 
 							sixResUnit = 'd';
 							printf("\n\t\t\t\t\t\t\t\t\t --> Hasilnya adalah: ");	
 							printf("\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c", firstRes, firstResUnit, secondRes, secondResUnit, thirdRes, thirdResUnit, fourRes, fourResUnit, fivRes, fivResUnit, sixRes, sixResUnit);
 							break; 
 						case 'd':
-							firstRes = inputangka * 10; 
+							firstRes = DesitoCenti(inputangka); 
 							firstResUnit = 'C';
-							secondRes = inputangka / 10; 
+							secondRes = DesitoMetrik(inputangka); 
 							secondResUnit = 'X';
-							thirdRes = inputangka / 10000; 
+							thirdRes = DesitoKilo(inputangka); 
 							thirdResUnit = 'K';
-							fourRes = inputangka * 100; 
+							fourRes = DesitoMili(inputangka); 
 							fourResUnit = 'm';			
-							fivRes = inputangka / 1000; 
+							fivRes = DesitoHekto(inputangka); 
 							fivResUnit = 'H';
-							sixRes = inputangka / 100; 
+							sixRes = DesitoDeka(inputangka); 
 							sixResUnit = 'D';
 							printf("\n\t\t\t\t\t\t\t\t\t --> Hasilnya adalah: ");	
 							printf("\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c", firstRes, firstResUnit, secondRes, secondResUnit, thirdRes, thirdResUnit, fourRes, fourResUnit, fivRes, fivResUnit, sixRes, sixResUnit);
 							break; 
 						case 'h': case 'H':
-							firstRes = inputangka * 10000; 
+							firstRes = HektotoCenti(inputangka); 
 							firstResUnit = 'C';
-							secondRes = inputangka * 100; 
+							secondRes = HektotoMetrik(inputangka); 
 							secondResUnit = 'X';
-							thirdRes = inputangka / 10; 
+							thirdRes = HektotoKilo(inputangka); 
 							thirdResUnit = 'K';
-							fourRes = inputangka * 10; 
+							fourRes = HektotoDeka(inputangka); 
 							fourResUnit = 'D';			
-							fivRes = inputangka * 100000; 
+							fivRes = HektotoMili(inputangka); 
 							fivResUnit = 'm';
-							sixRes = inputangka * 1000; 
+							sixRes = HektotoDesi(inputangka); 
 							sixResUnit = 'd';
 							printf("\n\t\t\t\t\t\t\t\t\t --> Hasilnya adalah: ");	
 							printf("\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c", firstRes, firstResUnit, secondRes, secondResUnit, thirdRes, thirdResUnit, fourRes, fourResUnit, fivRes, fivResUnit, sixRes, sixResUnit);
 							break; 
 						default:
 							break;
-					}									 
-					break;					
+				}
+					break;				
 				}
 
 					
@@ -443,11 +443,13 @@ int main(){
 		    puts	("\t\t\t\t\t\t   |----------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t   |                   2. LOGARITMA                                 |");
 		    puts	("\t\t\t\t\t\t   |----------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t   |                   3. INTEGRAL                                  |");
+			puts	("\t\t\t\t\t\t   |                   3. INTEGRAL TENTU                            |");
 		    puts	("\t\t\t\t\t\t   |----------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t   |                   4. LIMIT TAK HINGGA                          |");
 		    puts	("\t\t\t\t\t\t   |----------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t   |                   5. TURUNAN            	                    |");
+			puts	("\t\t\t\t\t\t   |                   5. LIMIT TAK HINGGA PECAHAN                  |");
+		    puts	("\t\t\t\t\t\t   |----------------------------------------------------------------|");		    
+			puts	("\t\t\t\t\t\t   |                   6. TURUNAN            	                    |");
 		    puts	("\t\t\t\t\t\t   +================================================================+");
 		    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);
 			switch(pilihan){
@@ -487,11 +489,11 @@ int main(){
 				{
 					float x, y, z,retln, retlog;
 					float bawah, atas;
-				    int derajat ,i, j;
+				    int n, derajat ,derajata, derajatb, i, j;
 					float ln, log,result, invSin, invCos, invTan, invCsc, invSec, invCot, func;
 					float akarPositif, akarNegatif, denom, nilaiPositif, nilaiNegatif, faktorPositif, faktorNegatif;
-					float coef[11];
-					float integral;					
+					float integral;
+					float coef[11], coefa[11], coefb[11], p;
 					double inf = INFINITY;					
 					system("cls");
 					printf("Derajat dari polinomial : ");
@@ -499,7 +501,7 @@ int main(){
 					
 					printf("Masukkan koefisien dari polinomial : \n");
 					for(i = 0; i<= derajat; i++){
-						printf("Koefisien %d : ", i);
+						printf("Coeffient %d : ", i);
 						scanf("%f", &coef[i]);
 					}
 					
@@ -508,30 +510,35 @@ int main(){
 					printf("Masukkan batas atas  : ");
 					scanf("%f", &atas);
 					
-					printf("f(x) = ");
-					for(i = 0; i <= derajat; i++){
-						if(i == 0){
-							printf("%.f +", coef[i]);
-						}else if(i == derajat){
-							printf("%.f*x^%d \n", coef[i], i);
-						}else{
-							printf("%.f*x^%d + ", coef[i], i);
+					if(bawah < atas){
+						printf("f(x) = ");
+						for(i = 0; i <= derajat; i++){
+							if(i == 0){
+								printf("%.f*x + ", coef[i]);
+							}else if(i == derajat){
+								printf("%.f/%d*x^%d \n", coef[i], i+1, i);
+							}else{
+								printf("%.f/%d*x^%d + ", coef[i], i+1, i);
+							}
 						}
+						
+						int n = 100;
+						float p = (atas - bawah) / n;
+						
+						float q[101];
+						float r[101];
+						float jumlah = 0.0;
+						float trapesium[100];
+						
+						integral = operasiIntegral(n, bawah, coef, derajat, p, q, r, trapesium);
+						
+						printf("Integralnya adalah : %f", integral);
+					}else{
+						printf("Input tidak valid");
 					}
-					
-					int n = 100;
-					float p = (atas - bawah) / n;
-					
-					float q[101];
-					float r[101];
-					float jumlah = 0.0;
-					float trapesium[100];
-					
-					integral = operasiIntegral(n, bawah, coef, derajat, p, q, r, trapesium);
-					
-					printf("Integralnya adalah : %f", integral);
 					break;					
 				}
+				
 				case 4:
 				{
 					float x, y, z,retln, retlog;
@@ -540,7 +547,7 @@ int main(){
 					float ln, log,result, invSin, invCos, invTan, invCsc, invSec, invCot, func;
 					float akarPositif, akarNegatif, denom, nilaiPositif, nilaiNegatif, faktorPositif, faktorNegatif;
 					float coef[11], p;
-					double inf = INFINITY;					
+					double inf = INFINITY;						
 					system("cls");	
 					printf("Derajat dari polinomial : ");
 					scanf("%d", &derajat);
@@ -560,12 +567,86 @@ int main(){
 						printf("%.f*X^%d + ", coef[i], i);
 					}
 					
-					double k = limit(coef, derajat, inf);
-					printf("Limit : %.4lf", k);
+					double l = limit(coef, derajat, inf);
+					
+					printf("Limit : %lf", l);					
 					break;
 									
 				}
+				
 				case 5:
+				{
+					float x, y, z,retln, retlog;
+					float bawah, atas;
+				    int n, derajat ,derajata, derajatb, i, j;
+					float ln, log,result, invSin, invCos, invTan, invCsc, invSec, invCot, func;
+					float akarPositif, akarNegatif, denom, nilaiPositif, nilaiNegatif, faktorPositif, faktorNegatif;
+					float integral;
+					float coef[11], coefa[11], coefb[11], p;
+					double inf = INFINITY;						
+					system("cls");	
+					printf("Derajat dari polinomial : ");
+					scanf("%d", &derajata);
+					
+					printf("Masukkan koefisien pembilang dari polinomial : \n");
+					for(i = 0; i<= derajata; i++){
+						printf("Coeffient pembilang %d : ", i);
+						scanf("%f", &coefa[i]);
+					}
+					
+					for(i=0; i <= derajata; i++){
+						if(i == 0){
+							printf("%.f + ", coefa[i]);
+						}else if (i == derajata){
+						printf("%.f*X^%d \n", coefa[i], i);
+						}else
+						printf("%.f*X^%d + ", coefa[i], i);
+					}
+					
+					printf("Derajat dari polinomial : ");
+					scanf("%d", &derajatb);
+					
+					printf("Masukkan koefisien penyebut dari polinomial : \n");
+					for(i = 0; i<= derajatb; i++){
+						printf("Coeffient penyebut %d : ", i);
+						scanf("%f", &coefb[i]);
+					}
+					
+					for(i=0; i <= derajatb; i++){
+						if(i == 0){
+							printf("%.f + ", coefb[i]);
+						}else if (i == derajatb){
+						printf("%.f*X^%d \n", coefb[i], i);
+						}else
+						printf("%.f*X^%d + ", coefb[i], i);
+					}
+									
+					if (derajata == derajatb){
+						float numer = limitBagiNum(coefa, derajata);
+						float denom = limitBagiDen(coefb, derajatb);
+						float hasil = numer/denom;
+						printf("Numer : %f", numer);
+						printf("Denom : %f", denom);
+						printf("Limit : %f", hasil);
+					}else if(derajata > derajatb){
+						float numer = limitBagiNum(coefa, derajata);
+						float denom = 0;		
+						float hasil = numer/denom;
+						printf("Numer : %f", numer);
+						printf("Denom : %f", denom);
+						printf("Limit : %f", hasil);
+					}else{
+						float numer = 0;
+						float denom = limitBagiDen(coefb, derajatb);
+						float hasil = numer/denom;
+						printf("Numer : %f", numer);
+						printf("Denom : %f", denom);
+						printf("Limit : %f", hasil);
+					}
+					break;						
+				}
+				
+				case 6:
 				{
 					float x, z,retln, retlog;
 					float bawah, atas;
@@ -587,11 +668,11 @@ int main(){
 					
 					for(i=0; i <= derajat; i++){
 						if(i == 0){
-							printf("%.f + ", coef[i]);
+							printf("%.f + ", coef[i]*i);
 						}else if (i == derajat){
-						printf("%.f*X^%d \n", coef[i], i);
+						printf("%.f*X^%d \n", coef[i]*i, i-1);
 						}else
-						printf("%.f*X^%d + ", coef[i], i);
+						printf("%.f*X^%d + ", coef[i]*i, i-1);
 					}
 					
 					printf("Input nilai x untuk turunan : ");
@@ -605,7 +686,7 @@ int main(){
 					printf("y = %.4f\n", y1);
 					float turunan = (y1 - y) / h;
 					
-					printf("Turunan : %.4f", turunan);
+					printf("Turunan : %.4f", round(turunan));					
 					break;					
 				}
 				default:
@@ -616,67 +697,68 @@ int main(){
 			}
 			break;
 		case 4:
-			system("cls");
-			header();
-			printf	("\n\t\t\t\t\t\t        <<<<<<<<<<<<<<<<<<<   Anda memilih opsi 4  >>>>>>>>>>>>>>>>>>>"); 
-			puts	("\n\n\t\t\t\t\t\t      +================ PILIH PERHITUNGAN STATISTIKA =================+");
-		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                       1. PERMUTASI                            |");
-		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                       2. KOMBINASI                            |");
-		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                       3. FAKTORIAL                            |");
-		    puts	("\t\t\t\t\t\t      +===============================================================+");
-		    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);
-		    
-		    switch(pilihan){
-				case 1:
-				{
-					int n, r, f;
-					int HslPermutasi;					
-					printf("Masukkan nilai n: ");
-					scanf("%d, %d", &n);
-					printf("Masukkan nilai r: ");
-					scanf("%d", &r);
-					if (n<r){
-						printf("invalid input n < r");
-						exit(0);
+				system("cls");
+				header();
+				printf	("\n\t\t\t\t\t\t        <<<<<<<<<<<<<<<<<<<   Anda memilih opsi 4  >>>>>>>>>>>>>>>>>>>"); 
+				puts	("\n\n\t\t\t\t\t\t      +================ PILIH PERHITUNGAN STATISTIKA =================+");
+			    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+				puts	("\t\t\t\t\t\t      |                       1. PERMUTASI                            |");
+			    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+				puts	("\t\t\t\t\t\t      |                       2. KOMBINASI                            |");
+			    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
+				puts	("\t\t\t\t\t\t      |                       3. FAKTORIAL                            |");
+			    puts	("\t\t\t\t\t\t      +===============================================================+");
+			    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);
+			    
+			    switch(pilihan){
+					case 1:
+					{
+						int n, r, f, Permutasi;
+						printf("Masukkan nilai n: ");
+						scanf("%d, %d", &n);
+						printf("Masukkan nilai r: ");
+						scanf("%d", &r);
+						if (n<r){
+							printf("invalid input n < r");
+							exit(0);
+						}else if (n>r){
+							Permutasi = permutasi(n, r);
+							printf("\nPermutasi (%d, %d):%d \n\n", n, r, Permutasi);
+						}														
+						break;
 					}
-					else if (n>r){
-						HslPermutasi = faktorial2(n)/faktorial2(n-r);
-						printf("\nPermutasi (%d, %d):%d ", n, r, HslPermutasi);
-					}															
-					break;
+					case 2:
+					{
+						int n, r, f, Kombinasi;
+						printf("Masukkan nilai n: ");
+						scanf("%d, %d", &n);
+						printf("Masukkan nilai r: ");
+						scanf("%d", &r);
+						if (n<r){
+							printf("invalid input n < r");
+							exit(0);
+						}else if (n>r){
+							Kombinasi = kombinasi(n,r);
+							printf("\nKombinasi (%d, %d):%d", n, r, Kombinasi);
+						}			
+						break;					
+					}
+					case 3:
+					{
+						int input, Fktrl1;
+						printf("Masukkan angka : ");
+						scanf("%d", &input);
+						printf("\n %d! = ", input);
+						Fktrl1 = Faktorial1(input);
+						printf(" = %d", Fktrl1);
+						break;											
+					}
+					default:
+						system("cls"); 
+						header(); 
+		            	printf("\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-3");  
+		            	break;
 				}
-				case 2:
-				{
-					int n, r, f;
-					int HslKombinasi;
-					printf("Masukkan nilai n: ");
-					scanf("%d, %d", &n);
-					printf("Masukkan nilai r: ");
-					scanf("%d", &r);
-					if (n<r){
-						printf("invalid input n < r");
-						exit(0);
-					} else if (n>r){
-						HslKombinasi = faktorial2(n)/(faktorial2 (r) * faktorial2(n-r));
-						printf("\nKombinasi (%d, %d):%d", n, r, HslKombinasi);
-					}				
-					break;					
-				}
-				case 3:
-				{
-					int input;
-					Faktorial1(input);	
-					break;											
-				}
-				default:
-					system("cls"); 
-					header(); 
-	            	printf("\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-3");  
-	            	break;
-			}
 			break;
 		case 5:
 			system("cls");
@@ -1216,67 +1298,67 @@ int main(){
 			puts	("\t\t\t\t\t\t      |                   13. AKAR PERSAMAAN KUADRAT                  |");																		
 		    puts	("\t\t\t\t\t\t      +===============================================================+");
 		    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);
-		    
-		    switch(pilihan){
-				case 1:
-				{
-					double x, sinval;
-  					printf("Masukkan x dalam derajat: ");
-  					scanf("%lf", &x);
-  					sinval = sin(x * pi / 180.0); // hitung sin		
-					printf("sin(%lf) = %lf\n", x, sinval);					  			
-					break;					
-				}
-				
-				case 2:
-				{
-					double x, cosval;
-					printf("Masukkan x dalam derajat: ");
-					scanf("%lf", &x);
-   					cosval = cos(x * pi / 180.0); // hitung cos	
-					printf("cos(%lf) = %lf\n", x, cosval);
-					break;											   			   					
-				}
-				
-				case 3:
-				{
-					double x, tanval;
-					printf("Masukkan x dalam derajat: ");
-					scanf("%lf", &x);
-					tanval = tan(x * pi / 180.0); // hitung tan
-					printf("tan(%lf) = %lf\n", x, tanval);					
-					break;	
-				}
-				
-				case 4:
-				{
-			    	double x, cotanval;
-			    	printf("Masukkan x dalam derajat: ");
-			    	scanf("%lf", &x);
-					cotanval = 1 / (tan(x * pi / 180.0)); // hitung cot	
-					printf("cot(%lf) = %lf\n", x, cotanval);
-					break;						
-				}
-				
-				case 5:
-				{
-					double x, secanval;
-					printf("Masukkan x dalam derajat: ");
-					scanf("%lf", &x);
-					secanval = 1 / (cos(x * pi / 180.0)); // hitung sec	
-					printf("sec(%lf) = %lf\n", x, secanval);
-					break;									
-				}
-				
-				case 6:
-				{
-					double x, cosecval;
-					printf("Masukkan x dalam derajat: ");
-					scanf("%lf", &x);					
-					cosecval = 1 / (sin(x * pi / 180.0)); // hitung cosec
-					printf("cosec(%lf) = %lf\n", x, cosecval);
-					break;															
-				}
+
+			    switch(pilihan){
+					case 1:
+					{
+						double x, sin;
+	  					printf("Masukkan x dalam derajat: ");
+	  					scanf("%lf", &x);
+	  					sin = Sinus(x);// hitung sin
+	   					printf("sin(%lf) = %lf\n", x, sin);					  			
+						break;					
+					}
+					
+					case 2:
+					{
+						double x, cos;
+						printf("Masukkan x dalam derajat: ");
+						scanf("%lf", &x);
+	   					cos = Cosinus(x); // hitung cos
+	   					printf("cos(%lf) = %lf\n", x, cos);
+						break;											   			   					
+					}
+					
+					case 3:
+					{
+						double x, tan;
+						printf("Masukkan x dalam derajat: ");
+						scanf("%lf", &x);
+						tan = Tangent(x); // hitung tan
+	   					printf("tan(%lf) = %lf\n", x, tan);					
+						break;	
+					}
+					
+					case 4:
+					{
+				    	double x, cotan;
+				    	printf("Masukkan x dalam derajat: ");
+				    	scanf("%lf", &x);
+						cotan = Cotangent(x); // hitung cot
+	   					printf("cot(%lf) = %lf\n", x, cotan);
+						break;						
+					}
+					
+					case 5:
+					{
+						double x, secant;
+						printf("Masukkan x dalam derajat: ");
+						scanf("%lf", &x);
+						secant = Secant(x); // hitung sec
+	   					printf("sec(%lf) = %lf\n", x, secant);
+						break;									
+					}
+					
+					case 6:
+					{
+						double x, cosec;
+						printf("Masukkan x dalam derajat: ");
+						scanf("%lf", &x);					
+						cosec = Cosecant(x) ;// hitung cosec
+	   					printf("cosec(%lf) = %lf\n", x, cosec);
+						break;															
+					}
 				
 				case 7:
 				{
@@ -1443,7 +1525,7 @@ int main(){
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t      |                       3. MENGHITUNG BITWISE                   |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
-			puts	("\t\t\t\t\t\t      |                       4. MENGHITUNG FLOOR                     |");						
+			puts	("\t\t\t\t\t\t      |                       4. MENENTUKAN PRIMA                     |");						
 		    puts	("\t\t\t\t\t\t      +===============================================================+");
 		    printf	("\t\t\t\t\t\t\t\t Pilih menu yang ingin Anda konversikan >> "); scanf("%d", &pilihan);	    	
 			switch(pilihan){
@@ -1538,6 +1620,27 @@ int main(){
 							break;
 					}								
 					break;
+				}
+				
+				case 4:
+				{
+					int n, prm, flag;
+					printf("Masukkan bilangan bulat positif: ");
+					scanf("%d", &n);
+					prm = Prima(n);
+					if (n == 1) {
+						printf("1 bukanlah bilangan prima.\n");
+					} 
+					else {
+						if (flag == 0){
+						    printf("%d adalah bilangan prima.\n", n);
+						}
+						else{
+						    printf("%d bukanlah bilangan prima.\n", n);
+						}					
+							break;
+					}
+					break;					
 				}
 
 			}
