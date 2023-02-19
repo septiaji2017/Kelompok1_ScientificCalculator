@@ -79,7 +79,25 @@ double limit(float coef[11], int derajat, double inf){
 	int i;
 	double l = 0.0;
 	for(i = 1; i <= derajat; i++){
-			l = coef[i] * pow(inf, i);
+		l = coef[i] * pow(inf, i);
+	}
+	return l;
+}
+
+double limitBagiNum(float coefa[11], int derajata){
+	int i;
+	float l = 0.0;
+	for(i = 1; i <= derajata; i++){
+		l = coefa[i];
+	}
+	return l;
+}
+
+double limitBagiDen(float coefb[11], int derajatb){
+	int i;
+	float l = 0.0;
+	for(i = 1; i <= derajatb; i++){
+		l = coefb[i];
 	}
 	return l;
 }
@@ -89,12 +107,13 @@ float operasiIntegral (int n, float bawah, float coef[11], int derajat, float p,
 	int i, j;
 	float jumlah = 0.0;
 		for(i = 0; i<= n; i++){
-				q[i] = bawah + i * p;
-				r[i] = 0.0;
-		for(j = 0; j <=	 derajat; j++){
+			q[i] = bawah + i * p;
+			r[i] = 0.0;
+			
+			for(j = 0; j <=	 derajat; j++){
 				r[i] += coef[j] * pow(q[i], j);
 			}
-		}
+		};
 		
 		for(i = 0; i < n; i++){
 			trapesium[i] = 0.5*p*(r[i]+r[i+1]);
