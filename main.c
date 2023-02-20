@@ -481,15 +481,6 @@ for (;;)
 					int pilih, Input, waktu1, waktu2, waktu3; 					
 					system("cls");
 					header();
-					printf	("\n\t\t\t\t\t\t    <<<<<<<<<<<<<<<  Anda memilih opsi konversi waktu  >>>>>>>>>>>>>>>"); 
-					puts	("\n\n\t\t\t\t\t\t\t  +================== KONVERSI WAKTU =================+");
-					puts	("\t\t\t\t\t\t\t  | ===> Keterangan: D = Detik       (d)              |");
-					puts	("\t\t\t\t\t\t\t  |                  K = Mikrodetik  (mcd)            |");
-					puts	("\t\t\t\t\t\t\t  |                  L = Milidetik   (ms)             |");
-					puts	("\t\t\t\t\t\t\t  |                  M = Menit       (m)              |");	
-					puts	("\t\t\t\t\t\t\t  |                  J = Jam         (J)              |");	
-					puts	("\t\t\t\t\t\t\t  | ===> Contoh Inputan : 60 M                        |");
-					puts	("\t\t\t\t\t\t\t  +===================================================+");
 					
 					puts	("\n\n\t\t\t\t\t\t   +====================== PILIH FITUR WAKTU ========================+");
 				    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
@@ -506,6 +497,10 @@ for (;;)
 					puts	("\t\t\t\t\t\t   |                 	   6. DETIK KE MENIT        		     |");	
 				    puts	("\t\t\t\t\t\t   +=================================================================+");
 				    printf	("\t\t\t\t\t\t\t\t   --> Pilih menu yang Anda inginkan >> "); scanf("%d", &pilih);					
+
+					system("cls");
+					header();
+					printf	("\n\t\t\t\t\t\t    <<<<<<<<<<<<<<<  Anda memilih opsi konversi waktu  >>>>>>>>>>>>>>>\n\n"); 
 	
 					switch(pilih){
 						case 1:
