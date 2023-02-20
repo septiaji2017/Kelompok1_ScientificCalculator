@@ -659,14 +659,14 @@ for (;;)
 					Operan = 0;
 					
 					while (p != NULL) {
-				        if (isdigit(p[0])) {
+				        if (isdigit(p[0]) || p[0] == '-' && isdigit (p[1])) {
 				            arr[CekAngka].angka = atof(p);
 				            CekAngka = CekAngka+2;
 				        }else if (p[0]=='+') {
 				            arr[CekOperan].operasi = p[0];
 				            CekOperan = CekOperan+2;
 				            Operan++;
-				        }else if (p[0]=='-') {
+				        }else if (p[0]=='-' && !isdigit(p[1])) {
 				            arr[CekOperan].operasi = p[0];
 				            CekOperan = CekOperan+2;
 				            Operan++;
@@ -1401,7 +1401,10 @@ for (;;)
 				    int i, j, k;   
 				    int matrixA[10][10], matrixB[10][10], matrixHasil[10][10]; 
 					int sumM[10][10], scaM[10][10], mulM[10][10]; 
-				    int rowA, rowB, colA, colB;  
+				    int rowA=0; 
+					int rowB=0;
+					int colA=0; 
+					int colB=0;  
 				    int operation; 
 				    char again = 'Y';  
 				    int scalar = 0;  
@@ -1409,6 +1412,7 @@ for (;;)
 				    int sub = -1;  
 				  
 //				    while (again == 'Y'){  
+					system("cls");
 						puts	("\n\n\t\t\t\t\t\t   +===================  PILIH OPERASI MATRIKS  =====================+");
 					    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
 						puts	("\t\t\t\t\t\t   |                    1. PERTAMBAHAN MATRIKS                       |");
@@ -2142,7 +2146,7 @@ for (;;)
 					
 	}
 	
-		printf("\n\n\t\t\t\t\t\t Coba Lagi (y/t)?");
+		printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
 		lagi = getch();
 		if(lagi!='y'){
 			break;
