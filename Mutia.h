@@ -56,7 +56,7 @@ int kombinasi(int n, int r){
 double Sinus(double x) {
 	
    double sinval; 
-   sinval = sin(x) * (pi / 180.0); // hitung sin
+   sinval = sin(x * pi / 180.0); // hitung sin
    return (sinval);
 }
 
