@@ -9,7 +9,8 @@
 typedef struct{
      float angka;
      char operasi;
-} matematika;
+} Matematika;
+
 
 char header(){
 	printf  ("\n");
@@ -145,8 +146,6 @@ for (;;)
 					 bool valid, kabisat;
 					 int NewTgl, pilihan, TglSblm, BlnSblm, ThnSblm;
 				
-				
-						system("cls");
 						puts	("\n\n\t\t\t\t\t\t   +==================  PILIH KONFIGURASI TANGGAL  ==================+");
 					    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
 						puts	("\t\t\t\t\t\t   |                  1. TANGGAL SEBELUM DAN SESUDAH                 |");
@@ -342,7 +341,7 @@ for (;;)
 				{
 					float inputangka, firstRes, secondRes, thirdRes, fourRes, fivRes, sixRes; 
 					char LongUnit, firstResUnit, secondResUnit, thirdResUnit, fourResUnit, fivResUnit, sixResUnit;
-					
+					system("cls"); 					
 					printf	("\n\t\t\t\t\t\t  <<<<<<<<<<<<<<<  Anda memilih opsi konversi metrik  >>>>>>>>>>>>>>>"); 
 					puts	("\n\n\t\t\t\t\t\t\t  +================= KONVERSI METRIK =================+");
 					puts	("\t\t\t\t\t\t\t  | ===> Keterangan: K = Kilo  (k-)                   |");
@@ -615,24 +614,23 @@ for (;;)
 			break;
 		case 2:
 		{
-			matematika arr[100];
+			Matematika arr[100];
 			char *p;
-			char input[300];
-			int cek_o=1, cek_a=0, op=0;
-			int i,j,c,d,a,b,z,pilihan;			
+			char input[200];
+			int CekOperan, CekAngka, Operan;
+			int i,j,pilihan;
+			int loop1, loop2;
 			system("cls");
-			header();
 			puts	("\n\n\t\t\t\t\t\t   +==================== PILIH FITUR ARITMATIKA ======================+");
-		    puts	("\t\t\t\t\t\t   |------------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t   |------------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t   |                          1. KALKULATOR                           |");
-		    puts	("\t\t\t\t\t\t   |------------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t   |------------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t   |                       2. RIWAYAT KALKULATOR                      |");
-		    puts	("\t\t\t\t\t\t   |------------------------------------------------------------------|");
+			puts	("\t\t\t\t\t\t   |------------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t   |                   3. MENGHAPUS RIWAYAT KALKULATOR                |");
-		    puts	("\t\t\t\t\t\t   +==================================================================+");
-		    printf	("\t\t\t\t\t\t\t\t     --> Pilih menu yang Anda inginkan >> "); scanf("%d", &pilihan);
-		    
-	
+			puts	("\t\t\t\t\t\t   +==================================================================+");
+			printf	("\t\t\t\t\t\t\t\t     --> Pilih menu yang Anda inginkan >> "); scanf("%d", &pilihan);
+			
 			switch(pilihan){
 				case 1:
 					{
@@ -646,70 +644,51 @@ for (;;)
 					puts	("\t\t\t\t\t\t\t   |                  / = Pembagian                    |");
 					puts	("\t\t\t\t\t\t\t   |                  ^ = Perpangkatan                 |");		
 					puts	("\t\t\t\t\t\t\t   | ===> Contoh Inputan : 25 + 70 - 8 ^ 3 + 10        |");
+					puts	("\t\t\t\t\t\t\t   | ===> Contoh Inputan Akar : (angka) v 25           |");
 					puts	("\t\t\t\t\t\t\t   |   ===> Gunakan spasi untuk menginputkannya <===   |");
 					puts	("\t\t\t\t\t\t\t   +===================================================+");
 					getchar();
+					
+					printf("\n\t\t Inputkan angka dan operator yang ingin Anda hitung --> ");
 					fgets(input, sizeof(input), stdin);
 					
 					p = strtok(input, " ");
 					
-					i=0;
+					CekAngka = 0;
+					CekOperan = 1;
+					Operan = 0;
 					
 					while (p != NULL) {
 				        if (isdigit(p[0])) {
-				            arr[cek_a].angka = atof(p);
-				            printf("\nAngkanya %d = %.2lf", cek_a, arr[cek_a].angka);
-				            cek_a=cek_a+2;
-				        } 
-						
-						else if (p[0]=='+') {
-				            arr[cek_o].operasi = p[0];
-				            printf("\nOperasinya %d = %c", cek_o, arr[cek_o].operasi);
-				            cek_o=cek_o+2;
-				            op++;
-				        } 
-				        
-				        else if (p[0]=='-') {
-				            arr[cek_o].operasi = p[0];
-				            printf("\nOperasinya %d = %c", cek_o, arr[cek_o].operasi);
-				            cek_o=cek_o+2;
-				            op++;
-				        } 
-				        
-				        else if (p[0]=='*') {
-				            arr[cek_o].operasi = p[0];
-				            printf("\nOperasinya %d = %c", cek_o, arr[cek_o].operasi);
-				            cek_o=cek_o+2;
-				            op++;
-				        } 
-				        
-				        else if (p[0]=='/') {
-				            arr[cek_o].operasi = p[0];
-				            printf("\nOperasinya %d = %c", cek_o, arr[cek_o].operasi);
-				            cek_o=cek_o+2;
-				            op++;
-				        } 
-				        
-				        else if (p[0]=='^') {
-				        	arr[cek_o].operasi = p[0];
-				        	printf("\nOperasinya %d = %c", cek_o, arr[cek_o].operasi);
-				        	cek_o=cek_o+2;
-				        	op++;
-				        } 
-				        
-				        else if (p[0]=='v') {
-				    		arr[cek_o].operasi = p[0];
-				        	printf("\nOperasinya %d = %c", cek_o, arr[cek_o].operasi);
-				        	cek_o=cek_o+2;
-				        	op++;
-				        } 
-						
-						else {
-				            printf("Salah input: %s\n", p);
-				            return 1;
+				            arr[CekAngka].angka = atof(p);
+				            CekAngka = CekAngka+2;
+				        }else if (p[0]=='+') {
+				            arr[CekOperan].operasi = p[0];
+				            CekOperan = CekOperan+2;
+				            Operan++;
+				        }else if (p[0]=='-') {
+				            arr[CekOperan].operasi = p[0];
+				            CekOperan = CekOperan+2;
+				            Operan++;
+				        }else if (p[0]=='^') {
+				        	arr[CekOperan].operasi = p[0];
+				        	CekOperan = CekOperan+2;
+				        	Operan++;
+				        }else if (p[0]=='v') {
+				    		arr[CekOperan].operasi = p[0];
+				        	CekOperan = CekOperan+2;
+				        	Operan++;
+				        }else if (p[0]=='*') {
+				            arr[CekOperan].operasi = p[0];
+				            CekOperan = CekOperan+2;
+				            Operan++;
+				        }else if (p[0]=='/') {
+				            arr[CekOperan].operasi = p[0];
+				            CekOperan = CekOperan+2;
+				            Operan++;
+				        }else {
+				            printf("\t\t\t\t\t\t\t\t     --> Maaf Anda salah input: %s\n", p);
 				        }
-				        
-				        
 				        
 				        p = strtok(NULL, " ");	
 				    } 
@@ -719,199 +698,138 @@ for (;;)
 							printf("\t\t\t\t\t --> File gagal dibuat!\n");
 							exit(1);
 						}
-				    
-				    i = 1;
-				    j = 0;
-				    cek_o = 1;
-				    cek_a = 0;
-				    c = 0;
-				    b = 0;
-				    z = 0;
-					printf("\nJumlah Operatornya %d", op);
-					
-		
-				    	a = 1;
-				    	while(a<=op){
+				    	for(loop1=1; loop1 <= Operan; loop1++){
 				    		i = 1;
 				    		j = 0;
-				    		
-				//    		printf("\nloop %d", a);
-				  	
-				    		b=1;
-				    		while (b<=op){
-				//    		printf("\n loop loop %d", b);
-							if((arr[i].operasi == '^')||(arr[i].operasi == 'v')){
-								
-								if(arr[i].operasi == '^'){
-									arr[i-1].angka = pow(arr[i-1].angka, arr[i+1].angka);
-									arr[i+j].operasi =' ';
-									arr[i+j+1].angka = 0;
-								
-									while(arr[i+j+2].operasi != '\0'){
-										arr[i+j+1].angka = arr[i+j+2+1].angka;
-										arr[i+j].operasi = arr[i+j+2].operasi;
-										arr[i+j+2].operasi =' ';
-										arr[i+j+2+1].angka = 0;
-										j+=2;
-				
+				    	
+				    		for(loop2=1; loop2 <= Operan; loop2++){
+								if((arr[i].operasi == '^')||(arr[i].operasi == 'v')){
+									
+									if(arr[i].operasi == '^'){
+										arr[i-1].angka = pow(arr[i-1].angka, arr[i+1].angka);
+										arr[i+j].operasi =' ';
+										arr[i+j+1].angka = 0;
+									
+										while(arr[i+j+2].operasi != '\0'){
+											arr[i+j+1].angka = arr[i+j+2+1].angka;
+											arr[i+j].operasi = arr[i+j+2].operasi;
+											arr[i+j+2].operasi =' ';
+											arr[i+j+2+1].angka = 0;
+											j+=2;
+					
+										}
+					
+										break;
 									}
-									printf("\nHasil perpangkatan %.2lf", arr[i-1].angka);
-				
-									break;
-								}
-								
-								if(arr[i].operasi == 'v'){
-									arr[i-1].angka = pow(arr[i+1].angka, 1/2);
-									arr[i+j].operasi =' ';
-									arr[i+j+1].angka = 0;
-								
-									while(arr[i+j+2].operasi != '\0'){
-										arr[i+j+1].angka = arr[i+j+2+1].angka;
-										arr[i+j].operasi = arr[i+j+2].operasi;
-										arr[i+j+2].operasi =' ';
-										arr[i+j+2+1].angka = 0;
-										j+=2;
-				
+									
+									if(arr[i].operasi == 'v'){
+										arr[i-1].angka = pow(arr[i+1].angka, 0.5);
+										arr[i+j].operasi =' ';
+										arr[i+j+1].angka = 0;
+									
+										while(arr[i+j+2].operasi != '\0'){
+											arr[i+j+1].angka = arr[i+j+2+1].angka;
+											arr[i+j].operasi = arr[i+j+2].operasi;
+											arr[i+j+2].operasi =' ';
+											arr[i+j+2+1].angka = 0;
+											j+=2;
+					
+										}
+										break;
 									}
-									printf("\nHasil akar %%.2lf", arr[i-1].angka);
-				
-									break;
-								}
-				
+					
+								} i=i+2;	
 							}
-							i=i+2;
-							b=b+1;
-						}
-						a=a+1;
-				//		printf("\nHasil kalkulasi akhir %d", arr[0].angka);
+						break;
 					}
 				
-				
-				    	a = 1;
-				    	while(a<=op){
+				    	for(loop1=1; loop1 <= Operan; loop1++){
 				    		i = 1;
 				    		j = 0;
-				    		
-				//    		printf("\nloop %d", a);
-				  	
-				    		b=1;
-				    		while (b<=op){
-				//    		printf("\n loop loop %d", b);
-							if((arr[i].operasi == '*')||(arr[i].operasi == '/')){
-								
-								if(arr[i].operasi == '*'){
-									arr[i-1].angka = arr[i-1].angka * arr[i+1].angka;
-									arr[i+j].operasi =' ';
-									arr[i+j+1].angka = 0;
-								
-									while(arr[i+j+2].operasi != '\0'){
-										arr[i+j+1].angka = arr[i+j+2+1].angka;
-										arr[i+j].operasi = arr[i+j+2].operasi;
-										arr[i+j+2].operasi =' ';
-										arr[i+j+2+1].angka = 0;
-										j+=2;
-				
-									}
-									printf("\nHasil perkalian %.2lf", arr[i-1].angka);
-				
-									break;
-								}
-								
-								if(arr[i].operasi == '/'){
-									arr[i-1].angka = arr[i-1].angka / arr[i+1].angka;
-									arr[i+j].operasi =' ';
-									arr[i+j+1].angka = 0;
-								
-									while(arr[i+j+2].operasi != '\0'){
-										arr[i+j+1].angka = arr[i+j+2+1].angka;
-										arr[i+j].operasi = arr[i+j+2].operasi;
-										arr[i+j+2].operasi =' ';
-										arr[i+j+2+1].angka = 0;
-										j+=2;
-				
-									}
-									printf("\nHasil pembagian %.2lf", arr[i-1].angka);
-				
-									break;
-								}
-				
-							}
-							i=i+2;
-							b=b+1;
-						}
-						a=a+1;
-						z = arr[0].angka;
-				//		printf("\nHasil kalkulasi akhir %d", z);
-					}
-				//	printf("\nHasil kalkulasi akhir %d", z);
-				
-						pf = fopen("RIWAYAT.txt","a");
-						fprintf(pf,"hasil: %.2lf \n",arr[0].angka);			
-						fclose(pf);			
+				    		for(loop2=1; loop2 <= Operan; loop2++){
+								if((arr[i].operasi == '*')||(arr[i].operasi == '/')){
+									
+									if(arr[i].operasi == '*'){
+										arr[i-1].angka = arr[i-1].angka * arr[i+1].angka;
+										arr[i+j].operasi =' ';
+										arr[i+j+1].angka = 0;
+									
+										while(arr[i+j+2].operasi != '\0'){
+											arr[i+j+1].angka = arr[i+j+2+1].angka;
+											arr[i+j].operasi = arr[i+j+2].operasi;
+											arr[i+j+2].operasi =' ';
+											arr[i+j+2+1].angka = 0;
+											j+=2;
 					
-					    a = 1;
-				    	while(a<=op){
+										}
+										break;
+									}
+									
+									if(arr[i].operasi == '/'){
+										arr[i-1].angka = arr[i-1].angka / arr[i+1].angka;
+										arr[i+j].operasi =' ';
+										arr[i+j+1].angka = 0;
+									
+										while(arr[i+j+2].operasi != '\0'){
+											arr[i+j+1].angka = arr[i+j+2+1].angka;
+											arr[i+j].operasi = arr[i+j+2].operasi;
+											arr[i+j+2].operasi =' ';
+											arr[i+j+2+1].angka = 0;
+											j+=2;
+					
+										}
+										break;
+									}
+								} i=i+2;
+						}
+					}
+				    	for(loop1=1; loop1 <= Operan; loop1++){
 				    		i = 1;
 				    		j = 0;
-				    		
-				//    		printf("\nloop %d", a);
-				  	
-				    		b=1;
-				    		while (b<=op){
-				//    		printf("\n loop loop %d", b);
-							if((arr[i].operasi == '+')||(arr[i].operasi == '-')){
-								
-								if(arr[i].operasi == '+'){
-									arr[i-1].angka = arr[i-1].angka + arr[i+1].angka;
-									arr[i+j].operasi =' ';
-									arr[i+j+1].angka = 0;
-								
-									while(arr[i+j+2].operasi != '\0'){
-										arr[i+j+1].angka = arr[i+j+2+1].angka;
-										arr[i+j].operasi = arr[i+j+2].operasi;
-										arr[i+j+2].operasi =' ';
-										arr[i+j+2+1].angka = 0;
-										j+=2;
-				
-									}
-									printf("\nHasil pertambahan %.2lf", arr[i-1].angka);
-									break;
-								}
-								
-								if(arr[i].operasi == '-'){
-									arr[i-1].angka = arr[i-1].angka - arr[i+1].angka;
-									arr[i+j].operasi =' ';
-									arr[i+j+1].angka = 0;
-								
-									while(arr[i+j+2].operasi != '\0'){
-										arr[i+j+1].angka = arr[i+j+2+1].angka;
-										arr[i+j].operasi = arr[i+j+2].operasi;
-										arr[i+j+2].operasi =' ';
-										arr[i+j+2+1].angka = 0;
-										j+=2;
-										
-									}
-									printf("\nHasil pengurangan %.2lf", arr[i-1].angka);
-				
-									break;
-								}
-							}
-							i=i+2;
-							b=b++;
-						}
-						a=a++;
-					}
+				    		for(loop2=1; loop2 <= Operan; loop2++){
+								if((arr[i].operasi == '+')||(arr[i].operasi == '-')){
+									
+									if(arr[i].operasi == '+'){
+										arr[i-1].angka = arr[i-1].angka + arr[i+1].angka;
+										arr[i+j].operasi =' ';
+										arr[i+j+1].angka = 0;
+									
+										while(arr[i+j+2].operasi != '\0'){
+											arr[i+j+1].angka = arr[i+j+2+1].angka;
+											arr[i+j].operasi = arr[i+j+2].operasi;
+											arr[i+j+2].operasi =' ';
+											arr[i+j+2+1].angka = 0;
+											j+=2;
 					
-					cek_o=1; 
-					cek_a=0;
-					while(arr[cek_o].operasi != '\0'){
-		
-						cek_o = cek_o + 2;
-						cek_a = cek_a + 2;
-					}
-		
+										}
+										break;
+									}
+									
+									if(arr[i].operasi == '-'){
+										arr[i-1].angka = arr[i-1].angka - arr[i+1].angka;
+										arr[i+j].operasi =' ';
+										arr[i+j+1].angka = 0;
+									
+										while(arr[i+j+2].operasi != '\0'){
+											arr[i+j+1].angka = arr[i+j+2+1].angka;
+											arr[i+j].operasi = arr[i+j+2].operasi;
+											arr[i+j+2].operasi =' ';
+											arr[i+j+2+1].angka = 0;
+											j+=2;
+											
+										}
+					
+										break;
+									}
+								} i=i+2;
+							}
+						}	
+					printf("\n\n\t\t\t\t\t\t\t\t --> Hasil akhir kalkulasi = %.2lf <--", arr[0].angka);
+					pf = fopen("RIWAYAT.txt","a");
+					fprintf(pf,"hasil: %.2lf \n",arr[0].angka);			
+					fclose(pf);
 					break;
-					}
+				}
 					
 				case 2:
 					{
@@ -940,10 +858,13 @@ for (;;)
 					FILE *hapus;
 					hapus = fopen("RIWAYAT.txt","w");
 					fclose(hapus);
+					printf("\n\n\t\t\t\t\t\t\t\t   --> Riwayat kalkulator sudah terhapus <--\r\n\n");
+					break;
 				}
+				default:
+					printf("Salah menginputkan!");
 						
 			}
-
 			break;			
 		}
 
@@ -1724,7 +1645,6 @@ for (;;)
 					  	int x, pilihanHimpunan, n, i;
 					  	system("cls");
 					  	set1[0]=set2[0]=set3[0]=0;							
-					  do{ 
 					  	system("cls");
 						puts	("\n\n\t\t\t\t\t\t    +===================   PILIH OPERASI HIMPUNAN  ===================+");
 					    puts	("\t\t\t\t\t\t    |-----------------------------------------------------------------|");
@@ -1770,10 +1690,7 @@ for (;;)
 						    default:  
 						        printf("\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-3");  
 						        break;
-					    }
-					  printf("\npress a key............");
-					  getch();
-					  	}while(pilihan!=4);				
+					    }			
 					break;
 
 				}
