@@ -1807,11 +1807,11 @@ for (;;)
 					
 					case 4:
 					{
-				    	double x, cotan;
-				    	printf("Masukkan x dalam derajat: ");
-				    	scanf("%lf", &x);
-						cotan = Cotangent(x); // hitung cot
-	   					printf("cot(%lf) = %lf\n", x, cotan);
+						double x, cosec;
+						printf("Masukkan x dalam derajat: ");
+						scanf("%lf", &x);					
+						cosec = Cosecant(x) ;// hitung cosec
+	   					printf("cosec(%lf) = %lf\n", x, cosec);
 						break;						
 					}
 					
@@ -1827,11 +1827,11 @@ for (;;)
 					
 					case 6:
 					{
-						double x, cosec;
-						printf("Masukkan x dalam derajat: ");
-						scanf("%lf", &x);					
-						cosec = Cosecant(x) ;// hitung cosec
-	   					printf("cosec(%lf) = %lf\n", x, cosec);
+				    	double x, cotan;
+				    	printf("Masukkan x dalam derajat: ");
+				    	scanf("%lf", &x);
+						cotan = Cotangent(x); // hitung cot
+	   					printf("cot(%lf) = %lf\n", x, cotan);
 						break;															
 					}
 				
