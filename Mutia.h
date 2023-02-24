@@ -160,7 +160,7 @@ double cotant(double x) {
 
 //Perhitungan Trigonometri menggunakan radian
 
-double Trigo(char *trigo){
+double Trigono(char *trigo){
 double x;
 	if (strstr(trigo, "sin")){
 		sscanf(trigo,"sin(%lf)",&x);
