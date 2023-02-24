@@ -2,6 +2,7 @@
 #define Mutia_h
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 #include "pi.h"
  
@@ -51,63 +52,140 @@ int kombinasi(int n, int r){
 
 //mencari nilai dari derajat trigonometri
 
-//Sinus
-
-double Sinus(double x) {
-	
-   double sinval; 
-   sinval = sin(x * pi / 180.0); // hitung sin
-   return (sinval);
+//sinus
+double sin(double x) {
+	double sinval;
+	sinval = sin(x * pi / 180.0);
+    return sinval;
 }
 
 //Cosinus
-
-double Cosinus(double x) {
-	
-   double cosval;
-   
-   cosval = cos(x * pi / 180.0); // hitung cos
-   return (cosval);
+double Cos(double x) {
+	double cosval;
+	cosval = cos(x * pi / 180.0);
+   return cosval;
 }
 
 //Tangent
-
-double Tangent(double x) {
-	
-   double tanval;
-   
-   tanval = tan(x * pi / 180.0); // hitung tan
-   return (tanval);
+double Tan(double x) {
+	double tanval;
+	tanval = tan(x * pi / 180.0);
+   return tanval;
 }
 
 //Cosecant
-
-double Cosecant(double x) {
-	
-   double cosecval;
-   
-   cosecval = 1 / (sin(x * pi / 180.0)); // hitung cosec
-   return (cosecval);
+double Csc(double x) {
+	double sinval, cosecval;
+	sinval = sin(x * pi / 180.0);
+	cosecval = 1 / sinval;
+   return cosecval;
 }
 
 //Secant
-
-double Secant(double x) {
-	
-   double secanval;
-   
-   secanval = 1 / (cos(x * pi / 180.0)); // hitung sec
-   return (secanval);
+double Sec(double x) {
+	double cosval, secanval;
+	cosval = cos(x * pi / 180.0);
+	secanval = 1 / cosval;
+   return secanval;
 }
 
-//Cotangent
+//Cotan
+double Cot(double x) {
+	double tanval, cotanval;
+	tanval = tan(x * pi / 180.0);
+	cotanval = 1 / tanval;
+   return cotanval;
+}
 
-double Cotangent(double x) {
-	
-   double cotanval;
-   
-   cotanval = 1 / (tan(x * pi / 180.0)); // hitung cot
-   return (cotanval);
+//Perhitungan Trigonometri menggunakan derajat
+double Trigonometri(char *trigo){
+double x;
+	if (strstr(trigo, "sin")){
+		sscanf(trigo,"sin%lf",&x);
+		return sin(x);
+	}
+	if (strstr(trigo, "cos")){
+		sscanf(trigo,"cos%lf",&x);
+		return Cos(x);
+	}
+	if (strstr(trigo, "tan")){
+		sscanf(trigo,"tan%lf",&x);
+		return Tan(x);
+	}
+	if (strstr(trigo, "csc")){
+		sscanf(trigo,"csc%lf",&x);
+		return Csc(x);
+	}
+	if (strstr(trigo, "sec")){
+		sscanf(trigo,"sec%lf",&x);
+		return Sec(x);
+	}
+	if (strstr(trigo, "cot")){
+		sscanf(trigo,"cot%lf",&x);
+		return Cot(x);
+	}
+}
+
+//Mencari nilai dari kuadran trigonometri
+
+//Sinus
+double sinus(double x) {
+   return sin(x);
+}
+
+//Cosinus
+double cosinus(double x) {
+   return cos(x);
+}
+
+//Tangent
+double tangent(double x) {
+   return tan(x);
+}
+
+//Cosecant
+double cosecant(double x) {
+   return 1/sin(x);
+}
+
+//Secant
+double secant(double x) {
+   return 1/cos(x);
+}
+
+//Cotan
+double cotant(double x) {
+   return 1/tan(x);
+}
+
+//Perhitungan Trigonometri menggunakan radian
+
+double Trigo(char *trigo){
+double x;
+	if (strstr(trigo, "sin")){
+		sscanf(trigo,"sin(%lf)",&x);
+		return sinus(x);
+	}
+	if (strstr(trigo, "cos")){
+		sscanf(trigo,"cos(%lf)",&x);
+		return cosinus(x);
+	}
+	if (strstr(trigo, "tan")){
+		sscanf(trigo,"tan(%lf)",&x);
+		return tangent(x);
+	}
+	if (strstr(trigo, "csc")){
+		sscanf(trigo,"csc(%lf)",&x);
+		return cosecant(x);
+	}
+	if (strstr(trigo, "sec")){
+		sscanf(trigo,"sec(%lf)",&x);
+		return secant(x);
+	}
+	if (strstr(trigo, "cot")){
+		sscanf(trigo,"cot(%lf)",&x);
+		return cotant(x);
+	}
 }
 
 
