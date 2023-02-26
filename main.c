@@ -4,6 +4,7 @@
 #include "Rico.h"
 #include "Naufal.h"
 #include "Marshya.h"
+#include <ctype.h>
 //digabungkan oleh ridha septiaji
 
 typedef struct{

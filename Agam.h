@@ -419,4 +419,750 @@ int bedasetangkup(int set1[],int set2[],int set3[]){
 }
 
 
+
+
+
+typedef struct{
+     float angka;
+     char operasi;
+} Matematika;
+
+float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
+{			
+	Matematika arr1[100];
+	char *p;
+	char *string;
+	char input[200];
+	int k,r,i,j,l,pilihan,hasil,a, kurung, hitung, hitung1;
+	int loop1, loop2, loop3;
+	float hasilAkhir;
+	int CekBuka, CekTutup;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	
+    while (i < CekAngka + CekOperan) {
+        if (arr[i].operasi == '<') {
+            j = i + 1;
+            
+            while (arr[j].operasi != '>') {
+//	            	printf("misahin array %.2lf\n\n", arr[j].angka);
+            	
+                arr1[k] = arr[j];
+                k++;
+                j++;
+                
+            }
+            
+//	            printf("saat rekursif\n\n");
+            arr[i].angka = round(kalku(arr1, Operan, CekAngka, CekOperan));
+            arr[i].operasi = '\0';
+            for (l = i + 1; l <= j; l++) {
+                arr[l].operasi = '\0';
+                arr[l].angka = 0;
+            }
+            l=1;
+            while(l<=CekAngka + CekOperan){
+							
+				arr[i+l].angka = arr[j+l].angka;
+				arr[i+l].operasi = arr[j+l].operasi;
+				arr[j+l].operasi ='\0';
+				arr[j+l].angka = 0;
+				
+				l++;
+
+			}
+        } i++;
+    }
+
+	i = 0;
+	j = 0;
+	k = 0;
+	
+    while (i < CekAngka + CekOperan) {
+        if (arr[i].operasi == '{') {
+            j = i + 1;
+            
+            while (arr[j].operasi != '}') {
+//	            	printf("misahin array %.2lf\n\n", arr[j].angka);
+            	
+                arr1[k] = arr[j];
+                k++;
+                j++;
+                
+            }
+            
+//	            printf("saat rekursif\n\n");
+            arr[i].angka = ceil(kalku(arr1, Operan, CekAngka, CekOperan));
+            arr[i].operasi = '\0';
+            for (l = i + 1; l <= j; l++) {
+                arr[l].operasi = '\0';
+                arr[l].angka = 0;
+            }
+            l=1;
+            while(l<=CekAngka + CekOperan){
+							
+				arr[i+l].angka = arr[j+l].angka;
+				arr[i+l].operasi = arr[j+l].operasi;
+				arr[j+l].operasi ='\0';
+				arr[j+l].angka = 0;
+				
+				l++;
+
+			}
+        } i++;
+    }
+
+	i = 0;
+    j = 0;
+    k = 0;
+    while (i < CekAngka + CekOperan) {
+        if (arr[i].operasi == '[') {
+            j = i + 1;
+            
+            while (arr[j].operasi != ']') {
+//	            	printf("misahin array %.2lf\n\n", arr[j].angka);
+            	
+                arr1[k] = arr[j];
+                k++;
+                j++;
+                
+            }
+            
+//	            printf("saat rekursif\n\n");
+            arr[i].angka = floor(kalku(arr1, Operan, CekAngka, CekOperan));
+            arr[i].operasi = '\0';
+            for (l = i + 1; l <= j; l++) {
+                arr[l].operasi = '\0';
+                arr[l].angka = 0;
+            }
+            l=1;
+            while(l<=CekAngka + CekOperan){
+							
+				arr[i+l].angka = arr[j+l].angka;
+				arr[i+l].operasi = arr[j+l].operasi;
+				arr[j+l].operasi ='\0';
+				arr[j+l].angka = 0;
+				
+				l++;
+
+			}
+        } i++;
+    }
+    
+	i = 0;
+    j = 0;
+    k = 0;
+    while (i < CekAngka + CekOperan) {
+        if (arr[i].operasi == '|') {
+            j = i + 1;
+            
+            while (arr[j].operasi != '|') {
+//	            	printf("misahin array %.2lf\n\n", arr[j].angka);
+            	
+                arr1[k] = arr[j];
+                k++;
+                j++;
+                
+            }
+            
+//	            printf("saat rekursif\n\n");
+            arr[i].angka = abs(kalku(arr1, Operan, CekAngka, CekOperan));
+            arr[i].operasi = '\0';
+            for (l = i + 1; l <= j; l++) {
+                arr[l].operasi = '\0';
+                arr[l].angka = 0;
+            }
+            l=1;
+            while(l<=CekAngka + CekOperan){
+							
+				arr[i+l].angka = arr[j+l].angka;
+				arr[i+l].operasi = arr[j+l].operasi;
+				arr[j+l].operasi ='\0';
+				arr[j+l].angka = 0;
+				
+				l++;
+
+			}
+        } i++;
+    }
+
+	CekBuka = 0;
+	CekTutup = 0;
+	i = 0;
+	j = 0;
+	k = 0;
+	
+	while(i < CekAngka + CekOperan){
+		if(arr[i].operasi == '('){
+			j = i+1;
+			
+			while(arr[j].operasi != ')' || CekBuka != CekTutup){
+				if(arr[j].operasi == '('){
+					CekBuka++;
+				}else if(arr[j].operasi == ')'){
+					CekTutup++;
+				}
+				arr1[k] = arr[j];
+				k++;
+				j++;
+			}
+			arr[i].angka = kalku(arr1, Operan, CekAngka, CekOperan);
+			arr[i].operasi = ' ';
+			for(r=i+1; r <= j; r++){
+				arr[r].operasi = ' ';
+				arr[r].angka = 0;
+			} 
+			r = 1;
+			while(r <= CekAngka + CekOperan){
+				arr[i+r].angka = arr[j+r].angka;
+				arr[i+r].operasi = arr[j+r].operasi;
+				arr[j+r].operasi = ' ';
+				arr[j+r].angka = 0;
+				r++;
+			}
+		}i++;
+	}
+				
+	for(loop1=1; loop1 <= Operan; loop1++){
+		i = 0;
+		j = 0;
+		hitung = 1;
+		while(hitung <= CekAngka + CekOperan){
+			if((arr[i].operasi == 'S')||(arr[i].operasi == 'O')||(arr[i].operasi == 'T')||(arr[i].operasi == 'A')||(arr[i].operasi == 'C')||(arr[i].operasi == 'N')||(arr[i].operasi == 'M')){
+				
+				if(arr[i].operasi == 'S'){
+					arr[i].angka = asin(arr[i+1].angka);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil invers sinus = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'O'){
+					arr[i].angka = acos(arr[i+1].angka);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil invers cosinus = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'T'){
+					arr[i].angka = atan(arr[i+1].angka);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil invers tangen = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'A'){
+					arr[i].angka = acos(1 / arr[i+1].angka);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil invers secan = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'C'){
+					arr[i].angka = asin(1 / arr[i+1].angka);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil invers cosecan = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'N'){
+					arr[i].angka = atan(1 / arr[i+1].angka);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil invers cotan = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'M'){
+					arr[i].angka = arr[i+1].angka-(arr[i+1].angka*2);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil negatif = %.2lf", arr[i].angka);
+					break;
+				}				
+													
+			} i=i+1;
+			hitung++;
+		}
+	}
+	
+	for(loop1=1; loop1 <= Operan; loop1++){
+		i = 0;
+		j = 0;
+		hitung = 1;
+		while(hitung <= CekAngka + CekOperan){
+			if((arr[i].operasi == 's')||(arr[i].operasi == 'o')||(arr[i].operasi == 't')||(arr[i].operasi == 'e')||(arr[i].operasi == 'c')||(arr[i].operasi == 'n')){
+				
+				if(arr[i].operasi == 's'){
+					arr[i].angka = sin(arr[i+1].angka * pi / 180);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil sinus = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'o'){
+					arr[i].angka = cos(arr[i+1].angka * pi / 180);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil cosinus = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 't'){
+					arr[i].angka = tan(arr[i+1].angka * pi / 180);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil tangen = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'e'){
+					arr[i].angka = 1 / cos(arr[i+1].angka * pi / 180);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil secan = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'c'){
+					arr[i].angka = 1 / sin(arr[i+1].angka * pi / 180);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil cosecan = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'n'){
+					arr[i].angka = 1 / tan(arr[i+1].angka * pi / 180);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil cotan = %.2lf", arr[i].angka);
+					break;
+				}									
+			} i=i+1;
+			hitung++;
+		}
+	}
+	
+	for(loop1=1; loop1 <= Operan; loop1++){
+		i = 0;
+		j = 0;
+		hitung = 1;
+		while(hitung <= CekAngka + CekOperan){
+			if((arr[i].operasi == 'L')||(arr[i].operasi == 'l')){
+				
+				if(arr[i].operasi == 'L'){
+					arr[i].angka = log10(arr[i+1].angka);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil logaritma = %.2lf", arr[i].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'l'){
+					arr[i].angka = log(arr[i+1].angka);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil logaritma natural = %.2lf", arr[i].angka);
+					break;
+				}									
+			} i=i+1;
+			hitung++;
+		}
+	}
+		
+	for(loop1=1; loop1 <= Operan; loop1++){
+		i = 0;
+		j = 0;
+		hitung = 1;
+		while(hitung <= CekAngka + CekOperan){
+				if(arr[i].operasi == '!'){
+					hasil = arr[i-1].angka;
+					for(l = arr[i-1].angka; l>=1; l--){
+						printf(" %d ", l);
+						if((l <= arr[i-1].angka) && (l!=1)){		
+							printf ("x");
+						}
+						arr[i-1].angka *= l;
+					}
+					arr[i-1].angka = arr[i-1].angka / hasil;
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j].angka = arr[i+j+1].angka;
+						arr[i+j].operasi = arr[i+j+1].operasi;
+						arr[i+j+1].operasi = ' ';
+						arr[i+j+1].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil faktorial = %.2lf", arr[i-1].angka);
+					break;
+			}i=i+1;
+			hitung++;
+		}
+	}
+
+	for(loop1=1; loop1 <= Operan; loop1++){
+		i = 0;
+		j = 0;
+		hitung = 1;
+		while(hitung <= CekAngka + CekOperan){
+			if((arr[i].operasi == '^')||(arr[i].operasi == 'v')||(arr[i].operasi == 'R')){
+				
+				if(arr[i].operasi == 'R'){
+					arr[i-1].angka =  pow(arr[i+1].angka, 1 / arr[i-1].angka);
+					arr[i+j].operasi ='\0';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j].angka = arr[i+j+2].angka;
+						arr[i+j].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi =' ';
+						arr[i+j+2].angka = 0;
+						j++;
+						hitung1++;
+					}
+					printf("\nHasil akar dinamis = %.2lf", arr[i-1].angka);
+					break;
+				}				
+				
+				if(arr[i].operasi == '^'){
+					arr[i-1].angka =  pow(arr[i-1].angka, arr[i+1].angka);
+					arr[i+j].operasi ='\0';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j].angka = arr[i+j+2].angka;
+						arr[i+j].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi =' ';
+						arr[i+j+2].angka = 0;
+						j++;
+						hitung1++;
+					}
+					printf("\nHasil pangkat = %.2lf", arr[i-1].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == 'v'){
+					arr[i].angka = pow(arr[i+1].angka, 0.5);
+					arr[i+j].operasi =' ';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j+1].angka = arr[i+j+2].angka;
+						arr[i+j+1].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi = ' ';
+						arr[i+j+2].angka = 0;
+						j+=1;
+						hitung1++;
+					}
+					printf("\nHasil akar = %.2lf", arr[i].angka);
+					break;
+				}
+			} i=i+1;
+			hitung++;
+		}
+	}
+
+	for(loop1=1; loop1 <= Operan; loop1++){
+		i = 0;
+		j = 0;
+		hitung = 1;
+		while(hitung <= CekAngka + CekOperan){
+			if((arr[i].operasi == '*')||(arr[i].operasi == '/')||(arr[i].operasi == '%')||(arr[i].operasi == 'd')){
+				
+				if(arr[i].operasi == '*'){
+					arr[i-1].angka =  arr[i-1].angka * arr[i+1].angka;
+					arr[i+j].operasi ='\0';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j].angka = arr[i+j+2].angka;
+						arr[i+j].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi =' ';
+						arr[i+j+2].angka = 0;
+						j++;
+						hitung1++;
+					}
+					printf("\nHasil perkalian = %.2lf", arr[i-1].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == '/'){
+					arr[i-1].angka =  arr[i-1].angka / arr[i+1].angka;
+					arr[i+j].operasi ='\0';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j].angka = arr[i+j+2].angka;
+						arr[i+j].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi =' ';
+						arr[i+j+2].angka = 0;
+						j++;
+						hitung1++;
+					}
+					printf("\nHasil pembagian = %.2lf", arr[i-1].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == '%'){
+					arr[i-1].angka =  (int)arr[i-1].angka % (int)arr[i+1].angka;
+					arr[i+j].operasi ='\0';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j].angka = arr[i+j+2].angka;
+						arr[i+j].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi =' ';
+						arr[i+j+2].angka = 0;
+						j++;
+						hitung1++;
+					}
+					printf("\nHasil modulus= %.2lf", arr[i-1].angka);
+					break;
+				}	
+				
+				if(arr[i].operasi == 'd'){
+					div_t hasildiv;
+					hasildiv = div((int)arr[i-1].angka, (int)arr[i+1].angka);
+					arr[i-1].angka = (float)hasildiv.quot;
+					arr[i+j].operasi ='\0';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j].angka = arr[i+j+2].angka;
+						arr[i+j].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi =' ';
+						arr[i+j+2].angka = 0;
+						j++;
+						hitung1++;
+					}
+					printf("\nHasil division = %.2lf", arr[i-1].angka);
+					break;
+				}
+			}i=i+1;
+			hitung++;
+		}
+	}
+							
+	for(loop1=1; loop1 <= Operan; loop1++){
+		i = 0;
+		j = 0;
+		hitung = 1;
+		while(hitung <= CekAngka + CekOperan){
+			if((arr[i].operasi == '+')||(arr[i].operasi == '-')){
+				
+				if(arr[i].operasi == '+'){
+					arr[i-1].angka =  arr[i-1].angka + arr[i+1].angka;
+					arr[i+j].operasi ='\0';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j].angka = arr[i+j+2].angka;
+						arr[i+j].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi =' ';
+						arr[i+j+2].angka = 0;
+						j++;
+						hitung1++;
+					}
+					printf("\nHasil pertambahan = %.2lf", arr[i-1].angka);
+					break;
+				}
+				
+				if(arr[i].operasi == '-'){
+					arr[i-1].angka =  arr[i-1].angka - arr[i+1].angka;
+					arr[i+j].operasi ='\0';
+					arr[i+j+1].angka = 0;
+					hitung1 = 1;
+				
+					while(hitung1 <= CekAngka + CekOperan){
+						arr[i+j].angka = arr[i+j+2].angka;
+						arr[i+j].operasi = arr[i+j+2].operasi;
+						arr[i+j+2].operasi =' ';
+						arr[i+j+2].angka = 0;
+						j++;
+						hitung1++;
+					}
+					printf("\nHasil pengurangan = %.2lf", arr[i-1].angka);
+					break;
+				}
+			} i=i+1;
+			hitung++;
+		}
+	}
+	return arr[0].angka;
+		
+}	
+
+
+
 #endif

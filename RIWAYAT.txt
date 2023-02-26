@@ -1,0 +1,5 @@
+hasil: 10.00 
+hasil: 10.00 
+hasil: 110.00 
+hasil: 20.00 
+hasil: 6.00 
