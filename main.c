@@ -86,14 +86,6 @@ for (;;)
 					float Celcius, Fahrenheit, Kelvin;
 		    		system("cls");
 		    		header();
-		    		printf	("\n\t\t\t\t\t\t    <<<<<<<<<<<<<<<  Anda memilih opsi konversi suhu  >>>>>>>>>>>>>>>"); 
-					puts	("\n\n\t\t\t\t\t\t\t  +================== KONVERSI SUHU ==================+");
-					puts	("\t\t\t\t\t\t\t  | ===> Keterangan: F = Fahrenheit                   |");
-					puts	("\t\t\t\t\t\t\t  |                  C = Celcius                      |");
-					puts	("\t\t\t\t\t\t\t  |                  K = Kelvin                       |");	
-					puts	("\t\t\t\t\t\t\t  | ===> Contoh Inputan : 70 C                        |");
-					puts	("\t\t\t\t\t\t\t  +===================================================+");
-					
 					puts	("\n\n\t\t\t\t\t\t    +==========================   PILIH MENU  ========================+");
 				    puts	("\t\t\t\t\t\t    |-----------------------------------------------------------------|");
 					puts	("\t\t\t\t\t\t    |                             1. KELVIN                           |");
@@ -101,10 +93,20 @@ for (;;)
 					puts	("\t\t\t\t\t\t    |                             2. CELSIUS                          |");
 					puts	("\t\t\t\t\t\t    |-----------------------------------------------------------------|");
 					puts	("\t\t\t\t\t\t    |                            3. FAHRENHEIT                        |");	
-				    puts	("\t\t\t\t\t\t    +=================================================================+");					
+				    puts	("\t\t\t\t\t\t    +=================================================================+");
+					printf	("\t\t\t\t\t\t\t  Masukkan Pilihan Anda: ");					
+				    scanf("%d", &choice);					
+					system("cls");
+					header();
+		    		printf	("\n\t\t\t\t\t\t    <<<<<<<<<<<<<<<  Anda memilih opsi konversi suhu  >>>>>>>>>>>>>>>"); 
+					puts	("\n\n\t\t\t\t\t\t\t  +================== KONVERSI SUHU ==================+");
+					puts	("\t\t\t\t\t\t\t  | ===> Keterangan: F = Fahrenheit                   |");
+					puts	("\t\t\t\t\t\t\t  |                  C = Celcius                      |");
+					puts	("\t\t\t\t\t\t\t  |                  K = Kelvin                       |");	
+					puts	("\t\t\t\t\t\t\t  | ===> Contoh Inputan : 70                          |");
+					puts	("\t\t\t\t\t\t\t  +===================================================+");										
 					
-					puts	("\t\t\t\t\t\t\t  Masukkan Pilihan Anda: ");					
-				    scanf("%d", &choice);
+
 				    switch (choice)
 				    {
 				    case 1:
@@ -471,6 +473,8 @@ for (;;)
 							printf("\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c\n\t\t\t\t\t\t\t\t\t  => %.3f %c", firstRes, firstResUnit, secondRes, secondResUnit, thirdRes, thirdResUnit, fourRes, fourResUnit, fivRes, fivResUnit, sixRes, sixResUnit);
 							break; 
 						default:
+							printf("Inputan salah");
+							exit(0);
 							break;
 				}
 					break;				
@@ -638,7 +642,8 @@ for (;;)
 					puts	("\t\t\t\t\t\t\t   |                  - = Pengurangan                  |");
 					puts	("\t\t\t\t\t\t\t   |                  * = Perkalian                    |");
 					puts	("\t\t\t\t\t\t\t   |                  / = Pembagian                    |");
-					puts	("\t\t\t\t\t\t\t   |                  ^ = Perpangkatan                 |");		
+					puts	("\t\t\t\t\t\t\t   |                  ^ = Perpangkatan                 |");
+					puts	("\t\t\t\t\t\t\t   |                  v = Akar                         |");								
 					puts	("\t\t\t\t\t\t\t   | ===> Contoh Inputan : 25 + 70 - 8 ^ 3 + 10        |");
 					puts	("\t\t\t\t\t\t\t   | ===> Contoh Inputan Akar : (angka) v 25           |");
 					puts	("\t\t\t\t\t\t\t   |   ===> Gunakan spasi untuk menginputkannya <===   |");
@@ -1197,7 +1202,6 @@ for (;;)
 			header();
 			printf	("\n\t\t\t\t\t\t        <<<<<<<<<<<<<<<<<<<   Anda memilih opsi 5  >>>>>>>>>>>>>>>>>>>"); 
 			puts	("\n\n\t\t\t\t\t\t      +================= PILIH PERHITUNGAN GEOMETRI ==================+");
-		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t      |                  1. BANGUN DATAR (2 DIMENSI)                  |");
 		    puts	("\t\t\t\t\t\t      |---------------------------------------------------------------|");
 			puts	("\t\t\t\t\t\t      |                  2. BANGUN RUANG (3 DIMENSI)                  |");
@@ -1209,6 +1213,8 @@ for (;;)
 				{
 					int pilih; 
 					float Input1, Input2, Input3, luas, keliling;
+					system("cls");
+					header();
 					puts	("\n\n\t\t\t\t\t\t   +===  PILIH BANGUN DATAR UNTUK MENGHITUNG LUAS DAN KELILINGNYA ===+");
 				    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
 					puts	("\t\t\t\t\t\t   |                       1. PERSEGI                                |");
@@ -1297,7 +1303,9 @@ for (;;)
 				case 2:
 				{
 					int pilih; 
-					float Input1, Input2, Input3, luas, volume; 					
+					float Input1, Input2, Input3, luas, volume; 
+					system("cls");
+					header();										
 					puts	("\n\n\t\t\t\t\t\t   +===  PILIH BANGUN DATAR UNTUK MENGHITUNG LUAS DAN KELILINGNYA  ==+");
 				    puts	("\t\t\t\t\t\t   |-----------------------------------------------------------------|");
 					puts	("\t\t\t\t\t\t   |                           1. KUBUS                              |");
@@ -1800,11 +1808,11 @@ for (;;)
 					
 					case 4:
 					{
-				    	double x, cotan;
-				    	printf("Masukkan x dalam derajat: ");
-				    	scanf("%lf", &x);
-						cotan = Cotangent(x); // hitung cot
-	   					printf("cot(%lf) = %lf\n", x, cotan);
+						double x, cosec;
+						printf("Masukkan x dalam derajat: ");
+						scanf("%lf", &x);					
+						cosec = Cosecant(x) ;// hitung cosec
+	   					printf("cosec(%lf) = %lf\n", x, cosec);
 						break;						
 					}
 					
@@ -1820,11 +1828,11 @@ for (;;)
 					
 					case 6:
 					{
-						double x, cosec;
-						printf("Masukkan x dalam derajat: ");
-						scanf("%lf", &x);					
-						cosec = Cosecant(x) ;// hitung cosec
-	   					printf("cosec(%lf) = %lf\n", x, cosec);
+				    	double x, cotan;
+				    	printf("Masukkan x dalam derajat: ");
+				    	scanf("%lf", &x);
+						cotan = Cotangent(x); // hitung cot
+	   					printf("cot(%lf) = %lf\n", x, cotan);
 						break;															
 					}
 				
@@ -1944,7 +1952,7 @@ for (;;)
 				default:
 					system("cls"); 
 					header(); 
-	            	printf("\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-2");  
+	            	printf("\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-12");  
 	            	break;
 			}
 			break;
@@ -2130,6 +2138,11 @@ for (;;)
 					printf("Absolute dari %d adalah %d", y, mutlak);					
 					break;
 				}
+				default:
+					system("cls"); 
+					header(); 
+			        printf("\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t--> Anda salah memilih opsi! Pilih Opsi 1-8");  
+			        break;						
 
 			}
 		break;
