@@ -53,7 +53,7 @@ int kombinasi(int n, int r){
 //mencari nilai dari derajat trigonometri
 
 //sinus
-double sin(double x) {
+double Sin(double x) {
 	double sinval;
 	sinval = sin(x * pi / 180.0);
     return sinval;
