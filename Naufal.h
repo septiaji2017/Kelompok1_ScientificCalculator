@@ -56,15 +56,24 @@ int pengurangan(int x, int y){
 	return z;
 }
 
-int perkalian(int x, int y){
-	int z;
-	z=x*y;
-	return z;
+float perkalian(float a, float b) {
+	float hasil = 0;  // inisialisasi hasil dengan 0
+    int i;
+    for (i = 0; i < b; i++) {
+        hasil += a;  // tambahkan nilai a sebanyak b kali ke dalam hasil
+    }
+
+    return hasil;
 }
 
-float pembagian(float x, float y){
-	int z;
-	z=x/y;
-	return z;
+float pembagian(float dividend, float divisor)
+{
+    float quotient = 0;
+    while (dividend >= divisor) {
+        dividend -= divisor;
+        quotient++;
+    }
+    
+    return quotient;
 }
 #endif
