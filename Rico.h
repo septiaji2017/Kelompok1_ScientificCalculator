@@ -4,39 +4,7 @@
 #include "pi.h"
 #define INFINITY (1.0/0.0)
 #define UNDEFINED (0.0/0.0)
-
-float powa(float basis, int eksp){
-	float hasil = 1.0;
-	
-	if(eksp<0){
-		for(;;){
-	
-			if (eksp == 0){
-				return 1/hasil;
-				break;
-			}
-	
-			hasil = hasil * basis;
-			
-			eksp++;
-		}			
-	}
-	
-	else{
-		for(;;){
-	
-			if (eksp == 0){
-				return hasil;
-				break;
-			}
-	
-			hasil = hasil * basis;
-			
-			eksp--;
-		}		
-	}
-
-}
+#include "Ridha.h"
 
 double fabs(double x) {
     if (x < 0.0f) {
