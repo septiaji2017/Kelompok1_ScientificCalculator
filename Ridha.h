@@ -44,16 +44,50 @@ int f_mod(int x, int y){
 	return z;
 }
 
-int f_pangkat(int x, int y){
-	int z;	
-	z=pow(x,y);
-	return z;
+float f_pangkat(float basis, int eksp){
+	float hasil = 1.0;
+	
+	if(eksp<0){
+		for(;;){
+	
+			if (eksp == 0){
+				return 1/hasil;
+				break;
+			}
+	
+			hasil = hasil * basis;
+			
+			eksp++;
+		}			
+	}
+	
+	else{
+		for(;;){
+	
+			if (eksp == 0){
+				return hasil;
+				break;
+			}
+	
+			hasil = hasil * basis;
+			
+			eksp--;
+		}		
+	}
+
 }
 
-float f_akar(float x){
-	float y;
-	y=sqrt(x);
-	return y;
+float f_akar(float number)
+{
+    float temp, sqrt;
+    sqrt = number / 2;
+    temp = 0;
+    while(sqrt != temp){
+        temp = sqrt;
+        sqrt = ( number/temp + temp) / 2;
+    }
+
+    return sqrt;
 }
 
 float f_PersenKeAngka(float x){
@@ -117,6 +151,11 @@ char * getIndex(char str[])
 	bool udah=false;
 	int testdigit;
 	
+	memset(chars, 0, sizeof(chars));	//18032023	
+	
+	int negate[255],nega=0,negaKetemu=0;	//19032023
+	int arrayHasilAkhir[255],l;				//19032023
+	
 	int loopstr;    
 	if(strstr(str,"+")!=NULL){
 		strcpy(sub,"+");
@@ -178,6 +217,18 @@ char * getIndex(char str[])
 	        	chars[founds] = i+1;
 				ktemu++;
 	            founds++;
+	            
+	            //untuk mencari character yang sebelumnya "("
+	            //kalo ketemu, print indeksnya
+	            //indeks + 1 masukkan ke array baru
+	            //untuk di selisihkan
+	            if(str[i-1]=='('){
+	            	printf("negate index at: %d\n",i);
+	            	negate[nega]=i+1;
+	            	nega++;
+	            	negaKetemu++;
+				}	            
+	            
 	        }
 	    }
 
@@ -1468,8 +1519,36 @@ char * getIndex(char str[])
         }  
     }  
 
-	n = sizeof(chars) / sizeof(chars[0]);
-	ans = addSpaces(str, n, chars);
+	k=0;
+	l=0;
+   // Keyword: Set Differences (Selisih kedua array)  
+    for( i=0;i<ktemu;i++)
+    {
+        for(j=0;j<negaKetemu;j++)
+        {
+            if(negate[j]==chars[i])
+             break;
+        }
+        if(j==negaKetemu)
+        {
+          // here we check that is element already present in the set 
+          // if present than ignore it otherwise add to the difference set   
+            for(l=0;l<k;l++)
+            {
+                if(arrayHasilAkhir[l]==chars[i])
+                 break;
+            }
+            if(l==k)
+            {
+                arrayHasilAkhir[k]=chars[i];
+                k++;
+            }
+        }
+        
+    }	
+
+	n = sizeof(arrayHasilAkhir) / sizeof(arrayHasilAkhir[0]);
+	ans = addSpaces(str, n, arrayHasilAkhir);
 	
 	return ans;
 
