@@ -173,7 +173,7 @@ float polinomial(float coef[11], int derajat, float x){
 	int i;
 	float y = 0.0;
 	for(i = 0; i <= derajat; i++){
-		y += coef[i] * powa(x, i); 
+		y += coef[i] * f_pangkat(x, i); 
 	}
 	return y;
 }
@@ -196,7 +196,7 @@ double limit(float coef[11], int derajat, double inf){
 	int i;
 	double l = 0.0;
 	for(i = 1; i <= derajat; i++){
-		l = coef[i] * powa(inf, i);
+		l = coef[i] * f_pangkat(inf, i);
 	}
 	return l;
 }
@@ -228,7 +228,7 @@ float operasiIntegral (int n, float bawah, float coef[11], int derajat, float p,
 			r[i] = 0.0;
 			
 			for(j = 0; j <=	 derajat; j++){
-				r[i] += coef[j] * powa(q[i], j);
+				r[i] += coef[j] * f_pangkat(q[i], j);
 			}
 		};
 		
