@@ -1,13 +1,18 @@
 #ifndef Agam_H
 #define Agam_H
+#include "Ridha.h"
+#include "Mutia.h"
+#include "Rico.h"
+#include "Naufal.h"
+
 #include <stdio.h>
 #include<stdlib.h>
 #define pi 3.14159265358979323846
 #define MAX 30
 #include <conio.h>
-//#include <math.h>
-#define true 1
-#define false 0
+#include <math.h>
+//#define true 1
+//#define false 0
 #define boolean unsigned char
 
 //Konvert Tanggal
@@ -893,7 +898,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 			if((arr[i].operasi == 's')||(arr[i].operasi == 'o')||(arr[i].operasi == 't')||(arr[i].operasi == 'e')||(arr[i].operasi == 'c')||(arr[i].operasi == 'n')){
 				
 				if(arr[i].operasi == 's'){
-					arr[i].angka = sin(arr[i+1].angka * pi / 180);
+					arr[i].angka = sine(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -911,7 +916,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'o'){
-					arr[i].angka = cos(arr[i+1].angka * pi / 180);
+					arr[i].angka = cosine(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -929,7 +934,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 't'){
-					arr[i].angka = tan(arr[i+1].angka * pi / 180);
+					arr[i].angka = tangent(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -947,7 +952,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'e'){
-					arr[i].angka = 1 / cos(arr[i+1].angka * pi / 180);
+					arr[i].angka = secant(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -965,7 +970,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'c'){
-					arr[i].angka = 1 / sin(arr[i+1].angka * pi / 180);
+					arr[i].angka = cosecant(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -983,7 +988,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'n'){
-					arr[i].angka = 1 / tan(arr[i+1].angka * pi / 180);
+					arr[i].angka = cotan(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1030,7 +1035,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'l'){
-					arr[i].angka = log(arr[i+1].angka);
+					arr[i].angka = log2(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1057,15 +1062,16 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 		hitung = 1;
 		while(hitung <= CekAngka + CekOperan){
 				if(arr[i].operasi == '!'){
-					hasil = arr[i-1].angka;
-					for(l = arr[i-1].angka; l>=1; l--){
-						printf(" %d ", l);
-						if((l <= arr[i-1].angka) && (l!=1)){		
-							printf ("x");
-						}
-						arr[i-1].angka *= l;
-					}
-					arr[i-1].angka = arr[i-1].angka / hasil;
+					arr[i-1].angka = factorial(arr[i-1].angka);
+//					hasil = arr[i-1].angka;
+//					for(l = arr[i-1].angka; l>=1; l--){
+//						printf(" %d ", l);
+//						if((l <= arr[i-1].angka) && (l!=1)){		
+//							printf ("x");
+//						}
+//						arr[i-1].angka *= l;
+//					}
+//					arr[i-1].angka = arr[i-1].angka / hasil;
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1111,7 +1117,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}				
 				
 				if(arr[i].operasi == '^'){
-					arr[i-1].angka =  pow(arr[i-1].angka, arr[i+1].angka);
+					arr[i-1].angka =  f_pangkat(arr[i-1].angka, arr[i+1].angka);
 					arr[i+j].operasi ='\0';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1129,7 +1135,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'v'){
-					arr[i].angka = pow(arr[i+1].angka, 0.5);
+					arr[i].angka = f_akar(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1158,7 +1164,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 			if((arr[i].operasi == '*')||(arr[i].operasi == '/')||(arr[i].operasi == '%')||(arr[i].operasi == 'd')){
 				
 				if(arr[i].operasi == '*'){
-					arr[i-1].angka =  arr[i-1].angka * arr[i+1].angka;
+					arr[i-1].angka =  perkalian(arr[i-1].angka, arr[i+1].angka);
 					arr[i+j].operasi ='\0';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1176,7 +1182,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == '/'){
-					arr[i-1].angka =  arr[i-1].angka / arr[i+1].angka;
+					arr[i-1].angka = pembagian(arr[i-1].angka, arr[i+1].angka);
 					arr[i+j].operasi ='\0';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1194,7 +1200,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == '%'){
-					arr[i-1].angka =  (int)arr[i-1].angka % (int)arr[i+1].angka;
+					arr[i-1].angka =  f_mod((int)arr[i-1].angka, (int)arr[i+1].angka);
 					arr[i+j].operasi ='\0';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1243,7 +1249,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 			if((arr[i].operasi == '+')||(arr[i].operasi == '-')){
 				
 				if(arr[i].operasi == '+'){
-					arr[i-1].angka =  arr[i-1].angka + arr[i+1].angka;
+					arr[i-1].angka =  pertambahan(arr[i-1].angka, arr[i+1].angka);
 					arr[i+j].operasi ='\0';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1261,7 +1267,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == '-'){
-					arr[i-1].angka =  arr[i-1].angka - arr[i+1].angka;
+					arr[i-1].angka =  pengurangan(arr[i-1].angka, arr[i+1].angka);
 					arr[i+j].operasi ='\0';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
