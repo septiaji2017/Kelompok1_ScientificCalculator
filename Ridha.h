@@ -5,7 +5,7 @@
 #define MAX 30
 #include<stdlib.h>
 #include <stdbool.h>
-#include<math.h>
+//#include<math.h>
 
 
 int f_operasiBitwiseAnd(int op1, int op2){
