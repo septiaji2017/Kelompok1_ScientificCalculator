@@ -755,7 +755,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 			if((arr[i].operasi == 'S')||(arr[i].operasi == 'O')||(arr[i].operasi == 'T')||(arr[i].operasi == 'A')||(arr[i].operasi == 'C')||(arr[i].operasi == 'N')||(arr[i].operasi == 'M')){
 				
 				if(arr[i].operasi == 'S'){
-					arr[i].angka = asin(arr[i+1].angka);
+					arr[i].angka = arcsin(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -773,7 +773,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'O'){
-					arr[i].angka = acos(arr[i+1].angka);
+					arr[i].angka = arccos(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -791,7 +791,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'T'){
-					arr[i].angka = atan(arr[i+1].angka);
+					arr[i].angka = arctan(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -809,7 +809,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'A'){
-					arr[i].angka = acos(1 / arr[i+1].angka);
+					arr[i].angka = arcsec(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -827,7 +827,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'C'){
-					arr[i].angka = asin(1 / arr[i+1].angka);
+					arr[i].angka = arccsc(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -845,7 +845,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'N'){
-					arr[i].angka = atan(1 / arr[i+1].angka);
+					arr[i].angka = arccot(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
