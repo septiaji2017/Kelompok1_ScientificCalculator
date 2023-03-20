@@ -3,15 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
 #include "pi.h"
 #include "Ridha.h"
  
 //Perhitungan Faktorial
 
 int factorial(int n){
+	int i;
 	double result = 1;
-    for (int i = 2; i <= n; i++) {
+    for (i = 2; i <= n; i++) {
         result *= i;
     }
     return result;
@@ -27,7 +27,8 @@ double sine(double x) {
     double radians = x * pi / 180; // Konversi derajat ke radian
     double result = radians; // Nilai awal deret Maclaurin untuk sinus
     double sign = -1;
-    for (int n = 1; n <= terms; n++) {
+    int n;
+    for (n = 1; n <= terms; n++) {
         double term = f_pangkat(radians, 2*n+1) / factorial(2*n+1); // Rumus deret Maclaurin untuk sinus
         result += sign * term;
         sign *= -1;
@@ -41,7 +42,8 @@ double cosine(double x) {
 	double radians = x * pi / 180; // Konversi derajat ke radian
     double result = 1;
     double sign = -1;
-    for (int n = 1; n <= terms; n++) {
+    int n;
+    for (n = 1; n <= terms; n++) {
         double term = f_pangkat(radians, 2*n) / factorial(2*n); // Rumus deret Maclaurin untuk kosinus
         result += sign * term;
         sign *= -1;
