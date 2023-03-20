@@ -458,7 +458,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 	char *p;
 	char *string;
 	char input[200];
-	int k,r,i,j,l,pilihan,hasil,a, kurung, hitung, hitung1;
+	int k,r,i,j,l,pilihan,hasil,a, w,z, kurung, hitung, hitung1, jumlahmutlak;
 	int loop1, loop2, loop3;
 	float hasilAkhir;
 	int CekBuka, CekTutup;
