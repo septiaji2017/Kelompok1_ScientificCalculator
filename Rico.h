@@ -6,23 +6,6 @@
 #define UNDEFINED (0.0/0.0)
 #include "Ridha.h"
 
-double fabs(double x) {
-    if (x < 0.0f) {
-        return -x;
-    }
-    return x;
-}
-
-float sekuerut(float x){
-	float y = x;
-   	float z = (y + (x / y)) / 2;
-    while (fabs(y - z) >= 0.00001) {
-        y = z;
-        z = (y + (x / y)) / 2;
-    }
-    return z;
-}
-
 double round_num(double num) {
     int sign = (num >= 0) ? 1 : -1;
     double abs_num = num * sign;
