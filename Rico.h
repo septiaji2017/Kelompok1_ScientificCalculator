@@ -120,7 +120,7 @@ double x;
 	}
 }
 
-double log2(double x) {
+double log_2(double x) {
     double result = 0.0;
     if(x < 0){
     	return 0;
@@ -136,8 +136,8 @@ double log2(double x) {
     return result;
 }
 
-double log10(double x) {
-    double result = log2(x) / log2(10);
+double log_10(double x) {
+    double result = log_2(x) / log_2(10);
     return result;
 }
 
