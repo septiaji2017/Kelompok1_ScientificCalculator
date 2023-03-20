@@ -138,29 +138,18 @@ double x;
 }
 
 double log2(double x) {
-    double result = 0;
-    while (x >= 2) {
-        x /= 2;
+    double result = 0.0;
+    if(x < 0){
+    	return 0;
+	}
+    while (x > 1) {
         result++;
+        x /= 2.0;
     }
-    while (x < 1) {
-        x *= 2;
+    while (x < 0.5) {
         result--;
+        x *= 2.0;
     }
-    double y = x - 1;
-    double y2 = y * y;
-    double y3 = y * y2;
-    double y4 = y2 * y2;
-    double y5 = y3 * y2;
-    double y6 = y3 * y3;
-    double a = 0.99999999999999999976;
-    double b = 0.69314718055994530942;
-    double c = 0.24022650784536362018;
-    double d = 0.05550410866482188054;
-    double e = 0.00961815321966582332;
-    double f = 0.00133224126731971265;
-    double g = 0.00015097960966287089;
-    result += y * (a + y2 * (b + y2 * (c + y2 * (d + y2 * (e + y2 * (f + y2 * g))))));
     return result;
 }
 
