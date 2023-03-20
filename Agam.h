@@ -427,6 +427,31 @@ typedef struct{
      char operasi;
 } Matematika;
 
+float floorr(float x) {
+	int floor_x = (int) x;
+	if (x < 0 && x != floor_x) {
+		floor_x--;
+	}
+	return floor_x;
+}
+
+float ceil1(float x) {
+	int ceil_x = (int) x;
+	if (x > 0 && x != ceil_x) {
+		ceil_x++;
+	}
+	return ceil_x;
+}
+
+float round1(float x) {
+	int rounded_x = (int) (x + (x >= 0 ? 0.5 : -0.5));
+	return rounded_x;
+}
+
+int abs1(int x) {
+	return x >= 0 ? x : -x;
+}
+
 float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 {			
 	Matematika arr1[100];
@@ -438,136 +463,221 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 	float hasilAkhir;
 	int CekBuka, CekTutup;
 
+	CekBuka = 0;
 	i = 0;
 	j = 0;
 	k = 0;
+	w = 0;
 	
-    while (i < CekAngka + CekOperan) {
-        if (arr[i].operasi == '<') {
-            j = i + 1;
-            
-            while (arr[j].operasi != '>') {
-//	            	printf("misahin array %.2lf\n\n", arr[j].angka);
-            	
-                arr1[k] = arr[j];
-                k++;
-                j++;
-                
-            }
-            
-//	            printf("saat rekursif\n\n");
-            arr[i].angka = round(kalku(arr1, Operan, CekAngka, CekOperan));
-            arr[i].operasi = '\0';
-            for (l = i + 1; l <= j; l++) {
-                arr[l].operasi = '\0';
-                arr[l].angka = 0;
-            }
-            l=1;
-            while(l<=CekAngka + CekOperan){
-							
-				arr[i+l].angka = arr[j+l].angka;
-				arr[i+l].operasi = arr[j+l].operasi;
-				arr[j+l].operasi ='\0';
-				arr[j+l].angka = 0;
+	while(w < CekAngka + CekOperan){
+		memset(arr1, 0, sizeof(arr1));
+		i = 0;
+		j = 0;
+		k = 0;
+		while(i < CekAngka + CekOperan){
+			if(arr[i].operasi == '<'){
+				j = i+1;
 				
-				l++;
+				CekBuka = 1;
+				for(;;){
+					if(arr[j].operasi == '<'){
+						CekBuka++;
+					}else if(arr[j].operasi == '>'){
+						CekBuka--;
+					}
+					if(CekBuka == 0){
+						break;
+					}
+					arr1[k] = arr[j];
+					k++;
+					j++;
+				}
+				arr[i].angka = round1(kalku(arr1, Operan, CekAngka, CekOperan));
+				arr[i].operasi = ' ';
+				for(r=i+1; r <= j; r++){
+					arr[r].operasi = ' ';
+					arr[r].angka = 0;
+				} 
+				r = 1;
+				while(r <= CekAngka + CekOperan){
+					arr[i+r].angka = arr[j+r].angka;
+					arr[i+r].operasi = arr[j+r].operasi;
+					arr[j+r].operasi = ' ';
+					arr[j+r].angka = 0;
+					r++;
+				}
+				break;
+			}i++;
+		}w++;	
+	}
 
-			}
-        } i++;
-    }
 
+	CekBuka = 0;
 	i = 0;
 	j = 0;
 	k = 0;
+	w = 0;
 	
-    while (i < CekAngka + CekOperan) {
-        if (arr[i].operasi == '{') {
-            j = i + 1;
-            
-            while (arr[j].operasi != '}') {
-//	            	printf("misahin array %.2lf\n\n", arr[j].angka);
-            	
-                arr1[k] = arr[j];
-                k++;
-                j++;
-                
-            }
-            
-//	            printf("saat rekursif\n\n");
-            arr[i].angka = ceil(kalku(arr1, Operan, CekAngka, CekOperan));
-            arr[i].operasi = '\0';
-            for (l = i + 1; l <= j; l++) {
-                arr[l].operasi = '\0';
-                arr[l].angka = 0;
-            }
-            l=1;
-            while(l<=CekAngka + CekOperan){
-							
-				arr[i+l].angka = arr[j+l].angka;
-				arr[i+l].operasi = arr[j+l].operasi;
-				arr[j+l].operasi ='\0';
-				arr[j+l].angka = 0;
+	while(w < CekAngka + CekOperan){
+		memset(arr1, 0, sizeof(arr1));
+		i = 0;
+		j = 0;
+		k = 0;
+		while(i < CekAngka + CekOperan){
+			if(arr[i].operasi == '{'){
+				j = i+1;
 				
-				l++;
+				CekBuka = 1;
+				for(;;){
+					if(arr[j].operasi == '{'){
+						CekBuka++;
+					}else if(arr[j].operasi == '}'){
+						CekBuka--;
+					}
+					if(CekBuka == 0){
+						break;
+					}
+					arr1[k] = arr[j];
+					k++;
+					j++;
+				}
+				arr[i].angka = ceil1(kalku(arr1, Operan, CekAngka, CekOperan));
+				arr[i].operasi = ' ';
+				for(r=i+1; r <= j; r++){
+					arr[r].operasi = ' ';
+					arr[r].angka = 0;
+				} 
+				r = 1;
+				while(r <= CekAngka + CekOperan){
+					arr[i+r].angka = arr[j+r].angka;
+					arr[i+r].operasi = arr[j+r].operasi;
+					arr[j+r].operasi = ' ';
+					arr[j+r].angka = 0;
+					r++;
+				}
+				break;
+			}i++;
+		}w++;	
+	}
+	
 
-			}
-        } i++;
-    }
 
+	CekBuka = 0;
 	i = 0;
-    j = 0;
-    k = 0;
-    while (i < CekAngka + CekOperan) {
-        if (arr[i].operasi == '[') {
-            j = i + 1;
-            
-            while (arr[j].operasi != ']') {
-//	            	printf("misahin array %.2lf\n\n", arr[j].angka);
-            	
-                arr1[k] = arr[j];
-                k++;
-                j++;
-                
-            }
-            
-//	            printf("saat rekursif\n\n");
-            arr[i].angka = floor(kalku(arr1, Operan, CekAngka, CekOperan));
-            arr[i].operasi = '\0';
-            for (l = i + 1; l <= j; l++) {
-                arr[l].operasi = '\0';
-                arr[l].angka = 0;
-            }
-            l=1;
-            while(l<=CekAngka + CekOperan){
-							
-				arr[i+l].angka = arr[j+l].angka;
-				arr[i+l].operasi = arr[j+l].operasi;
-				arr[j+l].operasi ='\0';
-				arr[j+l].angka = 0;
+	j = 0;
+	k = 0;
+	w = 0;
+	
+	while(w < CekAngka + CekOperan){
+		memset(arr1, 0, sizeof(arr1));
+		i = 0;
+		j = 0;
+		k = 0;
+		while(i < CekAngka + CekOperan){
+			if(arr[i].operasi == '['){
+				j = i+1;
 				
-				l++;
+				CekBuka = 1;
+				for(;;){
+					if(arr[j].operasi == '['){
+						CekBuka++;
+					}else if(arr[j].operasi == ']'){
+						CekBuka--;
+					}
+					if(CekBuka == 0){
+						break;
+					}
+					arr1[k] = arr[j];
+					k++;
+					j++;
+				}
+				arr[i].angka = floorr(kalku(arr1, Operan, CekAngka, CekOperan));
+				arr[i].operasi = ' ';
+				for(r=i+1; r <= j; r++){
+					arr[r].operasi = ' ';
+					arr[r].angka = 0;
+				} 
+				r = 1;
+				while(r <= CekAngka + CekOperan){
+					arr[i+r].angka = arr[j+r].angka;
+					arr[i+r].operasi = arr[j+r].operasi;
+					arr[j+r].operasi = ' ';
+					arr[j+r].angka = 0;
+					r++;
+				}
+				break;
+			}i++;
+		}w++;	
+	}
 
-			}
-        } i++;
-    }
+		
+	CekBuka = 0;
+	i = 0;
+	j = 0;
+	k = 0;
+	w = 0;
+	
+	while(w < CekAngka + CekOperan){
+		memset(arr1, 0, sizeof(arr1));
+		i = 0;
+		j = 0;
+		k = 0;
+		while(i < CekAngka + CekOperan){
+			if(arr[i].operasi == '|'){
+				j = i+1;
+				
+				CekBuka = 1;
+				for(;;){
+					if(arr[j].operasi == '|'){
+						CekBuka++;
+					}else if(arr[j].operasi == '/'){
+						CekBuka--;
+					}
+					if(CekBuka == 0){
+						break;
+					}
+					arr1[k] = arr[j];
+					k++;
+					j++;
+				}
+				arr[i].angka = abs1(kalku(arr1, Operan, CekAngka, CekOperan));
+				arr[i].operasi = ' ';
+				for(r=i+1; r <= j; r++){
+					arr[r].operasi = ' ';
+					arr[r].angka = 0;
+				} 
+				r = 1;
+				while(r <= CekAngka + CekOperan){
+					arr[i+r].angka = arr[j+r].angka;
+					arr[i+r].operasi = arr[j+r].operasi;
+					arr[j+r].operasi = ' ';
+					arr[j+r].angka = 0;
+					r++;
+				}
+				break;
+			}i++;
+		}w++;	
+	}
     
 	i = 0;
     j = 0;
     k = 0;
-    while (i < CekAngka + CekOperan) {
-        if (arr[i].operasi == '|') {
-            j = i + 1;
+    w = 0;
+    while (w < CekAngka + CekOperan) {
+    	memset(arr1, 0, sizeof(arr1));
+		i = 0;
+		j = 0;
+		k = 0;
+        while(i < CekAngka + CekOperan){
+			if (arr[i].operasi == '|') {
+            	j = i + 1;
             
-            while (arr[j].operasi != '|') {
-//	            	printf("misahin array %.2lf\n\n", arr[j].angka);
-            	
+            while (arr[j].operasi != '~') {            	
                 arr1[k] = arr[j];
                 k++;
                 j++;
                 
             }
-            
-//	            printf("saat rekursif\n\n");
             arr[i].angka = abs(kalku(arr1, Operan, CekAngka, CekOperan));
             arr[i].operasi = '\0';
             for (l = i + 1; l <= j; l++) {
@@ -585,44 +695,56 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				l++;
 
 			}
-        } i++;
+        }i++;
+    	}w++;
     }
 
 	CekBuka = 0;
-	CekTutup = 0;
 	i = 0;
 	j = 0;
 	k = 0;
+	w = 0;
 	
-	while(i < CekAngka + CekOperan){
-		if(arr[i].operasi == '('){
-			j = i+1;
-			
-			while(arr[j].operasi != ')' || CekBuka != CekTutup){
-				if(arr[j].operasi == '('){
-					CekBuka++;
-				}else if(arr[j].operasi == ')'){
-					CekTutup++;
+	while(w < CekAngka + CekOperan){
+		memset(arr1, 0, sizeof(arr1));
+		i = 0;
+		j = 0;
+		k = 0;
+		while(i < CekAngka + CekOperan){
+			if(arr[i].operasi == '('){
+				j = i+1;
+				
+				CekBuka = 1;
+				for(;;){
+					if(arr[j].operasi == '('){
+						CekBuka++;
+					}else if(arr[j].operasi == ')'){
+						CekBuka--;
+					}
+					if(CekBuka == 0){
+						break;
+					}
+					arr1[k] = arr[j];
+					k++;
+					j++;
 				}
-				arr1[k] = arr[j];
-				k++;
-				j++;
-			}
-			arr[i].angka = kalku(arr1, Operan, CekAngka, CekOperan);
-			arr[i].operasi = ' ';
-			for(r=i+1; r <= j; r++){
-				arr[r].operasi = ' ';
-				arr[r].angka = 0;
-			} 
-			r = 1;
-			while(r <= CekAngka + CekOperan){
-				arr[i+r].angka = arr[j+r].angka;
-				arr[i+r].operasi = arr[j+r].operasi;
-				arr[j+r].operasi = ' ';
-				arr[j+r].angka = 0;
-				r++;
-			}
-		}i++;
+				arr[i].angka = kalku(arr1, Operan, CekAngka, CekOperan);
+				arr[i].operasi = ' ';
+				for(r=i+1; r <= j; r++){
+					arr[r].operasi = ' ';
+					arr[r].angka = 0;
+				} 
+				r = 1;
+				while(r <= CekAngka + CekOperan){
+					arr[i+r].angka = arr[j+r].angka;
+					arr[i+r].operasi = arr[j+r].operasi;
+					arr[j+r].operasi = ' ';
+					arr[j+r].angka = 0;
+					r++;
+				}
+				break;
+			}i++;
+		}w++;	
 	}
 				
 	for(loop1=1; loop1 <= Operan; loop1++){
