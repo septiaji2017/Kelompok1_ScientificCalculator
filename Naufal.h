@@ -44,14 +44,14 @@ float CtoF(float Fahrenheit)
 	return Celsius;
 }
 
-int pertambahan(int x, int y){
-	int z;
+float pertambahan(float x, float y){
+	float z;
 	z=x+y;
 	return z;
 }
 
-int pengurangan(int x, int y){
-	int z;
+float pengurangan(float x, float y){
+	float z;
 	z=x-y;
 	return z;
 }
