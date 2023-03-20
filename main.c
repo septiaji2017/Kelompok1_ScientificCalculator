@@ -43,7 +43,7 @@ int main(){
 		char *string;
 		char input[200];
 		char delimit[]=" ";
-		int CekOperan, CekAngka, Operan, cekstr;
+		int CekOperan, CekAngka, Operan, cekstr, Cekmutlak=0;
 		int r,k,i,j,l,pilihan,hasil,a, kurung, hitung, hitung1;
 		int loop1, loop2, loop3;
 		int CekBuka, CekTutup;
@@ -114,8 +114,14 @@ int main(){
 		            arr[a].operasi = p[0];
 		            Operan++;
 		            CekOperan++;
-		        }else if (p[0]=='|') {
-		            arr[a].operasi = p[0];
+		        }else if (p[0]='|') {
+		        	Cekmutlak++;
+		        	if(Cekmutlak % 2 == 0){
+		        		arr[a].operasi = '~';
+					}else{
+						arr[a].operasi = p[0];
+					}
+		            printf("\nOperasinya %d = %c", a, arr[a].operasi);
 		            Operan++;
 		            CekOperan++;
 		        }else if (p[0]=='+') {
