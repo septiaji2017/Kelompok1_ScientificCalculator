@@ -1,5 +1,6 @@
 # Kelompok1_ScientificCalculator
-Untuk Tugas Proyek 2 POLBAN
+Politeknik Negeri Bandung
+Untuk Tugas Proyek 2 - Pengembangan Aplikasi Berbasis Library 
 Kelompok 1 D3-1A Jurusan Teknik Informatika
 Anggota:
 1. (221511001) Agam Andika

@@ -1,0 +1,46 @@
+# Project: ADT_CalcScientific
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o Ridha.o Rico.o Mutia.o Marshya.o Naufal.o Agam.o
+LINKOBJ  = main.o Ridha.o Rico.o Mutia.o Marshya.o Naufal.o Agam.o
+LIBS     = -L"D:/devcpp/Dev-Cpp/MinGW64/lib" -L"D:/devcpp/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"D:/devcpp/Dev-Cpp/MinGW64/include" -I"D:/devcpp/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/devcpp/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/devcpp/Dev-Cpp/MinGW64/include" -I"D:/devcpp/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/devcpp/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/devcpp/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = ADT_CalcScientific.exe
+CXXFLAGS = $(CXXINCS) -g3 -g3
+CFLAGS   = $(INCS) -g3 -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+Ridha.o: Ridha.c
+	$(CC) -c Ridha.c -o Ridha.o $(CFLAGS)
+
+Rico.o: Rico.c
+	$(CC) -c Rico.c -o Rico.o $(CFLAGS)
+
+Mutia.o: Mutia.c
+	$(CC) -c Mutia.c -o Mutia.o $(CFLAGS)
+
+Marshya.o: Marshya.c
+	$(CC) -c Marshya.c -o Marshya.o $(CFLAGS)
+
+Naufal.o: Naufal.c
+	$(CC) -c Naufal.c -o Naufal.o $(CFLAGS)
+
+Agam.o: Agam.c
+	$(CC) -c Agam.c -o Agam.o $(CFLAGS)
