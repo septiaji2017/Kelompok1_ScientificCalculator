@@ -147,3 +147,21 @@ double log_10(double x)
     return result;
 }
 
+double log_b(double x, double b) {
+    double result = 0.0;
+    while (x >= b) {
+        result += 1.0;
+        x /= b;
+    }
+    if (x == 1) {
+        return result;
+    }
+    double y = 1.0;
+    while (x < 1.0) {
+        y /= b;
+        x *= b;
+        result -= 1.0;
+    }
+    return result + y * (x - 1) / (x + 1);
+}
+
