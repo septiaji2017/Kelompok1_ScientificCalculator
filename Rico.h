@@ -1,8 +1,8 @@
 #ifndef rico_h
 #define rico_h
 #include <stdio.h>
-#define INFINITY (1.0/0.0)
-#define UNDEFINED (0.0/0.0)
+#define INFINITY (1.0 / 0.0)
+#define UNDEFINED (0.0 / 0.0)
 
 double round_num(double num);
 
@@ -20,8 +20,10 @@ double arccot(double x);
 
 double invsTrigonometri(char *invsTrigo);
 
-double log_2(double x); 
+double log_2(double x);
 
 double log_10(double x);
+
+double log_b(double x, double b);
 
 #endif
