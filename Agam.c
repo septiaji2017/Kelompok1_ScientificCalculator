@@ -932,7 +932,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 			if((arr[i].operasi == 'L')||(arr[i].operasi == 'l')){
 				
 				if(arr[i].operasi == 'L'){
-					arr[i].angka = log10(arr[i+1].angka);
+					arr[i].angka = log_10(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -950,7 +950,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}
 				
 				if(arr[i].operasi == 'l'){
-					arr[i].angka = log2(arr[i+1].angka);
+					arr[i].angka = log_2(arr[i+1].angka);
 					arr[i+j].operasi =' ';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1014,7 +1014,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 			if((arr[i].operasi == '^')||(arr[i].operasi == 'v')||(arr[i].operasi == 'R')){
 				
 				if(arr[i].operasi == 'R'){
-					arr[i-1].angka =  pow(arr[i+1].angka, 1 / arr[i-1].angka);
+					arr[i-1].angka =  f_akar_dinamis(arr[i+1].angka, arr[i-1].angka);
 					arr[i+j].operasi ='\0';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
@@ -1133,9 +1133,9 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				}	
 				
 				if(arr[i].operasi == 'd'){
-					div_t hasildiv;
-					hasildiv = div((int)arr[i-1].angka, (int)arr[i+1].angka);
-					arr[i-1].angka = (float)hasildiv.quot;
+					//div_t hasildiv;
+					//hasildiv = div((int)arr[i-1].angka, (int)arr[i+1].angka);
+					arr[i-1].angka = f_div(arr[i-1].angka, arr[i+1].angka);
 					arr[i+j].operasi ='\0';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
