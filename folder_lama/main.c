@@ -114,7 +114,7 @@ int main(){
 		            arr[a].operasi = p[0];
 		            Operan++;
 		            CekOperan++;
-		        }else if (p[0]=='|') {
+		        }else if (p[0]='|') {
 		        	Cekmutlak++;
 		        	if(Cekmutlak % 2 == 0){
 		        		arr[a].operasi = '~';
