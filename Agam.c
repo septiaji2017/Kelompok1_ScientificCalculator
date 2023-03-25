@@ -1135,7 +1135,7 @@ float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan)
 				if(arr[i].operasi == 'd'){
 					//div_t hasildiv;
 					//hasildiv = div((int)arr[i-1].angka, (int)arr[i+1].angka);
-					arr[i-1].angka = f_div(arr[i-1].angka, arr[i+1].angka);
+					arr[i-1].angka = f_div((int)arr[i-1].angka, (int)arr[i+1].angka);
 					arr[i+j].operasi ='\0';
 					arr[i+j+1].angka = 0;
 					hitung1 = 1;
