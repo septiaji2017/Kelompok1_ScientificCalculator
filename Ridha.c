@@ -1,4 +1,5 @@
 #include "Ridha.h"
+#include <math.h>
 
 int f_operasiBitwiseAnd(int op1, int op2){
 	int op3;
@@ -80,6 +81,13 @@ float f_akar(float number)
     }
 
     return sqrt;
+}
+
+float f_akar_dinamis(float basis, float eksp)
+{
+	float hasil;
+	hasil = pow(basis, 1 / eksp);
+	return hasil;
 }
 
 float f_PersenKeAngka(float x){

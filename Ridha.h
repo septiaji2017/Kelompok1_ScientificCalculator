@@ -29,6 +29,8 @@ float f_pangkat(float basis, int eksp);
 
 float f_akar(float number);
 
+float f_akar_dinamis(float basis, float eksp);
+
 /* Operasi Persen */
 float f_PersenKeAngka(float x);
 
