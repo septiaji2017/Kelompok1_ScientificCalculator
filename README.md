@@ -2,7 +2,7 @@
 Politeknik Negeri Bandung
 Untuk Tugas Proyek 2 - Pengembangan Aplikasi Berbasis Library 
 Kelompok 1 D3-1A Jurusan Teknik Informatika
-Anggota:
+Anggota Kelompok:
 1. (221511001) Agam Andika
 2. (221511017) Marshya Nurizzatuzzahra
 3. (221511022) Mutia Hardita
