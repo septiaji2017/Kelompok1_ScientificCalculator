@@ -3,8 +3,7 @@
 #include <stdio.h>
 #define INFINITY (1.0 / 0.0)
 #define UNDEFINED (0.0 / 0.0)
-
-double round_num(double num);
+#define LN10 2.3025850929940456840179914546844
 
 double arcsin(double x);
 
@@ -17,8 +16,6 @@ double arcsec(double x);
 double arccsc(double x);
 
 double arccot(double x);
-
-double invsTrigonometri(char *invsTrigo);
 
 double log_2(double x);
 

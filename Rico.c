@@ -2,20 +2,6 @@
 #include "Ridha.h"
 #include "pi.h"
 
-double round_num(double num) 
-{
-    int sign = (num >= 0) ? 1 : -1;
-    double abs_num = num * sign;
-    int int_part = (int) abs_num;
-    double frac_part = abs_num - int_part;
-
-    if (frac_part >= 0.5) {
-        return sign * (int_part + 1);
-    } else {
-        return sign * int_part;
-    }
-}
-
 double arcsin(double x) 
 {
     if (x < -1.0 || x > 1.0) {
@@ -95,56 +81,29 @@ double arccot(double x)
 	return arctan(1.0/x);
 }
 
-double invsTrigonometri(char *invsTrigo)
-{
-	double x;
-	if (strstr(invsTrigo, "arcsin")){
-		sscanf(invsTrigo,"arcsin%lf",&x);
-		return arcsin(x);
-	}
-	if (strstr(invsTrigo, "arccos")){
-		sscanf(invsTrigo,"arccos%lf",&x);
-		return arccos(x);
-	}
-	if (strstr(invsTrigo, "arctan")){
-		sscanf(invsTrigo,"arctan%lf",&x);
-		return arctan(x);
-	}
-	if (strstr(invsTrigo, "arccsc")){
-		sscanf(invsTrigo,"arccsc%lf",&x);
-		return arccsc(x);
-	}
-	if (strstr(invsTrigo, "arcsec")){
-		sscanf(invsTrigo,"arcsec%lf",&x);
-		return arccsc(x);
-	}
-	if (strstr(invsTrigo, "arccot")){
-		sscanf(invsTrigo,"arccot%lf",&x);
-		return arccot(x);
-	}
-}
-
 double log_2(double x) 
 {
-    double result = 0.0;
-    if(x < 0){
-    	return 0;
-	}
-    while (x > 1) {
-        result++;
-        x /= 2.0;
+    double old_sum = 0.0;
+    double xmlxpl = (x - 1) / (x + 1);
+    double xmlxpl_2 = xmlxpl * xmlxpl;
+    double denom = 1.0;
+    double frac = xmlxpl;
+    double term = frac;
+    double sum = term;
+
+    while ( sum != old_sum )
+    {
+        old_sum = sum;
+        denom += 2.0;
+        frac *= xmlxpl_2;
+        sum += frac / denom;
     }
-    while (x < 0.5) {
-        result--;
-        x *= 2.0;
-    }
-    return result;
+    return 2.0 * sum;
 }
 
 double log_10(double x) 
 {
-    double result = log_2(x) / log_2(10);
-    return result;
+    return log_2(x) / LN10;
 }
 
 double log_b(double x, double b) {
