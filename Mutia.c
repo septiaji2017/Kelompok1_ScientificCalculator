@@ -19,7 +19,7 @@ int factorial(int n){
 
 double sin(double x) {
 	int terms = 10;
-    double radians = x; // Konversi derajat ke radian
+    double radians = x;
     double result = radians; // Nilai awal deret Maclaurin untuk sinus
     double sign = -1;
     int n;
@@ -34,7 +34,7 @@ double sin(double x) {
 // Fungsi untuk menghitung nilai kosinus menggunakan deret Maclaurin
 double cos(double x) {
 	int terms = 10;
-	double radians = x; // Konversi derajat ke radian
+	double radians = x; 
     double result = 1;
     double sign = -1;
     int n;
