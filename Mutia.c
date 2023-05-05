@@ -1,6 +1,8 @@
 #include "Mutia.h"
 #include "pi.h"
 #include "Ridha.h"
+#include "Agam.h"
+#define EPSILON .0000000000001
  
 //Perhitungan Faktorial
 
@@ -13,37 +15,84 @@ int factorial(int n){
     return result;
 }
 
+
+double my_fmod(double x, double y)
+{
+    if (y == 0.0) {
+        return x;
+    }
+    double q = x / y;
+    double n = q > 0 ? floorr(q) : ceil1(q);
+    double r = x - n * y;
+    if ((y > 0 && r < 0) || (y < 0 && r > 0)) {
+        r += y;
+    }
+    return r;
+}
+
 //program trigonometri
 
 //mencari nilai dari radian trigonometri
-
+// RADIAN
 double sin(double x) {
-	int terms = 10;
-    double radians = x;
-    double result = radians; // Nilai awal deret Maclaurin untuk sinus
-    double sign = -1;
-    int n;
-    for (n = 1; n <= terms; n++) {
-        double term = f_pangkat(radians, 2*n+1) / factorial(2*n+1); // Rumus deret Maclaurin untuk sinus
-        result += sign * term;
-        sign *= -1;
+	const double PI = pi;
+    const double TWO_PI = 2 * pi;
+    const double PI_OVER_TWO = pi / 2;
+    
+    // Reduce x to the range [-2pi, 2pi]
+    x = my_fmod(x, TWO_PI);
+    
+    // Reduce x to the range [-pi/2, pi/2]
+    if (x > PI_OVER_TWO) {
+        x = pi - x;
+    } else if (x < -PI_OVER_TWO) {
+        x = -pi - x;
     }
+    
+    double result = x;
+    double term = x;
+    double denominator = 1;
+    double numerator = x;
+    int k = 1;
+    
+    while (term > EPSILON || term < -EPSILON)
+    {
+        numerator *= -x * x;
+        denominator *= (k + 1) * (k + 2);
+        term = numerator / denominator;
+        result += term;
+        k += 2;
+    }
+    
     return result;
 }
 
 // Fungsi untuk menghitung nilai kosinus menggunakan deret Maclaurin
 double cos(double x) {
-	int terms = 10;
-	double radians = x; 
-    double result = 1;
-    double sign = -1;
-    int n;
-    for (n = 1; n <= terms; n++) {
-        double term = f_pangkat(radians, 2*n) / factorial(2*n); // Rumus deret Maclaurin untuk kosinus
-        result += sign * term;
-        sign *= -1;
+	const double PI = pi;
+    const double TWO_PI = 2 * pi;
+    const double PI_OVER_TWO = pi / 2;
+    
+    // Reduce x to the range [-2pi, 2pi]
+    x = my_fmod(x, TWO_PI);
+    
+    // Reduce x to the range [-pi, pi]
+    if (x > PI || x < -PI) {
+        x = my_fmod(x, PI);
     }
-    return result;
+    
+    // Compute cosine using sine formula
+    double sin_x;
+    if (x < 0) {
+        sin_x = sin(-x);
+    } else {
+        sin_x = sin(x);
+    }
+    double cos_x = f_akar(1 - sin_x * sin_x);
+    if (x > PI_OVER_TWO && x < 3 * PI_OVER_TWO) {
+        cos_x = -cos_x;
+    }
+    return cos_x;
 }
 
 //tangent
@@ -70,34 +119,14 @@ double cot(double x) {
 //program trigonometri
 
 //mencari nilai dari derajat trigonometri
-
+// degree
 double sine(double x) {
-	int terms = 10;
-    double radians = x * pi / 180; // Konversi derajat ke radian
-    double result = radians; // Nilai awal deret Maclaurin untuk sinus
-    double sign = -1;
-    int n;
-    for (n = 1; n <= terms; n++) {
-        double term = f_pangkat(radians, 2*n+1) / factorial(2*n+1); // Rumus deret Maclaurin untuk sinus
-        result += sign * term;
-        sign *= -1;
-    }
-    return result;
+	return sin(x*pi/180);
 }
 
 // Fungsi untuk menghitung nilai kosinus menggunakan deret Maclaurin
 double cosine(double x) {
-	int terms = 10;
-	double radians = x * pi / 180; // Konversi derajat ke radian
-    double result = 1;
-    double sign = -1;
-    int n;
-    for (n = 1; n <= terms; n++) {
-        double term = f_pangkat(radians, 2*n) / factorial(2*n); // Rumus deret Maclaurin untuk kosinus
-        result += sign * term;
-        sign *= -1;
-    }
-    return result;
+    return cos(x*pi/180);
 }
 
 //tangent
