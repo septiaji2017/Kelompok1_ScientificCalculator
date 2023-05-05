@@ -6,6 +6,20 @@
  
 int factorial(int n);
 
+double sin(double x);
+
+double cos(double x);
+
+double tangen(double x);
+
+double cosecan(double x);
+
+double secan(double x);
+
+double cot(double x);
+
+double my_fmod(double x, double y);
+
 //program trigonometri
 //mencari nilai dari derajat trigonometri
 double sine(double x);
