@@ -1,6 +1,8 @@
 #ifndef Naufal_h
 #define Naufal_h
 #include <stdio.h>
+#include <stdlib.h>
+
 
 float CtoK(float Kelvin);
 
@@ -13,6 +15,10 @@ float FtoC(float Celsius);
 float KtoF(float Fahrenheit);
 
 float CtoF(float Fahrenheit);
+
+float perkalianBasic(float a, float b);
+
+float perkalianBasis10(float b);
 
 float pertambahan(float x, float y);
 
