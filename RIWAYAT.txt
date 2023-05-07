@@ -1,2 +1,6 @@
 hasil: 87.00 
 hasil: 32.00 
+hasil: 1.00 
+hasil: -59.00 
+hasil: 0.50 
+hasil: 0.50 

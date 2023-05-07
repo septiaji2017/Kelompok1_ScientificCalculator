@@ -5,6 +5,53 @@
 #define MAX 30
 #include<stdlib.h>
 #include <stdbool.h>
+#include<ctype.h>
+
+#define Nil NULL
+#define First(L) (L).First
+#define Last(L)  (L).Last
+#define Prev(P) (P)->prev
+
+#include "head.h"
+
+int arresCount;
+
+
+/*===================================*/
+/* P R O T O T Y P E  M O D U L  I I */
+/*===================================*/
+
+void delAll (address * First, address * Last);
+
+char* addSymbolCsc(char* s, int n, int* stars);
+
+char * getIndexCsc(char str[]);
+
+bool isDecimal(float angkas);
+
+int countManyDecimals(float angkas);
+
+bool isNegativeDigit2(char c[], int elmt);
+
+bool isNumber2(char info[], int elmt);
+
+char * replaceToCommas(char exp[]);
+
+char * trimLog(char * e);
+
+char * trimTrigono(char * e);
+
+char * trimRadian(char * e);
+
+char isValid1(char x);
+
+void infixkepostfix(char* e);
+
+void insLast (address * First, address * Last, infotype Info);
+
+void viewAsc(address First);
+
+bool isKurangKurung(address First);
 
 /*==============================*/
 /* P R O T O T Y P E  M O D U L */
@@ -25,7 +72,11 @@ div_t f_div(int x, int y);
 int f_mod(int x, int y);
 
 /* Operasi Eksponen */
-float f_pangkat(float basis, int eksp);
+bool isNegative(float x);
+
+float powerex(float x);
+
+float f_pangkat(float basis, float eksp);
 
 float f_akar(float number);
 
