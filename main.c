@@ -1,9 +1,10 @@
-#include "modules/Ridha.h"
-#include "modules/Agam.h"
-#include "modules/Mutia.h"
-#include "modules/Rico.h"
-#include "modules/Naufal.h"
-#include "modules/Marshya.h"
+#include "Agam.h"
+#include "Ridha.h"
+
+#include "Mutia.h"
+#include "Rico.h"
+#include "Naufal.h"
+#include "Marshya.h"
 
 //int top = -1;
 //char stack[100];
@@ -17,35 +18,8 @@ int main()
 	{	
 		system("clS");		
 		
-		printf  ("\n\t\t\t\t\t\t\t       ____________________________________________  \n");
-		printf  ("\t\t\t\t\t\t\t      |  ________________________________________  | \n");
-		printf  ("\t\t\t\t\t\t\t      | |                 PROYEK 2               | | \n");
-		printf  ("\t\t\t\t\t\t\t      | |________________________________________| | \n");
-		printf  ("\t\t\t\t\t\t\t      |  _______  _______ _______ _______ _______  | \n");
-		printf  ("\t\t\t\t\t\t\t      | |   C   ||   1   |   2   |   3   |   ^   | | \n");  
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");  
-		printf  ("\t\t\t\t\t\t\t      | |  +/_  ||   4   |   5   |   6   |   .   | | \n"); 
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");
-		printf  ("\t\t\t\t\t\t\t      | |   %%   ||   7   |   8   |   9   |   0   | | \n");
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");
-		printf  ("\t\t\t\t\t\t\t      | |   +   ||   -   |   *   |   /   |   v   | | \n");
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");
-		printf  ("\t\t\t\t\t\t\t      | | n R x ||   ()  |  |x|  |  DIV  |   !   | | \n");
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");
-		printf  ("\t\t\t\t\t\t\t      | |  pi   ||   e   | ln(x) | log(x)|logx(x)| | \n");
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");
-		printf  ("\t\t\t\t\t\t\t      | |  sin  ||  cos  |  tan  |  sec  |  csc  | | \n");
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");
-		printf  ("\t\t\t\t\t\t\t      | |  cot  || RADsin| RADcos| RADtan| RADsec| | \n");
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");
-		printf  ("\t\t\t\t\t\t\t      | | RADcsc|| RADcot| arcsin| arccos| arctan| | \n");
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");
-		printf  ("\t\t\t\t\t\t\t      | | arcsec|| arccsc| arccot|[floor]| {ceil}| | \n");
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");
-		printf  ("\t\t\t\t\t\t\t      | |<round>||       |       |       |  K.1  | | \n");
-		printf  ("\t\t\t\t\t\t\t      | |_______||_______|_______|_______|_______| | \n");
-		printf  ("\t\t\t\t\t\t\t      |____________________________________________| \n");	
-	
+//		head();
+			
 		char exp[100];
 	    int i=0;    
 	    infotype e;
