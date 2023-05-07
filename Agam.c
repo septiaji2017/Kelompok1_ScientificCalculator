@@ -3,7 +3,6 @@
 #include "Mutia.h"
 #include "Rico.h"
 #include "Naufal.h"
-#include <math.h>
 
 /******************************************/
 /* S P E S I F I K A S I   M O D U L  I I */
