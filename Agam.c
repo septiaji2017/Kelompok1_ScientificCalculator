@@ -3,6 +3,7 @@
 #include "Mutia.h"
 #include "Rico.h"
 #include "Naufal.h"
+#include <math.h>
 
 /******************************************/
 /* S P E S I F I K A S I   M O D U L  I I */
@@ -163,9 +164,19 @@ float kalkulasi(float angka1, float angka2, infotype1 x)
 		printf("\nHasil akarnya: %g", hasil);
 		return hasil;
 	} else if((strcmp(x, "^")) == 0) {
-		hasil = f_pangkat(angka2, angka1);
-		printf("\nHasil pangkatnya: %g", hasil);
-		return hasil;
+		if(angka2 == 0 && angka1 == 0){
+			printf("\n\t\t\t\t\t\t\t\t --> Basis dan pangkat tidak bisa nol");
+			exit(0);
+		}else{
+			if(angka2 == 0){
+				hasil = 0;
+				return hasil;
+			}else{
+				hasil = f_pangkat(angka2, angka1);
+				printf("\nHasil pangkatnya: %g", hasil);
+				return hasil;
+			}
+		}
 	} else if((strcmp(x, "/")) == 0) {
 		if(angka1 == 0){
 			printf("\n\t\t\t\t\t\t\t\t --> Tidak bisa dibagi nol");
