@@ -90,36 +90,30 @@ float pertambahan(float x, float y){
     helper2 = countManyDecimals(y);
 
     if((helper>5) && (helper2>5)){
-		x = round1(x);
-		y = round1(y);
-		helper = 0;
-		helper2 = 0;
+		x = floorClosest(x);
+		y = floorClosest(y);
+		helper = countManyDecimals(x);
+		helper2 = countManyDecimals(y);
 	}else if(helper>5){
-		x = round1(x);
-		helper = 0;
+		x = floorClosest(x);
+		helper = countManyDecimals(x);
 	}else if(helper2>5){
-		y = round1(y);
-		helper2 = 0;
+		//		y = floorr(1000*y)/1000;
+		y = floorClosest(y);
+		helper2 = countManyDecimals(y);
 	}
-
-//    printf("\nx: %g\n\n",x); 
-//    printf("\ny: %g\n\n",y); 
-
-//    printf("\nhelper1: %d\n\n",helper); 
-//    printf("\nhelper2: %d\n\n",helper2); 
 
     //untuk mencari basis 10 ((1)10,(2)100,(3)1000) -> keluaran: 10, 100, 1000, 10000, dll    
     if(helper>helper2){
-//    	printf("kondisi 1\n");
     	bs10 = perkalianBasis10(helper);
+
 	}else if(helper<helper2){
-//    	printf("kondisi 2\n");
 		bs10 = perkalianBasis10(helper2);	
 	}else{
-//		printf("kondisi 3\n");
 		bs10 = perkalianBasis10(helper);		
 	}
-    
+	
+    printf("\nBS1000: %g\n\n",bs10);   
 	//melakukan perkalian (10,100,1000) agar koma nya hilang
 	helper4 = perkalianBasic(x, bs10);
 	
@@ -127,32 +121,13 @@ float pertambahan(float x, float y){
 	
 	helper5 = floorr(10000*helper5)/10000;  //getPrecision, karena angka float itu emg kurang dalam presisi
 	
-// 	printf("\nbs10: %g\n\n",bs10);    
-//    
-//    printf("\nHELPER4: %f, %d\n\n",helper4,sizeof(helper4)); 
-//    printf("\nHELPER5: %f, %d\n\n",helper5,sizeof(helper5)); 
-
- //   	printf("i: %g",i);    	
-//    	printf("\nHELPER4[%g]: %g\n",i,helper4);
     
     while(i<helper5)
     {
     	helper4+=1;
-//    	printf("helper5: %g, ",helper5);
-//    	printf("i: %g",i);    	
-//    	printf("\nHELPER4[%g]: %g\n\n",i,helper4);
 		i++;    	
 	}		
 
-    
-	
-//    	
-//    for (i = 0; i<helper5; i++) {  	
-//    	helper4+=1;
-//    	printf("helper5: %g, ",helper5);
-//    	printf("i: %g",i);    	
-//    	printf("\nHELPER4[%g]: %g\n\n",i,helper4);
-//	}
 	printf("\nend of loop\n");
 
  	
@@ -186,20 +161,20 @@ float pengurangan(float x, float y){
     
     //untuk menghitung basis desimal ((0.1)per sepuluhan, (0.01)per seratusan, dll) -> keluaran: 1,2,3,4, dll
     helper = countManyDecimals(x);
-    printf("\ncountmany decimals: %d\n\n",countManyDecimals(x));
+//    printf("\ncountmany decimals: %d\n\n",countManyDecimals(x));
     helper2 = countManyDecimals(z);
-    printf("\ncountmany decimals: %d\n\n",countManyDecimals(z));
+//    printf("\ncountmany decimals: %d\n\n",countManyDecimals(z));
 
     if((helper>5) && (helper2>5)){
-		x = round1(x);
-		z = round1(z);
+		x = floorClosest(x);
+		z = floorClosest(z);
 		helper = 0;
 		helper2 = 0;
 	}else if(helper>5){
-		x = round1(x);
+		x = floorClosest(x);
 		helper = 0;
 	}else if(helper2>5){
-		z = round1(z);
+		z = floorClosest(z);
 		helper2 = 0;
 	}
 
@@ -216,6 +191,8 @@ float pengurangan(float x, float y){
 	helper4 = perkalianBasic(x, bs10);
 	
 	helper5 = perkalianBasic(z, bs10);
+	
+	helper5 = floorr(10000*helper5)/10000;  //getPrecision, karena angka float itu emg kurang dalam presisi	
      
     for (i = 0; i < helper5; i++) {  	
     	helper4-=1;
@@ -246,15 +223,15 @@ float perkalian(float a, float b) {
     helper2 = countManyDecimals(c);
     
     if((helper>5) && (helper2>5)){
-		a = round1(a);
-		c = round1(c);
+		a = floorClosest(a);
+		c = floorClosest(c);
 		helper = 0;
 		helper2 = 0;
 	}else if(helper>5){
-		a = round1(a);
+		a = floorClosest(a);
 		helper = 0;
 	}else if(helper2>5){
-		c = round1(c);
+		c = floorClosest(c);
 		helper2 = 0;
 	}
     
