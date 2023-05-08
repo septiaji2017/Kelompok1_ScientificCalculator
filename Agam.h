@@ -2,6 +2,8 @@
 #define Agam_H
 #include <stdio.h>
 #include<stdlib.h>
+#include <stdbool.h>
+#include <string.h>
 #define pi 3.14159265358979323846
 #define MAX 30
 #include <conio.h>
@@ -9,152 +11,60 @@
 //#define false 0
 #define boolean unsigned char
 
-/*************************************/
-/* T I P E  D A T A  K O M P O S I T */
-/*************************************/
+#define info(P) (P)->info
+#define infoo(P) (P)->infoo
+#define next(P) (P)->next
+#define prev(P) (P)->prev
+#define Nil NULL
+#define right(P) (P)->right
+#define left(P) (P)->left
+#define parent(P) (P)->parent
 
-typedef struct { int Tgl; int Bln; int Thn;} date;
+#include "head.h"
 
-typedef struct{
-     float angka;
-     char operasi;
-} Matematika;
+char stack[100];
+int top;
 
+typedef char* infotype1;	
+typedef struct TreeNode *Address;
+typedef struct TreeNode{
+	Address right; 
+	infotype1 infoo; 
+	Address left; 
+	Address parent;
+}nbTreeNode;
 
-/*************************************/
-/* S P E S I F I K A S I   M O D U L */
-/*************************************/
+/******************************************/
+/* S P E S I F I K A S I   M O D U L  I I */
+/******************************************/
 
-int GetTgl (date D);
+void push(char x);
 
-int GetBln (date D);
+char pop();
 
-int GetThn (date D);
+int priority(char x);
 
-boolean isValid(date D);
+bool isNegativeDigit(char* c);
 
-boolean isKabisat (date D);
+Address NewNode(infotype1 X);
 
-int TglAkhir (date D);
+int is_operator(char x);
 
-int GetTgl (date D);
+infotype1 isOperator(infotype1 x);
 
-int GetBln (date D);
+bool IsOperator1(infotype1 info);
 
-int GetThn (date D);
+int isOperator2(char x);
 
-boolean isValid(date D);
+bool isNumber(infotype1 info);
 
-boolean isKabisat (date D);
+float kalkulasi(float angka1, float angka2, infotype1 x);
 
-int TglAkhir (date D);
+void creat_tree(address * First, address * Last);
 
-//Konvert Jam
-int JamKeDetik(int JamInput);
+void replaceNewLineBySpace(char *s);
 
-int JamKeMenit(int JamInput);
-
-int MenitKeJam(int MenitInput);
-
-int sisaMenitkeDetik(int MenitInput);
-
-int MenitKeDetik(int MenitInput);
-
-int DetikKeJam(int DetikInput);
-
-int sisaDetikKeJam(int DetikInput);
-
-int sisaDetikKeJam1(int DetikInput);
-
-int sisaDetikKeJam2(int DetikInput);
-
-int sisaDetikKeJam3(int DetikInput);
-
-//Bangun Datar
-//Menghitung luas persegi
-float luaspersegi(float sisiInput);
-
-//Menghitung keliling persegi
-float kelilingpersegi(float sisiInput);
-
-//Menghitung luas persegi panjang
-float persegipanjang(float panjang, float lebar);
-
-//Menghitung keliling persegi panjang
-float kelilingpersegipanjang(float panjang, float lebar);
-
-//Menghitung luas segitiga
-float luassegitiga(float alas, float tinggi, float sisi);
-
-//Menghitung keliling segitiga
-float kelilingsegitiga(float alas, float tinggi, float sisi);
-
-//Menghitung luas lingkaran
-float luaslingkaran(float jari);
-
-//Menghitung keliling lingkaran
-float kelilinglingkaran(float jari);
-
-//Menghitung luas jajargenjang
-float luasjajargenjang(float alas, float tinggi);
-
-//Menghitung keliling jajargenjang
-float kelilingjajargenjang(float alas, float sisimiring);
-
-//Menghitung luas belah ketupat
-float luasbelahketupat(float diagonal1, float diagonal2);
-
-//Menghitung keliling belah ketupat
-float kelilingbelahketupat(float sisi);
-
-//Bangun Ruang
-//Menghitung luas kubus
-float luaskubus(float rusuk);
-
-//Menghitung volume kubus
-float volumekubus(float rusuk);
-
-//Menghitung luas balok
-float luasbalok(float panjang, float lebar, float tinggi);
-
-//Menghitung volume balok
-float volumebalok(float panjang, float lebar, float tinggi);
-
-//Menghitung Luas kerucut
-float luaskerucut(float jari, float sisi);
-
-//Menghitung volume kerucut
-float volumekerucut(float jari, float tinggi);
-
-//Menghitung luas bola
-float luasbola(float jari);
-
-//Menghitung volume bola
-float volumebola(float jari);
-
-//Menghitung luas tabung
-float luastabung(float jari, float tinggi);
-
-//Menghitung volume tabung
-float volumetabung(float jari, float tinggi);
-
-
-//himpunan
-int member(int set[],int x);
-
-int himpunanA(int set1[]);
-
-int himpunanB(int set2[]);
-
-int hasil(int set3[]);
-
-int gabungan(int set1[],int set2[],int set3[]);
-
-int irisan(int set1[],int set2[],int set3[]);
-
-int selisih(int set1[],int set2[],int set3[]);
-
-int bedasetangkup(int set1[],int set2[],int set3[]);
+char * removespaces(char * exp);
 
 float floorr(float x);
 
@@ -162,9 +72,8 @@ float ceil1(float x);
 
 float round1(float x);
 
-int abs1(int x);
+float abs1(float x);
 
-float kalku(Matematika arr[], int Operan, int CekAngka, int CekOperan);
 
 
 #endif
