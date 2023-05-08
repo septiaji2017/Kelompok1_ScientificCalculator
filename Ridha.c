@@ -10,6 +10,145 @@
 //char* ans;
 //int nIter, nIter2, nIter3;
 
+
+char* addSymbolCsc(char* s, int n, int* stars)
+{
+	char* ans = (char*)malloc(2 * n * sizeof(char));
+	int i;
+	int j = 0;
+	int idx = 0;
+	
+	for (i = 0; i < strlen(s); i++) {
+	    if (j < n && i == stars[j]) {
+	        ans[idx++] = '0';
+	        j++;
+	    }
+	    ans[idx++] = s[i];
+	}
+	
+	ans[idx] = '\0';
+	
+	return ans;
+}
+
+char * getIndexCsc(char str[])
+{
+    char sub[100];
+    int i, j,k, len, sub_len, found;
+	static int chars[255];
+	int founds;
+	founds=0;
+	int ktemu=0;
+	int ktemu2=0;
+	int n;
+	char* ans;
+	bool udah=false;
+	int testdigit;
+	
+	memset(chars, 0, sizeof(chars));	//18032023	
+	
+	int negate[255],nega=0,negaKetemu=0;	//19032023
+	int arrayHasilAkhir[255],l;				//19032023
+	
+	int loopstr;    
+	
+//trigonometri
+
+	if((strstr(str,"e")!=NULL) && !(strstr(str,"sec")!=NULL)){
+		strcpy(sub,"e");
+	    len = strlen(str);
+	    sub_len = strlen(sub);
+	
+	    for (i = 0; i <= len - sub_len; i++)
+	    {
+	        found = 1;			        
+	        for (j = 0; j < sub_len; j++)
+	        {
+	            if (str[i + j] != sub[j])
+	            {
+	                found = 0;
+	                break;
+	            }
+	        }
+	
+	        if (found == 1)
+	        {
+	        	chars[founds] = i+1;
+	            printf("chars[%d]: %d\n",founds,chars[founds]);
+	            ktemu++;
+	            founds++;
+	        }
+	    }
+
+	    if (found == 0)
+	    {
+
+	    }		
+	}
+
+	int loop, arrLoopi, arrLoopj, temp=0;
+	int length = sizeof(chars)/sizeof(chars[0]);    		
+
+    //Sort the array in ascending order    
+    for (arrLoopi = 0; arrLoopi < ktemu; arrLoopi++) {     
+        for (arrLoopj = arrLoopi+1; arrLoopj < ktemu; arrLoopj++) {     
+           if(chars[arrLoopi] > chars[arrLoopj]) {    
+               temp = chars[arrLoopi];    
+               chars[arrLoopi] = chars[arrLoopj];    
+               chars[arrLoopj] = temp;    
+           }     
+        }     
+    } 	
+
+    //remove duplicate elements in the array 
+    for ( i = 0; i < ktemu; i ++){  
+        for ( j = i + 1; j < ktemu; j++){  
+            if ( chars[i] == chars[j]){   
+                for ( k = j; k < ktemu - 1; k++){  
+                    chars[k] = chars[k+1];  
+                }  
+                ktemu--;   
+                j--;      
+            }  
+        }  
+    }  
+
+	k=0;
+	l=0;
+   // Keyword: Set Differences (Selisih kedua array)  
+    for( i=0;i<ktemu;i++)
+    {
+        for(j=0;j<negaKetemu;j++)
+        {
+            if(negate[j]==chars[i])
+             break;
+        }
+        if(j==negaKetemu)
+        {
+          // here we check that is element already present in the set 
+          // if present than ignore it otherwise add to the difference set   
+            for(l=0;l<k;l++)
+            {
+                if(arrayHasilAkhir[l]==chars[i])
+                 break;
+            }
+            if(l==k)
+            {
+                arrayHasilAkhir[k]=chars[i];
+                k++;
+            }
+        }
+        
+    }	
+
+	n = sizeof(arrayHasilAkhir) / sizeof(arrayHasilAkhir[0]);
+	
+	ans = addSymbolCsc(str, n, arrayHasilAkhir);
+	
+	return ans;
+
+}	
+
 void delAll (address * First, address * Last){
 	address PDel,PDel2;
 	PDel = *First;
@@ -24,6 +163,12 @@ void delAll (address * First, address * Last){
 		PDel = *First;
 		free(PDel);
 	}	
+}
+
+float floorClosest(float angkas)
+{
+	angkas=floorr(1000*angkas)/1000;
+	return angkas;
 }
 
 bool isDecimal(float angkas){
@@ -107,15 +252,17 @@ char * replaceToCommas(char exp[]){
 		
 		i=0;
 		
-		if((strstr(exp,"e")!=0)){
+		if((strstr(exp,"e")!=0) && !(strstr(exp,"sec")!=0)){
+
+//		strcpy(exp,"eu");
 
 		    while(exp[i]!='\0')
 		    {
-		        if((exp[i]=='1') && (exp[i+1]=='e'))
+		        if((exp[i]=='e') && (exp[i+1]=='0'))
 		        {
 					j=0;
-		            exp[i]='1';	
-		            exp[i+1]='e';																																								 
+		            exp[i]='0';
+		            exp[i+1]='e';																																															 
 		        }
 		        i++;
 		    }				
@@ -903,11 +1050,25 @@ float f_pangkat(float basis, float eksp){
 	float penampung;
 	
     float result; 
+    
+    float basis2;
 	
-	penampung = log_2(basis);
+	if(basis<0){
+		basis2=abs1(basis);
+		penampung = log_2(basis2);
+	}else{
+		penampung = log_2(basis);
+	}
+	
+//	penampung = log_2(basis);
 	result = powerex(eksp * penampung);
 
-    return result;
+	if(f_mod(eksp,2)==0){ //saat basis genap
+ 	   return result;		
+	}else if(f_mod(eksp,2)==1){
+		return -result;
+	}
+
 
 }
 

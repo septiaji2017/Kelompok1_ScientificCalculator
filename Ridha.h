@@ -21,6 +21,8 @@ int arresCount;
 /* P R O T O T Y P E  M O D U L  I I */
 /*===================================*/
 
+float floorClosest(float angkas);
+
 void delAll (address * First, address * Last);
 
 char* addSymbolCsc(char* s, int n, int* stars);

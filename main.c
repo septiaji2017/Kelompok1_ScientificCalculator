@@ -40,7 +40,6 @@ int main()
 	    
 	    printf("Masukkan angka yang ingin anda hitung : ");
 	    fgets(exp, 100, stdin);
-	    printf("EXPssssssssssssssssssssss:%s",exp);
 //	    while(fgets(exp, 100, stdin) != NULL)
 //		{
 		    printf("\n");
@@ -65,7 +64,9 @@ int main()
 			
 			hh = replaceToCommas(exp);
 	
-			g = trimLog(exp);
+			f = getIndexCsc(hh);
+	
+			g = trimLog(f);
 			aa = trimRadian(g);		
 			xx = trimTrigono(aa);
 
