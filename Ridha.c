@@ -1052,10 +1052,19 @@ float f_pangkat(float basis, float eksp){
     float result; 
     
     float basis2;
+    
+    int sign=1;
 	
 	if(basis<0){
 		basis2=abs1(basis);
 		penampung = log_2(basis2);
+		
+		if(f_mod(eksp,2)==0){ //saat basis genap
+			sign = 1;		
+		}else if(f_mod(eksp,2)==1){
+			sign = -1;
+		}		
+		
 	}else{
 		penampung = log_2(basis);
 	}
@@ -1063,11 +1072,13 @@ float f_pangkat(float basis, float eksp){
 //	penampung = log_2(basis);
 	result = powerex(eksp * penampung);
 
-	if(f_mod(eksp,2)==0){ //saat basis genap
- 	   return result;		
-	}else if(f_mod(eksp,2)==1){
-		return -result;
-	}
+	return (result*sign);	
+
+//	if(f_mod(eksp,2)==0){ //saat basis genap
+// 	   return result;		
+//	}else if(f_mod(eksp,2)==1){
+//		return -result;
+//	}
 
 
 }
