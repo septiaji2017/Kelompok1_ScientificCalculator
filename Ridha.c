@@ -638,6 +638,22 @@ char * replaceToCommas(char exp[]){
 		    }				
 		}
 		
+		
+		i=0; //Kondisi DIV
+		if(strstr(exp,"DIV")!=0){
+		    while(exp[i]!='\0')
+		    {
+		        if((exp[i]=='D') && (exp[i+1]=='I') && (exp[i+2]=='V'))
+		        {
+		            exp[i]='d';
+		            exp[i+1]=',';		           
+		            exp[i+2]=',';		            
+															 
+		        }
+		        i++;
+		    }				
+		}		
+		
 	return exp;		
 	
 }
