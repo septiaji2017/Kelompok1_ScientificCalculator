@@ -888,7 +888,6 @@ void infixkepostfix(char* e){
 	                    e++;
 	                }
 	            }
-		        printf("%g ", num * sign);
 		        
 		        sprintf(strt, "%g", num * sign);
   				
@@ -1062,9 +1061,9 @@ void insLast (address * First, address * Last, infotype Info){
 
 void viewAsc(address First){
 	//dari first ke last
-	printf("\nView Ascending: \n");
+//	printf("\nView Ascending: \n");
 	while(First!=Nil){
-		printf("%s ", info(First));
+		printf(" ", info(First));
 		First = next(First);
 	}printf("\n");	
 }
