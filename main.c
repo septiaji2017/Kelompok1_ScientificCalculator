@@ -6,9 +6,6 @@
 #include "Naufal.h"
 #include "Marshya.h"
 
-//int top = -1;
-//char stack[100];
-
 int main()
 {
 
@@ -17,13 +14,10 @@ int main()
 	for (;;)
 	{	
 		system("clS");		
-		
-//		head();
 			
 		char exp[100];
 	    int i=0;    
 	    infotype e;
-//	    char x;
 	    int xxxx=0;
 	    char *f, *g, *h, *xx, *yy, a, *hh, *zz, *aa;
 	    
@@ -40,8 +34,6 @@ int main()
 	    
 	    printf("Masukkan angka yang ingin anda hitung : ");
 	    fgets(exp, 100, stdin);
-//	    while(fgets(exp, 100, stdin) != NULL)
-//		{
 		    printf("\n");
 			
 			while(exp[xxxx]!='\n'){
@@ -57,7 +49,6 @@ int main()
 			if(kurung1Count!=kurung2Count){
 				printf("Error, kurang kurung");
 				break;
-//				exit(0);
 			}
 		    
 		    replaceNewLineBySpace(exp);
@@ -72,18 +63,15 @@ int main()
 
 			e = removespaces(xx);				
 				    
-		    infixkepostfix(e);	//test				
+		    infixkepostfix(e);			
 			
-//			printf("test\n");
 			viewAsc(First);
 			
 			creat_tree(&First, &Last);
-//			break;
-//		}
+
 		printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
 		lagi = getch();
 		delAll(&First,&Last);
-		memset(exp, 0, sizeof(exp));
 
 		if(lagi!='y'){	
 			break;

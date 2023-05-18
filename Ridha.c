@@ -10,7 +10,12 @@
 //char* ans;
 //int nIter, nIter2, nIter3;
 
-
+/*=============================================================================================*/
+/*1. Input (initial state) = e*/
+/*2. Output (final state) = e0*/
+/*3. GeeksForGeeks (beberapa penyesuaian) */
+/*4. https://www.geeksforgeeks.org/how-to-insert-characters-in-a-string-at-a-certain-position/ */
+/*=============================================================================================*/
 char* addSymbolCsc(char* s, int n, int* stars)
 {
 	char* ans = (char*)malloc(2 * n * sizeof(char));
@@ -31,6 +36,16 @@ char* addSymbolCsc(char* s, int n, int* stars)
 	return ans;
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = e*/
+/*2. Output (final state) = e0*/
+/*3.1 sanfoundry (sort array in asc) */
+/*3.2 javatpoint (remove duplicate array)*/
+/*3.3 easycodingzone (set differences / selisih kedua array)*/
+/*4.1 https://www.sanfoundry.com/c-program-sort-array-ascending-order/ */
+/*4.2 https://www.javatpoint.com/remove-duplicate-elements-from-an-array-in-c*/
+/*4.3 https://www.easycodingzone.com/2020/12/program-to-find-difference-of-two-set.html*/
+/*=============================================================================================*/
 char * getIndexCsc(char str[])
 {
     char sub[100];
@@ -74,7 +89,6 @@ char * getIndexCsc(char str[])
 	        if (found == 1)
 	        {
 	        	chars[founds] = i+1;
-	            printf("chars[%d]: %d\n",founds,chars[founds]);
 	            ktemu++;
 	            founds++;
 	        }
@@ -165,12 +179,24 @@ void delAll (address * First, address * Last){
 	}	
 }
 
+
+/*=============================================================================================*/
+/*1. Input (initial state) = 19.241029410248*/
+/*2. Output (final state) = 19.241*/
+/*3. GeeksForGeeks (beberapa penyesuaian) */
+/*4. https://www.geeksforgeeks.org/g-fact-41-setting-decimal-precision-in-c/ */
+/*=============================================================================================*/
 float floorClosest(float angkas)
 {
 	angkas=floorr(1000*angkas)/1000;
 	return angkas;
 }
 
+
+/*=============================================================================================*/
+/*1. Input (initial state) = 2.3*/
+/*2. Output (final state) = true*/
+/*=============================================================================================*/
 bool isDecimal(float angkas){
 	char str[255];
 	sprintf(str,"%g",angkas);
@@ -181,6 +207,10 @@ bool isDecimal(float angkas){
 	}
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = 2.34*/
+/*2. Output (final state) = 2*/
+/*=============================================================================================*/
 int countManyDecimals(float angkas){
 	
 	int counters=0;
@@ -206,6 +236,11 @@ int countManyDecimals(float angkas){
 
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = -4*/
+/*2. Output (final state) = true*/
+/*3. Referensi: Agam, dengan penyesuaian tipe data parameter*/
+/*=============================================================================================*/
 bool isNegativeDigit2(char c[], int elmt) {
     if (c[elmt] == '-') {
         elmt++;
@@ -214,6 +249,11 @@ bool isNegativeDigit2(char c[], int elmt) {
     return false;
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = 5*/
+/*2. Output (final state) = true*/
+/*3. Referensi: Agam, dengan penyesuaian tipe data parameter*/
+/*=============================================================================================*/
 bool isNumber2(char info[], int elmt){
 	bool infoNumber;
 	infoNumber = (isdigit(info[elmt]) || (info[elmt]) == '-' && isNegativeDigit2(info,elmt) && !isdigit(info[elmt-1]));
@@ -221,6 +261,10 @@ bool isNumber2(char info[], int elmt){
 	return infoNumber;
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = sin90*/
+/*2. Output (final state) = i,,90*/
+/*=============================================================================================*/
 char * replaceToCommas(char exp[]){
 
 		int i,j;
@@ -658,6 +702,11 @@ char * replaceToCommas(char exp[]){
 	
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = T,90*/
+/*2. Output (final state) = T90*/
+/*note: untuk menghapus char ','*/
+/*=============================================================================================*/
 char * trimLog(char * e){
 	char* x = malloc (255*sizeof(char));
 	int i,j;
@@ -673,6 +722,11 @@ char * trimLog(char * e){
 	return x;				
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = E,,90*/
+/*2. Output (final state) = E90*/
+/*note: untuk menghapus char ','*/
+/*=============================================================================================*/
 char * trimTrigono(char * e){
 	char* x = malloc (255*sizeof(char));
 	int i,j;
@@ -692,6 +746,11 @@ char * trimTrigono(char * e){
 	return x;				
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = P,,,,90*/
+/*2. Output (final state) = P90*/
+/*note: untuk menghapus char ','*/
+/*=============================================================================================*/
 char * trimRadian(char * e){
 	char* x = malloc (255*sizeof(char));
 	int i,j;
@@ -718,6 +777,11 @@ char * trimRadian(char * e){
 	return x;				
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = P,,,,90*/
+/*2. Output (final state) = P90*/
+/*note: untuk menghapus char ','*/
+/*=============================================================================================*/
 char isValid1(char x){
     if (x == '(' || x == ')' || x == '~' || x == '|' || x == '{'  || x == '}' || x == '<' || x == '>'  || x == '[' || x == ']' ) //yg di masukkin adlh tanda pembuka
         return 1;
@@ -738,6 +802,12 @@ char isValid1(char x){
 	return 0;
 }
 
+
+/*=============================================================================================*/
+/*1. Input (initial state) = 10/2+5*/
+/*2. Output (final state) = 10 2 / 5 +*/
+/*3. Referensi: Agam (berdiskusi di bagian kondisi)*/
+/*=============================================================================================*/
 void infixkepostfix(char* e){
 	char x;
 	char y;
@@ -779,15 +849,17 @@ void infixkepostfix(char* e){
 	    		system("Pause");
 				exit(0);				
 			}
-						
-			
-			//((*e == '-' && isdigit(*(e+1))) && !isdigit(*(e-1)) && *(e-1)!=')') 
-			//cth: (5)-2, harus 5 2 -, bukan 5 -2
-			
-			//((*e == '-' && isdigit(*(e+1))) && !isdigit(*(e-1)) && *(e-1)!=')' && !isOperator2(*(e-1)))
-			//cth: 5!-2, harus 5 ! 2 -, bukan 5! -2	
-			
-			
+								
+			//IF ini digunakan untuk memasukkannya ke stack sebagai angka/bilangan (bukan operan apapun)
+			//apabila berupa digit (isDigit(*e))
+			//cth: 5
+			//atau
+			//berupa char '-', namun setelah char '-', harus berupa digit, DAN sebelum char '-' tidak boleh berupa digit dan sebelum char '-' gk boleh berupa char ')' DAN sebelum char '-' gk boleh berupa isOperator2 (!, v, dll)
+			//cth: 5!-2 (harusnya '..-2' itu - dan 2, bukan -2)
+			//atau
+			//berupa char '.', namun setelahnya harus berupa digit (utk desimal)
+			//cth: 5.34+5 (harusnya 5.34 dihitungnya 5.34, bukan 5, ., dan 34)
+			//diluar if, berarti masuk ke kondisi yang lain
 			if (isdigit(*e) || ((*e == '-' && isdigit(*(e+1))) && !isdigit(*(e-1)) && *(e-1)!=')' && !isOperator2(*(e-1))) || (*e == '.' && isdigit(*(e+1)))   )
 		    {
 		    	
@@ -965,6 +1037,11 @@ void infixkepostfix(char* e){
     }
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = List Kosong*/
+/*2. Output (final state) = List terisi dengan operator ataupun bilangan*/
+/*3. referensi: reuse dari SDA praktik (buatan sendiri)*/
+/*=============================================================================================*/
 void insLast (address * First, address * Last, infotype Info){
 	address P;
 	P = (address) malloc(sizeof (ElmtList));
@@ -1021,18 +1098,30 @@ int f_operasiBitwiseNot(int op1){
 	return op2;
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = nilai belum diketahui*/
+/*2. Output (final state) = menghasilkan hasil pembagi*/
+/*=============================================================================================*/
 div_t f_div(int x, int y){
 	div_t output;
 	output=div(x,y);
 	return output;
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = nilai belum diketahui*/
+/*2. Output (final state) = menghasilkan sisa bagi*/
+/*=============================================================================================*/
 int f_mod(int x, int y){
 	int z;	
 	z=x%y;
 	return z;
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = -5*/
+/*2. Output (final state) = True*/
+/*=============================================================================================*/
 bool isNegative(float x){
 	if(x<0){
 		return 1;
@@ -1041,6 +1130,12 @@ bool isNegative(float x){
 	}
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = awalan modul itu gimana*/
+/*2. Output (final state) = akhir dari modul itu menghasilkan apa*/
+/*3. Stack Overflow (dengan beberapa penyesuaian) */
+/*4. https://stackoverflow.com/questions/70382318/ex-without-math-h */
+/*=============================================================================================*/
 float powerex(float x) {
     float a = 1.0;
 	float e = 0;
@@ -1061,6 +1156,12 @@ float powerex(float x) {
 
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = value belum diketahui*/
+/*2. Output (final state) = menghasilkan hasil pangkat*/
+/*3. prepscholar (berupa teori saja) */
+/*4. https://blog.prepscholar.com/natural-log-rules */
+/*=============================================================================================*/
 float f_pangkat(float basis, float eksp){
 
 	float penampung;
@@ -1099,6 +1200,14 @@ float f_pangkat(float basis, float eksp){
 
 }
 
+
+/*=============================================================================================*/
+/*1. Input (initial state) = value belum diketahui*/
+/*2. Output (final state) = menghasilkan hasil akar*/
+/*3. referensi = ourcodeworld */
+/*4. https://ourcodeworld.com/articles/read/884/how-to-get-the-square-root-of-a-number-without-using-the-sqrt-function-in-c*/
+/*=============================================================================================*/
+
 float f_akar(float number)
 {
     float temp, sqrt;
@@ -1112,6 +1221,11 @@ float f_akar(float number)
     return sqrt;
 }
 
+/*=============================================================================================*/
+/*1. Input (initial state) = value belum diketahui*/
+/*2. Output (final state) = menghasilkan hasil akar*/
+/*3. referensi = rico (sbg inspirasi) */
+/*=============================================================================================*/
 float f_akar_dinamis(float basis, float eksp)
 {
 	float hasil;
