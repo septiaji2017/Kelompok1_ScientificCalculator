@@ -32,7 +32,6 @@ int main()
 	    
 	    infotype operators[13];
 	    
-	    printf("Masukkan angka yang ingin anda hitung : ");
 	    fgets(exp, 100, stdin);
 		    printf("\n");
 			
