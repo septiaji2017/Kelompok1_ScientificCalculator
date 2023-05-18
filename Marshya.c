@@ -1,37 +1,79 @@
 #include "Marshya.h"
 
+/******************************************/
+/* S P E S I F I K A S I   M O D U L  I I */
+/******************************************/
+
+/********************************************************************************************/
+/* Initial State: Menampung angka bertipe float, pada modul ini berperan sebagai function 	*/
+/* Final State: Memberikan sebuah nilai yang sudah dikalkulasikan berupa pembulatan kebawah */
+/* Referensi Modul: - 																		*/
+/* Referensi Link: -                                                                        */ 
+/********************************************************************************************/
+
 //Program konversi nilai ke floor
 float flr(float x)
 {
 	float result;			//deklarasi variabel untuk menampung hasil
-	result = floor(x);		//
-	return result;			//
+	result = floor(x);		
+	return result;			
 }
+
+
+/********************************************************************************************/
+/* Initial State: Menampung angka bertipe float, pada modul ini berperan sebagai function 	*/
+/* Final State: Memberikan sebuah nilai yang sudah dikalkulasikan berupa pembulatan keatas */
+/* Referensi Modul: - 																		*/
+/* Referensi Link: -                                                                        */ 
+/********************************************************************************************/
 
 //Program konversi nilai ke ceil
 float cl(float x)
 {
 	float result;			//deklarasi variabel untuk menampung hasil
-	result = ceil(x);		//
-	return result;			//
+	result = ceil(x);		
+	return result;			
 }
+
+
+/******************************************************************************************************/
+/* Initial State: Menampung angka bertipe float, pada modul ini berperan sebagai function             */
+/* Final State: Memberikan sebuah nilai yang sudah dikalkulasikan berupa pembulatan keatas atau bawah */
+/* Referensi Modul: - 																	              */
+/* Referensi Link: -                                                                                  */ 
+/******************************************************************************************************/
 
 //Program konversi nilai ke round
 float rnd(float x)
 {
 	float result;			//deklarasi variabel untuk menampung hasil
-	result = round(x);		//
-	return result;			//
+	result = round(x);		
+	return result;			
 }
+
+
+/******************************************************************************************************/
+/* Initial State: Menampung angka bertipe float, pada modul ini berperan sebagai function             */
+/* Final State: Memberikan sebuah nilai yang sudah dikalkulasikan berupa pembulatan keatas atau bawah */
+/* Referensi Modul: - 																	              */
+/* Referensi Link: -                                                                                  */ 
+/******************************************************************************************************/
 
 //Program konversi nilai ke absolute
 int absolute(int y)
 {
 	int result;				//deklarasi variabel untuk menampung hasil
-	result = abs(y);		//
-	return result;			//
+	result = abs(y);		
+	return result;			
 }
 
+
+/********************************************************************************************/
+/* Initial State: Menampung angka bertipe float, pada modul ini berperan sebagai function 	*/
+/* Final State: Memberikan sebuah nilai yang sudah dikalkulasikan berupa pembulatan keatas */
+/* Referensi Modul: - 																		*/
+/* Referensi Link: -                                                                        */ 
+/********************************************************************************************/
 
 //header tampilan help
 char header_help(){
