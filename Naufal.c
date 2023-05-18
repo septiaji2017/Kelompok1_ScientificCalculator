@@ -53,7 +53,6 @@ float perkalianBasic(float a, float b) {
     for (i = 0; i < b; i++) {
         hasil += a;  // tambahkan nilai a sebanyak b kali ke dalam hasil ;hasil = hasil + a
     }
-	printf("\nhasil perkalianBasic: %g",hasil);
     return hasil;
 }
 
@@ -112,15 +111,15 @@ float pertambahan(float x, float y){
 	}else{
 		bs10 = perkalianBasis10(helper);		
 	}
-	
-    printf("\nBS1000: %g\n\n",bs10);   
+  
 	//melakukan perkalian (10,100,1000) agar koma nya hilang
 	helper4 = perkalianBasic(x, bs10);
 	
 	helper5 = perkalianBasic(y, bs10);
 	
-	helper5 = floorr(10000*helper5)/10000;  //getPrecision, karena angka float itu emg kurang dalam presisi
-	
+	if(isDecimal(helper5)){
+		helper5 = floorr(10000*helper5)/10000;  //getPrecision, karena angka float itu emg kurang dalam presisi
+	}
     
     while(i<helper5)
     {
@@ -128,12 +127,8 @@ float pertambahan(float x, float y){
 		i++;    	
 	}		
 
-	printf("\nend of loop\n");
-
- 	
     bagiHasil = helper4/bs10;
 
-	printf("\nBAGIHASIL: %g\n\n",bagiHasil);
 
     return bagiHasil;
 }
@@ -242,13 +237,10 @@ float perkalian(float a, float b) {
 	//untuk menjumlahkan basis desimal (per sepuluhan, per seratusan, dll) yg akan dipake di akhir
     helper3 = helper + helper2;
 	bs10_3 = perkalianBasis10(helper3);	
-		printf("\nbs10_3: %g\n",bs10_3);
 	
 	//melakukan perkalian (10,100,1000) agar koma nya hilang
 	helper4 = perkalianBasic(a, bs10);
-		printf("\nhelper4: %g\n",helper4);
 	helper5 = perkalianBasic(c, bs10_2);
-	    printf("\nhelper5: %g\n",helper5);
     
     for (i = 0; i < helper5; i++) {
         hasil += helper4;  // tambahkan nilai a sebanyak b kali ke dalam hasil
@@ -312,8 +304,6 @@ float pembagian(float dividend, float divisor)
         helper4 -= helper5;
         quotient++;
     }
-    
-    printf("\nremainder: %g \n",helper4);    
 
 	if((isDecimal(dividend)==0 && isDecimal(divisor)==1) || (isDecimal(dividend)==1 && isDecimal(divisor)==0)){
 		bagiHasil = quotient/bs10_3;
