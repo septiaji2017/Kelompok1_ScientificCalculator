@@ -4,18 +4,27 @@
 #include "Rico.h"
 #include "Naufal.h"
 
-/******************************************/
-/* S P E S I F I K A S I   M O D U L  I I */
-/******************************************/
 
 int top = -1;
 char stack[100];
 
+/*********************************************************************************************/
+/* Initial State: Menampung operator bertipe char, pada modul ini berperan sebagai procedure */
+/* Final State: Menambahkan char (Operator) kedalam sebuah array sebagai penampung  		 */
+/* Referensi Modul: Berdiskusi bersama Ridha Septiaji 										 */
+/* Referensi Link: -  																		 */ 
+/*********************************************************************************************/
 void push(char x)
 {
     stack[++top] = x;
 }
 
+/*********************************************************************************************/
+/* Initial State: Menampung operator bertipe char, pada modul ini berperan sebagai procedure */
+/* Final State: Memberikan char (Operator) di dalam modul infixtopostfix 					 */
+/* Referensi Modul: Berdiskusi bersama Ridha Septiaji 										 */
+/* Referensi Link: -  																		 */ 
+/*********************************************************************************************/
 char pop()
 {
     if(top == -1)
@@ -24,13 +33,24 @@ char pop()
         return stack[top--];
 }
 
-
+/****************************************************************************************************/
+/* Initial State: Menampung berupa string berisikan angka dan operator 								*/
+/* Final State: Menghapus garis baru dengan spasi ketika input 					 					*/
+/* Referensi Modul: -										 										*/
+/* Referensi Link: https://github.com/MohamedFarid612/Calculator-infix-to-postfix-/blob/main/main.c */ 
+/****************************************************************************************************/
 void replaceNewLineBySpace(char *s){
     char *s1 = s;
     while((s1 = strstr(s1, "\n")) != NULL)
         *s1 = ' ';
 }
 
+/****************************************************************************************************/
+/* Initial State: Menampung berupa string berisikan angka dan operator  						 	*/
+/* Final State: Menghapus spasi ketika user menginputkan spasi saat ingin mengkalkulasi 	 		*/
+/* Referensi Modul: - 										 								 		*/
+/* Referensi Link: https://github.com/MohamedFarid612/Calculator-infix-to-postfix-/blob/main/main.c */ 
+/****************************************************************************************************/
 char * removespaces(char * exp){
 
     char* x=malloc(266*sizeof(char));
@@ -46,7 +66,12 @@ char * removespaces(char * exp){
     return x;
 }
 
-
+/****************************************************************************************************/
+/* Initial State: Menampung operator bertipe char, pada modul ini berperan sebagai function 		*/
+/* Final State: Memberikan nilai 0 hingga 4 menyesuaikan dengan operator yang diinputkan 	 		*/
+/* Referensi Modul: - 										 								 		*/
+/* Referensi Link: https://github.com/MohamedFarid612/Calculator-infix-to-postfix-/blob/main/main.c */ 
+/****************************************************************************************************/
 int priority(char x) 
 {
     if (x == '(' || x == '~' || x == '{' || x == '<' || x == '[') //yg di masukkin adlh tanda pembuka
@@ -62,6 +87,12 @@ int priority(char x)
     return 0;
 }
 
+/********************************************************************************************/
+/* Initial State: Menampung angka bertipe string, pada modul ini berperan sebagai function 	*/
+/* Final State: Memberikan nilai angka atau memberikan berupa false					 	 	*/
+/* Referensi Modul: - 										 								*/
+/* Referensi Link: -																		*/ 
+/********************************************************************************************/
 bool isNegativeDigit(char* c) 
 {
     if (*c == '-') {
@@ -71,6 +102,12 @@ bool isNegativeDigit(char* c)
     return false;
 }
 
+/******************************************************************************************************************/
+/* Initial State: Menampung angka ataupun operan bertipe string, pada modul ini berperan sebagai function 		  */
+/* Final State: Membuat sebuah node dengan 4 subvar yaitu info(angka atau operan), pointer kanan, kiri dan parent */
+/* Referensi Modul: - 										 													  */
+/* Referensi Link: -																							  */ 
+/******************************************************************************************************************/
 Address NewNode(infotype1 X)
 {
 	Address newNode;
@@ -84,6 +121,12 @@ Address NewNode(infotype1 X)
 	return newNode;
 }
 
+/********************************************************************************************/
+/* Initial State: Menampung operator bertipe char, pada modul ini berperan sebagai function */
+/* Final State: Memberikan nilai 1 atau 2, pada modul ini berisikan seluruh operator		*/
+/* Referensi Modul: - 										 								*/
+/* Referensi Link: -																		*/ 
+/********************************************************************************************/
 int is_operator(char x) 
 {
 	if(x == '+' || x == '-' || x == '*' || x == '/' || x == '%' || x == 'd' || x == '^' || x == 'R' || x == '(' || x == ')' || x == '!' || x == 'v' || x == 'i' || x == 'X' || x == 'a' || x == 'e' || x == 'K' || x == 'D' || x == 'L' || x == 'M'|| x == 'N'|| x == 'P'|| x == 'Q' || x == 'Z'|| x == 'A' || x == 'B'|| x == 'C'|| x == 'V'|| x == 'G' || x == 'Y' || x == 'T'|| x == 'U' || x == 'W' || x == 'p' || x == 'E' || x == '|' || x == '}' || x == '>' || x == ']'){ // pake tanda penutup
@@ -93,6 +136,12 @@ int is_operator(char x)
 	}	  
 }
 
+/********************************************************************************************/
+/* Initial State: Menampung angka bertipe string, pada modul ini berperan sebagai function 	*/
+/* Final State: Memberikan operator itu sendiri, pada modul ini untuk membandingkan saja	*/
+/* Referensi Modul: - 										 								*/
+/* Referensi Link: -																		*/ 
+/********************************************************************************************/
 infotype1 isOperator(infotype1 x)
 {
 	if((strcmp(x, "+")) == 0 || (strcmp(x, "-")) == 0 || (strcmp(x, "*")) == 0|| (strcmp(x, "/")) == 0|| (strcmp(x, "%")) == 0|| (strcmp(x, "d")) == 0|| (strcmp(x, "^")) == 0|| (strcmp(x, "R")) == 0 || (strcmp(x, "v")) == 0|| (strcmp(x, ")")) == 0|| (strcmp(x, "(")) == 0|| (strcmp(x, "!")) == 0|| (strcmp(x, "i")) == 0|| (strcmp(x, "X")) == 0|| (strcmp(x, "a")) == 0|| (strcmp(x, "e")) == 0|| (strcmp(x, "K")) == 0|| (strcmp(x, "D")) == 0|| (strcmp(x, "L")) == 0|| (strcmp(x, "M")) == 0|| (strcmp(x, "N")) == 0 || (strcmp(x, "P")) == 0 || (strcmp(x, "Q")) == 0 || (strcmp(x, "Z")) == 0 || (strcmp(x, "A")) == 0 || (strcmp(x, "B")) == 0 || (strcmp(x, "C")) == 0 || (strcmp(x, "V")) == 0 || (strcmp(x, "G")) == 0 || (strcmp(x, "Y")) == 0 || (strcmp(x, "T")) == 0 || (strcmp(x, "U")) == 0 || (strcmp(x, "W")) == 0 || (strcmp(x, "p")) == 0 || (strcmp(x, "E")) == 0 || (strcmp(x, "|")) == 0 || (strcmp(x, "}")) == 0 || (strcmp(x, ">")) == 0 || (strcmp(x, "]")) == 0){
@@ -102,6 +151,12 @@ infotype1 isOperator(infotype1 x)
 	}
 }
 
+/**********************************************************************************************/
+/* Initial State: Menampung operator bertipe string, pada modul ini berperan sebagai function */
+/* Final State: Membandingkan info yang sudah terbentuk apakah ada dalam operator			  */
+/* Referensi Modul: - 										 								  */
+/* Referensi Link: -																		  */ 
+/**********************************************************************************************/
 bool IsOperator1(infotype1 info)
 {
 	bool Operator;
@@ -111,7 +166,13 @@ bool IsOperator1(infotype1 info)
 	
 }
 
-int isOperator2(char x) // utk 1 digit (kanan doang)
+/**************************************************************************************************************************************/
+/* Initial State: Menampung operator bertipe char, pada modul ini berperan sebagai function 										  */
+/* Final State: Memberikan nilai 1 atau 0, pada modul ini dikhususkan untuk operator yang memang hanya membutuhkan node berisikan nol */
+/* Referensi Modul: - 										 																		  */
+/* Referensi Link: -																												  */ 
+/**************************************************************************************************************************************/
+int isOperator2(char x) 
 {
     if(x == '!' || x == 'v' || x == 'i' || x == 'X' || x == 'a' || x == 'K' || x == 'D' || x == 'L' || x == 'M'|| x == 'N'|| x == 'P'|| x == 'Q' || x == 'Z'|| x == 'A'|| x == 'B' || x == 'C'|| x == 'V'|| x == 'G' || x == 'Y' || x == 'U' || x == 'W' || x == 'E' || x == '|' || x == '}' || x == '>' || x == ']'|| x == 'e' || x == 'p'){
 		return 1;
@@ -120,6 +181,12 @@ int isOperator2(char x) // utk 1 digit (kanan doang)
 	} 
 }
 
+/********************************************************************************************/
+/* Initial State: Menampung angka bertipe string, pada modul ini berperan sebagai function 	*/
+/* Final State: Memberikan nilai berupa true atau false pada sebuah angka					*/
+/* Referensi Modul: - 										 								*/
+/* Referensi Link: -																		*/ 
+/********************************************************************************************/
 bool isNumber(infotype1 info)
 {
 	bool infoNumber;
@@ -128,6 +195,12 @@ bool isNumber(infotype1 info)
 	return infoNumber;
 }
 
+/********************************************************************************************/
+/* Initial State: Menampung angka bertipe float, pada modul ini berperan sebagai function 	*/
+/* Final State: Memberikan sebuah nilai yang sudah dikalkulasikan berupa pembulatan kebawah */
+/* Referensi Modul: - 																		*/
+/* Referensi Link: https://www.defantri.com/2022/10/mengenal-fungsi-floor-dan-ceiling.html  */ 
+/********************************************************************************************/
 float floorr(float x) {
 	int floor_x = (int) x;
 	if (x < 0 && x != floor_x) {
@@ -136,6 +209,12 @@ float floorr(float x) {
 	return floor_x;
 }
 
+/********************************************************************************************/
+/* Initial State: Menampung angka bertipe float, pada modul ini berperan sebagai function 	*/
+/* Final State: Memberikan sebuah nilai yang sudah dikalkulasikan berupa pembulatan keatas  */
+/* Referensi Modul: - 																		*/
+/* Referensi Link: https://www.defantri.com/2022/10/mengenal-fungsi-floor-dan-ceiling.html  */ 
+/********************************************************************************************/
 float ceil1(float x) {
 	int ceil_x = (int) x;
 	if (x > 0 && x != ceil_x) {
@@ -144,16 +223,33 @@ float ceil1(float x) {
 	return ceil_x;
 }
 
+/****************************************************************************************************************************************/
+/* Initial State: Menampung angka bertipe float, pada modul ini berperan sebagai function 							 					*/
+/* Final State: Memberikan sebuah nilai yang sudah dikalkulasikan berupa pembulatan kebawah maupun pembulatan keatas 					*/
+/* Referensi Modul: - 																							   	 					*/
+/* Referensi Link: https://www.detik.com/sulsel/berita/d-6516914/4-cara-mudah-membulatkan-angka-di-excel-ini-penjelasan-dan-tutorialnya */ 
+/****************************************************************************************************************************************/
 float round1(float x) {
 	int rounded_x = (int) (x + (x >= 0 ? 0.5 : -0.5));
 	return rounded_x;
 }
 
+/********************************************************************************************/
+/* Initial State: Menampung angka bertipe float, pada modul ini berperan sebagai function 	*/
+/* Final State: Memberikan sebuah nilai yang sudah dikalkulasikan berupa nilai yang absolut */
+/* Referensi Modul: - 																		*/
+/* Referensi Link: -  																		*/ 
+/********************************************************************************************/
 float abs1(float x) {
 	return x >= 0 ? x : -x;
 }
 
-
+/**********************************************************************************************************************/
+/* Initial State: Menampung angka1, angka2 dan juga operator bertipe string, pada modul ini berperan sebagai function */
+/* Final State: Memberikan hasil kalkulasi yang sudah diperhitungkan dengan memanggil setiap fungsinya 				  */
+/* Referensi Modul: - 										 														  */
+/* Referensi Link: -																								  */ 
+/**********************************************************************************************************************/
 float kalkulasi(float angka1, float angka2, infotype1 x) 
 {
 	float hasil;
@@ -326,6 +422,12 @@ float kalkulasi(float angka1, float angka2, infotype1 x)
 	}
 }
 
+/**********************************************************************************************************************************************/
+/* Initial State: Menampung sebuah linked list yang sudah tersedia 2 buah pointer First dan Last, pada modul ini berperan sebagai procedure   */
+/* Final State: Membentuk sebuah tree yang sudah terbentuk setiap nodenya lalu memberikan hasil kalkulasinya					 	 	      */
+/* Referensi Modul: - 										 																				  */
+/* Referensi Link: -																														  */ 
+/**********************************************************************************************************************************************/
 void creat_tree(address * First, address * Last)
 {
 	address temp;
