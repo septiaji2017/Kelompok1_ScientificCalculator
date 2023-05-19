@@ -47,7 +47,7 @@ char * trimRadian(char * e);
 
 char isValid1(char x);
 
-void infixkepostfix(char* e);
+bool infixkepostfix(char* e);
 
 void insLast (address * First, address * Last, infotype Info);
 

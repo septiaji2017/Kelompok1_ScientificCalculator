@@ -808,7 +808,7 @@ char isValid1(char x){
 /*2. Output (final state) = 10 2 / 5 +*/
 /*3. Referensi: Agam (berdiskusi di bagian kondisi)*/
 /*=============================================================================================*/
-void infixkepostfix(char* e){
+bool infixkepostfix(char* e){
 	char x;
 	char y;
 	char z;
@@ -827,6 +827,8 @@ void infixkepostfix(char* e){
 	char strings2[255]="\0";
 	char strt[255];
 	
+	bool valid=true;
+	
 	arresCount=0;
 	infotype (*TabStrKt);
 	TabStrKt = (infotype *) malloc (100 * sizeof(infotype));
@@ -836,18 +838,21 @@ void infixkepostfix(char* e){
 		
 	while(*e != '\0')
 	{
-	    	if(isValid1(*e)==0){
+		//(isValid1(*e) && !isdigit(*(e+1)))
+	    	if(isValid1(*e)==0 || ((*e)==')' && isdigit(*(e+1)))   ){
 	    		system("cls");
-	    		printf("eror, \n simbol (%s) tidak ada di kamus data kami \ntolong masukin simbol yg bener\n\n\np.s. ketik h untuk minta bantuan\n",e);
+	    		printf("eror, \n simbol (%s) tidak ada di kamus data kami, atau simbolnya tidak memiliki bilangan \ntolong masukin simbol yg bener\n\n\np.s. ketik h untuk minta bantuan\n",e);
 	    		system("Pause");
-				exit(0);
+	    		valid = false;
+				return;
 			}
 			
 			if(isValid1(*e)=='h'){
 	    		system("cLs");
 				help();																				    		
 	    		system("Pause");
-				exit(0);				
+	    		valid = false;
+				return;				
 			}
 								
 			//IF ini digunakan untuk memasukkannya ke stack sebagai angka/bilangan (bukan operan apapun)

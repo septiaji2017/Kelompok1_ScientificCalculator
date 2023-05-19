@@ -27,6 +27,8 @@ int main()
 		bool kurung1 = false;
 		int kurung1Count=0;
 		
+		bool valid;
+		
 		bool kurung2 = false;    
 	    int kurung2Count=0;
 	    
@@ -62,19 +64,28 @@ int main()
 
 			e = removespaces(xx);				
 				    
-		    infixkepostfix(e);			
-			
-			viewAsc(First);
-			
-			creat_tree(&First, &Last);
+		    valid = infixkepostfix(e);			
+			printf("validiti: %s\n",valid?"true" : "false");
+			if(valid){
+				viewAsc(First);
+				creat_tree(&First, &Last);
+				printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
+				lagi = getch();
+				delAll(&First,&Last);
+		
+				if(lagi!='y'){	
+					break;
+				}								
+			}else{
+				printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
+				lagi = getch();
+				if(lagi!='y'){	
+					break;
+				}					
+			}
 
-		printf("\n\n\t\t\t\t\t\t\t Coba Lagi (y/t)?");
-		lagi = getch();
-		delAll(&First,&Last);
 
-		if(lagi!='y'){	
-			break;
-		}	
+	
 	}
 	return 0;	
 }
