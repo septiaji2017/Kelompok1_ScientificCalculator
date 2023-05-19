@@ -55,38 +55,46 @@ char help()
 	printf("\t\t|    *     | Operator untuk mengkalikan nilai satu dengan lainnnya                   |       a * b       |      1 * 2      |\n");
 	printf("\t\t|    /     | Operator untuk membagi nilai satu dengan lainnnya                       |       a / b       |      1 / 2      |\n");
 	printf("\t\t|    ^     | Operator untuk mempangkatkan nilai                                      |        a^2        |       3^2       |\n");
-	printf("\t\t|    V     | Operator untuk mengakarkan nilai                                        |        Va         |       V16       |\n");
+	printf("\t\t|    v     | Operator untuk mengakarkan nilai                                        |        va         |       v16       |\n");
 	printf("\t\t|    .     | Operator untuk membuat nilai menjadi decimal                            |        0.a        |       0.8       |\n");
 	printf("\t\t|    %%     | Operator untuk membuat nilai menjadi persen                             |        a%%         |       10%%       |\n");
-	printf("\t\t|    !     | Operator untuk membuat nilai menjadi                                    |        a!         |       6!        |\n");
-//	printf("\t\t|   DIV    | Operator untuk mempangkatkan nilai                                      |                   |                 |\n");
-	printf("\t\t|   |x|    | Operator untuk memutlakkan nilai                                        |        |x|        |       |2|       |\n");
-	printf("\t\t|    ()    | Operator untuk membuat nilai menjadi prioritas utama saat dihitung      |        (a)        |       (3)       |\n");
-//	printf("\t\t|  n R x   | Operator untuk mempangkatkan nilai                                      |                   |                 |\n");
-//	printf("\t\t|   pi     | Operator untuk membuat nilai menjadi prioritas utama saat dihitung      |                   |                 |\n");
-//	printf("\t\t|   ln     | Operator untuk memutlakkan nilai                                        |                   |                 |\n");
-//	printf("\t\t|   log    | Operator untuk memutlakkan nilai                                        |                   |                 |\n");
-//	printf("\t\t|    E     | Operator untuk memutlakkan nilai                                        |                   |                 |\n");
-	printf("\t\t|   sin    | Operator untuk membuat nilai menjadi sinus                              |         i         |        i        |\n");
-	printf("\t\t|   cos    | Operator untuk membuat nilai menjadi cosinus                            |         X         |        X        |\n");
-	printf("\t\t|   tan    | Operator untuk membuat nilai menjadi tangen                             |         a         |        a        |\n");
-	printf("\t\t|   sec    | Operator untuk membuat nilai menjadi secan                              |         e         |        e        |\n");
-	printf("\t\t|   csc    | Operator untuk membuat nilai menjadi cosecan                            |         K         |        K        |\n");
-	printf("\t\t|   cot    | Operator untuk membuat nilai menjadi cotan                              |         D         |        D        |\n");
-	printf("\t\t|  radsin  | Operator untuk membuat nilai menjadi                                    |         M         |        M        |\n");
-	printf("\t\t|  radcos  | Operator untuk membuat nilai menjadi                                    |         L         |        L        |\n");
-	printf("\t\t|  radtan  | Operator untuk membuat nilai menjadi                                    |         N         |        N        |\n");
-	printf("\t\t|  radsec  | Operator untuk membuat nilai menjadi                                    |         P         |        P        |\n");
-	printf("\t\t|  radcsc  | Operator untuk membuat nilai menjadi                                    |         Q         |        Q        |\n");
-	printf("\t\t|  radcot  | Operator untuk membuat nilai menjadi                                    |         Z         |        Z        |\n");
+	printf("\t\t|    !     | Operator untuk membuat nilai menjadi faktorial                          |        a!         |       6!        |\n");
+	printf("\t\t|   |a|    | Operator untuk memutlakkan nilai                                        |        |a|        |       |2|       |\n");
+	printf("\t\t|   (a)    | Operator untuk membuat nilai menjadi prioritas utama saat dihitung      |        (a)        |       (3)       |\n");
+	printf("\t\t|    i     | Operator untuk membuat nilai menjadi sinus                              |      sin (a)      |     sin (30)    |\n");
+	printf("\t\t|    X     | Operator untuk membuat nilai menjadi cosinus                            |      cos (a)      |     cos (30)    |\n");
+	printf("\t\t|    a     | Operator untuk membuat nilai menjadi tangen                             |      tan (a)      |     tan (30)    |\n");
+	printf("\t\t|    E     | Operator untuk membuat nilai menjadi secan                              |      sec (a)      |     sec (30)    |\n");
+	printf("\t\t|    K     | Operator untuk membuat nilai menjadi cosecan                            |      csc (a)      |     csc (30)    |\n");
+	printf("\t\t|    D     | Operator untuk membuat nilai menjadi cotan                              |      cot (a)      |     cot (30)    |\n");
+	printf("\t\t|    M     | Operator untuk membuat nilai menjadi sinus                              |     RADsn (a)     |    RADsn (90)   |\n");
+	printf("\t\t|    L     | Operator untuk membuat nilai menjadi cosinus                            |     RADcs (a)     |    RADcs (90)   |\n");
+	printf("\t\t|    N     | Operator untuk membuat nilai menjadi tangen                             |     RADtn (a)     |    RADtn (90)   |\n");
+	printf("\t\t|    P     | Operator untuk membuat nilai menjadi secan                              |     RADsc (a)     |    RADsc (90)   |\n");
+	printf("\t\t|    Q     | Operator untuk membuat nilai menjadi cosecan                            |     RADcc (a)     |    RADcc (90)   |\n");
+	printf("\t\t|    Z     | Operator untuk membuat nilai menjadi cotangen                           |     RADct (a)     |    RADct (90)   |\n");
 	printf("\t\t|  floor   | Operator untuk membulatkan nilai ke bawah                               |       [0.a]       |      [7.4]      |\n");
 	printf("\t\t|  ceil    | Operator untuk membulakkan nilai ke atas                                |       {0.a}       |      {7.4}      |\n");
 	printf("\t\t|  round   | Operator untuk membulakkan nilai ke atas atau ke bawah                  |       <0.a>       |      <7.4>      |\n");
+	printf("\t\t|    A     | Operator untuk membuat nilai menjadi invers sinus                       |     arcsn (a)     |    arcsn (45)   |\n");
+	printf("\t\t|    B     | Operator untuk membuat nilai menjadi invers cosinus                     |     arccs (a)     |    arccs (45)   |\n");
+	printf("\t\t|    C     | Operator untuk membuat nilai menjadi invers tangen                      |     arctn (a)     |    arctn (45)   |\n");
+	printf("\t\t|    V     | Operator untuk membuat nilai menjadi invers secan                       |     arcsc (a)     |    arcsc (45)   |\n");
+	printf("\t\t|    G     | Operator untuk membuat nilai menjadi invers cosecan                     |     arccc (a)     |    arccc (45)   |\n");
+	printf("\t\t|    Y     | Operator untuk membuat nilai menjadi invers cotan                       |     arcct (a)     |    arcct (45)   |\n");
+	printf("\t\t|    T     | Operator untuk membuat nilai menjadi logaritma                          |        log        |    RADsn (45)   |\n");
+	printf("\t\t|    U     | Operator untuk membuat nilai menjadi logaritma                          |         lg        |    RADcs (45)   |\n");
+	printf("\t\t|    W     | Operator untuk membuat nilai menjadi logartima natural                  |         ln        |    RADtn (45)   |\n");
+	printf("\t\t|    p     | Operator untuk membuat nilai menjadi phi                                |         pi        |    RADtn (a)    |\n");
+	printf("\t\t|    e     | Operator untuk membuat nilai menjadi euleur                             |         e         |    RADtn (a)    |\n");
+	printf("\t\t|    d     | Operator untuk membuat nilai menjadi divide                             |      DIV (a)      |     DIV (a)     |\n");
+	printf("\t\t|    R     | Operator untuk mengakarkan nilai                                        |     RADtn (a)     |    RADtn (a)    |\n");
 	printf("\t\t----------------------------------------------------------------------------------------------------------------------------\n");
 	return 0;
 }
 
-/*int main()
+/*
+int main()
 {
 	char h;
 	printf ("masukan menu : ");
@@ -102,4 +110,5 @@ char help()
 		printf ("maaf, apa yang anda input tidak ada dalam menu");
 	}
 	return 0;
-}*/
+}
+*/
