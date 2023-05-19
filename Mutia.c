@@ -61,7 +61,7 @@ double my_fmod(double x, double y){              // fungsi menerima dua paramete
 /***************************************************************************************************************/
 
 // Fungsi untuk menghitung nilai sinus menggunakan deret Taylor Sinus
-double sin(double x) {
+double sinRadian(double x) {
 	const double PI = pi;                       // Konstanta PI dideklarasikan sebagai nilai pi
     const double TWO_PI = 2 * pi;               // Konstanta TWO_PI dideklarasikan sebagai 2 kali nilai pi
     const double PI_OVER_TWO = pi / 2;          // Konstanta PI_OVER_TWO dideklarasikan sebagai nilai pi dibagi 2
@@ -96,7 +96,7 @@ double sin(double x) {
 }
 
 // Fungsi untuk menghitung nilai cosinus menggunakan deret Taylor Cosinus
-double cos(double x) {
+double cosRadian(double x) {
 	const double PI = pi;                       // Konstanta PI dideklarasikan sebagai nilai pi
     const double TWO_PI = 2 * pi;               // Konstanta TWO_PI dideklarasikan sebagai 2 kali nilai pi
     const double PI_OVER_TWO = pi / 2;          // Konstanta PI_OVER_TWO dideklarasikan sebagai nilai pi dibagi 2
@@ -124,23 +124,23 @@ double cos(double x) {
 }
 
 // Fungsi untuk menghitung nilai tangent
-double tangen(double x) {
-    return (sin(x) / cos(x));
+double tanRadian(double x) {
+    return (sinRadian(x) / cosRadian(x));
 }
 
 // Fungsi untuk menghitung nilai Cosecant
-double cosecan(double x) {
-   return (1/sin(x));
+double cosecRadian(double x) {
+   return (1/sinRadian(x));
 }
 
 // Fungsi untuk menghitung nilai Secant
-double secan(double x) {
-   return (1/cos(x));
+double secRadian(double x) {
+   return (1/cosRadian(x));
 }
 
 //Fungsi untuk menghitung nilai Cotant
-double cot(double x) {
-   return (1/tangen(x));
+double cotRadian(double x) {
+   return (1/tanRadian(x));
 }
 
 
@@ -156,32 +156,32 @@ double cot(double x) {
 /************************************************************************************************/
 
 // Fungsi untuk menghitung nilai Sinus
-double sine(double x) {
-	return sin(x*pi/180);
+double sinDerajat(double x) {
+	return sinRadian(x*pi/180);
 }
 
 // Fungsi untuk menghitung nilai cosinus
-double cosine(double x) {
-    return cos(x*pi/180);
+double cosDerajat(double x) {
+    return cosRadian(x*pi/180);
 }
 
 // Fungsi untuk menghitung nilai tangent
-double tangent(double x) {
-    return (sine(x) / cosine(x));
+double tanDerajat(double x) {
+    return (sinDerajat(x) / cosDerajat(x));
 }
 
 // Fungsi untuk menghitung nilai Cosecant
-double cosecant(double x) {
-   return (1/sine(x));
+double cosecDerajat(double x) {
+   return (1/sinDerajat(x));
 }
 
 // Fungsi untuk menghitung nilai Secant
-double secant(double x) {
-   return (1/cosine(x));
+double secDerajat(double x) {
+   return (1/cosDerajat(x));
 }
 
 // Fungsi untuk menghitung nilai Cotant
-double cotan(double x) {
-   return (1/tangent(x));
+double cotDerajat(double x) {
+   return (1/tanDerajat(x));
 }
 
