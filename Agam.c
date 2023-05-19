@@ -304,40 +304,40 @@ float kalkulasi(float angka1, float angka2, infotype1 x) //Pada modul ini akan m
 		hasil = f_akar_dinamis(angka1, angka2);									//Memanggil modul akar dinamis dan dikalkulasikan, lalu di assign pada variabel hasil		
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "i")) == 0) {											//Jika infotypenya itu adalah i(sin) maka
-		hasil = sine(angka1);													//Memanggil modul sin dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = sinDerajat(angka1);													//Memanggil modul sin dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "X")) == 0) {											//Jika infotypenya itu adalah X(cos) maka
-		hasil = cosine(angka1);													//Memanggil modul cos dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = cosDerajat(angka1);													//Memanggil modul cos dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "a")) == 0) {											//Jika infotypenya itu adalah a(tan) maka
-		hasil = tangent(angka1);												//Memanggil modul tan dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = tanDerajat(angka1);												//Memanggil modul tan dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "E")) == 0) {											//Jika infotypenya itu adalah E(secan) maka
-		hasil = secant(angka1);													//Memanggil modul secan dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = secDerajat(angka1);													//Memanggil modul secan dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "K")) == 0) {											//Jika infotypenya itu adalah K(cosecan) maka
-		hasil = cosecant(angka1);												//Memanggil modul cosecan dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = cosecDerajat(angka1);												//Memanggil modul cosecan dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "D")) == 0) {											//Jika infotypenya itu adalah D(cotan) maka
-		hasil = cotan(angka1);													//Memanggil modul cotan dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = cotDerajat(angka1);													//Memanggil modul cotan dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "M")) == 0) {											//Jika infotypenya itu adalah M(sinRAD) maka
-		hasil = sin(angka1);													//Memanggil modul sinRAD dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = sinRadian(angka1);													//Memanggil modul sinRAD dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "L")) == 0) {											//Jika infotypenya itu adalah L(cosRAD) maka
-		hasil = cos(angka1);													//Memanggil modul cosRAD dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = cosRadian(angka1);													//Memanggil modul cosRAD dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "N")) == 0) {											//Jika infotypenya itu adalah N(tanRaD) maka
-		hasil = tangen(angka1);													//Memanggil modul tanRAD dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = tanRadian(angka1);													//Memanggil modul tanRAD dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "P")) == 0) {											//Jika infotypenya itu adalah P(secan) maka
-		hasil = secan(angka1);													//Memanggil modul secan dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = secRadian(angka1);													//Memanggil modul secan dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "Q")) == 0) {											//Jika infotypenya itu adalah Q(cosecan) maka
-		hasil = cosecan(angka1);												//Memanggil modul cosecan dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = cosecRadian(angka1);												//Memanggil modul cosecan dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	} else if((strcmp(x, "Z")) == 0) {											//Jika infotypenya itu adalah Z(cotan) maka
-		hasil = cot(angka1);													//Memanggil modul cotan dan dikalkulasikan, lalu di assign pada variabel hasil
+		hasil = cotRadian(angka1);													//Memanggil modul cotan dan dikalkulasikan, lalu di assign pada variabel hasil
 		return hasil;															//Lalu setelah dikalkulasikan akan mengembalikan nilai yang disesuaikan dengan operator dan juga modulnya
 	}else if((strcmp(x, "A")) == 0) {											//Jika infotypenya itu adalah A(arccos) maka
 		hasil = arccos(angka1);													//Memanggil modul arccos dan dikalkulasikan, lalu di assign pada variabel hasil
