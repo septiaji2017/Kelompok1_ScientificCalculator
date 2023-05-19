@@ -112,9 +112,9 @@ double cosRadian(double x) {
     // Hitung cosinus menggunakan rumus sinus
     double sin_x;                               // Variabel sin_x diinisialisasi dengan nilai sinus dari sudut x
     if (x < 0) {                                // jika x negatif, nilai sinus dihitung dengan mengambil nilai sinus dari -x
-        sin_x = sin(-x);
+        sin_x = sinRadian(-x);
     } else {                                    // Jika x positif atau nol, nilai sinus dihitung dengan mengambil nilai sinus dari x
-        sin_x = sin(x);
+        sin_x = sinRadian(x);
     }
     double cos_x = f_akar(1 - sin_x * sin_x);   // Variabel cos_x dihitung menggunakan rumus kosinus dalam hubungannya dengan sinus: cos_x = sqrt(1 - sin_x * sin_x). Hal ini didasarkan pada identitas trigonometri bahwa kosinus kuadrat plus sinus kuadrat adalah sama dengan 1. Dalam perhitungan ini, nilai akar kuadrat dihitung menggunakan fungsi f_akar
     if (x > PI_OVER_TWO && x < 3 * PI_OVER_TWO) { // Dilakukan pengecekan kondisi x > PI_OVER_TWO && x < 3 * PI_OVER_TWO. Jika benar, artinya sudut x berada dalam kisaran (pi/2, 3pi/2), yang merupakan kisaran di mana kosinus bernilai negatif. Dalam kasus ini, nilai cos_x dikalikan dengan -1 untuk mengubah tanda kosinus
