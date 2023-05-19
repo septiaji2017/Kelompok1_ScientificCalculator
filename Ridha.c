@@ -163,23 +163,6 @@ char * getIndexCsc(char str[])
 
 }	
 
-void delAll (address * First, address * Last){
-	address PDel,PDel2;
-	PDel = *First;
-	PDel2 = *Last;
-	
-	next(prev(*Last)) = Nil;
-	prev(*Last) = Nil;
-	*Last = Nil;
-	free(*Last);
-	while(*First != Nil){
-		*First = next(*First);
-		PDel = *First;
-		free(PDel);
-	}	
-}
-
-
 /*=============================================================================================*/
 /*1. Input (initial state) = 19.241029410248*/
 /*2. Output (final state) = 19.241*/
@@ -1071,6 +1054,37 @@ void viewAsc(address First){
 		printf(" ", info(First));
 		First = next(First);
 	}printf("\n");	
+}
+
+void delFirst (address * First, address * Last){
+	address PDel,PDel2;
+	PDel = *First;
+	PDel2 = *Last;
+	
+//	printf("%s %d",info(*First),strcmp(info(*First),"0"));
+	if((strcmp(info(*First),"0")==0) && isNumber(info(next(*First)))==true ){
+		printf("");
+		*First = next(*First);		
+		prev(PDel)=Nil;
+		prev(*First)=Nil;
+		free(PDel);			
+	}	
+}
+
+void delAll (address * First, address * Last){
+	address PDel,PDel2;
+	PDel = *First;
+	PDel2 = *Last;
+	
+	next(prev(*Last)) = Nil;
+	prev(*Last) = Nil;
+	*Last = Nil;
+	free(*Last);
+	while(*First != Nil){
+		*First = next(*First);
+		PDel = *First;
+		free(PDel);
+	}	
 }
 
 /* =================================== */

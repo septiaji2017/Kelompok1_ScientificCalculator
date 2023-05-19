@@ -23,8 +23,6 @@ int arresCount;
 
 float floorClosest(float angkas);
 
-void delAll (address * First, address * Last);
-
 char* addSymbolCsc(char* s, int n, int* stars);
 
 char * getIndexCsc(char str[]);
@@ -54,6 +52,10 @@ void insLast (address * First, address * Last, infotype Info);
 void viewAsc(address First);
 
 bool isKurangKurung(address First);
+
+void delAll (address * First, address * Last);
+
+void delFirst (address * First, address * Last);
 
 /*==============================*/
 /* P R O T O T Y P E  M O D U L */

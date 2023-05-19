@@ -55,7 +55,7 @@ int main()
 		    replaceNewLineBySpace(exp);
 			
 			hh = replaceToCommas(exp);
-	
+
 			f = getIndexCsc(hh);
 	
 			g = trimLog(f);
@@ -63,15 +63,20 @@ int main()
 			xx = trimTrigono(aa);
 
 			e = removespaces(xx);				
-				    
-		    valid = infixkepostfix(e);			
-			printf("validiti: %s\n",valid?"true" : "false");
+			
+			valid = infixkepostfix(e);			
+//			printf("validiti: %s\n",valid?"true" : "false");
 			if(valid){
 				viewAsc(First);
+
+				delFirst(&First, &Last);
+
+				viewAsc(First);
+				
 				creat_tree(&First, &Last);
 				printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
 				lagi = getch();
-				delAll(&First,&Last);
+
 		
 				if(lagi!='y'){	
 					break;
