@@ -6,32 +6,29 @@
  
 int factorial(int n);
 
-double sin(double x);
-
-double cos(double x);
-
-double tangen(double x);
-
-double cosecan(double x);
-
-double secan(double x);
-
-double cot(double x);
-
 double my_fmod(double x, double y);
 
-//program trigonometri
-//mencari nilai dari derajat trigonometri
-double sine(double x);
+double sinRadian(double x);
 
-// Fungsi untuk menghitung nilai kosinus menggunakan deret Maclaurin
-double cosine(double x);
+double cosRadian(double x);
 
-double tangent(double x);
+double tanRadian(double x);
 
-double cosecant(double x);
+double cosecRadian(double x);
 
-double secant(double x);
+double secRadian(double x);
 
-double cotan(double x);
+double cotRadian(double x);
+
+double sinDerajat(double x);
+
+double cosDerajat(double x);
+
+double tanDerajat(double x);
+
+double cosecDerajat(double x);
+
+double secDerajat(double x);
+
+double cotDerajat(double x);
 #endif
