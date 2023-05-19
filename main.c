@@ -68,7 +68,7 @@ int main()
 			
 			creat_tree(&First, &Last);
 
-		printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
+		printf("\n\n\t\t\t\t\t\t\t Coba Lagi (y/t)?");
 		lagi = getch();
 		delAll(&First,&Last);
 
