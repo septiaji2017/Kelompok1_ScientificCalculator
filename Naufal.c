@@ -3,49 +3,6 @@
 #include "Agam.h"
 //#include <math.h>
 
-float CtoK(float Kelvin)
-{
-	float Celsius;
-	Celsius = (Kelvin - 273.15);	
-	return Celsius;
-}
-
-float FtoK(float Kelvin)
-{
-	float Fahrenheit;
-	Fahrenheit = 1.8 *(Kelvin -273.15) + 32.0;
-	return Fahrenheit;
-}
-
-float KtoC(float Celsius)
-{
-	float Kelvin;
-	Kelvin = (Celsius + 273.15);
-	return Kelvin;
-}
-
-float FtoC(float Celsius)
-{
-	float Fahrenheit;
-	Fahrenheit = (Celsius * 1.8) + 32.0;
-	return Fahrenheit;
-}
-
-float KtoF(float Fahrenheit)
-{
-	float Kelvin;
-	Kelvin = (Fahrenheit - 32.0) * 5/9 +273.15;
-	return Kelvin;
-}
-
-float CtoF(float Fahrenheit)
-{
-	float Celsius;
-	Celsius = (Fahrenheit - 32.0) * 5/9;
-	return Celsius;
-}
-
-
 float perkalianBasic(float a, float b) {
 	float hasil = 0;  // inisialisasi hasil dengan 0
     int i;
@@ -87,7 +44,7 @@ float pertambahan(float x, float y){
     //untuk menghitung basis desimal ((0.1)per sepuluhan, (0.01)per seratusan, dll) -> keluaran: 1,2,3,4, dll
     helper = countManyDecimals(x);
     helper2 = countManyDecimals(y);
-
+    
     if((helper>5) && (helper2>5)){
 		x = floorClosest(x);
 		y = floorClosest(y);
@@ -117,10 +74,17 @@ float pertambahan(float x, float y){
 	
 	helper5 = perkalianBasic(y, bs10);
 	
+	if(countManyDecimals(helper5)>=6){
+		temp = helper4;
+		helper4 = helper5;
+		helper5 = temp;
+	}
+
 	if(isDecimal(helper5)){
 		helper5 = floorr(10000*helper5)/10000;  //getPrecision, karena angka float itu emg kurang dalam presisi
 	}
-    
+
+
     while(i<helper5)
     {
     	helper4+=1;
