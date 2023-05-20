@@ -555,8 +555,8 @@ void creat_tree(address * First, address * Last)		//Pada modul ini digunakan seb
 				pcur = parent(pcur);					//pcur akan menunjuk pada subvar(parent) dari pcur itu sendiri
 				while(pcur != Nil){						//akan terus loop hingga pcur tidak sama dengan NULL
 					if(left(pcur) == Nil){				//Jika sebelah kiri(subvar) pcur sama dengan NULL maka
-						if(isNumber(info(prev(temp))) && prev(prev(temp)) == Nil){
-							temp = prev(temp);
+						if(isNumber(info(prev(temp))) && prev(prev(temp)) == Nil){	//Jika info sebelum temp adalah angka dan sebelum sebelumnya temp adalah NULl maka
+							temp = prev(temp);			//Maka temp akan mundur
 						}
 						newNode = NewNode(info(temp));	//Membentuk sebuah node pada newNode, dari info yang ditunjuk oleh temp
 						parent(newNode) = pcur;			//parent dari node nunjuk ke apa yang ditunjuk oleh pcur
