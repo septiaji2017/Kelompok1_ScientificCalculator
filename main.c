@@ -76,7 +76,7 @@ int main()
 			viewAsc(First);
 			
 			creat_tree(&First, &Last);
-			printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
+			printf("\n\n\t\t\t\t\t\t\t Coba Lagi (y/t)?");
 			lagi = getch();
 
 	
@@ -84,7 +84,7 @@ int main()
 				break;
 			}								
 		}else{
-			printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
+			printf("\n\n\t\t\t\t\t\t\t Coba Lagi (y/t)?");
 			lagi = getch();
 			if(lagi!='y'){	
 				break;
