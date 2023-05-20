@@ -57,12 +57,14 @@ int main()
 		hh = replaceToCommas(exp);
 
 		f = getIndexCsc(hh);
+		
+//		printf("%s",f);
 
 		g = trimLog(f);
-		aa = trimRadian(g);		
-		xx = trimTrigono(aa);
+//		aa = trimRadian(g);		
+//		xx = trimTrigono(aa);
 
-		e = removespaces(xx);				
+		e = removespaces(g);				
 		
 		valid = infixkepostfix(e);			
 		

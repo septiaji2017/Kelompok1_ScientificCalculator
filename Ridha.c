@@ -16,22 +16,24 @@
 /*3. GeeksForGeeks (beberapa penyesuaian) */
 /*4. https://www.geeksforgeeks.org/how-to-insert-characters-in-a-string-at-a-certain-position/ */
 /*=============================================================================================*/
-char* addSymbolCsc(char* s, int n, int* stars)
+char* addSymbolCsc(char* s, int n, int* zeros)
 {
-	char* ans = (char*)malloc(2 * n * sizeof(char));
-	int i;
-	int j = 0;
-	int idx = 0;
+	char* ans = (char*)malloc(2 * n * sizeof(char)); //alokasi string bernama "ans", sebagai variable output, memesan sebanyak 2 x ukuran n x ukuran tipe data char
+	int i; //iterasi
+	int j = 0; //iterasi
+	int idx = 0; //penanda indeks
 	
-	for (i = 0; i < strlen(s); i++) {
-	    if (j < n && i == stars[j]) {
-	        ans[idx++] = '0';
-	        j++;
+	for (i = 0; i < strlen(s); i++) { //akan di "cari" berdasarkan panjang string (dari parameter)
+	    if (j < n && i == zeros[j]) { //jika jumlah karakter sama dengan array "zeros", tambahkan value '0'
+	        ans[idx++] = '0'; //penambahan value '0' di string, misalkan e, menjadi e0
+	        // e 0
+	        //	 ^ char '0' akan diselipkan ke 1 char setelahnya
+	        j++; //iterasi utk memenuhi syarat
 	    }
 	    ans[idx++] = s[i];
 	}
 	
-	ans[idx] = '\0';
+	ans[idx] = '\0'; //penambahan null di akhir indeks
 	
 	return ans;
 }
@@ -39,12 +41,7 @@ char* addSymbolCsc(char* s, int n, int* stars)
 /*=============================================================================================*/
 /*1. Input (initial state) = e*/
 /*2. Output (final state) = e0*/
-/*3.1 sanfoundry (sort array in asc) */
-/*3.2 javatpoint (remove duplicate array)*/
-/*3.3 easycodingzone (set differences / selisih kedua array)*/
-/*4.1 https://www.sanfoundry.com/c-program-sort-array-ascending-order/ */
-/*4.2 https://www.javatpoint.com/remove-duplicate-elements-from-an-array-in-c*/
-/*4.3 https://www.easycodingzone.com/2020/12/program-to-find-difference-of-two-set.html*/
+/*3. utk mengetahui indeks yang mengandung char e itu ada di mana saja*/
 /*=============================================================================================*/
 char * getIndexCsc(char str[])
 {
@@ -60,35 +57,40 @@ char * getIndexCsc(char str[])
 	bool udah=false;
 	int testdigit;
 	
-	memset(chars, 0, sizeof(chars));	//18032023	
+	memset(chars, 0, sizeof(chars));	//karena setiap looping array itu tidak ter-"reset", oleh karena itu untuk membersihkan array, perlunya memset
 	
-	int negate[255],nega=0,negaKetemu=0;	//19032023
-	int arrayHasilAkhir[255],l;				//19032023
+	int negate[255],nega=0,negaKetemu=0;	//tidak terpakai
+	int arrayHasilAkhir[255],l;				//tidak terpakai
 	
 	int loopstr;    
 	
 //trigonometri
 
-	if((strstr(str,"e")!=NULL) && !(strstr(str,"sec")!=NULL)){
-		strcpy(sub,"e");
-	    len = strlen(str);
-	    sub_len = strlen(sub);
+	if((strstr(str,"e")!=NULL) && !(strstr(str,"sec")!=NULL)){ //kalau string yang dimasukkan itu mengandung string 'e', namun BUKAN mengandung 'sec' 
+		strcpy(sub,"e");										//string 'e' akan di salin ke variabel sub
+	    len = strlen(str);										//untuk mengetahui berapa panjang string str (string)
+	    sub_len = strlen(sub);									//untuk mengetahui berapa panjang string sub (substring)	
+																//note: len itu pasti akan lebih besar dari sub_len, karena len itu dihitung null nya juga
+																//contoh: e+92 (len: 5), termasuk null (\0)
+		printf("len: %d\n",len);
+		printf("sub_len: %d\n",sub_len);
 	
-	    for (i = 0; i <= len - sub_len; i++)
+	    for (i = 0; i <= len - sub_len; i++)					//kalau i <= selisih dari len dan sub_len, lakukan hal di bawah
 	    {
-	        found = 1;			        
+	        found = 1;			        						//penanda bahwa found itu sudah ditemukan
 	        for (j = 0; j < sub_len; j++)
 	        {
-	            if (str[i + j] != sub[j])
+	            if (str[i + j] != sub[j])						//kalau sudah ada yang berbeda
 	            {
-	                found = 0;
-	                break;
+	                found = 0;									//maka found = 0
+	                break;										//dan looping for dihentikan
+	                											//IF disini untuk menghentikan proses loopnya
 	            }
 	        }
 	
-	        if (found == 1)
-	        {
-	        	chars[founds] = i+1;
+	        if (found == 1)										//kalau ketemu
+	        {	
+	        	chars[founds] = i+1;							//maka masukkan ke array yang berisi kumpulan index berapakah yang perlu "diisi" (posisinya 1 langkah di depan target, atau 'e')
 	            ktemu++;
 	            founds++;
 	        }
@@ -98,66 +100,17 @@ char * getIndexCsc(char str[])
 	    {
 
 	    }		
+	}else{
+		return str;												//kalau gk ketemu, maka kembalikan string semula
 	}
 
 	int loop, arrLoopi, arrLoopj, temp=0;
-	int length = sizeof(chars)/sizeof(chars[0]);    		
+	int length = sizeof(chars)/sizeof(chars[0]);    			//menentukan panjang suatu array		
 
-    //Sort the array in ascending order    
-    for (arrLoopi = 0; arrLoopi < ktemu; arrLoopi++) {     
-        for (arrLoopj = arrLoopi+1; arrLoopj < ktemu; arrLoopj++) {     
-           if(chars[arrLoopi] > chars[arrLoopj]) {    
-               temp = chars[arrLoopi];    
-               chars[arrLoopi] = chars[arrLoopj];    
-               chars[arrLoopj] = temp;    
-           }     
-        }     
-    } 	
 
-    //remove duplicate elements in the array 
-    for ( i = 0; i < ktemu; i ++){  
-        for ( j = i + 1; j < ktemu; j++){  
-            if ( chars[i] == chars[j]){   
-                for ( k = j; k < ktemu - 1; k++){  
-                    chars[k] = chars[k+1];  
-                }  
-                ktemu--;   
-                j--;      
-            }  
-        }  
-    }  
-
-	k=0;
-	l=0;
-   // Keyword: Set Differences (Selisih kedua array)  
-    for( i=0;i<ktemu;i++)
-    {
-        for(j=0;j<negaKetemu;j++)
-        {
-            if(negate[j]==chars[i])
-             break;
-        }
-        if(j==negaKetemu)
-        {
-          // here we check that is element already present in the set 
-          // if present than ignore it otherwise add to the difference set   
-            for(l=0;l<k;l++)
-            {
-                if(arrayHasilAkhir[l]==chars[i])
-                 break;
-            }
-            if(l==k)
-            {
-                arrayHasilAkhir[k]=chars[i];
-                k++;
-            }
-        }
-        
-    }	
-
-	n = sizeof(arrayHasilAkhir) / sizeof(arrayHasilAkhir[0]);
-	
-	ans = addSymbolCsc(str, n, arrayHasilAkhir);
+	n = sizeof(chars) / sizeof(chars[0]);						//menentukan panjang suatu array
+//	printf("n: %d\n",n);
+	ans = addSymbolCsc(str, n, chars);							//pemanggilan fungsi untuk menambahkan char '0', dengan indeks yang sudah ditentukan berdasarkan letak si char 'e'
 	
 	return ans;
 
@@ -171,8 +124,8 @@ char * getIndexCsc(char str[])
 /*=============================================================================================*/
 float floorClosest(float angkas)
 {
-	angkas=floorr(1000*angkas)/1000;
-	return angkas;
+	angkas=floorr(1000*angkas)/1000; 	//misalkan 19.241029410248 itu akan dikalikan 1000, menjadi 19241.029410248, dan itu akan dibulatkan jadi 19241 menggunakan floor, lalu dibagi 1000 lagi menjadi 19.241
+	return angkas; 						//return value
 }
 
 
@@ -181,12 +134,12 @@ float floorClosest(float angkas)
 /*2. Output (final state) = true*/
 /*=============================================================================================*/
 bool isDecimal(float angkas){
-	char str[255];
-	sprintf(str,"%g",angkas);
-	if(strstr(str,".")!=NULL){
-		return 1;
+	char str[255]; 				//array of char
+	sprintf(str,"%g",angkas); 	//konversi angka yang masuk menjadi string, inputan dari parameter, dengan format float, dan di assign ke array str
+	if(strstr(str,".")!=NULL){ 	//kalau ada string yang mengandung char '.'
+		return 1; 				//maka return 1, atau bisa disebut true, bukan termasuk desimal
 	}else{
-		return 0;
+		return 0; 				//maka return 0, atau bisa disebut false, bukan termasuk desimal
 	}
 }
 
@@ -201,18 +154,25 @@ int countManyDecimals(float angkas){
 	char str[255];
 	bool kondisi=true;
 	
-	sprintf(str, "%g", angkas);
+	sprintf(str, "%g", angkas); 					//konversi angka yang masuk menjadi string, inputan dari parameter, dengan format float, dan di assign ke array str
 	
-	len = strlen(str);
+	len = strlen(str);								//menghitung panjang string yang sudah dikonversi
 	
-	len = len-1;
+	len = len-1;									//mengurang 1 setiap panjang string, karena indeks pada array itu dihitung dari 0 - (panjang string-1)
 	
-	while(kondisi==true && strstr(str,".")!=NULL){
-		len--;
-		if(str[len]=='.')
-			kondisi=false;
-		counters++;
-
+	while(kondisi==true && strstr(str,".")!=NULL){ 	//kalau kondisinya true (default) DAN string nya mengandung char '.'
+		len--; 										//ukuran len mengurang 1
+		if(str[len]=='.')							//kalau value dari array str indeks ke len sama dengan '.', maka matikan proses loop nya
+			kondisi=false;							//utk mematikan proses loop
+		counters++;									//kalau tidak, variabel counters bertambah 1 setiap loop
+													
+		//1	 9  .  2  4  1 <-value
+		//0  1  2  3  4  5 <-indeks	
+		//			  ^ akan dihitung dari sini, karena terdapat len--
+		//		   ^ kalau belum bertemu mundur lagi ke indeks 3 (counters = 1)
+		//		^ kalau belum bertemu mundur lagi ke indeks 2 (counters = 2)
+		// karena sama dengan char '.', maka "matikan" kondisi loopnya, namum counter TETAP dihitung menjadi 3
+		//sehingga hasil akhirnya adalah 3
 	}
 	
 	return counters;
@@ -225,11 +185,11 @@ int countManyDecimals(float angkas){
 /*3. Referensi: Agam, dengan penyesuaian tipe data parameter*/
 /*=============================================================================================*/
 bool isNegativeDigit2(char c[], int elmt) {
-    if (c[elmt] == '-') {
-        elmt++;
-        return isdigit(c[elmt]);
+    if (c[elmt] == '-') { 			//kalau value dari array adalah '-'
+        elmt++; 					//maka elmt bertambah 1 setiap loop (bergeser kesebelahnya)
+        return isdigit(c[elmt]); 	//untuk mengembalikan nilai
     }
-    return false;
+    return false;					//false apabila tidak memenuhi syarat
 }
 
 /*=============================================================================================*/
@@ -239,6 +199,12 @@ bool isNegativeDigit2(char c[], int elmt) {
 /*=============================================================================================*/
 bool isNumber2(char info[], int elmt){
 	bool infoNumber;
+	
+	//apabila info[elmt] adalah digit (angka)
+	//atau
+	//info[elmt] adalah char '-' DAN termasuk negative digit, DAN BUKAN digit untuk char sebelumnya
+	//misal: -429, termasuk angka/number,
+	//namun 4-429 itu bukan angka, melainkan perintah/operasi untuk pengurangan
 	infoNumber = (isdigit(info[elmt]) || (info[elmt]) == '-' && isNegativeDigit2(info,elmt) && !isdigit(info[elmt-1]));
 	
 	return infoNumber;
@@ -264,95 +230,110 @@ char * replaceToCommas(char exp[]){
 
 		i=0;
 		
-		if(strstr(exp,"pi")!=0){
-		    while(exp[i]!='\0')
-		    {
-		        if((exp[i]=='p') && (exp[i+1]=='i'))
+		if(strstr(exp,"pi")!=0){  				    			//kalau string yang dimasukkan mengandung string "PI"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null) 
+		    {											
+		        if((exp[i]=='p') && (exp[i+1]=='i'))			//apabila value dari array exp adalah p DAN indeks sebelahnya adalah i
 		        {
-					j=0;
-		            exp[i]='1';
-		            exp[i+1]='p';															 
+					j=0;										//value default
+		            exp[i]='1';									//replace yang awalnya p menjadi menjadi 1
+		            exp[i+1]='p';								//replace yang awalnya i menjadi p										 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "1p"
+																//dirubah menjadi 1p, bukan pi langsung, dikarenakan kalkulator kami harus ada angka yang "menempel" di setiap fungsi
+																//jadi 1 itu utk pemancing saja (seperti faktorial, dll)				
 		}
 		
 		i=0;
 		
-		if((strstr(exp,"e")!=0) && !(strstr(exp,"sec")!=0)){
-
-//		strcpy(exp,"eu");
-
-		    while(exp[i]!='\0')
+		if((strstr(exp,"e")!=0) && !(strstr(exp,"sec")!=0)){	//kalau string yang dimasukkan mengandung string "e", namun BUKAN string "sec"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null), lanjut
 		    {
-		        if((exp[i]=='e') && (exp[i+1]=='0'))
+		        if((exp[i]=='e') && (exp[i+1]=='0'))			//apabila value dari array exp adalah p DAN indeks sebelahnya adalah i
 		        {
-					j=0;
-		            exp[i]='0';
-		            exp[i+1]='e';																																															 
+					j=0;										//value default
+		            exp[i]='1';									//replace yang awalnya e menjadi menjadi 1
+		            exp[i+1]='e';								//replace yang awalnya 0 menjadi e																																															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "1e"
+																//dirubah menjadi 1e, bukan e0 langsung, dikarenakan kalkulator kami harus ada angka yang "menempel" di setiap fungsi
+																//jadi 1 itu utk pemancing saja (seperti faktorial, dll)								
 		}		
 
 		i=0;
 		
-		if(strstr(exp,"|")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"|")!=0){									//kalau string yang dimasukkan mengandung string "|"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='|') && (isNumber2(exp,i+1)))
+		        if((exp[i]=='|') && (isNumber2(exp,i+1)))		//apabila value dari array exp adalah | DAN indeks sebelahnya adalah angka (bisa negatif, desimal, dll)
 		        {
-					j=0;
-		            exp[i]='~';															 
+					j=0;										//value default
+		            exp[i]='~';									//maka | di replace menjadi ~						 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "~[angka]|"
+																//proses demikian digunakan untuk membedakan kurung fungsi absolut 
+																//misal: |-32| menjadi ~-32|
+																//karena stack yang kami buat itu membutuhkan kurung buka dan kurung tutupnya
+																//sedangkan simbol | dengan | itu tidak ada bedanya
+																//oleh karena itu salah satunya harus dibedakan
 		}
 			
 		i=0;
 		
-		if(strstr(exp,"log")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"log")!=0){								//kalau string yang dimasukkan mengandung string "log"	
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='l') && (exp[i+1]=='o') && (exp[i+2]=='g'))
-		        {
-					j=0;
-		            exp[i]='T';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';															 
+		        if((exp[i]=='l') && (exp[i+1]=='o') && (exp[i+2]=='g')) //apabila value dari array exp adalah 'l', indeks sebelahnya adalah 'o', dan indeks sebelahnya adalah 'g'
+		        {														
+					j=0;										//value default
+		            exp[i]='T';									//maka 'l' di replace menjadi 'T'
+		            exp[i+1]=',';		           				//maka 'o' di replace menjadi ','
+		            exp[i+2]=',';								//maka 'g' di replace menjadi ','							 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "T,,"
+																//",," itu akan dihapus oleh modul selanjutnya (modul trim)
 		}
 		
 		i=0;
 		
-		if(strstr(exp,"ln")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"ln")!=0){								//kalau string yang dimasukkan mengandung string "ln"	
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='l') && (exp[i+1]=='n'))
+		        if((exp[i]=='l') && (exp[i+1]=='n'))			//apabila value dari array exp adalah p DAN indeks sebelahnya adalah i
 		        {
-					j=0;
-		            exp[i]='W';
-		            exp[i+1]=',';		           															 
+					j=0;										//value default
+		            exp[i]='W';									//maka 'l' di replace menjadi 'W'
+		            exp[i+1]=',';		          				//maka 'n' di replace menjadi ',' 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "W,"
+																//',' itu akan dihapus oleh modul selanjutnya (modul trim)
 		}
 		
 		i=0;
 		
-		if(strstr(exp,"lg")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"lg")!=0){								//kalau string yang dimasukkan mengandung string "ln"	
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='l') && (exp[i+1]=='g'))
+		        if((exp[i]=='l') && (exp[i+1]=='g'))			//apabila value dari array exp adalah p DAN indeks sebelahnya adalah i
 		        {
-					j=0;
-		            exp[i]='U';
-		            exp[i+1]=',';		           															 
+					j=0;										//value default
+		            exp[i]='U';									//maka 'l' di replace menjadi 'U'
+		            exp[i+1]=',';		           				//maka 'g' di replace menjadi ',' 											 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "U,"
+																//',' itu akan dihapus oleh modul selanjutnya (modul trim)							
 		}							
 	
 		/* ==================================== */	
@@ -362,105 +343,125 @@ char * replaceToCommas(char exp[]){
 		/* ==================================== */			
 //		int i;
 		i=0; //Kondisi COS Radian
-		if(strstr(exp,"arccs")!=0){
-		    while(exp[i]!='\0')
-		    {
-		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='c') && (exp[i+4]=='s'))
+		if(strstr(exp,"arccs")!=0){								//kalau string yang dimasukkan mengandung string "arccs"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
+		    {	
+		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='c') && (exp[i+4]=='s')) //apabila value dari array exp adalah 'a', indeks sebelahnya adalah 'r', indeks sebelahnya adalah 'c', indeks sebelahnya adalah 'c', dan indeks sebelahnya adalah 's'
 		        {
-		            exp[i]='A';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='A';									//maka 'a' di replace menjadi 'A'
+		            exp[i+1]=',';		           				//maka 'r' di replace menjadi ','
+		            exp[i+2]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+3]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+4]=',';		            			//maka 's' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }	
+																//hasil akhir "A,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "arccs" bukannya arccos, dikarenakan berpotensi konflik dengan cos							
 		}
 		
 		i=0; //Kondisi SIN Radian
-		if(strstr(exp,"arcsn")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"arcsn")!=0){								//kalau string yang dimasukkan mengandung string "arcsn"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='s') && (exp[i+4]=='n'))
+		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='s') && (exp[i+4]=='n')) //apabila value dari array exp adalah 'a', indeks sebelahnya adalah 'r', indeks sebelahnya adalah 'c', indeks sebelahnya adalah 's', dan indeks sebelahnya adalah 'n'
 		        {
-		            exp[i]='B';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='B';									//maka 'a' di replace menjadi 'B'
+		            exp[i+1]=',';								//maka 'r' di replace menjadi ','
+		            exp[i+2]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+3]=',';								//maka 's' di replace menjadi ','
+		            exp[i+4]=',';								//maka 'n' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }	
+																//hasil akhir "B,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "arcsn" bukannya arcsin, dikarenakan berpotensi konflik dengan sin							
+						
 		}
 		
 		i=0; //Kondisi TAN Radian
-		if(strstr(exp,"arctn")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"arctn")!=0){								//kalau string yang dimasukkan mengandung string "arctn"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='t') && (exp[i+4]=='n'))
+		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='t') && (exp[i+4]=='n')) //apabila value dari array exp adalah 'a', indeks sebelahnya adalah 'r', indeks sebelahnya adalah 'c', indeks sebelahnya adalah 't', dan indeks sebelahnya adalah 'n'
 		        {
-		            exp[i]='C';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='C';									//maka 'a' di replace menjadi 'C'
+		            exp[i+1]=',';		      					//maka 'r' di replace menjadi ','     
+		            exp[i+2]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+3]=',';								//maka 't' di replace menjadi ','
+		            exp[i+4]=',';		            			//maka 'n' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "C,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "arctn" bukannya arctan, dikarenakan berpotensi konflik dengan tan							
 		}
 		
 		i=0; //Kondisi SECANT Radian
-		if(strstr(exp,"arcsc")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"arcsc")!=0){								//kalau string yang dimasukkan mengandung string "arcsc"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='s') && (exp[i+4]=='c'))
+		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='s') && (exp[i+4]=='c')) //apabila value dari array exp adalah 'a', indeks sebelahnya adalah 'r', indeks sebelahnya adalah 'c', indeks sebelahnya adalah 's', dan indeks sebelahnya adalah 'c'
 		        {
-		            exp[i]='V';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='V';									//maka 'a' di replace menjadi 'V'
+		            exp[i+1]=',';		     					//maka 'r' di replace menjadi ','      
+		            exp[i+2]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+3]=',';								//maka 's' di replace menjadi ','
+		            exp[i+4]=',';		            			//maka 'c' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "V,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "arcsc" bukannya arcsec, dikarenakan berpotensi konflik dengan sec
 		}	
 		
 		i=0; //Kondisi COSECANT Radian
-		if(strstr(exp,"arccc")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"arccc")!=0){								//kalau string yang dimasukkan mengandung string "arccc"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='c') && (exp[i+4]=='c'))
+		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='c') && (exp[i+4]=='c')) //apabila value dari array exp adalah 'a', indeks sebelahnya adalah 'r', indeks sebelahnya adalah 'c', indeks sebelahnya adalah 'c', dan indeks sebelahnya adalah 'c'
 		        {
-		            exp[i]='G';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='G';									//maka 'a' di replace menjadi 'G'
+		            exp[i+1]=',';								//maka 'r' di replace menjadi ','	           
+		            exp[i+2]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+3]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+4]=',';		  						//maka 'c' di replace menjadi ','          
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "G,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "arccc" bukannya arccsc, dikarenakan berpotensi konflik dengan csc							
 		}										
 	
 		i=0; //Kondisi COTANGENT Radian
-		if(strstr(exp,"arcct")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"arcct")!=0){								//kalau string yang dimasukkan mengandung string "arcct"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='c') && (exp[i+4]=='t'))
+		        if((exp[i]=='a') && (exp[i+1]=='r') && (exp[i+2]=='c') && (exp[i+3]=='c') && (exp[i+4]=='t')) //apabila value dari array exp adalah 'a', indeks sebelahnya adalah 'r', indeks sebelahnya adalah 'c', indeks sebelahnya adalah 'c', dan indeks sebelahnya adalah 't'
 		        {
-		            exp[i]='Y';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='Y';									//maka 'a' di replace menjadi 'Y'
+		            exp[i+1]=',';		    					//maka 'r' di replace menjadi ','       
+		            exp[i+2]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+3]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+4]=',';		            			//maka 't' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "Y,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "arcct" bukannya arccot, dikarenakan berpotensi konflik dengan cot							
+							
 		}
 			
 		/* ==================================== */	
@@ -470,105 +471,126 @@ char * replaceToCommas(char exp[]){
 		/* ==================================== */			
 				
 		i=0; //Kondisi COS Radian
-		if(strstr(exp,"RADcs")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"RADcs")!=0){								//kalau string yang dimasukkan mengandung string "RADcs"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='c') && (exp[i+4]=='s'))
+		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='c') && (exp[i+4]=='s')) //apabila value dari array exp adalah 'R', indeks sebelahnya adalah 'A', indeks sebelahnya adalah 'D', indeks sebelahnya adalah 'c', dan indeks sebelahnya adalah 's'
 		        {
-		            exp[i]='L';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='L';									//maka 'R' di replace menjadi 'L'
+		            exp[i+1]=',';		    					//maka 'A' di replace menjadi ','
+		            exp[i+2]=',';								//maka 'D' di replace menjadi ','
+		            exp[i+3]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+4]=',';		            			//maka 's' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "L,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "RADcs" bukannya RADcos, dikarenakan berpotensi konflik dengan cos							
+							
 		}
 		
 		i=0; //Kondisi SIN Radian
-		if(strstr(exp,"RADsn")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"RADsn")!=0){								//kalau string yang dimasukkan mengandung string "RADsn"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='s') && (exp[i+4]=='n'))
+		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='s') && (exp[i+4]=='n')) //apabila value dari array exp adalah 'R', indeks sebelahnya adalah 'A', indeks sebelahnya adalah 'D', indeks sebelahnya adalah 's', dan indeks sebelahnya adalah 'n'
 		        {
-		            exp[i]='M';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='M';									//maka 'R' di replace menjadi 'M'
+		            exp[i+1]=',';		        				//maka 'A' di replace menjadi ','   
+		            exp[i+2]=',';								//maka 'D' di replace menjadi ','
+		            exp[i+3]=',';								//maka 's' di replace menjadi ','
+		            exp[i+4]=',';		            			//maka 'n' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "M,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "RADsn" bukannya RADsin, dikarenakan berpotensi konflik dengan sin							
+								
 		}
 		
 		i=0; //Kondisi TAN Radian
-		if(strstr(exp,"RADtn")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"RADtn")!=0){								//kalau string yang dimasukkan mengandung string "RADtn"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='t') && (exp[i+4]=='n'))
+		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='t') && (exp[i+4]=='n')) //apabila value dari array exp adalah 'R', indeks sebelahnya adalah 'A', indeks sebelahnya adalah 'D', indeks sebelahnya adalah 't', dan indeks sebelahnya adalah 'n'
 		        {
-		            exp[i]='N';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='N';									//maka 'R' di replace menjadi 'N'
+		            exp[i+1]=',';		          				//maka 'A' di replace menjadi ',' 
+		            exp[i+2]=',';								//maka 'D' di replace menjadi ','
+		            exp[i+3]=',';								//maka 't' di replace menjadi ','
+		            exp[i+4]=',';		            			//maka 'n' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "N,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "RADtn" bukannya RADtan, dikarenakan berpotensi konflik dengan tan							
 		}
 		
 		i=0; //Kondisi SECANT Radian
-		if(strstr(exp,"RADsc")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"RADsc")!=0){								//kalau string yang dimasukkan mengandung string "RADsc"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='s') && (exp[i+4]=='c'))
+		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='s') && (exp[i+4]=='c')) //apabila value dari array exp adalah 'R', indeks sebelahnya adalah 'A', indeks sebelahnya adalah 'D', indeks sebelahnya adalah 's', dan indeks sebelahnya adalah 'c'
 		        {
-		            exp[i]='P';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='P';									//maka 'R' di replace menjadi 'P'
+		            exp[i+1]=',';		       					//maka 'A' di replace menjadi ','
+		            exp[i+2]=',';								//maka 'D' di replace menjadi ','
+		            exp[i+3]=',';								//maka 's' di replace menjadi ','
+		            exp[i+4]=',';		            			//maka 'c' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "P,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "RADsc" bukannya RADsec, dikarenakan berpotensi konflik dengan sec							
 		}	
 		
 		i=0; //Kondisi COSECANT Radian
-		if(strstr(exp,"RADcc")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"RADcc")!=0){								//kalau string yang dimasukkan mengandung string "RADcc"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='c') && (exp[i+4]=='c'))
+		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='c') && (exp[i+4]=='c')) //apabila value dari array exp adalah 'R', indeks sebelahnya adalah 'A', indeks sebelahnya adalah 'D', indeks sebelahnya adalah 'c', dan indeks sebelahnya adalah 'c'
 		        {
-		            exp[i]='Q';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='Q';									//maka 'R' di replace menjadi 'Q'
+		            exp[i+1]=',';		   						//maka 'A' di replace menjadi ','
+		            exp[i+2]=',';								//maka 'D' di replace menjadi ','
+		            exp[i+3]=',';								//maka 's' di replace menjadi ','
+		            exp[i+4]=',';		            			//maka 'c' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "Q,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "RADcc" bukannya RADcsc, dikarenakan berpotensi konflik dengan csc							
+							
 		}										
 	
 		i=0; //Kondisi COTANGENT Radian
-		if(strstr(exp,"RADct")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"RADct")!=0){								//kalau string yang dimasukkan mengandung string "RADct"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='c') && (exp[i+4]=='t'))
+		        if((exp[i]=='R') && (exp[i+1]=='A') && (exp[i+2]=='D') && (exp[i+3]=='c') && (exp[i+4]=='t')) //apabila value dari array exp adalah 'R', indeks sebelahnya adalah 'A', indeks sebelahnya adalah 'D', indeks sebelahnya adalah 'c', dan indeks sebelahnya adalah 't'
 		        {
-		            exp[i]='Z';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';
-		            exp[i+3]=',';
-		            exp[i+4]=',';		            
+		            exp[i]='Z';									//maka 'R' di replace menjadi 'Z'
+		            exp[i+1]=',';		           				//maka 'A' di replace menjadi ','
+		            exp[i+2]=',';								//maka 'D' di replace menjadi ','
+		            exp[i+3]=',';								//maka 'c' di replace menjadi ','
+		            exp[i+4]=',';		            			//maka 't' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "Z,,,,"
+																//',,,,' itu akan dihapus oleh modul selanjutnya (modul trim)
+																//menulis "RADct" bukannya RADcot, dikarenakan berpotensi konflik dengan cot								
 		}	
 		
 		/* ==================================== */	
@@ -578,107 +600,125 @@ char * replaceToCommas(char exp[]){
 		/* ==================================== */			
 				
 		i=0; //Kondisi COS degree
-		if(strstr(exp,"sin")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"sin")!=0){								//kalau string yang dimasukkan mengandung string "sin"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='s') && (exp[i+1]=='i') && (exp[i+2]=='n'))
+		        if((exp[i]=='s') && (exp[i+1]=='i') && (exp[i+2]=='n')) //apabila value dari array exp adalah 's', indeks sebelahnya adalah 'i', dan indeks sebelahnya lagi adalah 'n'
 		        {
-		            exp[i]='i';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';		            							 
+		            exp[i]='i';									//maka 's' di replace menjadi 'i'
+		            exp[i+1]=',';		           				//maka 'i' di replace menjadi ','
+		            exp[i+2]=',';		            			//maka 'n' di replace menjadi ','					 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "i,,"
+																//',,' itu akan dihapus oleh modul selanjutnya (modul trim)
 		}
 		
 		i=0; //Kondisi SIN degree
-		if(strstr(exp,"cos")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"cos")!=0){								//kalau string yang dimasukkan mengandung string "cos"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='c') && (exp[i+1]=='o') && (exp[i+2]=='s'))
+		        if((exp[i]=='c') && (exp[i+1]=='o') && (exp[i+2]=='s')) //apabila value dari array exp adalah 'c', indeks sebelahnya adalah 'o', dan indeks sebelahnya lagi adalah 's'
 		        {
-		            exp[i]='X';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';	            
+		            exp[i]='X';									//maka 'c' di replace menjadi 'X'
+		            exp[i+1]=',';		           				//maka 'o' di replace menjadi ','
+		            exp[i+2]=',';	            				//maka 's' di replace menjadi ','	
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "X,,"
+																//',,' itu akan dihapus oleh modul selanjutnya (modul trim)
+							
 		}
 		
 		i=0; //Kondisi TAN degree
-		if(strstr(exp,"tan")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"tan")!=0){								//kalau string yang dimasukkan mengandung string "tan"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='t') && (exp[i+1]=='a') && (exp[i+2]=='n'))
+		        if((exp[i]=='t') && (exp[i+1]=='a') && (exp[i+2]=='n'))	//apabila value dari array exp adalah 't', indeks sebelahnya adalah 'a', dan indeks sebelahnya lagi adalah 'n'
 		        {
-		            exp[i]='a';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';	            
+		            exp[i]='a';									//maka 't' di replace menjadi 'a'
+		            exp[i+1]=',';		           				//maka 'a' di replace menjadi ','
+		            exp[i+2]=',';	            				//maka 'n' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "a,,"
+																//',,' itu akan dihapus oleh modul selanjutnya (modul trim)							
 		}
 		
 		i=0; //Kondisi SECANT degree
-		if(strstr(exp,"sec")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"sec")!=0){								//kalau string yang dimasukkan mengandung string "sec"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
-		        if((exp[i]=='s') && (exp[i+1]=='e') && (exp[i+2]=='c'))
+		        if((exp[i]=='s') && (exp[i+1]=='e') && (exp[i+2]=='c')) //apabila value dari array exp adalah 's', indeks sebelahnya adalah 'e', dan indeks sebelahnya lagi adalah 'c'
 		        {
-		            exp[i]='E';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';		            
+		            exp[i]='E';									//maka 's' di replace menjadi 'E'
+		            exp[i+1]=',';		           				//maka 'e' di replace menjadi ','
+		            exp[i+2]=',';		            			//maka 'c' di replace menjadi ','
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "E,,"
+																//',,' itu akan dihapus oleh modul selanjutnya (modul trim)								
 		}	
 		
 		i=0; //Kondisi COSECANT degree
-		if(strstr(exp,"csc")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"csc")!=0){								//kalau string yang dimasukkan mengandung string "csc"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
 		        if((exp[i]=='c') && (exp[i+1]=='s') && (exp[i+2]=='c'))
 		        {
-		            exp[i]='K';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';	            							 
+		            exp[i]='K';									//maka 'c' di replace menjadi 'K'
+		            exp[i+1]=',';		           				//maka 's' di replace menjadi ','		           
+		            exp[i+2]=',';		           				//maka 'c' di replace menjadi ','	            							 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "K,,"
+																//',,' itu akan dihapus oleh modul selanjutnya (modul trim)								
+							
 		}										
 	
 		i=0; //Kondisi COTANGENT degree
-		if(strstr(exp,"cot")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"cot")!=0){								//kalau string yang dimasukkan mengandung string "cot"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
 		        if((exp[i]=='c') && (exp[i+1]=='o') && (exp[i+2]=='t'))
 		        {
-		            exp[i]='D';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';		            
+		            exp[i]='D';									//maka 'c' di replace menjadi 'D'
+		            exp[i+1]=',';		           				//maka 'o' di replace menjadi ','		           
+		            exp[i+2]=',';		           				//maka 't' di replace menjadi ','		            
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "D,,"
+																//',,' itu akan dihapus oleh modul selanjutnya (modul trim)								
+							
 		}
 		
 		
 		i=0; //Kondisi DIV
-		if(strstr(exp,"DIV")!=0){
-		    while(exp[i]!='\0')
+		if(strstr(exp,"DIV")!=0){								//kalau string yang dimasukkan mengandung string "DIV"
+		    while(exp[i]!='\0')									//kalau belum ampe mentok (\0 = null)
 		    {
 		        if((exp[i]=='D') && (exp[i+1]=='I') && (exp[i+2]=='V'))
 		        {
-		            exp[i]='d';
-		            exp[i+1]=',';		           
-		            exp[i+2]=',';		            
+		            exp[i]='d';									//maka 'D' di replace menjadi 'd'
+		            exp[i+1]=',';		           				//maka 'I' di replace menjadi ','		           
+		            exp[i+2]=',';		           				//maka 'V' di replace menjadi ','		            
 															 
 		        }
-		        i++;
-		    }				
+		        i++;											//iterasi, maju ke indeks selanjutnya
+		    }
+																//hasil akhir "d,,"
+																//',,' itu akan dihapus oleh modul selanjutnya (modul trim)								
+							
 		}		
 		
 	return exp;		
@@ -691,17 +731,24 @@ char * replaceToCommas(char exp[]){
 /*note: untuk menghapus char ','*/
 /*=============================================================================================*/
 char * trimLog(char * e){
-	char* x = malloc (255*sizeof(char));
+	char* x = malloc (255*sizeof(char)); //alokasi string yang nantinya dijadikan value yang baru
 	int i,j;
 		
-	for(i=0,j=0; e[i]!='\0'; i++,j++)
+	for(i=0,j=0; e[i]!='\0'; i++,j++)	//proses pencarian char per index, kalau belum null terus lakukan pencarian
 	{
-        while(e[j]==','){
-			j++;       	
+        while(e[j]==','){				//apabila ketemu char ',' saat pencarian indeks
+			j++;       					//lanjutkan pencarian ke indeks berikutnya / hingga ',' nya habis / bukan char ',' lagi
 		}		   
-        x[i]=e[j];		
+			// T  ,  ,  ,  null
+			// 0  1  2  3  4
+			// ^  karena tidak termasuk perintah while(e[j]==','), maka value yg ditunjuk indeks langsung dipindahkan ke array baru
+			//    ^ karena yg indeks yg ditunjuk itu sama dengan ',' maka terus menunjuk hingga bukan ',' lagi
+			//       ^
+			//		     ^
+			//              ^ karena null, maka masukkan ke array baru
+        x[i]=e[j]; //memasukkan char di dalam array ke array yang baru yang nantinya akan di dikembalikan						
 	}			
-    x[i]='\0';	
+    x[i]='\0';	//memberikan nilai null di akhir indeks
 	return x;				
 }
 
@@ -766,6 +813,7 @@ char * trimRadian(char * e){
 /*note: untuk menghapus char ','*/
 /*=============================================================================================*/
 char isValid1(char x){
+	// kalau char yang dimasukkan memenuhi syarat di bawah, maka menghasilkan 1, yang artinya True
     if (x == '(' || x == ')' || x == '~' || x == '|' || x == '{'  || x == '}' || x == '<' || x == '>'  || x == '[' || x == ']' ) //yg di masukkin adlh tanda pembuka
         return 1;
     if (x == '+' || x == '-')
@@ -776,6 +824,7 @@ char isValid1(char x){
 		return 1;
 	if (x == '!' || x == 'i' || x == 'X' || x == 'a' || x == 'e' || x == 'K' || x == 'D' || x == 'L' || x == 'M'|| x == 'N'|| x == 'P'|| x == 'Q' || x == 'Z' || x == 'A' || x == 'B'|| x == 'C'|| x == 'V'|| x == 'G' || x == 'Y'|| x == 'T'|| x == 'U' || x == 'W' || x == 'p' || x == 'E')
 		return 1;
+	// kalau char yang dimasukkan memenuhi syarat di bawah, maka akan mengembalikan char 'h' (utk help)
     if (x == 'h')
         return 'h';		
     if (isdigit(x)==1){
@@ -818,23 +867,31 @@ bool infixkepostfix(char* e){
 	
 	infotype (*ArrRes);
 	ArrRes = (infotype *) malloc (100 * sizeof(infotype));
-		
+	
+	//pencarian teks hingga selesai / null	
 	while(*e != '\0')
 	{
 		//(isValid1(*e) && !isdigit(*(e+1)))
+		
+			//kalau pointer yang ditunjuk tidak valid ATAU kurung nya tidak memiliki operator
 	    	if(isValid1(*e)==0 || ((*e)==')' && isdigit(*(e+1)))   ){
+	    		//error dikarenakan kalkulator kami tidak memiliki fungsi kurung sebagai kali 
+				//misal: 2(30+2), yang benar adalah 2*(30+2)
 	    		system("cls");
 	    		printf("eror, \n simbol (%s) tidak ada di kamus data kami, atau simbolnya tidak memiliki bilangan \ntolong masukin simbol yg bener\n\n\np.s. ketik h untuk minta bantuan\n",e);
 	    		system("Pause");
-	    		valid = false;
+	    		valid = false; // disebut invalid agar tidak dibuatkan infiks to postfix dan tree
 				return;
 			}
 			
+			//kalau pointer yang menunjuk menghasilkan char 'h'
 			if(isValid1(*e)=='h'){
 	    		system("cLs");
+	    		
+	    		//akan dipanggilnya help atau bantuan
 				help();																				    		
 	    		system("Pause");
-	    		valid = false;
+	    		valid = false; // disebut invalid agar tidak dibuatkan infiks to postfix dan tree
 				return;				
 			}
 								
@@ -853,20 +910,25 @@ bool infixkepostfix(char* e){
 		    	
 
 		    	
-		    	*(TabStrKt+strtCount) = (infotype ) malloc (100 * sizeof(char));
+		    	*(TabStrKt+strtCount) = (infotype ) malloc (100 * sizeof(char)); //alokasi
 	            float num = 0;
 	            float sign = 1;
 	            float decimal = 0.1;
 	            
-				if(*e == '-'){
-		            sign = -1;
-		            e++;	
+				if(*e == '-'){ //apabila pointer menunjuk '-'
+		            sign = -1; //maka sign akan diberi negatif
+		            e++;	   //next ke pointer berikutnya
 				}
+				
+				//selagi pointer yang ditunjuk itu berupa angka
+				//atau
+				//berupa '.' DAN pointer setelahnya adalah digit (angka)
 	            while (isdigit(*e) || (*e == '.' && isdigit(*(e+1)))) {
+	            	//kalau pointer yang ditunjuk sama dengan '.'
 	                if (*e == '.') {
-	                    e++;
-	                    while (isdigit(*e)) {
-	                        num = num + (*e - '0') * decimal;
+	                    e++; //lanjut ke pointer setelahnya
+	                    while (isdigit(*e)) { //selagi pointer yang ditunjuk adalah digit (angka)
+	                        num = num + (*e - '0') * decimal; 
 	                        decimal *= 0.1;
 	                        e++;
 	                    }
@@ -877,20 +939,21 @@ bool infixkepostfix(char* e){
 	                }
 	            }
 		        
-		        sprintf(strt, "%g", num * sign);
+		        sprintf(strt, "%g", num * sign); //kalau negatif, sign nya -1, dan akan dikali 
+		        //misal: -23; num:23 sign:-1
   				
-  				*(ArrRes+arresCount)=strt;
-
-		        strcpy(*(TabStrKt+strtCount), *(ArrRes+arresCount));
+  				*(ArrRes+arresCount)=strt; //string berbentuk array / statis akan di assign ke string berbentuk dinamis (dengan posisi yang dinamis pula)
+										   // perlu dipindah karena error apabila langsung dimasukkan ke dalam linkedlist
+		        strcpy(*(TabStrKt+strtCount), *(ArrRes+arresCount)); //karena strcpy itu butuh tipe data yang sama (yaitu string dengan string)
 		        
-		        insLast (&First, &Last, *(TabStrKt+strtCount));
+		        insLast (&First, &Last, *(TabStrKt+strtCount)); //insertion angka ke linkedlist
 				strtCount++;
   				arresCount++;
 
 		        e--;
 		    }
 	        else if(*e == '('){
-	            push(*e);
+	            push(*e);		//apabila pointer yang ditunjuk sama dengan '(', maka masukkan '(' ke dalam stack
 				kurung=true;        	
 			}
 	        else if(*e == ')')
@@ -991,7 +1054,7 @@ bool infixkepostfix(char* e){
 	        
 	        else
 	        {
-      	
+      			//else ini dilakukan sebagai OPERATOR (+,-,*,/, dll.)
 	            while(priority(stack[top]) >= priority(*e)){
 	            	*(TabStrKt+strtCount) = (infotype ) malloc (100 * sizeof(char));
 	            	y=pop();  
@@ -1204,18 +1267,9 @@ float f_pangkat(float basis, float eksp){
 		penampung = log_2(basis);
 	}
 	
-//	penampung = log_2(basis);
 	result = powerex(eksp * penampung);
 
 	return (result*sign);	
-
-//	if(f_mod(eksp,2)==0){ //saat basis genap
-// 	   return result;		
-//	}else if(f_mod(eksp,2)==1){
-//		return -result;
-//	}
-
-
 }
 
 
