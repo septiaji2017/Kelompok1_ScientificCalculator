@@ -35,62 +35,60 @@ int main()
 	    infotype operators[13];
 	    
 	    fgets(exp, 100, stdin);
-		    printf("\n");
-			
-			while(exp[xxxx]!='\n'){
-				if(exp[xxxx]=='('){
-					kurung1Count++;	
-				}
-				if(exp[xxxx]==')'){
-					kurung2Count++;
-				}
-				xxxx++;
-			}
-			
-			if(kurung1Count!=kurung2Count){
-				printf("Error, kurang kurung");
-				break;
-			}
-		    
-		    replaceNewLineBySpace(exp);
-			
-			hh = replaceToCommas(exp);
-
-			f = getIndexCsc(hh);
-	
-			g = trimLog(f);
-			aa = trimRadian(g);		
-			xx = trimTrigono(aa);
-
-			e = removespaces(xx);				
-			
-			valid = infixkepostfix(e);			
-//			printf("validiti: %s\n",valid?"true" : "false");
-			if(valid){
-				viewAsc(First);
-
-				delFirst(&First, &Last);
-
-				viewAsc(First);
-				
-				creat_tree(&First, &Last);
-				printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
-				lagi = getch();
-
+	    printf("\n");
 		
-				if(lagi!='y'){	
-					break;
-				}								
-			}else{
-				printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
-				lagi = getch();
-				if(lagi!='y'){	
-					break;
-				}					
+		while(exp[xxxx]!='\n'){
+			if(exp[xxxx]=='('){
+				kurung1Count++;	
 			}
+			if(exp[xxxx]==')'){
+				kurung2Count++;
+			}
+			xxxx++;
+		}
+		
+		if(kurung1Count!=kurung2Count){
+			printf("Error, kurang kurung");
+			break;
+		}
+	    
+	    replaceNewLineBySpace(exp);
+		
+		hh = replaceToCommas(exp);
 
+		f = getIndexCsc(hh);
+
+		g = trimLog(f);
+		aa = trimRadian(g);		
+		xx = trimTrigono(aa);
+
+		e = removespaces(xx);				
+		
+		valid = infixkepostfix(e);			
+		
+		if(valid){
+			viewAsc(First);
+
+			delFirst(&First, &Last);
+
+			viewAsc(First);
+			
+			creat_tree(&First, &Last);
+			printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
+			lagi = getch();
 
 	
+			if(lagi!='y'){	
+				break;
+			}								
+		}else{
+			printf("\n\n\t\t\t\t\t\t\t\t\t\t Coba Lagi (y/t)?");
+			lagi = getch();
+			if(lagi!='y'){	
+				break;
+			}					
+		}
+
 	}
 	return 0;	
 }
