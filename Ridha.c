@@ -3,6 +3,7 @@
 #include "Agam.h"
 #include "Mutia.h"
 #include "Marshya.h"
+#include "Naufal.h"
 
 /* Deskripsi   : Algoritma bagian dari kalkulator (linkedlist, non restricted) */
 /* Keterangan  : Setelah UTS */
@@ -30,7 +31,7 @@ char* addSymbolCsc(char* s, int n, int* zeros)
 	        //	 ^ char '0' akan diselipkan ke 1 char setelahnya
 	        j++; //iterasi utk memenuhi syarat
 	    }
-	    ans[idx++] = s[i];
+	    ans[idx++] = s[i]; //utk nyalin karakter saat ini dari s ke array hasil ans
 	}
 	
 	ans[idx] = '\0'; //penambahan null di akhir indeks
@@ -72,8 +73,6 @@ char * getIndexCsc(char str[])
 	    sub_len = strlen(sub);									//untuk mengetahui berapa panjang string sub (substring)	
 																//note: len itu pasti akan lebih besar dari sub_len, karena len itu dihitung null nya juga
 																//contoh: e+92 (len: 5), termasuk null (\0)
-		printf("len: %d\n",len);
-		printf("sub_len: %d\n",sub_len);
 	
 	    for (i = 0; i <= len - sub_len; i++)					//kalau i <= selisih dari len dan sub_len, lakukan hal di bawah
 	    {
@@ -100,7 +99,8 @@ char * getIndexCsc(char str[])
 	    {
 
 	    }		
-	}else{
+	}
+	else{
 		return str;												//kalau gk ketemu, maka kembalikan string semula
 	}
 
@@ -109,7 +109,6 @@ char * getIndexCsc(char str[])
 
 
 	n = sizeof(chars) / sizeof(chars[0]);						//menentukan panjang suatu array
-//	printf("n: %d\n",n);
 	ans = addSymbolCsc(str, n, chars);							//pemanggilan fungsi untuk menambahkan char '0', dengan indeks yang sudah ditentukan berdasarkan letak si char 'e'
 	
 	return ans;
@@ -753,61 +752,6 @@ char * trimLog(char * e){
 }
 
 /*=============================================================================================*/
-/*1. Input (initial state) = E,,90*/
-/*2. Output (final state) = E90*/
-/*note: untuk menghapus char ','*/
-/*=============================================================================================*/
-char * trimTrigono(char * e){
-	char* x = malloc (255*sizeof(char));
-	int i,j;
-		
-	for(i=0,j=0; e[i]!='\0'; i++,j++)
-	{
-        while(e[j]==','){
-			j++;       	
-		}
-        while(e[j]==','){
-			j++;       	
-		}		
-            
-        x[i]=e[j];		
-	}			
-    x[i]='\0';	
-	return x;				
-}
-
-/*=============================================================================================*/
-/*1. Input (initial state) = P,,,,90*/
-/*2. Output (final state) = P90*/
-/*note: untuk menghapus char ','*/
-/*=============================================================================================*/
-char * trimRadian(char * e){
-	char* x = malloc (255*sizeof(char));
-	int i,j;
-		
-	for(i=0,j=0; e[i]!='\0'; i++,j++)
-	{
-        while(e[j]==','){
-			j++;       	
-		}
-        while(e[j]==','){
-			j++;       	
-		}
-        while(e[j]==','){
-			j++;       	
-		}
-		
-        while(e[j]==','){
-			j++;       	
-		}		
-            
-        x[i]=e[j];		
-	}			
-    x[i]='\0';	
-	return x;				
-}
-
-/*=============================================================================================*/
 /*1. Input (initial state) = P,,,,90*/
 /*2. Output (final state) = P90*/
 /*note: untuk menghapus char ','*/
@@ -959,19 +903,22 @@ bool infixkepostfix(char* e){
 	        else if(*e == ')')
 	        {
 	        	kurung2=true;
-	            while((x = pop()) != '('){
-	            	*(TabStrKt+strtCount) = (infotype ) malloc (100 * sizeof(char));
-	            	printf("%c ", x);	
-	            	strncat(strings, &x, 1);
-	            	*(ArrRes+arresCount)=strings;
-	            	strcpy(*(TabStrKt+strtCount),*(ArrRes+arresCount));
-	            	insLast (&First, &Last, *(TabStrKt+strtCount));
+	            while((x = pop()) != '('){												//selagi belum char '(' apabila di hapus stacknya
+	            	*(TabStrKt+strtCount) = (infotype ) malloc (100 * sizeof(char));	//alokasi dinamis
+	            	printf("%c ", x);													//print char
+	            	strncat(strings, &x, 1);											//penambahan operator (yg didalam kurung) ke string
+	            	printf("\nSTRINGSSSS: %s\n",strings);
+	            	*(ArrRes+arresCount)=strings;										//hasil nya akan ditampung ke array dinamis
+	            	strcpy(*(TabStrKt+strtCount),*(ArrRes+arresCount));					//disalin ke array yang baru
+	            	insLast (&First, &Last, *(TabStrKt+strtCount));						//insert last
 //					insLast (&First, &Last, ")");
-					strcpy(strings,"\0");
+					strcpy(strings,"\0");												//strings akan di 'reset' buat looping selanjutnya
 					strtCount++;
 					arresCount++;	            	
 				}     
 	        }
+	        //catatan: dari line di bawah ini hingga line else if(*e == ']'), semuanya sama prosesnya dengan yang kurung
+	        //hal yang membedakan adalah push tanda penutupnya (utk fungsi mutlak, round, ceil dll)
 	        else if(*e == '~'){ //utk buka
 				push(*e);        	
 			}
@@ -989,7 +936,7 @@ bool infixkepostfix(char* e){
 					strtCount++;
 					arresCount++;	            	
 				}
-					insLast (&First, &Last, "|"); //push tanda penutup			     
+					insLast (&First, &Last, "|"); //push tanda penutup (dihitung sbg operator)			     
 	        }
 			
 	        else if(*e == '{'){
@@ -1009,7 +956,7 @@ bool infixkepostfix(char* e){
 					strtCount++;
 					arresCount++;	            	
 				}
-					insLast (&First, &Last, "}"); //push tanda penutup					     
+					insLast (&First, &Last, "}"); //push tanda penutup (dihitung sbg operator)					     
 	        }				        
 
 	        else if(*e == '<'){
@@ -1029,7 +976,7 @@ bool infixkepostfix(char* e){
 					strtCount++;
 					arresCount++;	            	
 				}
-					insLast (&First, &Last, ">"); //push tanda penutup					     
+					insLast (&First, &Last, ">"); //push tanda penutup (dihitung sbg operator)					     
 	        }
 	        
 	        else if(*e == '['){
@@ -1049,38 +996,48 @@ bool infixkepostfix(char* e){
 					strtCount++;
 					arresCount++;	            	
 				}
-					insLast (&First, &Last, "]"); //push tanda penutup					     
+					insLast (&First, &Last, "]"); //push tanda penutup (dihitung sbg operator)
 	        }	        
 	        
 	        else
 	        {
-      			//else ini dilakukan sebagai OPERATOR (+,-,*,/, dll.)
-	            while(priority(stack[top]) >= priority(*e)){
+      			//else ini dilakukan sebagai OPERATOR (+,-,*,/, dll.)				
+	            while(priority(stack[top]) >= priority(*e)){ //while ini digunakan apabila kondisinya berupa operasi berulang (ex: 5+5+5+5, 5-2+4+4), ATAU berupa priority yang sama (misal: 5*2/2)
+
 	            	*(TabStrKt+strtCount) = (infotype ) malloc (100 * sizeof(char));
-	            	y=pop();  
+	            	y=pop();				//karena priority nya sama, jadi gk bisa dimasukkin, jadi char dengan priority yg sama akan di pop dan dimasukkan ke dalam var y utk digantikan dengan yang baru   
+					
+					//kode dibawah ini hanya untuk merubah tipe data saja, agar bisa langsung dimasukkan ke linkedlist, karena bentukan linkedlist itu string, sedangkan yang di pop itu adalah char
 					strncat(strings, &y, 1);
 					*(ArrRes+arresCount)=strings;
-
 	            	strcpy(*(TabStrKt+strtCount),*(ArrRes+arresCount));
-					insLast (&First, &Last, *(TabStrKt+strtCount));
+	            	
+					insLast (&First, &Last, *(TabStrKt+strtCount)); //lalu dimasukkan hasil yang "ditendang" itu akan dimasukkan ke dalam linkedlist string (postfix)
 					strcpy(strings,"\0");
 					strtCount++;
 					arresCount++;		
 				}
 				
-	            push(*e);
+	            push(*e); //operatornya masuk ke stack
 	        }	        
 	        e++;
 	}
 	
+	//while ini digunakan untuk memasukkan semua apa yang ada di stack ke linkedlist / postfix string
+	//atau bisa disebut pemindahan sisa operator yg ada di stack ke linkedlist (postfix)
 	while(top != -1 && stack[top] != '(')
     {
     	*(TabStrKt+strtCount) = (infotype ) malloc (100 * sizeof(char));
-    	z=pop();
+    	z=pop();						//klo ada sisanya, pop terus hingga habis
+    									//misal stack nya ada sisa + dan /, pop terus hingga habis (-1) 
+
+		//perubahan tipe data
     	strncat(strings2, &z, 1);
 		*(ArrRes+arresCount)=strings2;
 		strcpy(*(TabStrKt+strtCount),*(ArrRes+arresCount));
-		insLast (&First, &Last, *(TabStrKt+strtCount));
+		
+		//memasukkan ke dalam linkedlist
+		insLast (&First, &Last, *(TabStrKt+strtCount)); //yang di pop itu akan dipindahkan z, karena z itu char dan linkedlist butuh string, maka rubah dlu ke string, baru dimasukkan ke linkedlistnya
 		strcpy(strings2,"\0");   		
 		arresCount++;   	
 		strtCount++; 
@@ -1094,109 +1051,59 @@ bool infixkepostfix(char* e){
 /*=============================================================================================*/
 void insLast (address * First, address * Last, infotype Info){
 	address P;
-	P = (address) malloc(sizeof (ElmtList));
-	info(P) = Info;
-	next(P) = Nil;	
-	prev(P) = Nil;	
+	P = (address) malloc(sizeof (ElmtList));	//alokasi pointer (pembuatan kotak linkedlist)
+	info(P) = Info;								//info akan dimasukkan dengan parameter info
+	next(P) = Nil;								//di null kan (default)
+	prev(P) = Nil;								//di null kan (default)
 
-	if(*Last==Nil){
-		*First = P;
-		*Last = P;			
-	}else{
-		next(P) = Nil;
-		prev(P) = *Last;
-		next(*Last) = P;
-		*Last = P;			
+	if(*Last==Nil){								//kalau apa yang ditunjuk last itu null / masih belum nunjuk siapa"
+		*First = P;								//first akan menunjuk p
+		*Last = P;								//last akan menunjuk P
+												//keduanya menunjuk "kotak" yang sama
+	}else{										//kalau tidak
+		next(P) = Nil;							//next dari kotak P akan menunjuk null
+		prev(P) = *Last;						//prev dari kotak P akan menunjuk apa yang ditunjuk last
+		next(*Last) = P;						//next dari apa yang ditunjuk last, menunjuk kotak P
+		*Last = P;								//last sekarang menunjuk ke kotak P (karena insert last)
 	}
 }
 
 void viewAsc(address First){
 	//dari first ke last
 //	printf("\nView Ascending: \n");
-	while(First!=Nil){
-		printf(" ", info(First));
-		First = next(First);
-	}printf("\n");	
+	while(First!=Nil){				//selagi first nya belum ke null
+		printf(" ", info(First));	//print (kosong) info yang ditunjuk oleh first
+		First = next(First);		//pointer akan menunjuk setelahnya (next)
+	}printf("\n");//tidak terlalu penting
 }
 
-void delFirst (address * First, address * Last){
-	address PDel,PDel2;
-	PDel = *First;
-	PDel2 = *Last;
-	
-//	printf("%s %d",info(*First),strcmp(info(*First),"0"));
-	if((strcmp(info(*First),"0")==0) && isNumber(info(next(*First)))==true ){
-		printf("");
-		*First = next(*First);		
-		prev(PDel)=Nil;
-		prev(*First)=Nil;
-		free(PDel);			
-	}	
-}
-
-void delAll (address * First, address * Last){
-	address PDel,PDel2;
-	PDel = *First;
-	PDel2 = *Last;
-	
-	next(prev(*Last)) = Nil;
-	prev(*Last) = Nil;
-	*Last = Nil;
-	free(*Last);
-	while(*First != Nil){
-		*First = next(*First);
-		PDel = *First;
-		free(PDel);
-	}	
-}
-
-/* =================================== */
-/* Deskripsi   : Rumus */
-/* Keterangan  : Sebelum UTS */
-/* =================================== */
-
-int f_operasiBitwiseAnd(int op1, int op2){
-	int op3;
-	op3 = op1 & op2;
-	return op3;
-}
-
-int f_operasiBitwiseOr(int op1, int op2){
-	int op3;	
-	op3 = op1 | op2;
-	return op3;
-}
-
-int f_operasiBitwiseXor(int op1, int op2){
-	int op3;
-	op3 = op1 ^ op2;
-	return op3;
-}
-
-int f_operasiBitwiseNot(int op1){
-	int op2;	
-	op2 = ~op1;
-	return op2;
-}
 
 /*=============================================================================================*/
 /*1. Input (initial state) = nilai belum diketahui*/
 /*2. Output (final state) = menghasilkan hasil pembagi*/
 /*=============================================================================================*/
 div_t f_div(int x, int y){
-	div_t output;
-	output=div(x,y);
-	return output;
+	div_t output;		//harus tipe data div_t (tipe data komposit)
+	output=div(x,y);	//hasilnya akan ditampung ke output
+	return output;		//hasilnya akan dikembalikan
 }
 
 /*=============================================================================================*/
 /*1. Input (initial state) = nilai belum diketahui*/
 /*2. Output (final state) = menghasilkan sisa bagi*/
 /*=============================================================================================*/
-int f_mod(int x, int y){
-	int z;	
-	z=x%y;
-	return z;
+int f_mod(int dividend, int divisor){ //2 % 3 = dividend 3, divisor 2
+    float quotient = 0;
+    
+	int i;
+    int helper,helper2,helper3;
+	int helper4,helper5;
+          
+    while (dividend >= divisor) {	//kalau dividend lebih besar / sama dengan divisor
+        dividend -= divisor;		//sama artinya dengan dividend = dividend - divisor, artinya dividend dikurang dengan divisor, yang nantinya akan di assign ke dividend
+    }
+    
+    return dividend;				//return sisa pembagi
 }
 
 /*=============================================================================================*/
@@ -1204,10 +1111,10 @@ int f_mod(int x, int y){
 /*2. Output (final state) = True*/
 /*=============================================================================================*/
 bool isNegative(float x){
-	if(x<0){
-		return 1;
+	if(x<0){		//kalau x nya itu kurang dari 0
+		return 1;	//true
 	}else{
-		return 0;
+		return 0;	//false
 	}
 }
 
@@ -1240,8 +1147,10 @@ float powerex(float x) {
 /*=============================================================================================*/
 /*1. Input (initial state) = value belum diketahui*/
 /*2. Output (final state) = menghasilkan hasil pangkat*/
-/*3. prepscholar (berupa teori saja) */
-/*4. https://blog.prepscholar.com/natural-log-rules */
+/*3.1 prepscholar (berupa teori saja) */
+/*3.2 advernesia (berupa teori saja, utk pangkat negatif)*/
+/*4.1 https://blog.prepscholar.com/natural-log-rules */
+/*4.2 https://www.advernesia.com/blog/matematika/perpangkatan/*/
 /*=============================================================================================*/
 float f_pangkat(float basis, float eksp){
 
@@ -1251,25 +1160,25 @@ float f_pangkat(float basis, float eksp){
     
     float basis2;
     
-    int sign=1;
+    int sign=1;							//untuk penanda
 	
-	if(basis<0){
-		basis2=abs1(basis);
-		penampung = log_2(basis2);
+	if(basis<0){						//kalau basisnya kurang dari 0 (atau negative)
+		basis2=abs1(basis);				//tetap harus di mutlakkan terlebih dahulu, menggunakan fungsi yang sudah ada
+		penampung = log_2(basis2);		//rumus perpangkatan itu dasarnya dari logaritma, dan ditampung ke var penampung
 		
-		if(f_mod(eksp,2)==0){ //saat basis genap
-			sign = 1;		
-		}else if(f_mod(eksp,2)==1){
-			sign = -1;
-		}		
+		if(f_mod(eksp,2)==0){ 			//kalau basis genap
+			sign = 1;					//positif
+		}else if(f_mod(eksp,2)==1){		//kalau basis ganjil
+			sign = -1;					//negatif
+		}								//dilakukan decision di atas karena perpangkatan negatif itu kalau basis nya ganjil, hasilnya negatif, sedangkan kalau basisnya genap, hasilnya positif
 		
 	}else{
-		penampung = log_2(basis);
+		penampung = log_2(basis);		//kalau bukan negatif, lakukan logaritma seperti biasa
 	}
 	
-	result = powerex(eksp * penampung);
+	result = powerex(eksp * penampung);	//karena rumus dasar perpangkatan itu adalah exponent(exp x penampung)
 
-	return (result*sign);	
+	return (result*sign);				//dikalikan sign untuk negative ataupun tidak
 }
 
 
@@ -1282,12 +1191,13 @@ float f_pangkat(float basis, float eksp){
 
 float f_akar(float number)
 {
-    float temp, sqrt;
-    sqrt = number / 2;
-    temp = 0;
-    while(sqrt != temp){
-        temp = sqrt;
-        sqrt = ( number/temp + temp) / 2;
+    float temp, sqrt;						//variabel float
+    sqrt = number / 2;						//angka dari parameter akan dibagi 2
+    temp = 0;								//pengisian nilai default
+    while(sqrt != temp){					//selama sqrt(yg dibagi 2 itu) tidak sama dengan temp
+        temp = sqrt;						//assignment nilai sqrt ke temp
+        sqrt = ( number/temp + temp) / 2;	//akan dilakukan rumus di samping, nilai value nya akan berbentuk koma, dan akan terus dilakukan hingga berbentuk bulat kembali
+        									//apabila angkanya sudah bulat kembali, akan dilakukan looping sekali lagi, dan rumus dilakukan lagi, karena hasilnya sama, loopingnya langsung berhenti
     }
 
     return sqrt;
@@ -1301,19 +1211,7 @@ float f_akar(float number)
 float f_akar_dinamis(float basis, float eksp)
 {
 	float hasil;
-	hasil = f_pangkat(basis, 1 / eksp);
-	return hasil;
-}
-
-float f_PersenKeAngka(float x){
-	float y;
-	y = x/100;
-	return y;
-}
-
-float f_AngkaKePersen(float x){
-	float y;	
-	y = x*100;
-	return y;
+	hasil = f_pangkat(basis, 1 / eksp);	//karena akar dinamis itu rumusnya (basis ^ 1/exp), jadi angka nya dijadikan parameter
+	return hasil;						
 }
 

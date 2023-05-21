@@ -57,24 +57,14 @@ int main()
 		hh = replaceToCommas(exp);
 
 		f = getIndexCsc(hh);
-		
-//		printf("%s",f);
 
 		g = trimLog(f);
-//		aa = trimRadian(g);		
-//		xx = trimTrigono(aa);
-
 		e = removespaces(g);				
 		
-		valid = infixkepostfix(e);			
+		valid = infixkepostfix(e);		
 		
 		if(valid){
 			viewAsc(First);
-
-			delFirst(&First, &Last);
-
-			viewAsc(First);
-			
 			creat_tree(&First, &Last);
 			printf("\n\n\t\t\t\t\t\t\t Coba Lagi (y/t)?");
 			lagi = getch();

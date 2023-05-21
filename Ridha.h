@@ -73,7 +73,7 @@ int f_operasiBitwiseNot(int op1);
 /* Operasi Diversion / Pembagi dan Modulus */
 div_t f_div(int x, int y);
 
-int f_mod(int x, int y);
+int f_mod(int dividend, int divisor);
 
 /* Operasi Eksponen */
 bool isNegative(float x);
