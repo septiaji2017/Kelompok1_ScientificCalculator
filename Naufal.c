@@ -29,8 +29,8 @@ float pertambahan(float x, float y){
 	float hasil=x;
     float i=0;
     int helper,helper2,helper3;
-	float helper4=0;
-	float helper5=0;
+	int helper4=0;
+	int helper5=0;
     float bs10, bs10_2, bs10_3;
     float bagiHasil;
     float temp;
@@ -102,8 +102,8 @@ float pengurangan(float x, float y){
 	float hasil=x;
     int i;
     int helper,helper2,helper3;
-	float helper4=0;
-	float helper5;
+	int helper4=0;
+	int helper5;
     float bs10, bs10_2, bs10_3;
     float bagiHasil;
     
@@ -152,7 +152,7 @@ float pengurangan(float x, float y){
 	helper5 = perkalianBasic(z, bs10);
 	
 	helper5 = floorr(10000*helper5)/10000;  //getPrecision, karena angka float itu emg kurang dalam presisi	
-     
+
     for (i = 0; i < helper5; i++) {  	
     	helper4-=1;
 	}
@@ -168,7 +168,7 @@ float perkalian(float a, float b) {
 	float hasil = 0;  // inisialisasi hasil dengan 0
     int i;
     int helper,helper2,helper3;
-	float helper4,helper5;
+	int helper4,helper5;
     float bs10, bs10_2, bs10_3;
     float bagiHasil;
     float c=b;
@@ -228,7 +228,7 @@ float pembagian(float dividend, float divisor)
     
 	int i;
     int helper,helper2,helper3;
-	float helper4,helper5;
+	int helper4,helper5;
     float bs10, bs10_2, bs10_3;
     float bagiHasil;    
     int rem;
@@ -263,8 +263,10 @@ float pembagian(float dividend, float divisor)
 	//melakukan perkalian (10,100,1000) agar koma nya hilang
 	helper4 = perkalianBasic(dividend, bs10);
 	helper5 = perkalianBasic(divisor, bs10_2);
-    
-    while (helper4 >= helper5) {
+    printf("helper4: %d\n",helper4);
+    printf("helper5: %d\n",helper5);
+	
+	while (helper4 >= helper5) {
         helper4 -= helper5;
         quotient++;
     }
