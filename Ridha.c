@@ -1072,7 +1072,7 @@ void viewAsc(address First){
 	//dari first ke last
 //	printf("\nView Ascending: \n");
 	while(First!=Nil){				//selagi first nya belum ke null
-		printf(" ", info(First));	//print (kosong) info yang ditunjuk oleh first
+		printf("%s ", info(First));	//print (kosong) info yang ditunjuk oleh first
 		First = next(First);		//pointer akan menunjuk setelahnya (next)
 	}printf("\n");//tidak terlalu penting
 }
