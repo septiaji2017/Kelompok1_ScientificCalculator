@@ -126,7 +126,6 @@ double log_2(double x)			// Fungsi untuk menghitung logaritma basis natural dari
 
 double log_10(double x) 		// Fungsi untuk menghitung Logaritma basis 10
 {
-	// LN10 adalah konstanta yang mewakili nilai logaritma natural dari 10 (basis logaritma dalam fungsi log_10)
     return log_2(x) / log_2(10); 	// mengembalikan nilai log_e(nilai)/log_e(10), untuk mendapatkan nilai logartima basis 10
 }
 
