@@ -9,7 +9,7 @@
 /*********************************************************************************************************************************************/
 /* Initial State: Menampung angka bertipe double, pada modul ini berperan sebagai function */
 /* Final State: Mengembalikan nilai dari masing - masing fungsi inverse trigonometri setelah perhitungan selesai dieksekusi */
-/* Referensi Modul:  																	   */
+/* Referensi Modul:  https://chat.openai.com/														   */
 /* Referensi Link:  https://www.milefoot.com/math/trig/32inversebasic.htm, https://www.geeksforgeeks.org/inverse-trigonometric-identities/                                                                     */ 
 /*********************************************************************************************************************************************/
 
