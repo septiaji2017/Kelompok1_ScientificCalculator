@@ -104,7 +104,7 @@ double arccot(double x)			// Menghitung inverse cotangent
 /* Referensi Link:  https://www.milefoot.com/math/trig/32inversebasic.htm, https://www.geeksforgeeks.org/inverse-trigonometric-identities/                                                                     */ 
 /*********************************************************************************************************************************************/
 
-double log_2(double x)			// Fungsi untuk menghitung logaritma basis 2 dari suatu nilai x menggunakan pendekatan deret Taylor.
+double log_2(double x)			// Fungsi untuk menghitung logaritma basis natural dari suatu nilai x menggunakan pendekatan deret Taylor.
 {
     double old_sum = 0.0;		// Mendeklarasikan dan menginisialisasi variabel old_sum dengan nilai 0.0
     double xmlxpl = (x - 1) / (x + 1);	// Menghitung nilai xmlxpl sebagai (x - 1) / (x + 1)
@@ -127,7 +127,7 @@ double log_2(double x)			// Fungsi untuk menghitung logaritma basis 2 dari suatu
 double log_10(double x) 		// Fungsi untuk menghitung Logaritma basis 10
 {
 	// LN10 adalah konstanta yang mewakili nilai logaritma natural dari 10 (basis logaritma dalam fungsi log_10)
-    return log_2(x) / LN10; 	// Menggunakan pendekatan logaritma basis 2 dan konstanta LN10 untuk menghitung logaritma basis 10 dari suatu nilai x
+    return log_2(x) / log_2(10); 	// mengembalikan nilai log_e(nilai)/log_e(10), untuk mendapatkan nilai logartima basis 10
 }
 
 double log_b(double x, double b) // Fungsi untuk menghitung Logaritma dengan basis user input
@@ -136,7 +136,7 @@ double log_b(double x, double b) // Fungsi untuk menghitung Logaritma dengan bas
         return UNDEFINED;					//mengembalikan nilai UNDEFINED				 
     }
     
-    return log_10(x)/log_10(b);				//mengembalikan nilai log10(nilai)/log10(basis), hal ini berdasarkan sifat sifat logaritma
+    return log_2(x)/log_2(b);				//mengembalikan nilai log_e(nilai)/log_e(basis), hal ini berdasarkan sifat sifat logaritma
 }
 
 
