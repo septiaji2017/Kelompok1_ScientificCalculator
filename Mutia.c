@@ -60,7 +60,7 @@ double my_fmod(double x, double y){              // fungsi menerima dua paramete
 /* Referensi Link: https://stackoverflow.com/questions/2284860/how-does-c-compute-sin-and-other-math-functions */ 
 /***************************************************************************************************************/
 
-// Fungsi untuk menghitung nilai sinus menggunakan deret Taylor Sinus
+// Fungsi untuk menghitung nilai sinus menggunakan Polinomial Chebyshev
 double sinRadian(double x) {
 	const double PI = pi;                       // Konstanta PI dideklarasikan sebagai nilai pi
     const double TWO_PI = 2 * pi;               // Konstanta TWO_PI dideklarasikan sebagai 2 kali nilai pi
@@ -92,10 +92,10 @@ double sinRadian(double x) {
         k += 2;                                 // Nilai k ditambah dengan 2 untuk menghitung faktor pembagi berikutnya
     }
     
-    return result;                              // Setelah perulangan selesai, nilai result berisi hasil akhir dari perhitungan deret Taylor sinus
+    return result;                              // Setelah perulangan selesai, nilai result berisi hasil akhir dari perhitungan Polinomial Chebyshev
 }
 
-// Fungsi untuk menghitung nilai cosinus menggunakan deret Taylor Cosinus
+// Fungsi untuk menghitung nilai cosinus menggunakan Polinomial Chebyshev
 double cosRadian(double x) {
 	const double PI = pi;                       // Konstanta PI dideklarasikan sebagai nilai pi
     const double TWO_PI = 2 * pi;               // Konstanta TWO_PI dideklarasikan sebagai 2 kali nilai pi
